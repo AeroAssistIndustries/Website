@@ -234,6 +234,56 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .gloss dd{margin:0;color:var(--muted);font-size:.94rem}
 .about-aside{align-self:stretch}
 .about-aside .summary{top:calc(env(safe-area-inset-top,0px) + 16px)}
+/* festival calendar */
+:root{--usa:#B22234}
+.cal-hero{padding-block:44px 20px}
+.nextup{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;margin-top:26px;background:#0F4F2A;color:#FFF3D6;border-radius:18px;padding:22px}
+.nextup .eyebrow{color:#F2B233}
+.nextup h2{font-family:var(--display);font-weight:400;font-size:2rem;color:#FFFFFF}
+.nextup p{margin:4px 0 10px;max-width:56ch}
+.nx-date{background:#F2B233;color:#2A1A10;border-radius:14px;width:84px;text-align:center;padding:8px 0}
+.nx-date span{display:block;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.nx-date b{display:block;font-size:2.4rem;line-height:1}
+.nx-cta{display:flex;flex-direction:column;gap:10px}
+.nextup .btn.ghost{background:transparent;color:#FFF3D6;border-color:rgba(255,243,214,.5)}
+.cal-layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:40px;align-items:start}
+.cal-side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
+.month{border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--bg)}
+.mhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.mnav{width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);font-size:1.2rem;line-height:1}
+.mgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center;font-variant-numeric:tabular-nums}
+.mgrid .wd{font-size:.72rem;font-weight:700;color:var(--muted);padding-bottom:4px}
+.day{display:grid;place-items:center;aspect-ratio:1;border-radius:50%;font-size:.88rem;border:0;background:none;color:var(--fg);padding:0}
+.day.today{box-shadow:inset 0 0 0 2px var(--fg)}
+.day.has{color:#FFFFFF;font-weight:700;cursor:pointer}
+.day.has.t-hindu{background:var(--saffron)} .day.has.t-jain{background:var(--green)} .day.has.t-national{background:var(--chakra)} .day.has.t-usa{background:var(--usa)}
+.legend{display:grid;gap:4px;margin-top:12px;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:-1px}
+.dot-hindu{background:var(--saffron)}.dot-jain{background:var(--green)}.dot-national{background:var(--chakra)}.dot-usa{background:var(--usa)}
+.cal-month{font-family:var(--display);font-weight:400;font-size:1.6rem;margin:30px 0 8px}
+.ev{display:grid;grid-template-columns:72px minmax(0,1fr);gap:18px;padding:18px 0;border-bottom:1px solid var(--line);scroll-margin-top:90px;border-radius:10px}
+.ev.flash{animation:flash 1.6s ease}
+@keyframes flash{0%,40%{background:var(--bg-2)}100%{background:transparent}}
+.ev-date{text-align:center;border-radius:12px;padding:6px 0;background:var(--bg-2);border-top:4px solid var(--saffron);align-self:start}
+.t-jain .ev-date{border-color:var(--green)} .t-national .ev-date{border-color:var(--chakra)} .t-usa .ev-date{border-color:var(--usa)}
+.ev-date span{display:block;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ev-date b{display:block;font-size:1.8rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.ev-type{margin:0;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--saffron-deep)}
+.t-jain .ev-type{color:var(--green)} .t-national .ev-type{color:var(--chakra)} .t-usa .ev-type{color:var(--usa)}
+.ev h3{font-size:1.25rem;margin:2px 0 4px}
+.ev h3 span{font-weight:500;color:var(--muted);font-size:1rem}
+.ev p{margin:0 0 8px}
+.ev-buy{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:.88rem;margin-bottom:8px}
+.ev-buy .chip{text-decoration:none;font-weight:600}
+.ev-buy .chip:hover{border-color:var(--saffron)}
+.ev-act{display:flex;gap:16px;flex-wrap:wrap;font-size:.88rem;font-weight:700}
+.ev-act a{color:var(--saffron-deep)}
+.coming{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.cu{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:14px;align-items:start}
+.cu:hover{border-color:var(--saffron)}
+.cu h3{font-size:1.05rem;margin-bottom:2px}
+.cu p{margin:0;font-size:.88rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.cu .ev-date b{font-size:1.5rem}
 /* utility bar */
 .utility{background:#2A1A10;color:#F6E9D8;font-size:.84rem}
 .utility .wrap{display:flex;justify-content:space-between;align-items:center;gap:4px 16px;flex-wrap:wrap;padding-block:6px}
@@ -311,7 +361,7 @@ footer .promise .bt{display:flex;flex-direction:column;min-width:0}
 footer .promise b{font-size:1rem;line-height:1.25}
 footer .promise .bt span{opacity:.9;font-size:.85rem;line-height:1.35}
 @media (max-width:900px){footer .promise ul{grid-template-columns:1fr 1fr}}
-@media (max-width:420px){footer .promise ul{grid-template-columns:1fr}}
+@media (max-width:420px){footer .promise ul{grid-template-columns:1fr}.coming{grid-template-columns:1fr}}
 footer .legal .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px 20px;flex-wrap:wrap;padding-block:14px;font-size:.86rem}
 .flags{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .flags svg{height:24px;width:auto;border-radius:3px;box-shadow:0 0 0 1px rgba(255,255,255,.6);display:block}
@@ -332,7 +382,10 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
   .logo img{height:44px}
   .cartbtn{position:absolute;top:16px;right:0;padding:6px 12px;font-size:.92rem}
   .navwrap,nav{width:100%}
-  nav ul{gap:4px 18px;font-size:.95rem}
+  nav ul{gap:16px;font-size:.93rem;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  nav ul::-webkit-scrollbar{display:none}
+  nav li{flex:0 0 auto}
+  .dd ul{display:none!important}
   .dd ul{left:0}
   .hero{padding-block:20px 40px}
   .hero p{font-size:1.02rem;margin:10px 0 20px}
@@ -344,7 +397,10 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
   .cat{padding:20px;min-height:0}
   .cat h3{font-size:1.5rem}
   .score .big{font-size:3.4rem}
-  .boxwrap,.rating,.about-grid,.cities,.fests,.gloss,.values{grid-template-columns:1fr}
+  .boxwrap,.rating,.about-grid,.cities,.fests,.gloss,.values,.cal-layout,.nextup{grid-template-columns:1fr}
+  .cal-side{position:static}
+  .coming{grid-template-columns:1fr 1fr}
+  .nx-cta{flex-direction:row;flex-wrap:wrap}
   .quotes{grid-template-columns:1fr}
   .counter{grid-template-columns:repeat(2,minmax(0,1fr))}
   section{padding-block:44px}
@@ -368,6 +424,7 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
           <li><a href="#about" data-nav="about">About</a></li>
           <li class="dd"><a href="#shop" data-nav="shop">Our Menu ▾</a>
             <ul><li><a href="#shop-snacks">Snacks</a></li><li><a href="#shop-sweets">Sweets</a></li><li><a href="#shop-biscuits">Biscuits</a></li></ul></li>
+          <li><a href="#calendar" data-nav="calendar">Festivals</a></li>
           <li><a href="#catering" data-nav="catering">Catering</a></li>
           <li><a href="#contact" data-nav="contact">Contact</a></li>
         </ul></nav>
@@ -403,7 +460,7 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
       <div>Raju &amp; Trupti's Kitchen<br>15714 Pioneer Blvd, Norwalk, CA 90650<br>(562) 868-5878 · (714) 443-1243</div>
       <div class="social" id="social"></div>
     </div>
-    <div><h4>Shop</h4><ul><li><a href="#shop-snacks">Snacks</a></li><li><a href="#shop-sweets">Sweets</a></li><li><a href="#shop-biscuits">Biscuits</a></li><li><a href="#box">Festival box</a></li><li><a href="#catering">Catering</a></li><li><a href="#cart">Cart</a></li></ul></div>
+    <div><h4>Shop</h4><ul><li><a href="#shop-snacks">Snacks</a></li><li><a href="#shop-sweets">Sweets</a></li><li><a href="#shop-biscuits">Biscuits</a></li><li><a href="#box">Festival box</a></li><li><a href="#calendar">Festival calendar</a></li><li><a href="#catering">Catering</a></li><li><a href="#cart">Cart</a></li></ul></div>
     <div><h4>Hours</h4><ul><li>Monday: Closed</li><li>Tue–Thu: 11:00 AM – 6:30 PM</li><li>Fri–Sun: 11:00 AM – 7:00 PM</li></ul></div>
   </div>
   <div class="chefs"><div class="wrap">
@@ -670,6 +727,7 @@ function homeView(){
     <div class="head"><div><p class="eyebrow">In store only</p><h2 class="sec">Hot at the counter</h2></div><p class="muted" style="margin:0;max-width:42ch">Made fresh through the day at the shop, with green and red chutneys on the side.</p></div>
     <div class="counter">${COUNTER.map(c=>`<div>${counterTile(c)}<h3>${c[1]}</h3><p>${c[2]}</p></div>`).join("")}</div>
   </div></section>
+  ${comingUpHTML()}
   ${reviewsHTML()}
   <section class="tint"><div class="wrap two">
     <div><p class="eyebrow">Catering</p><h2 class="sec">Catering for all occasions</h2><p class="muted">Undhiyu, samosa shots, pani puri shots, dhokla, chilli paneer and more for weddings, pujas and parties.</p><a class="btn go" href="#catering">Plan your event</a></div>
@@ -1007,18 +1065,128 @@ Object.assign(FOOD,{
 const counterTile=([k,n])=>`<div class="tile"><canvas data-food="${k}" data-seed="${k}" role="img" aria-label="Illustration of ${n}"></canvas></div>`;
 
 /* ---------- festivals ---------- */
-const FESTS=[
-  {name:"Diwali",date:"2026-11-08",line:"Diwali is Sunday, Nov 8. Order mithai and farsan boxes early for family visits and gifting."},
-  {name:"Uttarayan",date:"2027-01-14",line:"Kite day is Jan 14. Stock up on tal ladu and crunchy farsan for the terrace."}
+/* ---------- festival calendar data (dates per Drik Panchang; US dates can differ by a day) ---------- */
+const CAL=[
+ {d:"2026-10-11",end:"2026-10-19",n:"Navratri",t:"hindu",x:"Nine nights of garba and dandiya. Keep a box of crunchy nasto ready for after the dancing.",buy:["sev-mamra","surati-bhusu-mix","corn-chevdo","potato-gathiya"],line:"Navratri starts Sunday, Oct 11. Stock up on nasto for nine nights of garba."},
+ {d:"2026-10-20",n:"Dussehra",t:"hindu",x:"Gujarat's favorite festival breakfast: fafda and jalebi. Reserve fafda early and call ahead for jalebi.",buy:["fafda","papdi-gathiya"],line:"Dussehra is Tuesday, Oct 20. Reserve your fafda early, and call ahead for jalebi."},
+ {d:"2026-10-25",n:"Sharad Purnima",t:"hindu",x:"The brightest full moon of the year, traditionally celebrated with doodh pauva in the moonlight.",buy:["sakkar-pada","methi-paak"]},
+ {d:"2026-10-29",n:"Karwa Chauth",t:"hindu",x:"Something sweet to break the fast at moonrise.",buy:["methi-paak","tal-ladu","sakkar-pada"]},
+ {d:"2026-11-06",n:"Dhanteras",t:"hindu",x:"The first day of Diwali, and a good day to send sweet boxes to family.",buy:["methi-paak","sakkar-pada","canada-biscuit"]},
+ {d:"2026-11-08",n:"Diwali",t:"hindu",x:"Fill the nasto tray for a week of guests: chakri, sev, chevdo, biscuits and mithai.",buy:["chakri","sev","corn-chevdo","methi-paak","canada-biscuit"],line:"Diwali is Sunday, Nov 8. Order mithai and farsan boxes early for family visits and gifting."},
+ {d:"2026-11-10",n:"Gujarati New Year",g:"Bestu Varas · Govardhan Puja",t:"hindu",x:"Saal Mubarak! A day of visits to family and friends, with snacks ready for every guest.",buy:["padwada-biscuit","surati-bhusu-mix","methi-paak"]},
+ {d:"2026-11-11",n:"Bhai Dooj",t:"hindu",x:"Sweets for brothers and sisters.",buy:["sakkar-pada","tal-ladu"]},
+ {d:"2026-11-24",n:"Dev Diwali",g:"Kartik Purnima",t:"hindu",x:"The full moon that closes the Diwali season.",buy:["methi-paak"]},
+ {d:"2026-11-26",n:"Thanksgiving",t:"usa",x:"Bring something different to the table: a farsan appetizer platter, or let us cater.",buy:["surati-bhusu-mix","potato-gathiya","chakri"]},
+ {d:"2026-12-25",n:"Christmas",t:"usa",x:"Gift boxes for neighbors and coworkers, and party platters for family gatherings.",buy:["canada-biscuit","jeera-biscuit","sakkar-pada"]},
+ {d:"2026-12-31",n:"New Year's Eve",t:"usa",x:"Snacks for the countdown party.",buy:["sev-mamra","corn-chevdo","chakri"]},
+ {d:"2027-01-14",n:"Uttarayan",g:"Makar Sankranti",t:"hindu",x:"Kite day! Tal ladu and crunchy farsan for a long day on the rooftop.",buy:["tal-ladu","potato-gathiya","sev-mamra"],line:"Kite day is Jan 14. Stock up on tal ladu and crunchy farsan for the terrace."},
+ {d:"2027-01-26",n:"Republic Day",t:"national",x:"India's Republic Day.",buy:["surati-bhusu-mix"]},
+ {d:"2027-02-11",n:"Vasant Panchami",t:"hindu",x:"Welcoming spring and honoring Saraswati.",buy:["sakkar-pada"]},
+ {d:"2027-03-05",n:"Maha Shivaratri",t:"hindu",x:"Many families fast today. Ask us which snacks suit your fast.",buy:[]},
+ {d:"2027-03-21",n:"Holika Dahan",t:"hindu",x:"The bonfire night before Holi.",buy:["dhani","sev-mamra"]},
+ {d:"2027-03-22",n:"Holi",g:"Dhuleti",t:"hindu",x:"The festival of colors. Snacks and sweets for the crowd after the color fight.",buy:["sev-mamra","potato-gathiya","sakkar-pada"],line:"Holi is Monday, Mar 22. Stock up on snacks and sweets for the crowd."},
+ {d:"2027-04-07",n:"Chaitra Navratri",g:"Gudi Padwa",t:"hindu",x:"Spring Navratri and the new year for many communities.",buy:["methi-paak"]},
+ {d:"2027-04-14",n:"Ram Navami",t:"hindu",x:"Celebrating Lord Rama's birth.",buy:["sakkar-pada"]},
+ {d:"2027-04-19",n:"Mahavir Jayanti",t:"jain",x:"Celebrating the birth of Lord Mahavir.",buy:[]},
+ {d:"2027-04-20",n:"Hanuman Jayanti",t:"hindu",x:"Celebrating Lord Hanuman.",buy:["tal-ladu"]},
+ {d:"2027-05-08",n:"Akshaya Tritiya",t:"hindu",x:"An auspicious day for new beginnings.",buy:["methi-paak"]},
+ {d:"2027-07-04",n:"Fourth of July",t:"usa",x:"Farsan for the cookout snack table.",buy:["potato-gathiya","corn-chevdo","chakri"]},
+ {d:"2027-07-05",n:"Rath Yatra",t:"hindu",x:"The chariot festival, celebrated in a big way in Ahmedabad.",buy:["surati-bhusu-mix"]},
+ {d:"2027-07-18",n:"Guru Purnima",t:"hindu",x:"A day to honor teachers and gurus.",buy:["sakkar-pada"]},
+ {d:"2027-08-15",n:"Independence Day (India)",t:"national",x:"Celebrating India's independence.",buy:["surati-bhusu-mix","sev-mamra"]},
+ {d:"2027-08-16",n:"Raksha Bandhan",t:"hindu",x:"Rakhi and sweets for brothers and sisters, near or far. We ship!",buy:["methi-paak","tal-ladu","canada-biscuit"],line:"Raksha Bandhan is Monday, Aug 16. Send a box of sweets with your rakhi."},
+ {d:"2027-08-24",n:"Janmashtami",t:"hindu",x:"Celebrating Lord Krishna's birth with sweets at midnight.",buy:["sakkar-pada","methi-paak"]},
+ {d:"2027-09-03",n:"Ganesh Chaturthi",t:"hindu",x:"Welcoming Ganpati home.",buy:["sakkar-pada","tal-ladu"]},
+ {d:"2027-09-04",n:"Samvatsari",g:"Paryushan",t:"jain",x:"The final day of Paryushan.",buy:[]},
+ {d:"2027-09-30",end:"2027-10-08",n:"Navratri",t:"hindu",x:"Nine nights of garba. Nasto for after the dancing.",buy:["sev-mamra","surati-bhusu-mix","corn-chevdo"],line:"Navratri starts Thursday, Sep 30. Stock up on nasto for nine nights of garba."},
+ {d:"2027-10-09",n:"Dussehra",t:"hindu",x:"Fafda and jalebi morning.",buy:["fafda"],line:"Dussehra is Saturday, Oct 9. Reserve your fafda early, and call ahead for jalebi."},
+ {d:"2027-10-14",n:"Sharad Purnima",t:"hindu",x:"Doodh pauva under the full moon.",buy:["sakkar-pada"]},
+ {d:"2027-10-26",n:"Dhanteras",t:"hindu",x:"The first day of Diwali.",buy:["methi-paak","sakkar-pada"]},
+ {d:"2027-10-28",n:"Diwali",t:"hindu",x:"Fill the nasto tray for a week of guests.",buy:["chakri","sev","corn-chevdo","methi-paak","canada-biscuit"],line:"Diwali is Thursday, Oct 28. Order mithai and farsan boxes early."},
+ {d:"2027-10-29",n:"Gujarati New Year",g:"Bestu Varas · Govardhan Puja",t:"hindu",x:"Saal Mubarak!",buy:["padwada-biscuit","surati-bhusu-mix"]},
+ {d:"2027-10-30",n:"Bhai Dooj",t:"hindu",x:"Sweets for brothers and sisters.",buy:["sakkar-pada","tal-ladu"]},
+ {d:"2027-11-13",n:"Dev Diwali",g:"Kartik Purnima",t:"hindu",x:"The full moon that closes the Diwali season.",buy:[]},
+ {d:"2027-11-25",n:"Thanksgiving",t:"usa",x:"A farsan appetizer platter for the table.",buy:["surati-bhusu-mix","potato-gathiya"]}
 ];
+const CALTYPES={hindu:"Hindu festivals",jain:"Jain",national:"India national days",usa:"US holidays"};
+const dOf=s=>new Date(s+"T00:00:00");
+const todayLA=()=>{const n=laNow();return new Date(n.getFullYear(),n.getMonth(),n.getDate())};
+const upcoming=()=>CAL.filter(e=>dOf(e.end||e.d)>=todayLA());
+const FESTS=upcoming().filter(e=>e.line).map(e=>({name:e.n,date:e.d,line:e.line}));
+const fmtD=(s,o)=>dOf(s).toLocaleDateString("en-US",o);
+const gcal=e=>{const a=e.d.replace(/-/g,""),z=dOf(e.end||e.d);z.setDate(z.getDate()+1);const b=z.getFullYear()+String(z.getMonth()+1).padStart(2,"0")+String(z.getDate()).padStart(2,"0");
+  return "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(e.n+" (order from RT Kitchen)")+"&dates="+a+"/"+b+"&details="+encodeURIComponent(e.x+" Order ahead: RT Kitchen, 15714 Pioneer Blvd, Norwalk · (562) 868-5878")};
+let calFilter="all", calMonth=null;
+function calView(){
+  const up=upcoming(), next=up[0];
+  if(!calMonth){const t=todayLA();calMonth=new Date(t.getFullYear(),t.getMonth(),1);}
+  return `<section class="cal-hero"><div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / Festival calendar</div>
+    <p class="eyebrow">Festival calendar</p>
+    <h1 class="pg">Every festival, with snacks to match</h1>
+    <p class="lede">Indian festivals, Jain observances, India's national days and US holidays, with what to order for each. Big festival weeks get busy at the counter, so order early.</p>
+    ${next?`<div class="nextup"><div class="nx-date"><span>${fmtD(next.d,{month:"short"})}</span><b>${dOf(next.d).getDate()}</b></div>
+      <div class="nx-body"><p class="eyebrow" style="margin:0">Coming up next</p><h2>${esc(next.n)}</h2><p>${esc(next.x)}</p><div class="cd" id="cd2"></div></div>
+      <div class="nx-cta"><a class="btn go" href="#box">Build a ${esc(next.n)} box</a><a class="btn ghost" href="${gcal(next)}">Add to Google Calendar</a></div></div>`:""}
+  </div></section>
+  <section style="padding-top:8px"><div class="wrap cal-layout">
+    <div class="cal-side">
+      <div class="month">
+        <div class="mhead"><button class="mnav" id="mPrev" aria-label="Previous month">‹</button><b id="mTitle"></b><button class="mnav" id="mNext" aria-label="Next month">›</button></div>
+        <div class="mgrid" id="mGrid"></div>
+        <div class="legend">${Object.entries(CALTYPES).map(([k,v])=>`<span><i class="dot-${k}"></i>${v}</span>`).join("")}</div>
+      </div>
+    </div>
+    <div class="cal-main">
+      <div class="tabs" id="calTabs"><button class="tab on" data-f="all">All</button>${Object.entries(CALTYPES).map(([k,v])=>`<button class="tab" data-f="${k}">${v}</button>`).join("")}</div>
+      <div id="calList"></div>
+      <p class="muted" style="font-size:.85rem;margin-top:22px">Hindu and Jain festival dates follow the lunar calendar and can differ by a day depending on location and tradition. Check with your temple for exact timings.</p>
+    </div>
+  </div></section>`;
+}
+function calListHTML(){
+  const list=upcoming().filter(e=>calFilter==="all"||e.t===calFilter); let html="",cur="";
+  list.forEach(e=>{const m=fmtD(e.d,{month:"long",year:"numeric"}); if(m!==cur){html+=`<h2 class="cal-month">${m}</h2>`;cur=m;}
+    const buy=e.buy.map(s=>BY[s]).filter(p=>p&&canBuy(p));
+    html+=`<article class="ev t-${e.t}" id="ev-${e.d}">
+      <div class="ev-date"><span>${fmtD(e.d,{weekday:"short"})}</span><b>${dOf(e.d).getDate()}</b><span>${fmtD(e.d,{month:"short"})}</span></div>
+      <div class="ev-body"><p class="ev-type">${CALTYPES[e.t]}${e.end?` · ${fmtD(e.d,{month:"short",day:"numeric"})} – ${fmtD(e.end,{month:"short",day:"numeric"})}`:""}</p>
+        <h3>${esc(e.n)}${e.g?` <span>${esc(e.g)}</span>`:""}</h3><p>${esc(e.x)}</p>
+        ${buy.length?`<div class="ev-buy"><span class="muted">Good for:</span>${buy.map(p=>`<a class="chip" href="#p-${p.slug}">${esc(p.name)}</a>`).join("")}</div>`:""}
+        <div class="ev-act"><a href="${gcal(e)}">Add to Google Calendar</a>${buy.length?`<a href="#box">Build a box</a>`:`<a href="#contact">Ask us</a>`}</div>
+      </div></article>`;});
+  return html||`<p class="muted">No upcoming dates in this category.</p>`;
+}
+function drawMonth(){
+  const y=calMonth.getFullYear(),m=calMonth.getMonth(); $("#mTitle").textContent=calMonth.toLocaleDateString("en-US",{month:"long",year:"numeric"});
+  const first=new Date(y,m,1).getDay(),days=new Date(y,m+1,0).getDate(),t=todayLA();
+  const evs={}; CAL.forEach(e=>{let s=dOf(e.d),z=dOf(e.end||e.d);for(let x=new Date(s);x<=z;x.setDate(x.getDate()+1)){if(x.getMonth()===m&&x.getFullYear()===y){(evs[x.getDate()]=evs[x.getDate()]||[]).push(e)}}});
+  let h=["S","M","T","W","T","F","S"].map(w=>`<span class="wd">${w}</span>`).join("")+"<span></span>".repeat(first);
+  for(let i=1;i<=days;i++){const es=evs[i]||[],isT=y===t.getFullYear()&&m===t.getMonth()&&i===t.getDate();
+    h+=es.length?`<button class="day has t-${es[0].t}${isT?" today":""}" data-go="${es[0].d}" title="${esc(es.map(e=>e.n).join(", "))}">${i}</button>`:`<span class="day${isT?" today":""}">${i}</span>`;}
+  $("#mGrid").innerHTML=h;
+}
+function bindCal(){
+  const list=()=>{$("#calList").innerHTML=calListHTML();paintAll();};
+  $("#calTabs").onclick=e=>{const b=e.target.closest("[data-f]");if(!b)return;calFilter=b.dataset.f;document.querySelectorAll("#calTabs .tab").forEach(x=>x.classList.toggle("on",x===b));list();};
+  $("#mPrev").onclick=()=>{calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()-1,1);drawMonth();};
+  $("#mNext").onclick=()=>{calMonth=new Date(calMonth.getFullYear(),calMonth.getMonth()+1,1);drawMonth();};
+  $("#mGrid").onclick=e=>{const b=e.target.closest("[data-go]");if(!b)return;if(calFilter!=="all"){calFilter="all";document.querySelectorAll("#calTabs .tab").forEach(x=>x.classList.toggle("on",x.dataset.f==="all"));list();}
+    const el=document.getElementById("ev-"+b.dataset.go);if(el){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}};
+  list();drawMonth();
+}
+function comingUpHTML(){const up=upcoming().slice(0,4);if(!up.length)return"";
+  return `<section><div class="wrap"><div class="head"><div><p class="eyebrow">Festival calendar</p><h2 class="sec">Coming up</h2></div><a class="btn ghost" href="#calendar">See the full calendar</a></div>
+  <div class="coming">${up.map(e=>`<a class="cu t-${e.t}" href="#calendar"><div class="ev-date"><span>${fmtD(e.d,{weekday:"short"})}</span><b>${dOf(e.d).getDate()}</b><span>${fmtD(e.d,{month:"short"})}</span></div><div><h3>${esc(e.n)}</h3><p>${esc(e.x)}</p></div></a>`).join("")}</div></div></section>`;}
+
 function nextFest(){const now=laNow();return FESTS.find(f=>new Date(f.date+"T23:59:59")>=now)}
 const DIYA=`<svg class="diya" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4c3 5 5 8 5 11a5 5 0 0 1-10 0c0-3 2-6 5-11z" fill="#F2B233"/><path d="M20 10c1.5 3 2.5 4.5 2.5 6a2.5 2.5 0 0 1-5 0c0-1.5 1-3 2.5-6z" fill="#FFF1C2"/><path d="M4 24h32c-1 7-8 11-16 11S5 31 4 24z" fill="#E0671A"/><path d="M4 24h32" stroke="#B4500F" stroke-width="2"/></svg>`;
 function festHTML(){const f=nextFest(); if(!f) return "";
   return `<div class="fest"><div class="wrap"><div><div class="ttl">${DIYA}${f.name} is coming</div><p>${f.line}</p></div>
   <div class="cd" id="cd" aria-label="Countdown to ${f.name}"></div><a class="btn gold" href="#box">Build a ${f.name} box</a></div></div>`;}
-function tickCountdown(){const el=$("#cd"); if(!el) return; const f=nextFest(); if(!f) return;
-  const ms=new Date(f.date+"T00:00:00")-laNow();
-  if(ms<=0){el.innerHTML=`<div><span>Today</span><small>Happy ${f.name}</small></div>`;return}
+function tickCountdown(){const el=$("#cd")||$("#cd2"); if(!el) return; const f=$("#cd")?nextFest():upcoming()[0]; if(!f) return;
+  const ms=new Date((f.date||f.d)+"T00:00:00")-laNow();
+  if(ms<=0){el.innerHTML=`<div><span>Today</span><small>Happy ${f.name||f.n}</small></div>`;return}
   const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5),m=Math.floor(ms%36e5/6e4);
   el.innerHTML=[[d,"days"],[h,"hours"],[m,"min"]].map(([v,l])=>`<div><span>${v}</span><small>${l}</small></div>`).join("");}
 
@@ -1129,6 +1297,7 @@ function render(){
   else if(h==="about"){html=aboutView();}
   else if(h==="box"){html=boxView();after=bindBox;nav="shop";}
   else if(h==="terms"||h==="privacy"){html=policyView(h);}
+  else if(h==="calendar"){html=calView();after=bindCal;}
   else if(h==="catering"){html=cateringView();after=()=>bindForm("catForm","catDone",["c-name","c-phone"],"Thanks! To book your catering, call "+PHONE1+" or "+PHONE2+" and mention this request.");}
   else if(h==="contact"){html=contactView();after=()=>bindForm("ctForm","ctDone",["t-name","t-email"],"Thanks! For a quick answer, call "+PHONE1+" during business hours.");}
   else html=notFound();
