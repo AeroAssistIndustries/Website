@@ -3,7 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="RT Kitchen (Raju & Trupti's Kitchen): homemade Gujarati snacks, sweets, biscuits and catering in Norwalk, CA.">
+<!-- STAGING ONLY: keeps search engines from indexing this copy. Remove this line when the site goes live on rtkitchen.com. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="RT Kitchen (Raju & Trupti's Kitchen) in Norwalk, CA: homemade vegetarian Gujarati snacks, sweets and biscuits. Fafda, gathiya, sev, chevdo, peda and more. Order online for pickup or shipping, and catering for all occasions.">
+<meta name="theme-color" content="#E0671A">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="restaurant.restaurant">
+<meta property="og:site_name" content="RT Kitchen">
+<meta property="og:title" content="RT Kitchen · Homemade Gujarati snacks & sweets in Norwalk, CA">
+<meta property="og:description" content="Fresh farsan, mithai and biscuits from Raju & Trupti's Kitchen. Order online for pickup or shipping, build a festival box, or book catering.">
+<meta property="og:image" content="https://rtkitchen.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://rtkitchen.com/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "RT Kitchen",
+  "alternateName": "Raju & Trupti's Kitchen",
+  "description": "Family-run vegetarian Gujarati snack shop and caterer: farsan, sweets, biscuits and catering for all occasions.",
+  "url": "https://rtkitchen.com/",
+  "image": "https://rtkitchen.com/og-image.png",
+  "logo": "https://rtkitchen.com/apple-touch-icon.png",
+  "telephone": "+1-562-868-5878",
+  "priceRange": "$",
+  "servesCuisine": ["Indian", "Gujarati", "Vegetarian"],
+  "acceptsReservations": false,
+  "hasMenu": "https://rtkitchen.com/#shop",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "15714 Pioneer Blvd",
+    "addressLocality": "Norwalk",
+    "addressRegion": "CA",
+    "postalCode": "90650",
+    "addressCountry": "US"
+  },
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"], "opens": "11:00", "closes": "18:30"},
+    {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday", "Sunday"], "opens": "11:00", "closes": "19:00"}
+  ]
+}
+</script>
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>RT Kitchen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -285,6 +328,33 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .cu h3{font-size:1.05rem;margin-bottom:2px}
 .cu p{margin:0;font-size:.88rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .cu .ev-date b{font-size:1.5rem}
+/* order-by, subscribe */
+.orderby{font-size:.95rem;color:#FFE3A0}
+.ev-order{font-size:.88rem;color:var(--green);margin:0 0 8px!important}
+.subscribe{margin-top:16px;border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:10px;background:var(--bg-2)}
+.subscribe p{margin:0;font-size:.9rem;color:var(--muted)}
+/* catering packs */
+.packs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.pack{display:flex;flex-direction:column;gap:6px;text-align:left;border:2px solid var(--line);border-radius:16px;padding:20px;background:var(--bg);color:var(--fg)}
+.pack.on{border-color:var(--saffron);background:var(--bg-2)}
+.pk-n{font-family:var(--display);font-size:1.5rem;line-height:1.15}
+.pk-f{font-size:.9rem;color:var(--muted)}
+.pack ul{margin:8px 0 10px;padding-left:1.1em;font-size:.95rem}
+.pk-sel{margin-top:auto;font-weight:700;color:var(--saffron-deep)}
+.pk-chosen{font-weight:700;padding:10px 12px;border-radius:8px;background:var(--bg-2);border:1.5px solid var(--line)}
+.guests{display:flex;gap:8px;align-items:center}
+.guests input{text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+.gbtn{flex:0 0 auto;padding:10px 14px;border-radius:8px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);font-weight:700}
+/* map */
+.mapslot{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--bg-2);margin-top:4px}
+.mapslot iframe{display:block;width:100%;height:260px;border:0}
+.mapcard{display:flex;gap:12px;align-items:center;padding:16px;text-decoration:none;color:var(--fg)}
+.mapcard svg{flex:0 0 36px;width:36px;height:36px;color:var(--saffron-deep)}
+.mapcard span{display:flex;flex-direction:column}
+.mapcard small{color:var(--muted);font-size:.88rem}
+/* whatsapp */
+.wa{position:fixed;left:16px;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:40;display:flex;align-items:center;gap:8px;background:#1F8F4E;color:#FFFFFF;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 16px 10px 12px;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.wa svg{width:22px;height:22px}
 /* utility bar */
 .utility{background:#2A1A10;color:#F6E9D8;font-size:.84rem}
 .utility .wrap{display:flex;justify-content:space-between;align-items:center;gap:4px 16px;flex-wrap:wrap;padding-block:6px}
@@ -401,7 +471,9 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
   .cat{padding:20px;min-height:0}
   .cat h3{font-size:1.5rem}
   .score .big{font-size:3.4rem}
-  .boxwrap,.rating,.about-grid,.cities,.fests,.gloss,.values,.cal-layout,.nextup{grid-template-columns:1fr}
+  .boxwrap,.rating,.about-grid,.cities,.fests,.gloss,.values,.cal-layout,.nextup,.packs{grid-template-columns:1fr}
+  .wa span{display:none}
+  .wa{padding:12px}
   .cal-side{position:static}
   .coming{grid-template-columns:1fr 1fr}
   .nx-cta{flex-direction:row;flex-wrap:wrap}
@@ -549,6 +621,7 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
   </div></div>
 </footer>
 <button class="toTop" id="toTop" aria-label="Back to top" hidden>↑</button>
+<a class="wa" id="waBtn" hidden aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Order on WhatsApp</span></a>
 <div class="tri" aria-hidden="true"></div>
 <div class="toast" id="toast" hidden></div>
 
@@ -557,6 +630,8 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
 const FREE_SHIP_MIN = 65;        // free shipping threshold, from the current site
 const SHIP_FEE = 12;             // flat shipping under $65 — CONFIRM WITH OWNER
 const PHONE1 = "(562) 868-5878", PHONE2 = "(714) 443-1243";
+const WHATSAPP = "";             // shop WhatsApp number, digits only with country code, e.g. "17145550000". Empty = WhatsApp buttons hidden.
+const ORDER_LEAD_DAYS=4;         // suggested days ahead to order for a festival (shown as "Suggested: order by …")
 
 /* ---------- catalog: [slug, name, gujarati, category, options[[label,price]], flags] ---------- */
 const H = (a,b)=>[["1/2 LB",a],["1 LB",b]], L=(p,l="1 LB")=>[[l,p]];
@@ -931,6 +1006,7 @@ function confirmView(){
       <div class="sumrow total"><span>Total</span><span>${money(o.sub+o.ship)}</span></div>
       ${o.notes?`<p class="muted" style="margin:10px 0 0;font-size:.9rem">Notes: ${esc(o.notes)}</p>`:""}
     </div>
+    ${WHATSAPP?`<p><a class="btn go" href="${waLink(`Hi RT Kitchen! New order ${o.no} from ${o.name} (${o.phone}). ${o.method==="pickup"?"Pickup "+o.day:"Ship to "+o.addr}. `+o.lines.map(l=>`${l.qty}× ${l.name} (${l.opt})`).join(", ")+`. Total ${money(o.sub+o.ship)}.${o.notes?" Notes: "+o.notes:""}`)}">Send this order on WhatsApp</a></p>`:""}
     <p class="muted" style="font-size:.92rem">Questions about your order? Call ${PHONE1} or ${PHONE2}.</p>
     <a class="btn go" href="#shop">Continue shopping</a>
   </div></section>`;
@@ -1003,22 +1079,53 @@ function aboutView(){
   </div></section>`;
 }
 const CATER=["Chaat","Chakri","Vada Pav","Samosa Shots","Pani Puri Shots","Undhiyu","Potato Shaak","Pocha Patra","Green Beans with Spinach","Cauliflower Masala","Veg Pulav","Pesto Pasta","Chilli Paneer","Fafda","Dhokla","Khaman","Mango Pickle","Methi Gota with Marcha"];
+const PACKS=[
+  {id:"snack",n:"Snack & chai spread",for:"Pujas, office meetings, small gatherings",items:["Samosa Shots","Khaman","Dhokla","Fafda","Chakri","Methi Gota with Marcha"]},
+  {id:"lunch",n:"Gujarati lunch",for:"Family functions and birthdays",items:["Undhiyu","Potato Shaak","Green Beans with Spinach","Veg Pulav","Khaman","Mango Pickle"]},
+  {id:"party",n:"Party & wedding spread",for:"Weddings, sangeet, big celebrations",items:["Pani Puri Shots","Chaat","Vada Pav","Chilli Paneer","Cauliflower Masala","Pesto Pasta","Veg Pulav"]}
+];
+let catPack="snack", catGuests=50;
 function cateringView(){
-  return `<section><div class="wrap two">
-    <div><p class="eyebrow">Catering</p><h1 class="pg">Catering for all occasions</h1>
-      <p class="muted" style="max-width:48ch">Weddings, pujas, birthdays, Diwali gatherings and office parties. Tell us the date and headcount and we'll plan the menu with you.</p>
-      <h3 style="margin-top:22px;font-size:1rem">From our catering menu</h3>
+  return `<section><div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / Catering</div>
+    <p class="eyebrow">Catering</p><h1 class="pg">Catering for all occasions</h1>
+    <p class="lede" style="margin-bottom:26px">Weddings, pujas, birthdays, Diwali parties and office events, all vegetarian, with vegan dishes on request. Pick a starting point, tell us your headcount, and we'll build the menu and quote with you.</p>
+    <div class="packs" role="radiogroup" aria-label="Catering package">${PACKS.map(k=>`<button class="pack ${k.id===catPack?"on":""}" role="radio" aria-checked="${k.id===catPack}" data-pack="${k.id}">
+      <span class="pk-n">${k.n}</span><span class="pk-f">${k.for}</span>
+      <ul>${k.items.map(i=>`<li>${i}</li>`).join("")}</ul><span class="pk-sel">${k.id===catPack?"Selected":"Choose this"}</span></button>`).join("")}</div>
+    <p class="muted" style="font-size:.9rem;margin-top:12px">Packages are starting points. Swap any dish for another from our menu, and we'll quote per guest.</p>
+  </div></section>
+  <section class="tint"><div class="wrap two">
+    <div><h2 class="sec">Request a quote</h2>
+      <p class="muted" style="max-width:46ch">We'll call you back to confirm the menu, pricing and pickup or delivery.</p>
+      <h3 style="margin-top:22px;font-size:1rem">Everything on our catering menu</h3>
       <div class="chips">${CATER.map(c=>`<span class="chip">${c}</span>`).join("")}</div></div>
     <form class="formcard" id="catForm" novalidate>
+      <div><label>Package</label><div class="pk-chosen" id="pkChosen"></div></div>
+      <div><label for="c-guests">Guests</label>
+        <div class="guests"><button type="button" class="gbtn" data-gs="-10" aria-label="10 fewer guests">−10</button><input id="c-guests" type="number" min="10" step="5" value="${catGuests}" inputmode="numeric"><button type="button" class="gbtn" data-gs="10" aria-label="10 more guests">+10</button></div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px"><div><label for="c-date">Event date</label><input id="c-date" type="date"></div><div><label for="c-type">Occasion</label><select id="c-type"><option>Wedding or sangeet</option><option>Puja</option><option>Birthday or family party</option><option>Festival party</option><option>Office or corporate</option><option>Other</option></select></div></div>
       <div><label for="c-name">Your name</label><input id="c-name" autocomplete="name"></div>
       <div><label for="c-phone">Phone</label><input id="c-phone" type="tel" autocomplete="tel"></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px"><div><label for="c-date">Event date</label><input id="c-date" type="date"></div><div><label for="c-guests">Guests</label><input id="c-guests" type="number" min="1" placeholder="50"></div></div>
-      <div><label for="c-notes">What would you like?</label><textarea id="c-notes" rows="4" placeholder="e.g. Undhiyu, dhokla and pani puri shots for 80"></textarea></div>
+      <div><label for="c-notes">Anything else? (dishes to add or swap, vegan guests, delivery)</label><textarea id="c-notes" rows="3"></textarea></div>
       <button class="btn go" type="submit">Send catering request</button>
       <div class="notice green" id="catDone" hidden></div>
     </form>
   </div></section>`;
 }
+function bindCatering(){
+  const show=()=>{const k=PACKS.find(x=>x.id===catPack);$("#pkChosen").textContent=k.n+" · "+k.items.length+" dishes";
+    document.querySelectorAll(".pack").forEach(b=>{const on=b.dataset.pack===catPack;b.classList.toggle("on",on);b.setAttribute("aria-checked",on);b.querySelector(".pk-sel").textContent=on?"Selected":"Choose this"})};
+  document.querySelectorAll(".pack").forEach(b=>b.onclick=()=>{catPack=b.dataset.pack;show();});
+  const g=$("#c-guests"); document.querySelectorAll("[data-gs]").forEach(b=>b.onclick=()=>{g.value=Math.max(10,(+g.value||0)+ +b.dataset.gs);catGuests=+g.value;});
+  g.oninput=()=>{catGuests=+g.value||catGuests};
+  show();
+  $("#catForm").addEventListener("submit",e=>{e.preventDefault();const d=$("#catDone");d.hidden=false;
+    if(!$("#c-name").value.trim()||$("#c-phone").value.replace(/\D/g,"").length<10){d.textContent="Please add your name and a 10-digit phone number so we can call you back.";return}
+    const k=PACKS.find(x=>x.id===catPack);
+    d.innerHTML=`Thanks, ${esc($("#c-name").value.trim().split(" ")[0])}! Request: <b>${k.n}</b> for <b>${+g.value||catGuests} guests</b>${$("#c-date").value?` on ${esc($("#c-date").value)}`:""}. To lock in your date, call ${PHONE1} or ${PHONE2}.${WHATSAPP?` Or <a href="${waLink(`Hi RT Kitchen! Catering request: ${k.n} for ${+g.value||catGuests} guests${$("#c-date").value?" on "+$("#c-date").value:""}. Name: ${$("#c-name").value.trim()}, phone: ${$("#c-phone").value.trim()}. ${$("#c-notes").value.trim()}`)}">send it on WhatsApp</a>.`:""}`;});
+}
+const waLink=msg=>"https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg);
 function contactView(){
   return `<section><div class="wrap two">
     <div><p class="eyebrow">Contact us</p><h1 class="pg">Raju &amp; Trupti's Kitchen</h1>
@@ -1036,7 +1143,8 @@ function contactView(){
 function visitBlock(){
   return `<p class="eyebrow">Visit the shop</p>
     <p style="font-size:1.3rem;font-weight:700;line-height:1.3;margin:0 0 12px">15714 Pioneer Blvd<br>Norwalk, CA 90650</p>
-    <a class="btn go" href="https://www.google.com/maps/search/?api=1&query=15714+Pioneer+Blvd+Norwalk+CA+90650">Get directions</a>
+    ${mapSlot()}
+    <div class="btns" style="margin-top:14px"><a class="btn go" href="${GMAPS}">Get directions</a><a class="btn ghost" href="${GMAPS}">Google reviews</a></div>
     <div style="margin:18px 0">${[PHONE1,PHONE2].map(p=>`<div class="phone"><span class="v">${p}</span><button class="copy" data-copy="${p}">Copy</button></div>`).join("")}</div>
     <table class="hours">${hoursRows()}</table><div class="status ${openNow()[0]?"":"closed"}"><i></i><span>${openNow()[1]}</span></div>`;
 }
@@ -1112,6 +1220,8 @@ const CAL=[
  {d:"2027-11-13",n:"Dev Diwali",g:"Kartik Purnima",t:"hindu",x:"The full moon that closes the Diwali season.",buy:[]},
  {d:"2027-11-25",n:"Thanksgiving",t:"usa",x:"A farsan appetizer platter for the table.",buy:["surati-bhusu-mix","potato-gathiya"]}
 ];
+const orderBy=e=>{const x=dOf(e.d);x.setDate(x.getDate()-ORDER_LEAD_DAYS);return x};
+const orderByText=e=>{if(!e.buy||!e.buy.length)return"";const x=orderBy(e);if(x<todayLA())return"";return x.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"})};
 const CALTYPES={hindu:"Hindu festivals",jain:"Jain",national:"India national days",usa:"US holidays"};
 const dOf=s=>new Date(s+"T00:00:00");
 const todayLA=()=>{const n=laNow();return new Date(n.getFullYear(),n.getMonth(),n.getDate())};
@@ -1130,7 +1240,7 @@ function calView(){
     <h1 class="pg">Every festival, with snacks to match</h1>
     <p class="lede">Indian festivals, Jain observances, India's national days and US holidays, with what to order for each. Big festival weeks get busy at the counter, so order early.</p>
     ${next?`<div class="nextup"><div class="nx-date"><span>${fmtD(next.d,{month:"short"})}</span><b>${dOf(next.d).getDate()}</b></div>
-      <div class="nx-body"><p class="eyebrow" style="margin:0">Coming up next</p><h2>${esc(next.n)}</h2><p>${esc(next.x)}</p><div class="cd" id="cd2"></div></div>
+      <div class="nx-body"><p class="eyebrow" style="margin:0">Coming up next</p><h2>${esc(next.n)}</h2><p>${esc(next.x)}</p>${orderByText(next)?`<p class="orderby">Suggested: order by <b>${orderByText(next)}</b></p>`:""}<div class="cd" id="cd2"></div></div>
       <div class="nx-cta"><a class="btn go" href="#box">Build a ${esc(next.n)} box</a><a class="btn ghost" href="${gcal(next)}">Add to Google Calendar</a></div></div>`:""}
   </div></section>
   <section style="padding-top:8px"><div class="wrap cal-layout">
@@ -1139,6 +1249,12 @@ function calView(){
         <div class="mhead"><button class="mnav" id="mPrev" aria-label="Previous month">‹</button><b id="mTitle"></b><button class="mnav" id="mNext" aria-label="Next month">›</button></div>
         <div class="mgrid" id="mGrid"></div>
         <div class="legend">${Object.entries(CALTYPES).map(([k,v])=>`<span><i class="dot-${k}"></i>${v}</span>`).join("")}</div>
+      </div>
+      <div class="subscribe" id="subscribe" hidden>
+        <b>Never miss a festival</b>
+        <p>Subscribe once and every festival appears in your phone's calendar, with a reminder ${ORDER_LEAD_DAYS} days before so you can order in time.</p>
+        <a class="btn go block" id="subApple" href="#">Subscribe on iPhone or Outlook</a>
+        <a class="btn ghost block" id="subGoogle" href="#">Subscribe in Google Calendar</a>
       </div>
     </div>
     <div class="cal-main">
@@ -1157,6 +1273,7 @@ function calListHTML(){
       <div class="ev-body"><p class="ev-type">${CALTYPES[e.t]}${e.end?` · ${fmtD(e.d,{month:"short",day:"numeric"})} – ${fmtD(e.end,{month:"short",day:"numeric"})}`:""}</p>
         <h3>${esc(e.n)}${e.g?` <span>${esc(e.g)}</span>`:""}</h3><p>${esc(e.x)}</p>
         ${buy.length?`<div class="ev-buy"><span class="muted">Good for:</span>${buy.map(p=>`<a class="chip" href="#p-${p.slug}">${esc(p.name)}</a>`).join("")}</div>`:""}
+        ${orderByText(e)?`<p class="ev-order">Suggested: order by <b>${orderByText(e)}</b></p>`:""}
         <div class="ev-act"><a href="${gcal(e)}">Add to Google Calendar</a>${buy.length?`<a href="#box">Build a box</a>`:`<a href="#contact">Ask us</a>`}</div>
       </div></article>`;});
   return html||`<p class="muted">No upcoming dates in this category.</p>`;
@@ -1178,6 +1295,11 @@ function bindCal(){
   $("#mGrid").onclick=e=>{const b=e.target.closest("[data-go]");if(!b)return;if(calFilter!=="all"){calFilter="all";document.querySelectorAll("#calTabs .tab").forEach(x=>x.classList.toggle("on",x.dataset.f==="all"));list();}
     const el=document.getElementById("ev-"+b.dataset.go);if(el){el.scrollIntoView({behavior:"smooth",block:"center"});el.classList.remove("flash");void el.offsetWidth;el.classList.add("flash");}};
   list();drawMonth();
+  // Subscribe buttons appear only where the calendar feed is hosted (the live site), not in previews.
+  fetch("festivals.ics",{method:"HEAD"}).then(r=>{ if(!r.ok) return;
+    const base=location.host+location.pathname.replace(/[^/]*$/,"")+"festivals.ics";
+    $("#subApple").href="webcal://"+base; $("#subGoogle").href="https://calendar.google.com/calendar/r?cid="+encodeURIComponent("webcal://"+base);
+    $("#subscribe").hidden=false; }).catch(()=>{});
 }
 function comingUpHTML(){const up=upcoming().slice(0,4);if(!up.length)return"";
   return `<section><div class="wrap"><div class="head"><div><p class="eyebrow">Festival calendar</p><h2 class="sec">Coming up</h2></div><a class="btn ghost" href="#calendar">See the full calendar</a></div>
@@ -1234,7 +1356,8 @@ function reviewsHTML(){return `<section><div class="wrap">
         <div><b>Friendly owners</b><p>Reviewers keep coming back to how welcoming Raju bhai and the team are.</p></div>
         <div><b>Fresh and authentic</b><p>Customers describe the food as real home-style Gujarati cooking, made fresh.</p></div>
         <div><b>Those samosas</b><p>The flaky crust and generous filling get special mention, with khaman dhokla close behind.</p></div>
-      </div></div>
+      </div>
+      <div class="btns" style="margin-top:22px"><a class="btn go" href="${GMAPS}">Read our Google reviews</a><a class="btn ghost" href="${YELP}">See us on Yelp</a><a class="btn ghost" href="${INSTAGRAM}">Follow @rtkitchen_</a></div></div>
   </div></div></section>`;}
 
 /* ---------- policies ---------- */
@@ -1281,12 +1404,21 @@ function flagUS(){const W=1900,H=1000,sh=H/13;let s="";for(let i=0;i<13;i++)s+=`
   const star=(x,y,r)=>{let d="";for(let k=0;k<10;k++){const a=-Math.PI/2+k*Math.PI/5,rr=k%2?r*.382:r;d+=(k?"L":"M")+(x+Math.cos(a)*rr).toFixed(1)+","+(y+Math.sin(a)*rr).toFixed(1)}return d+"Z"};
   let d="";for(let row=0;row<9;row++){const n=row%2?5:6;for(let col=0;col<n;col++){const x=cw/12*(row%2?2*col+2:2*col+1),y=ch/10*(row+1);d+=star(x,y,30.8)}}
   return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Flag of the United States">${s}<path d="${d}" fill="#FFFFFF"/></svg>`;}
+const GMAPS="https://www.google.com/maps/search/?api=1&query=RT+Kitchen+15714+Pioneer+Blvd+Norwalk+CA+90650";
+const GMAP_EMBED="https://maps.google.com/maps?q="+encodeURIComponent("RT Kitchen, 15714 Pioneer Blvd, Norwalk, CA 90650")+"&z=16&output=embed";
+const YELP="https://www.yelp.com/search?find_desc=RT+Kitchen&find_loc=15714+Pioneer+Blvd%2C+Norwalk%2C+CA+90650";
+const INSTAGRAM="https://www.instagram.com/rtkitchen_/";
 const SOCIAL=[
-  ["Instagram","https://www.instagram.com/",'<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/>'],
-  ["Facebook","https://www.facebook.com/",'<path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v6h4v-6H17l.5-4h-4V8.8c0-.5.3-.8.5-.8z" fill="#fff"/>'],
-  ["Find us on Google Maps","https://www.google.com/maps/search/?api=1&query=RT+Kitchen+15714+Pioneer+Blvd+Norwalk+CA+90650",'<path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="#fff"/>'],
+  ["Instagram @rtkitchen_",INSTAGRAM,'<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#fff"/>'],
+  ["Google reviews",GMAPS,'<path d="M20.6 12.2c0-.6-.1-1.2-.2-1.8H12v3.4h4.8a4.1 4.1 0 0 1-1.8 2.7v2.2h2.9a8.7 8.7 0 0 0 2.7-6.5z" fill="#fff"/><path d="M12 21a8.6 8.6 0 0 0 5.9-2.2L15 16.6a5.4 5.4 0 0 1-8-2.8H4v2.3A9 9 0 0 0 12 21z" fill="#fff" opacity=".85"/><path d="M7 13.8a5.3 5.3 0 0 1 0-3.5V8H4a9 9 0 0 0 0 8.1z" fill="#fff" opacity=".7"/><path d="M12 6.6a4.9 4.9 0 0 1 3.4 1.3L18 5.3A8.6 8.6 0 0 0 12 3a9 9 0 0 0-8 5l3 2.3a5.4 5.4 0 0 1 5-3.7z" fill="#fff" opacity=".9"/>'],
+  ["Yelp",YELP,'<path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8L3.5 9.2l5.9-.9z" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><text x="12" y="14.2" text-anchor="middle" font-family="Arial,sans-serif" font-size="6.5" font-weight="700" fill="#fff">y</text>'],
   ["Reviews on Restaurantji","https://www.restaurantji.com/ca/norwalk/rt-kitchen-/",'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z" fill="#fff"/>']
 ];
+// Live-site check: the calendar feed only exists on the hosted site, not in previews (which also block maps and outside images).
+let LIVE=null; const onLive=cb=>{ if(LIVE!==null){ if(LIVE) cb(); return; } fetch("festivals.ics",{method:"HEAD"}).then(r=>{LIVE=r.ok; if(r.ok) cb();}).catch(()=>{LIVE=false}); };
+function mountMaps(){ onLive(()=>document.querySelectorAll(".mapslot:not([data-done])").forEach(m=>{m.dataset.done=1;
+  m.innerHTML=`<iframe title="Map to RT Kitchen, 15714 Pioneer Blvd, Norwalk" src="${GMAP_EMBED}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;})); }
+const mapSlot=()=>`<div class="mapslot"><a class="mapcard" href="${GMAPS}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></svg><span><b>RT Kitchen on Google Maps</b><small>15714 Pioneer Blvd, Norwalk · see photos, reviews and directions</small></span></a></div>`;
 
 /* ---------- router ---------- */
 function render(){
@@ -1302,12 +1434,12 @@ function render(){
   else if(h==="box"){html=boxView();after=bindBox;nav="shop";}
   else if(h==="terms"||h==="privacy"){html=policyView(h);}
   else if(h==="calendar"){html=calView();after=bindCal;}
-  else if(h==="catering"){html=cateringView();after=()=>bindForm("catForm","catDone",["c-name","c-phone"],"Thanks! To book your catering, call "+PHONE1+" or "+PHONE2+" and mention this request.");}
+  else if(h==="catering"){html=cateringView();after=bindCatering;}
   else if(h==="contact"){html=contactView();after=()=>bindForm("ctForm","ctDone",["t-name","t-email"],"Thanks! For a quick answer, call "+PHONE1+" during business hours.");}
   else html=notFound();
   $("#app").innerHTML=html; $("#heroSlot").innerHTML=(h==="home"||h==="")?HERO:"";
   document.querySelectorAll("[data-nav]").forEach(a=>a.classList.toggle("on",a.dataset.nav===nav));
-  after(); paintAll(); tickCountdown(); window.scrollTo(0,0);
+  after(); paintAll(); tickCountdown(); mountMaps(); window.scrollTo(0,0);
 }
 function bindForm(fid,did,req,msg){
   const f=$("#"+fid); f.addEventListener("submit",e=>{e.preventDefault(); const d=$("#"+did); d.hidden=false;
@@ -1322,6 +1454,7 @@ window.addEventListener("hashchange",render);
 $("#flagUS").innerHTML=flagUS(); $("#flagIN").innerHTML=flagIN();
 $("#social").innerHTML=SOCIAL.map(([n,u,ic])=>`<a href="${u}" aria-label="${n}" title="${n}"><svg viewBox="0 0 24 24">${ic}</svg></a>`).join("");
 const tt2=$("#toTop"); window.addEventListener("scroll",()=>{tt2.hidden=window.scrollY<700},{passive:true}); tt2.onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+if(WHATSAPP){const w=$("#waBtn");w.href=waLink("Hi RT Kitchen! I'd like to place an order.");w.hidden=false;}
 updateCartBtn(); render(); tickLive(); setInterval(tickLive,20000);
 </script>
 

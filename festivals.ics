@@ -1,0 +1,657 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RT Kitchen//Festival Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:RT Kitchen Festival Calendar
+X-WR-TIMEZONE:America/Los_Angeles
+X-WR-CALDESC:Indian festivals and holidays with reminders to order snacks and sweets from RT Kitchen\, Norwalk CA.
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VEVENT
+UID:2026-10-11-navratri@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261011
+DTEND;VALUE=DATE:20261020
+SUMMARY:Navratri
+DESCRIPTION:Nine nights of garba and dandiya. Keep a box of crunchy nasto 
+ ready for after the dancing. Suggested: order by Wed\, Oct 7. RT Kitchen\,
+  15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtki
+ tchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Navratri is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-20-dussehra@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261020
+DTEND;VALUE=DATE:20261021
+SUMMARY:Dussehra
+DESCRIPTION:Gujarat's favorite festival breakfast: fafda and jalebi. Reser
+ ve fafda early and call ahead for jalebi. Suggested: order by Fri\, Oct 16
+ . RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order 
+ online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dussehra is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-25-sharad-purnima@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261025
+DTEND;VALUE=DATE:20261026
+SUMMARY:Sharad Purnima
+DESCRIPTION:The brightest full moon of the year\, traditionally celebrated
+  with doodh pauva in the moonlight. Suggested: order by Wed\, Oct 21. RT K
+ itchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online
+  at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sharad Purnima is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-29-karwa-chauth@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261029
+DTEND;VALUE=DATE:20261030
+SUMMARY:Karwa Chauth
+DESCRIPTION:Something sweet to break the fast at moonrise. Suggested: orde
+ r by Sun\, Oct 25. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 8
+ 68-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Karwa Chauth is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-06-dhanteras@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Dhanteras
+DESCRIPTION:The first day of Diwali\, and a good day to send sweet boxes t
+ o family. Suggested: order by Mon\, Nov 2. RT Kitchen\, 15714 Pioneer Blvd
+ \, Norwalk CA · (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dhanteras is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-08-diwali@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261108
+DTEND;VALUE=DATE:20261109
+SUMMARY:Diwali
+DESCRIPTION:Fill the nasto tray for a week of guests: chakri\, sev\, chevd
+ o\, biscuits and mithai. Suggested: order by Wed\, Nov 4. RT Kitchen\, 157
+ 14 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtkitche
+ n.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Diwali is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-10-gujarati-new-year@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261110
+DTEND;VALUE=DATE:20261111
+SUMMARY:Gujarati New Year (Bestu Varas · Govardhan Puja)
+DESCRIPTION:Saal Mubarak! A day of visits to family and friends\, with sna
+ cks ready for every guest. Suggested: order by Fri\, Nov 6. RT Kitchen\, 1
+ 5714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtkitc
+ hen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Gujarati New Year is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-11-bhai-dooj@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261111
+DTEND;VALUE=DATE:20261112
+SUMMARY:Bhai Dooj
+DESCRIPTION:Sweets for brothers and sisters. Suggested: order by Sat\, Nov
+  7. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Orde
+ r online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Bhai Dooj is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-24-dev-diwali@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261124
+DTEND;VALUE=DATE:20261125
+SUMMARY:Dev Diwali (Kartik Purnima)
+DESCRIPTION:The full moon that closes the Diwali season. Suggested: order 
+ by Fri\, Nov 20. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868
+ -5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dev Diwali is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-26-thanksgiving@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261126
+DTEND;VALUE=DATE:20261127
+SUMMARY:Thanksgiving
+DESCRIPTION:Bring something different to the table: a farsan appetizer pla
+ tter\, or let us cater. Suggested: order by Sun\, Nov 22. RT Kitchen\, 157
+ 14 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtkitche
+ n.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Thanksgiving is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-25-christmas@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
+SUMMARY:Christmas
+DESCRIPTION:Gift boxes for neighbors and coworkers\, and party platters fo
+ r family gatherings. Suggested: order by Mon\, Dec 21. RT Kitchen\, 15714 
+ Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtkitchen.c
+ om
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Christmas is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-31-new-year-s-eve@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20261231
+DTEND;VALUE=DATE:20270101
+SUMMARY:New Year's Eve
+DESCRIPTION:Snacks for the countdown party. Suggested: order by Sun\, Dec 
+ 27. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Orde
+ r online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:New Year's Eve is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-14-uttarayan@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270114
+DTEND;VALUE=DATE:20270115
+SUMMARY:Uttarayan (Makar Sankranti)
+DESCRIPTION:Kite day! Tal ladu and crunchy farsan for a long day on the ro
+ oftop. Suggested: order by Sun\, Jan 10. RT Kitchen\, 15714 Pioneer Blvd\,
+  Norwalk CA · (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Uttarayan is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-26-republic-day@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270126
+DTEND;VALUE=DATE:20270127
+SUMMARY:Republic Day
+DESCRIPTION:India's Republic Day. Suggested: order by Fri\, Jan 22. RT Kit
+ chen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online a
+ t rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Republic Day is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-11-vasant-panchami@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270211
+DTEND;VALUE=DATE:20270212
+SUMMARY:Vasant Panchami
+DESCRIPTION:Welcoming spring and honoring Saraswati. Suggested: order by S
+ un\, Feb 7. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878
+  · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Vasant Panchami is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-05-maha-shivaratri@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270305
+DTEND;VALUE=DATE:20270306
+SUMMARY:Maha Shivaratri
+DESCRIPTION:Many families fast today. Ask us which snacks suit your fast. 
+ RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order on
+ line at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Maha Shivaratri is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-21-holika-dahan@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+SUMMARY:Holika Dahan
+DESCRIPTION:The bonfire night before Holi. Suggested: order by Wed\, Mar 1
+ 7. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order
+  online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Holika Dahan is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-22-holi@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270322
+DTEND;VALUE=DATE:20270323
+SUMMARY:Holi (Dhuleti)
+DESCRIPTION:The festival of colors. Snacks and sweets for the crowd after 
+ the color fight. Suggested: order by Thu\, Mar 18. RT Kitchen\, 15714 Pion
+ eer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Holi is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-07-chaitra-navratri@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270407
+DTEND;VALUE=DATE:20270408
+SUMMARY:Chaitra Navratri (Gudi Padwa)
+DESCRIPTION:Spring Navratri and the new year for many communities. Suggest
+ ed: order by Sat\, Apr 3. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · 
+ (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Chaitra Navratri is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-14-ram-navami@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270414
+DTEND;VALUE=DATE:20270415
+SUMMARY:Ram Navami
+DESCRIPTION:Celebrating Lord Rama's birth. Suggested: order by Sat\, Apr 1
+ 0. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order
+  online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Ram Navami is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-19-mahavir-jayanti@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270419
+DTEND;VALUE=DATE:20270420
+SUMMARY:Mahavir Jayanti
+DESCRIPTION:Celebrating the birth of Lord Mahavir. RT Kitchen\, 15714 Pion
+ eer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Mahavir Jayanti is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-20-hanuman-jayanti@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270420
+DTEND;VALUE=DATE:20270421
+SUMMARY:Hanuman Jayanti
+DESCRIPTION:Celebrating Lord Hanuman. Suggested: order by Fri\, Apr 16. RT
+  Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order onli
+ ne at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Hanuman Jayanti is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-08-akshaya-tritiya@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270508
+DTEND;VALUE=DATE:20270509
+SUMMARY:Akshaya Tritiya
+DESCRIPTION:An auspicious day for new beginnings. Suggested: order by Tue\
+ , May 4. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 ·
+  Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Akshaya Tritiya is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-07-04-fourth-of-july@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270704
+DTEND;VALUE=DATE:20270705
+SUMMARY:Fourth of July
+DESCRIPTION:Farsan for the cookout snack table. Suggested: order by Wed\, 
+ Jun 30. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · 
+ Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Fourth of July is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-07-05-rath-yatra@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270705
+DTEND;VALUE=DATE:20270706
+SUMMARY:Rath Yatra
+DESCRIPTION:The chariot festival\, celebrated in a big way in Ahmedabad. S
+ uggested: order by Thu\, Jul 1. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk 
+ CA · (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Rath Yatra is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-07-18-guru-purnima@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270718
+DTEND;VALUE=DATE:20270719
+SUMMARY:Guru Purnima
+DESCRIPTION:A day to honor teachers and gurus. Suggested: order by Wed\, J
+ ul 14. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · O
+ rder online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Guru Purnima is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-08-15-independence-day-india-@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270815
+DTEND;VALUE=DATE:20270816
+SUMMARY:Independence Day (India)
+DESCRIPTION:Celebrating India's independence. Suggested: order by Wed\, Au
+ g 11. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Or
+ der online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Independence Day (India) is in 4 days. Order from RT Kitchen n
+ ow.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-08-16-raksha-bandhan@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270816
+DTEND;VALUE=DATE:20270817
+SUMMARY:Raksha Bandhan
+DESCRIPTION:Rakhi and sweets for brothers and sisters\, near or far. We sh
+ ip! Suggested: order by Thu\, Aug 12. RT Kitchen\, 15714 Pioneer Blvd\, No
+ rwalk CA · (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Raksha Bandhan is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-08-24-janmashtami@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270824
+DTEND;VALUE=DATE:20270825
+SUMMARY:Janmashtami
+DESCRIPTION:Celebrating Lord Krishna's birth with sweets at midnight. Sugg
+ ested: order by Fri\, Aug 20. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA
+  · (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Janmashtami is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-09-03-ganesh-chaturthi@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270903
+DTEND;VALUE=DATE:20270904
+SUMMARY:Ganesh Chaturthi
+DESCRIPTION:Welcoming Ganpati home. Suggested: order by Mon\, Aug 30. RT K
+ itchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online
+  at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Ganesh Chaturthi is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-09-04-samvatsari@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270904
+DTEND;VALUE=DATE:20270905
+SUMMARY:Samvatsari (Paryushan)
+DESCRIPTION:The final day of Paryushan. RT Kitchen\, 15714 Pioneer Blvd\, 
+ Norwalk CA · (562) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Samvatsari is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-09-30-navratri@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20270930
+DTEND;VALUE=DATE:20271009
+SUMMARY:Navratri
+DESCRIPTION:Nine nights of garba. Nasto for after the dancing. Suggested: 
+ order by Sun\, Sep 26. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (56
+ 2) 868-5878 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Navratri is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-09-dussehra@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20271009
+DTEND;VALUE=DATE:20271010
+SUMMARY:Dussehra
+DESCRIPTION:Fafda and jalebi morning. Suggested: order by Tue\, Oct 5. RT 
+ Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order onlin
+ e at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dussehra is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-14-sharad-purnima@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20271014
+DTEND;VALUE=DATE:20271015
+SUMMARY:Sharad Purnima
+DESCRIPTION:Doodh pauva under the full moon. Suggested: order by Sun\, Oct
+  10. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Ord
+ er online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sharad Purnima is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-26-dhanteras@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20271026
+DTEND;VALUE=DATE:20271027
+SUMMARY:Dhanteras
+DESCRIPTION:The first day of Diwali. Suggested: order by Fri\, Oct 22. RT 
+ Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order onlin
+ e at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dhanteras is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-28-diwali@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20271028
+DTEND;VALUE=DATE:20271029
+SUMMARY:Diwali
+DESCRIPTION:Fill the nasto tray for a week of guests. Suggested: order by 
+ Sun\, Oct 24. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-58
+ 78 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Diwali is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-29-gujarati-new-year@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20271029
+DTEND;VALUE=DATE:20271030
+SUMMARY:Gujarati New Year (Bestu Varas · Govardhan Puja)
+DESCRIPTION:Saal Mubarak! Suggested: order by Mon\, Oct 25. RT Kitchen\, 1
+ 5714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtkitc
+ hen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Gujarati New Year is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-30-bhai-dooj@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20271030
+DTEND;VALUE=DATE:20271031
+SUMMARY:Bhai Dooj
+DESCRIPTION:Sweets for brothers and sisters. Suggested: order by Tue\, Oct
+  26. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Ord
+ er online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Bhai Dooj is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-11-13-dev-diwali@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20271113
+DTEND;VALUE=DATE:20271114
+SUMMARY:Dev Diwali (Kartik Purnima)
+DESCRIPTION:The full moon that closes the Diwali season. RT Kitchen\, 1571
+ 4 Pioneer Blvd\, Norwalk CA · (562) 868-5878 · Order online at rtkitchen
+ .com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dev Diwali is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-11-25-thanksgiving@rtkitchen.com
+DTSTAMP:20261006T070916Z
+DTSTART;VALUE=DATE:20271125
+DTEND;VALUE=DATE:20271126
+SUMMARY:Thanksgiving
+DESCRIPTION:A farsan appetizer platter for the table. Suggested: order by 
+ Sun\, Nov 21. RT Kitchen\, 15714 Pioneer Blvd\, Norwalk CA · (562) 868-58
+ 78 · Order online at rtkitchen.com
+TRANSP:TRANSPARENT
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Thanksgiving is in 4 days. Order from RT Kitchen now.
+TRIGGER;RELATED=START:-P4DT0H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
