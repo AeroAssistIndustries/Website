@@ -202,6 +202,38 @@ footer a:hover{text-decoration:underline}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 
 
+/* about */
+.about-hero{padding-block:44px 28px}
+.about-title{font-size:clamp(2.2rem,5vw,3.6rem);max-width:18ch}
+.lede{font-size:1.2rem;max-width:56ch;color:var(--muted);margin:16px 0 0}
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:56px;align-items:start}
+.article{max-width:68ch}
+.article h2.sec{margin:44px 0 12px}
+.article h2.sec:first-child{margin-top:0}
+.article p{margin:0 0 14px}
+.values{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0 4px}
+.values div{background:var(--bg-2);border-radius:12px;padding:14px}
+.values b{display:block}
+.values span{font-size:.9rem;color:var(--muted)}
+.cities{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:16px}
+.city{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;align-items:start;text-decoration:none;border:1px solid var(--line);border-radius:14px;padding:12px}
+.city:hover{border-color:var(--saffron)}
+.city .tile{border-radius:10px}
+.city h3{font-size:1.1rem;margin-bottom:4px}
+.city p{font-size:.92rem;color:var(--muted);margin:0}
+.city p.eyebrow{margin:0 0 2px}
+.fests{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.fests div{border-left:4px solid var(--saffron);padding:4px 0 4px 14px}
+.fests div:nth-child(2n){border-color:var(--green)}
+.fests h3{font-size:1.05rem;margin-bottom:2px}
+.fests p{margin:0;font-size:.94rem;color:var(--muted)}
+.fests p.eyebrow{color:var(--saffron-deep);margin:0}
+.gloss{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin:8px 0 0}
+.gloss div{border-bottom:1px solid var(--line);padding:8px 0}
+.gloss dt{font-weight:700}
+.gloss dd{margin:0;color:var(--muted);font-size:.94rem}
+.about-aside{align-self:stretch}
+.about-aside .summary{top:calc(env(safe-area-inset-top,0px) + 16px)}
 /* utility bar */
 .utility{background:#2A1A10;color:#F6E9D8;font-size:.84rem}
 .utility .wrap{display:flex;justify-content:space-between;align-items:center;gap:4px 16px;flex-wrap:wrap;padding-block:6px}
@@ -295,7 +327,7 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
   .cat{padding:20px;min-height:0}
   .cat h3{font-size:1.5rem}
   .score .big{font-size:3.4rem}
-  .boxwrap,.rating{grid-template-columns:1fr}
+  .boxwrap,.rating,.about-grid,.cities,.fests,.gloss,.values{grid-template-columns:1fr}
   .quotes{grid-template-columns:1fr}
   .counter{grid-template-columns:repeat(2,minmax(0,1fr))}
   section{padding-block:44px}
@@ -738,16 +770,69 @@ function confirmView(){
 }
 
 function aboutView(){
-  return `<section><div class="wrap two prose">
-    <div><p class="eyebrow">About us</p><h1 class="pg">Homemade Gujarati taste on Pioneer Blvd</h1>
-      <p>RT Kitchen stands for Raju and Trupti's Kitchen, a family-run Indian snack shop and caterer at 15714 Pioneer Blvd in Norwalk. Everything we make is vegetarian, cooked fresh from traditional Gujarati recipes, the way it's made at home.</p>
-      <p>At the counter you'll find hot samosas with a flaky crust, kachori, vada pav, khaman dhokla and fafda, with green and red chutneys on the side, plus shrikhand for something sweet. On weekends we serve a Gujarati thali.</p>
-      <p>Our packed farsan, sweets and biscuits (gathiya, sev, chevdo, peda, methi paak and more) are made in small batches, and you can order them here for pickup or shipping.</p>
-      <p>Our menu isn't the whole story. If you want something made to order, let us know and we'll make it to fit your needs. We also cater weddings, pujas, birthdays and office events.</p>
-      <h3 style="margin-top:26px;font-size:1.05rem">What customers say</h3>
-      <p class="muted">We're rated close to five stars across about 40 reviews on Restaurantji. Customers mention the friendly owners and staff, how fresh and authentic the food is, and Raju bhai's samosas in particular.</p>
-      <div class="btns" style="margin-top:20px"><a class="btn go" href="#shop">Shop the menu</a><a class="btn ghost" href="#catering">Plan catering</a><a class="btn ghost" href="#contact">Ask for a custom order</a></div></div>
-    <div>${visitBlock()}</div>
+  const cities=[
+    ["gathiya","bhavnagri-gathiya","Bhavnagar","Gathiya","The soft, peppery besan sticks most Gujaratis grow up with. A Bhavnagri gathiya should snap, then melt, with a hit of ajwain and black pepper."],
+    ["bhusu","surati-bhusu-mix","Surat","Bhusu & nankhatai","Surat is famous for loving its food. Bhusu throws sev, chevdo and nuts together, and the city's bakeries are tied to the story of nankhatai."],
+    ["stargathiya","jamnagari-star-gathia","Jamnagar","Star gathiya","Pressed through a star-shaped mould, so every piece has ridges that hold the masala and stay crunchy."],
+    ["fafda","fafda","Ahmedabad","Fafda","Long strips of besan dough, stretched by hand on a board and fried crisp, served with papaya sambharo and fried green chillies."]
+  ];
+  const fests=[
+    ["Dussehra","Fafda and jalebi","On Dussehra morning, Gujarati families queue for fafda and jalebi. It's one of the community's most loved food traditions."],
+    ["Diwali","The nasto tray","Every home fills steel dabbas with chevdo, mathiya, chakri, sev and sweets for the guests who drop by all week."],
+    ["Uttarayan","Tal ladu and chikki","On kite day in January, sesame and jaggery sweets keep everyone going on the rooftops from morning until dark."],
+    ["Winter","Methi paak","Rich, warming paaks made with ghee, jaggery, nuts and spices are a cold-weather tradition in Gujarati kitchens."]
+  ];
+  const gloss=[["Farsan","Savory snacks, served with meals or tea"],["Nasto","Snacks or a light meal, the thing you pack for a trip"],["Mithai","Sweets"],["Besan","Gram (chickpea) flour, the base of most farsan"],["Chevdo","A crunchy mix built on flattened rice or other flakes"],["Gathiya","Thick sticks of fried besan dough"],["Sev","Fine noodles of besan dough"],["Paak","A dense sweet set in ghee and jaggery or sugar"]];
+  return `
+  <section class="about-hero"><div class="wrap">
+    <div class="crumbs"><a href="#home">Home</a> / About us</div>
+    <p class="eyebrow">About us</p>
+    <h1 class="pg about-title">Gujarati farsan, made the way it's made at home</h1>
+    <p class="lede">RT Kitchen stands for Raju and Trupti's Kitchen, a family-run Indian snack shop and caterer at 15714 Pioneer Blvd in Norwalk. Everything we make is vegetarian, cooked fresh in small batches from traditional Gujarati recipes.</p>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap about-grid">
+    <article class="article">
+      <h2 class="sec">Our kitchen</h2>
+      <p>Walk in and the counter tells you what kind of place this is. Hot samosas with a flaky crust. Kachori, vada pav and soft khaman dhokla, with green and red chutneys on the side. Shrikhand for something sweet, and a Gujarati thali on weekends.</p>
+      <p>Behind the counter are the dry snacks that travel: gathiya, sev, chevdo, fafda, peda, methi paak and bakery biscuits. They're made in small batches so they're always fresh, and packed so you can take them home, ship them to family or bring them to a puja.</p>
+      <p>Raju and Trupti run the kitchen with a small team, and customers notice. Reviewers keep mentioning the friendly welcome, and Raju bhai's samosas come up again and again. If something you love isn't on the menu, ask. We make custom orders, and we cater weddings, pujas, birthdays and office events.</p>
+      <div class="values">
+        <div><b>100% vegetarian</b><span>No meat or eggs, ever.</span></div>
+        <div><b>Small batches</b><span>Fried and packed fresh, not warehoused.</span></div>
+        <div><b>Home recipes</b><span>The flavors Gujarati families grew up with.</span></div>
+      </div>
+
+      <h2 class="sec">A short history of farsan</h2>
+      <p>In Gujarati, <i>farsan</i> means the savory side of the meal. A traditional Gujarati thali isn't complete without one or two, sitting next to the dal, shaak, rotli and rice. Farsan also shows up at tea time, at weddings, at the train station and in every guest's welcome.</p>
+      <p>Most farsan starts with <i>besan</i>, flour ground from chickpeas. Gujarat's kitchens learned to do almost anything with it: steam it into spongy khaman, roll it thin and fry it into fafda, press it through a sieve into sev, or shape it into thick gathiya. Spices like ajwain, hing, black pepper and turmeric make it easy to digest and give each snack its character.</p>
+      <p>Dry farsan was also built to last. Gujarat has always been a land of traders and travelers, and a tin of gathiya or chevdo keeps for weeks. That's why Gujarati families are famous for packing <i>nasto</i> for every journey. Many families who settled abroad carried the habit with them, along with a suitcase of snacks from home.</p>
+
+      <h2 class="sec">Every city has its specialty</h2>
+      <p>Ask a Gujarati where the best farsan comes from and you'll start a long, friendly argument. A few cities have earned their reputations.</p>
+      <div class="cities">${cities.map(([food,slug,city,dish,txt])=>`<a class="city" href="#p-${slug}"><div class="tile ${BY[slug].cat}"><canvas data-food="${food}" data-seed="about-${slug}" role="img" aria-label="Illustration of ${dish}"></canvas></div><div><p class="eyebrow">${city}</p><h3>${dish}</h3><p>${txt}</p></div></a>`).join("")}</div>
+
+      <h2 class="sec">Sweets for every season</h2>
+      <p>Gujarati <i>mithai</i> leans on milk, ghee, jaggery and dry fruits. Peda is cooked down from milk and scented with kesar (saffron) and cardamom. Paaks are dense, rich and set in squares. Ladus are rolled by hand. And the bakery side of Gujarati life, with khari, nankhatai and butter biscuits, belongs with a cup of masala chai.</p>
+      <p>A lot of what we eat follows the calendar.</p>
+      <div class="fests">${fests.map(([n,d,txt])=>`<div><p class="eyebrow">${n}</p><h3>${d}</h3><p>${txt}</p></div>`).join("")}</div>
+
+      <h2 class="sec">From Gujarat to Pioneer Blvd</h2>
+      <p>Pioneer Boulevard, running through Artesia and Norwalk, is known as Southern California's Little India: sari shops, jewelers, sweet shops and restaurants from every corner of the country. For Gujarati families here, it's where you go to stock up before Diwali, find the right snack for a puja, or just get a taste of home.</p>
+      <p>That's the place we wanted to be. Whether you grew up on these snacks or you're trying fafda for the first time, come say hello. We'll tell you what's fresh today.</p>
+
+      <h2 class="sec">A little Gujarati glossary</h2>
+      <dl class="gloss">${gloss.map(([w,m])=>`<div><dt>${w}</dt><dd>${m}</dd></div>`).join("")}</dl>
+
+      <div class="btns" style="margin-top:28px"><a class="btn go" href="#shop">Shop the menu</a><a class="btn ghost" href="#box">Build a festival box</a><a class="btn ghost" href="#catering">Plan catering</a></div>
+    </article>
+    <aside class="about-aside">
+      <div class="summary">
+        <div class="score" style="text-align:left"><div class="big" style="font-size:3rem">4.9</div><div class="stars">★★★★★</div><small>About 40 reviews on <a href="https://www.restaurantji.com/ca/norwalk/rt-kitchen-/">Restaurantji</a></small></div>
+        <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+        ${visitBlock()}
+      </div>
+    </aside>
   </div></section>`;
 }
 const CATER=["Chaat","Chakri","Vada Pav","Samosa Shots","Pani Puri Shots","Undhiyu","Potato Shaak","Pocha Patra","Green Beans with Spinach","Cauliflower Masala","Veg Pulav","Pesto Pasta","Chilli Paneer","Fafda","Dhokla","Khaman","Mango Pickle","Methi Gota with Marcha"];
