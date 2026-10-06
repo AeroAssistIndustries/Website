@@ -296,6 +296,12 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .social svg{width:18px;height:18px}
 footer .legal{border-top:1px solid rgba(255,255,255,.35)}
 footer .promise{border-bottom:1px solid rgba(255,255,255,.35)}
+footer .chefs{border-top:1px solid rgba(255,255,255,.35)}
+footer .chefs .wrap{display:flex;align-items:center;gap:8px 24px;padding-block:14px 10px;flex-wrap:wrap}
+.chefsvg{width:220px;max-width:100%;height:auto;display:block}
+.chefs-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.chefs-txt b{font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1.15}
+.chefs-txt span{opacity:.92}
 footer .promise ul{list-style:none;margin:0;padding:22px 0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 footer .promise li{display:flex;flex-direction:column;gap:2px;padding-left:14px;border-left:3px solid #FFFFFF}
 footer .promise b{font-size:1.02rem}
@@ -391,6 +397,82 @@ footer .legal .wrap{display:flex;justify-content:space-between;align-items:cente
     <div><h4>Shop</h4><ul><li><a href="#shop-snacks">Snacks</a></li><li><a href="#shop-sweets">Sweets</a></li><li><a href="#shop-biscuits">Biscuits</a></li><li><a href="#box">Festival box</a></li><li><a href="#catering">Catering</a></li><li><a href="#cart">Cart</a></li></ul></div>
     <div><h4>Hours</h4><ul><li>Monday: Closed</li><li>Tue–Thu: 11:00 AM – 6:30 PM</li><li>Fri–Sun: 11:00 AM – 7:00 PM</li></ul></div>
   </div>
+  <div class="chefs"><div class="wrap">
+    <svg class="chefsvg" viewBox="0 0 240 172" role="img" aria-label="Cartoon of a husband and wife chef couple cooking together">
+      <style>
+        .wave{transform-box:view-box;transform-origin:38px 128px;animation:wave 1.8s ease-in-out infinite}
+        .stir{transform-box:view-box;transform-origin:160px 130px;animation:stir 1.3s ease-in-out infinite alternate}
+        .blink{transform-box:fill-box;transform-origin:center;animation:blink 4.2s infinite}
+        .blink.b2{animation-delay:.9s}
+        .steam{animation:steam 2.6s ease-in infinite;opacity:0}
+        .steam.s2{animation-delay:.8s}.steam.s3{animation-delay:1.6s}
+        .bob{animation:bob 3s ease-in-out infinite}
+        .bob.b2{animation-delay:1.5s}
+        .heart{animation:heart 3.6s ease-in-out infinite;opacity:0}
+        .heart.h2{animation-delay:1.8s}
+        .ear{transform-box:fill-box;transform-origin:top center;animation:ear 1.3s ease-in-out infinite alternate}
+        @keyframes wave{0%,100%{transform:rotate(0)}25%{transform:rotate(-20deg)}75%{transform:rotate(12deg)}}
+        @keyframes stir{from{transform:rotate(-7deg)}to{transform:rotate(9deg)}}
+        @keyframes blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.1)}}
+        @keyframes steam{0%{opacity:0;transform:translateY(4px)}30%{opacity:.85}100%{opacity:0;transform:translateY(-16px)}}
+        @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+        @keyframes heart{0%{opacity:0;transform:translateY(8px) scale(.6)}35%{opacity:1}100%{opacity:0;transform:translateY(-20px) scale(1)}}
+        @keyframes ear{from{transform:rotate(-10deg)}to{transform:rotate(10deg)}}
+        @media (prefers-reduced-motion:reduce){.wave,.stir,.blink,.steam,.bob,.heart,.ear{animation:none}.steam,.heart{opacity:.8}}
+      </style>
+      <!-- hearts -->
+      <path class="heart" d="M120 62c-3-5-10-3-9 2 1 4 9 9 9 9s8-5 9-9c1-5-6-7-9-2z" fill="#FFFFFF"/>
+      <path class="heart h2" d="M108 74c-2-3-7-2-6 1.5.6 2.6 6 6 6 6s5.4-3.4 6-6c1-3.5-4-4.5-6-1.5z" fill="#FFE3A0"/>
+      <!-- husband -->
+      <g class="bob">
+        <path d="M30 172Q30 122 60 117Q90 122 90 172Z" fill="#FFFFFF" stroke="#EADFCF" stroke-width="1.5"/>
+        <path d="M52 118L68 118L60 129Z" fill="#C2231B"/>
+        <circle cx="60" cy="142" r="2.2" fill="#E0671A"/><circle cx="60" cy="154" r="2.2" fill="#E0671A"/>
+        <g class="wave"><path d="M38 128L20 100" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/><circle cx="19" cy="97" r="6.5" fill="#C68A5B"/></g>
+        <path d="M82 130L98 140" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/><circle cx="100" cy="141" r="6" fill="#C68A5B"/>
+        <circle cx="40.5" cy="94" r="4.5" fill="#B87A4C"/><circle cx="79.5" cy="94" r="4.5" fill="#B87A4C"/>
+        <circle cx="60" cy="93" r="20" fill="#C68A5B"/>
+        <path d="M41 86Q42 76 50 74L70 74Q78 76 79 86Q74 79 60 79Q46 79 41 86Z" fill="#2A1A12"/>
+        <rect x="44" y="66" width="32" height="10" rx="2" fill="#FFFFFF" stroke="#EADFCF"/>
+        <circle cx="50" cy="60" r="9" fill="#FFFFFF" stroke="#EADFCF"/><circle cx="70" cy="60" r="9" fill="#FFFFFF" stroke="#EADFCF"/><circle cx="60" cy="54" r="11.5" fill="#FFFFFF" stroke="#EADFCF"/>
+        <ellipse class="blink" cx="53" cy="92" rx="2.1" ry="2.6" fill="#2A1A12"/><ellipse class="blink" cx="67" cy="92" rx="2.1" ry="2.6" fill="#2A1A12"/>
+        <circle cx="49" cy="99" r="3" fill="#E58A6A" opacity=".45"/><circle cx="71" cy="99" r="3" fill="#E58A6A" opacity=".45"/>
+        <path d="M50 102Q55 97.5 60 100.5Q65 97.5 70 102Q65 105 60 103Q55 105 50 102Z" fill="#2A1A12"/>
+        <path d="M54 107Q60 111 66 107" stroke="#7A3B22" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      </g>
+      <!-- kadhai -->
+      <path d="M90 130Q120 166 150 130Z" fill="#3A3330"/>
+      <ellipse cx="120" cy="130" rx="30" ry="6" fill="#57504B"/>
+      <ellipse cx="120" cy="129.5" rx="25" ry="3.8" fill="#E9B44C"/>
+      <circle cx="112" cy="129" r="2" fill="#D98A2A"/><circle cx="124" cy="128.5" r="2" fill="#C7741E"/><circle cx="131" cy="129.5" r="1.6" fill="#3E7B2E"/>
+      <path d="M88 130h-5M152 130h5" stroke="#3A3330" stroke-width="4" stroke-linecap="round"/>
+      <path class="steam" d="M110 122q-4-6 0-11t0-11" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path class="steam s2" d="M120 120q-4-6 0-11t0-11" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path class="steam s3" d="M130 122q-4-6 0-11t0-11" stroke="#FFFFFF" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <!-- wife -->
+      <g class="bob b2">
+        <circle cx="198" cy="96" r="9" fill="#1E120C"/>
+        <path d="M150 172Q150 123 180 118Q210 123 210 172Z" fill="#FFFFFF" stroke="#EADFCF" stroke-width="1.5"/>
+        <path d="M160 123L176 118L206 172L189 172Z" fill="#E0671A"/>
+        <path d="M176 118L206 172" stroke="#11733A" stroke-width="2.5"/>
+        <path d="M204 130L212 152" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/><circle cx="213" cy="155" r="5.5" fill="#B97B4E"/>
+        <g class="stir"><path d="M160 130L146 141" stroke="#FFFFFF" stroke-width="11" stroke-linecap="round"/><path d="M144 141L129 127" stroke="#8C8C8C" stroke-width="2.6" stroke-linecap="round"/><circle cx="128" cy="126.5" r="3.4" fill="#8C8C8C"/><circle cx="144" cy="142" r="5.5" fill="#B97B4E"/></g>
+        <circle cx="180" cy="90" r="21.5" fill="#1E120C"/>
+        <circle cx="180" cy="93" r="19" fill="#B97B4E"/>
+        <path d="M161 92Q162 74 180 73Q198 74 199 92Q193 80 180 80Q167 80 161 92Z" fill="#1E120C"/>
+        <path d="M180 74L180 80" stroke="#C2231B" stroke-width="1.6"/>
+        <rect x="167" y="64" width="26" height="8" rx="2" fill="#FFFFFF" stroke="#EADFCF"/>
+        <circle cx="172" cy="58" r="7.5" fill="#FFFFFF" stroke="#EADFCF"/><circle cx="188" cy="58" r="7.5" fill="#FFFFFF" stroke="#EADFCF"/><circle cx="180" cy="53.5" r="9.5" fill="#FFFFFF" stroke="#EADFCF"/>
+        <circle cx="180" cy="85" r="1.9" fill="#C2231B"/>
+        <ellipse class="blink b2" cx="173" cy="93" rx="2" ry="2.5" fill="#1E120C"/><ellipse class="blink b2" cx="187" cy="93" rx="2" ry="2.5" fill="#1E120C"/>
+        <path d="M170.5 89.5l-1.5-1.5M189.5 89.5l1.5-1.5" stroke="#1E120C" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="169" cy="100" r="3" fill="#E58A6A" opacity=".45"/><circle cx="191" cy="100" r="3" fill="#E58A6A" opacity=".45"/>
+        <path d="M174 104Q180 109.5 186 104" stroke="#7A3B22" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle class="ear" cx="161" cy="102" r="2.4" fill="#F2B233"/><circle class="ear" cx="199" cy="102" r="2.4" fill="#F2B233"/>
+      </g>
+    </svg>
+    <div class="chefs-txt"><b>Cooked with love by Raju &amp; Trupti</b><span>Come say hello at the counter. We'll tell you what's fresh today.</span></div>
+  </div></div>
   <div class="legal"><div class="wrap">
     <div class="flags"><span id="flagUS"></span><span id="flagIN"></span><span>Proudly Indian-American · Made fresh in Norwalk, California</span></div>
     <span>© 2026 RT Kitchen · <a href="#terms">Terms of Service</a> · <a href="#privacy">Privacy Policy</a></span>
