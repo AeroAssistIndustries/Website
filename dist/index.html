@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Karla's Agency</title>
+<meta name="description" content="Karla's Agency helps local businesses get found on Google, stay active on social media and earn more reviews.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* Hero */
+.hero { padding: 64px 0 80px; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(46px, 7.4vw, 94px); font-weight: 800; letter-spacing: -0.045em; line-height: .95; }
+.hero h1 .blue { color: var(--accent); }
+.hero .sub { font-size: 20px; color: var(--muted); max-width: 46ch; margin-top: 26px; }
+.hero .ctas { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+.where { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; align-items: center; }
+.where span.lbl { font-size: 13px; color: var(--muted); margin-right: 4px; }
+.chip { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); }
+
+/* Hero phone */
+.phone { width: min(330px, 100%); margin-inline: auto; aspect-ratio: 9 / 18.5; background: var(--ink); border-radius: 44px; padding: 12px; box-shadow: 0 40px 80px -30px rgba(21,23,26,.45); position: relative; transform: rotate(2.5deg); }
+.screen { background: #fff; border-radius: 34px; height: 100%; overflow: hidden; display: flex; flex-direction: column; }
+.screen .bar { height: 30px; display: flex; justify-content: center; align-items: center; }
+.screen .bar i { width: 90px; height: 22px; background: var(--ink); border-radius: 999px; }
+.search { margin: 6px 14px 10px; padding: 10px 14px; border-radius: 999px; background: #f0f1ee; font-size: 13px; color: var(--muted); }
+.listing { margin: 0 14px; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.listing .map { height: 92px; background:
+  linear-gradient(90deg, transparent 47%, #fff 47%, #fff 53%, transparent 53%),
+  linear-gradient(0deg, transparent 40%, #fff 40%, #fff 46%, transparent 46%),
+  linear-gradient(32deg, transparent 60%, #fff 60%, #fff 64%, transparent 64%),
+  #dfe8dc; position: relative; }
+.listing .pin { position: absolute; left: 50%; top: 30%; width: 22px; height: 22px; background: var(--accent); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); box-shadow: 0 0 0 4px rgba(47,69,255,.25); }
+.listing .info { padding: 10px 12px 12px; }
+.listing h5 { font-family: var(--display); font-size: 16px; margin: 0; }
+.listing .meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.listing .stars { color: #e39a00; letter-spacing: 1px; }
+.listing .acts { display: flex; gap: 6px; margin-top: 10px; }
+.listing .acts span { flex: 1; text-align: center; font-size: 11px; font-weight: 600; padding: 7px 0; border-radius: 999px; background: #eef0ff; color: var(--accent-ink); }
+.mini-post { margin: 12px 14px 0; border-radius: 16px; overflow: hidden; flex: 1; display: flex; flex-direction: column; border: 1px solid var(--line); }
+.mini-post .art { flex: 1; background: var(--sun); padding: 16px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+.mini-post .art b { font-family: var(--display); font-size: 25px; line-height: .98; letter-spacing: -0.03em; position: relative; z-index: 1; }
+.mini-post .art small { font-size: 11px; font-weight: 700; position: relative; z-index: 1; }
+.mini-post .art::after { content: ""; position: absolute; right: -30px; bottom: -30px; width: 120px; height: 120px; border-radius: 50%; background: #fff; box-shadow: inset 0 0 0 16px #7a4a24; }
+.mini-post .cap { font-size: 11px; padding: 8px 12px; color: var(--muted); }
+.float-tag { position: absolute; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 10px 14px; font-size: 13px; font-weight: 600; box-shadow: 0 14px 30px -14px rgba(0,0,0,.3); transform: rotate(-2.5deg); white-space: nowrap; }
+.float-tag em { font-style: normal; color: var(--accent); }
+.float-tag.t1 { left: -58px; top: 22%; }
+.float-tag.t2 { right: -44px; bottom: 16%; }
+
+/* Services */
+.services { background: var(--card); border-block: 1px solid var(--line); }
+.svc-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; }
+.core { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+.core article { border: 1px solid var(--line); border-radius: 22px; padding: 28px; display: flex; flex-direction: column; gap: 12px; background: var(--paper); }
+.core .ico { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); color: #fff; display: grid; place-items: center; }
+.core h3 { font-size: 26px; font-weight: 700; }
+.core p { color: var(--muted); font-size: 16px; }
+.core ul { margin: 6px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 15px; }
+.core li::before { content: "→ "; color: var(--accent); font-weight: 700; }
+.also { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.also .lbl { font-weight: 600; margin-right: 6px; }
+
+/* Process */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 48px; border-top: 2px solid var(--ink); }
+.steps li { list-style: none; padding: 26px 24px 0 0; }
+.steps .n { font-family: var(--display); font-size: 64px; font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -0.05em; }
+.steps h3 { font-size: 22px; margin: 14px 0 8px; }
+.steps p { color: var(--muted); font-size: 15.5px; }
+.steps ol { padding: 0; }
+
+/* Packages */
+.pkgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; align-items: stretch; }
+.pkg { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 14px; }
+.pkg.pop { background: var(--ink); color: #fff; border-color: var(--ink); }
+.pkg .tier { font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
+.pkg .badge { background: var(--sun); color: var(--ink); font-size: 12px; padding: 4px 10px; border-radius: 999px; }
+.pkg .price { font-family: var(--display); font-size: 48px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.pkg .price small { font-family: var(--body); font-size: 15px; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+.pkg.pop .price small, .pkg.pop .for { color: #b9bdc6; }
+.pkg .for { color: var(--muted); font-size: 15px; }
+.pkg ul { list-style: none; padding: 16px 0 0; margin: 0; border-top: 1px solid var(--line); display: grid; gap: 9px; font-size: 15.5px; flex: 1; }
+.pkg.pop ul { border-color: #2f333a; }
+.pkg li { padding-left: 26px; position: relative; }
+.pkg li::before { content: ""; position: absolute; left: 0; top: 5px; width: 15px; height: 15px; border-radius: 50%; background: var(--accent); box-shadow: inset 0 0 0 4px #c9d0ff; }
+.pkg.pop li::before { background: var(--sun); box-shadow: inset 0 0 0 4px #fff0cc; }
+.pkg .btn { justify-content: center; }
+.pkg.pop .btn { background: var(--sun); color: var(--ink); }
+.pkg.pop .btn:hover { background: #fff; }
+.pk-note { margin-top: 20px; color: var(--muted); font-size: 15px; }
+
+/* Industries */
+.industries { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; margin-top: 40px; }
+.industries div { background: var(--card); padding: 22px; }
+.industries b { font-family: var(--display); font-size: 21px; display: block; letter-spacing: -0.02em; }
+.industries span { color: var(--muted); font-size: 14.5px; }
+
+/* Social teaser */
+.teaser { background: var(--accent); color: #fff; border-radius: 32px; padding: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; overflow: hidden; }
+.teaser .eyebrow { color: var(--sun); }
+.teaser p { color: #dfe3ff; margin-top: 14px; font-size: 18px; max-width: 44ch; }
+.teaser .btn { background: #fff; color: var(--ink); margin-top: 28px; }
+.teaser .btn:hover { background: var(--sun); }
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; transform: rotate(-4deg); }
+.tile { aspect-ratio: 4 / 5; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; justify-content: flex-end; font-family: var(--display); font-weight: 800; font-size: 17px; line-height: .98; letter-spacing: -0.02em; }
+.tile:nth-child(1) { background: var(--sun); color: var(--ink); }
+.tile:nth-child(2) { background: #f6d9cf; color: #6b2a17; }
+.tile:nth-child(3) { background: #13202f; color: #ffcf88; }
+.tile:nth-child(4) { background: #d8f2ea; color: #0f5141; }
+.tile:nth-child(5) { background: #fff; color: var(--ink); }
+.tile:nth-child(6) { background: #2c1b10; color: #f0b56a; }
+
+/* Audit form */
+.audit .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.audit ul.check { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 12px; }
+.audit ul.check li { padding-left: 32px; position: relative; }
+.audit ul.check li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 12px; display: grid; place-items: center; font-weight: 700; }
+form { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 30px; display: grid; gap: 16px; }
+.field { display: grid; gap: 6px; }
+label { font-size: 14px; font-weight: 600; }
+input, select, textarea { font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--paper); color: var(--ink); width: 100%; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); background: #fff; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+form .btn { justify-content: center; padding: 15px; font-size: 16px; }
+.form-msg { font-size: 15px; background: #eef0ff; border-radius: 12px; padding: 12px 14px; display: none; }
+.form-msg.show { display: block; }
+.contact-line { font-size: 14px; color: var(--muted); text-align: center; }
+
+@media (max-width: 960px) {
+  .hero .wrap, .teaser, .audit .wrap { grid-template-columns: 1fr; }
+  .core, .pkgs { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+  .industries { grid-template-columns: 1fr 1fr; }
+  .float-tag.t1 { left: -6px; } .float-tag.t2 { right: -6px; }
+  .teaser { padding: 36px 24px; }
+}
+@media (max-width: 520px) {
+  .steps, .industries, .row2 { grid-template-columns: 1fr; }
+  .float-tag { display: none; }
+}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="dot"></span>Karla's Agency</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
+    <ul id="navlist"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li><li><a href="about.html">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
+  </div>
+</nav>
+<main>
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Get found.<br>Get <span class="blue">chosen.</span><br>Get <span class="mark">booked.</span></h1>
+      <p class="sub">Karla's Agency helps local businesses show up on Google, stay active on social media, and turn great service into great reviews, so the next customer picks you.</p>
+      <div class="ctas">
+        <a class="btn" href="#audit">Get a free marketing audit</a>
+        <a class="btn ghost" href="social.html">See social media examples</a>
+      </div>
+      <div class="where" aria-label="Where your customers are looking">
+        <span class="lbl">Where your customers look:</span>
+        <span class="chip">Google Search</span><span class="chip">Google Maps</span><span class="chip">Instagram</span><span class="chip">Facebook</span><span class="chip">TikTok</span><span class="chip">Reviews</span><span class="chip">AI search</span>
+      </div>
+    </div>
+
+    <div style="position:relative">
+      <div class="phone" aria-hidden="true">
+        <div class="screen">
+          <div class="bar"><i></i></div>
+          <div class="search">coffee near me</div>
+          <div class="listing">
+            <div class="map"><span class="pin"></span></div>
+            <div class="info">
+              <h5>Juniper Street Café</h5>
+              <div class="meta"><span class="stars">★★★★★</span> 4.8 · Café · Open until 6 PM</div>
+              <div class="acts"><span>Call</span><span>Directions</span><span>Website</span></div>
+            </div>
+          </div>
+          <div class="mini-post">
+            <div class="art"><small>@juniperstreetcafe</small><b>Your 7am<br>just got<br>better.</b></div>
+            <div class="cap">$2 off any latte before 9 AM, Monday to Friday ☕</div>
+          </div>
+        </div>
+      </div>
+      <div class="float-tag t1" aria-hidden="true">Profile updated <em>weekly</em></div>
+      <div class="float-tag t2" aria-hidden="true">3 posts <em>scheduled</em></div>
+    </div>
+  </div>
+</header>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="svc-head">
+      <div>
+        <div class="eyebrow">Services</div>
+        <h2 class="h2">Three things that bring<br>local customers in.</h2>
+      </div>
+      <p class="intro" style="max-width:40ch">We focus on the work that moves the needle for a local business, and we do it consistently every month.</p>
+    </div>
+
+    <div class="core">
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>Google Business Profile</h3>
+        <p>Show up in local searches and on Maps with a complete, accurate, active profile.</p>
+        <ul><li>Full profile setup and cleanup</li><li>Weekly posts and photo updates</li><li>Hours, services and menu kept current</li><li>Local listing consistency</li></ul>
+      </article>
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+        <h3>Social Media Management</h3>
+        <p>A steady feed that looks like your business and gives people a reason to visit.</p>
+        <ul><li>Monthly content plan and calendar</li><li>Designed posts, carousels and Reels</li><li>Captions written in your voice</li><li>Scheduling for Instagram, Facebook and TikTok</li></ul>
+      </article>
+      <article>
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></div>
+        <h3>Reputation Management</h3>
+        <p>More genuine reviews, and thoughtful replies to every one of them.</p>
+        <ul><li>Simple review request system</li><li>Professional responses to reviews</li><li>Alerts for new reviews</li><li>Monthly reputation snapshot</li></ul>
+      </article>
+    </div>
+
+    <div class="also">
+      <span class="lbl">Also available:</span>
+      <span class="chip">Website design</span><span class="chip">SEO</span><span class="chip">Google &amp; Meta ads</span><span class="chip">Email marketing</span><span class="chip">Lead generation</span><span class="chip">AI search visibility</span>
+      <a class="btn ghost" href="services.html" style="margin-left:auto">Explore all services →</a>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2 class="h2">Simple, monthly, measurable.</h2>
+    <ol class="steps">
+      <li><div class="n">01</div><h3>Free audit</h3><p>We review your Google profile, website, social pages and reviews, and show you what's working and what's missing.</p></li>
+      <li><div class="n">02</div><h3>Your plan</h3><p>You get a clear monthly plan built around your goals, whether that's calls, bookings or foot traffic.</p></li>
+      <li><div class="n">03</div><h3>We do the work</h3><p>Posts, profile updates and review replies go out on schedule. You approve; we handle the rest.</p></li>
+      <li><div class="n">04</div><h3>Monthly report</h3><p>A plain-English report shows what we did, what changed, and what we'll do next month.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Why Karla's Agency</div>
+        <h2 class="h2">Marketing you can<br>actually understand.</h2>
+      </div>
+      <p class="intro">Most small businesses have been burned by an agency that overpromised and underreported. We work differently.</p>
+    </div>
+    <div class="g4">
+      <div class="card"><div class="big">1</div><h3>Honest promises</h3><p>We tell you what's realistic for your business and your budget, and we never guarantee rankings or results we can't control.</p></div>
+      <div class="card"><div class="big">2</div><h3>Consistent work</h3><p>Posts go out, profiles stay current and reviews get replies every week, not just in the first month.</p></div>
+      <div class="card"><div class="big">3</div><h3>Clear reporting</h3><p>A plain-English monthly report shows what we did, what changed and what's next. No jargon, no vanity charts.</p></div>
+      <div class="card"><div class="big">4</div><h3>You own it all</h3><p>Your accounts, your content, your website and your data stay yours. If you ever leave, everything goes with you.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Every month</div>
+    <h2 class="h2">What a month with us looks like.</h2>
+    <div class="g4" style="margin-top:40px">
+      <div class="card"><h3>Week 1 · Plan</h3><ul class="ticks"><li>Review last month's results</li><li>Pick promotions and themes</li><li>Share the content calendar for approval</li></ul></div>
+      <div class="card"><h3>Week 2 · Create</h3><ul class="ticks"><li>Design posts and graphics</li><li>Write captions in your voice</li><li>Prepare Google profile updates</li></ul></div>
+      <div class="card"><h3>Week 3 · Publish</h3><ul class="ticks"><li>Schedule and post content</li><li>Reply to reviews and comments</li><li>Keep listings and hours current</li></ul></div>
+      <div class="card"><h3>Week 4 · Report</h3><ul class="ticks"><li>Send your monthly report</li><li>Highlight what worked</li><li>Recommend next month's focus</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="packages" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Packages</div>
+    <h2 class="h2">Pick a starting point.</h2>
+    <p class="intro">Month-to-month packages. Every plan includes a kickoff audit and a monthly report.</p>
+    <div class="pkgs">
+      <div class="pkg">
+        <div class="tier">Starter</div>
+        <div class="price">$500<small> /month and up</small></div>
+        <p class="for">For businesses that need to be found and look trustworthy on Google.</p>
+        <ul><li>Google Business Profile management</li><li>Local listings cleanup</li><li>Review monitoring and replies</li><li>Monthly report</li></ul>
+        <a class="btn ghost" href="#audit">Start with a free audit</a>
+      </div>
+      <div class="pkg pop">
+        <div class="tier">Growth <span class="badge">Most popular</span></div>
+        <div class="price">$900<small> /month and up</small></div>
+        <p class="for">Everything in Starter, plus a social presence that keeps you top of mind.</p>
+        <ul><li>Social media management</li><li>12 designed posts per month</li><li>Basic SEO and local visibility</li><li>Review request system</li><li>Performance report</li></ul>
+        <a class="btn" href="#audit">Start with a free audit</a>
+      </div>
+      <div class="pkg">
+        <div class="tier">Premium</div>
+        <div class="price">$1,500<small> /month and up</small></div>
+        <p class="for">Full-service marketing for businesses ready to grow faster.</p>
+        <ul><li>Everything in Growth</li><li>Ad campaign management</li><li>Lead generation</li><li>Website updates and support</li><li>Monthly strategy call</li></ul>
+        <a class="btn ghost" href="#audit">Start with a free audit</a>
+      </div>
+    </div>
+    <p class="pk-note">Need a new website, branding or a one-time setup? We quote those as one-time projects. <a href="pricing.html">Compare packages in detail →</a></p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Who we help</div>
+    <h2 class="h2">Built for local businesses.</h2>
+    <div class="industries">
+      <div><b>Hotels &amp; inns</b><span>Direct bookings and local guides</span></div>
+      <div><b>Restaurants &amp; cafés</b><span>Menus, specials and events</span></div>
+      <div><b>Salons &amp; spas</b><span>Openings, looks and offers</span></div>
+      <div><b>Real estate</b><span>Listings and local expertise</span></div>
+      <div><b>Contractors</b><span>Projects and seasonal tips</span></div>
+      <div><b>Dental &amp; wellness</b><span>New patients and trust</span></div>
+      <div><b>Retail shops</b><span>New arrivals and promos</span></div>
+      <div><b>Local services</b><span>Calls, quotes and bookings</span></div>
+    </div>
+    <p class="pk-note"><a href="industries.html">See how we help each industry →</a></p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="teaser">
+      <div>
+        <div class="eyebrow">Social media examples</div>
+        <h2 class="h2">See what your feed could look like.</h2>
+        <p>Browse sample posts, Reels and a weekly content calendar for a café, a salon, a boutique hotel, a dental office and a roofing company.</p>
+        <a class="btn" href="social.html">View the examples →</a>
+      </div>
+      <div class="tiles" aria-hidden="true">
+        <div class="tile">Your 7am just got better.</div>
+        <div class="tile">Fall color is booking now.</div>
+        <div class="tile">Two nights in the desert.</div>
+        <div class="tile">Back-to-school smiles.</div>
+        <div class="tile">Monsoon-ready roof checklist</div>
+        <div class="tile">Book direct, save 10%.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">Questions</div>
+    <h2 class="h2" style="margin-bottom:32px">Common questions.</h2>
+    <div class="faq">
+      <details><summary>Do I have to sign a long-term contract?</summary><p>No. Packages are month to month. We ask for 30 days' notice if you decide to stop, so we can hand everything over cleanly.</p></details>
+      <details><summary>How soon will I see results?</summary><p>Profile fixes and fresh content start working right away, but most local marketing builds over two to three months. We'll set realistic expectations in your audit and show progress in every monthly report.</p></details>
+      <details><summary>How much of my time will this take?</summary><p>About an hour at kickoff, then a few minutes each month to approve your content calendar and send us photos when you have them. We handle the rest.</p></details>
+      <details><summary>Do you work with businesses outside my area?</summary><p>Yes. Everything we do is online, so we can work with local businesses anywhere in the U.S.</p></details>
+      <details><summary>What if I already have someone posting on social media?</summary><p>That's fine. We can focus on your Google profile and reviews, or support your team with a content plan and designed posts they can publish.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="audit" id="audit" style="padding-top:0">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Free marketing audit</div>
+      <h2 class="h2">Find out what customers see when they search for you.</h2>
+      <p class="intro">Tell us about your business and we'll send a short, personalized audit with clear next steps. No pressure and no long-term contract.</p>
+      <ul class="check">
+        <li>How you show up on Google Search and Maps</li>
+        <li>How your profile compares with nearby competitors</li>
+        <li>The state of your social pages and reviews</li>
+        <li>Three quick wins you can act on right away</li>
+      </ul>
+    </div>
+    <form id="auditForm" class="audit-form" novalidate>
+      <div class="row2">
+        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-biz">Business name</label><input id="f-biz" name="business" required></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="field"><label for="f-type">Type of business</label>
+        <select id="f-type" name="type"><option>Restaurant or café</option><option>Hotel or inn</option><option>Salon or spa</option><option>Real estate</option><option>Contractor or home services</option><option>Dental, medical or wellness</option><option>Retail</option><option>Other</option></select>
+      </div>
+      <div class="field"><label for="f-msg">What would you like more of?</label><textarea id="f-msg" name="message" rows="3" placeholder="More calls, bookings, walk-ins, reviews…"></textarea></div>
+      <button class="btn" type="submit">Request my free audit</button>
+      <p class="form-msg" id="formMsg" role="status"></p>
+      <p class="contact-line">Prefer email? Write to hello@karlasagency.com</p>
+    </form>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html"><span class="dot"></span>Karla's Agency</a>
+      <p style="margin-top:14px;max-width:34ch">Local marketing for small businesses: Google profiles, social media and reviews, done every month.</p>
+      <p style="margin-top:14px">hello@karlasagency.com</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul><li><a href="services.html#gbp">Google Business Profile</a></li><li><a href="services.html#social">Social media</a></li><li><a href="services.html#reviews">Reputation</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#web">Websites</a></li><li><a href="services.html#ads">Advertising</a></li></ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li></ul>
+    </div>
+    <div>
+      <h4>Free resources</h4>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="checklist.html">Google profile checklist</a></li></ul>
+    </div>
+    <div class="legal">© 2026 Karla's Agency. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

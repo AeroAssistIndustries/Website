@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Business Profile Checklist · Karla's Agency</title>
+<meta name="description" content="A free, interactive checklist to see how complete your Google Business Profile is.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.cl-wrap { display: grid; grid-template-columns: 1fr 320px; gap: 32px; align-items: start; }
+.score { position: sticky; top: 90px; background: var(--ink); color: #fff; border-radius: 24px; padding: 26px; }
+.score .lbl { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--sun); }
+.score .num { font-family: var(--display); font-size: 48px; font-weight: 800; letter-spacing: -0.04em; margin: 6px 0 12px; font-variant-numeric: tabular-nums; }
+.track { height: 12px; background: #2c2f35; border-radius: 999px; overflow: hidden; }
+.track i { display: block; height: 100%; width: 0; background: var(--sun); border-radius: 999px; transition: width .3s; }
+.score p { color: #c9ccd2; font-size: 15px; margin-top: 14px; }
+.score .btn { margin-top: 18px; width: 100%; justify-content: center; background: var(--sun); color: var(--ink); }
+.score .reset { margin-top: 10px; background: none; border: 0; color: #9aa0a8; font: inherit; font-size: 14px; cursor: pointer; text-decoration: underline; width: 100%; }
+.grp { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px 24px; }
+.grp + .grp { margin-top: 16px; }
+.grp h2 { font-size: 24px; font-weight: 750; margin-bottom: 4px; }
+.grp > p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+.item { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); cursor: pointer; align-items: start; }
+.item input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent); padding: 0; }
+.item b { display: block; font-size: 16px; }
+.item span { color: var(--muted); font-size: 14.5px; font-weight: 400; }
+.item:has(input:checked) b { text-decoration: line-through; text-decoration-color: var(--accent); }
+@media (max-width: 900px) { .cl-wrap { grid-template-columns: 1fr; } .score { position: static; order: -1; } }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="dot"></span>Karla's Agency</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
+    <ul id="navlist"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li><li><a href="about.html">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
+  </div>
+</nav>
+<main>
+<header class="page-head">
+  <div class="wrap">
+    <div class="eyebrow">Free resource</div>
+    <h1>Google Business Profile checklist.</h1>
+    <p class="intro">Your Google profile is often the first impression a local customer gets. Check off what's done to see how complete yours is. Your progress is saved in this browser.</p>
+  </div>
+</header>
+
+<section style="padding-top:0">
+  <div class="wrap cl-wrap">
+    <div id="gbpChecklist">
+      <div class="grp">
+        <h2>The basics</h2><p>Get these right first. They decide whether you show up at all.</p>
+        <label class="item"><input type="checkbox" id="c1"><div><b>Profile is claimed and verified</b><span>You (not a former owner or agency) control the profile.</span></div></label>
+        <label class="item"><input type="checkbox" id="c2"><div><b>Business name matches your signage</b><span>No extra keywords added to the name.</span></div></label>
+        <label class="item"><input type="checkbox" id="c3"><div><b>Primary category is as specific as possible</b><span>“Mexican restaurant” instead of “Restaurant”.</span></div></label>
+        <label class="item"><input type="checkbox" id="c4"><div><b>Address or service area is correct</b><span>And matches your website and other listings exactly.</span></div></label>
+        <label class="item"><input type="checkbox" id="c5"><div><b>Phone number and website link work</b><span>Tap them yourself from a phone.</span></div></label>
+        <label class="item"><input type="checkbox" id="c6"><div><b>Regular hours are accurate</b><span>Including the time you actually close.</span></div></label>
+      </div>
+      <div class="grp">
+        <h2>Complete the details</h2><p>A fuller profile helps Google match you to more searches.</p>
+        <label class="item"><input type="checkbox" id="c7"><div><b>Secondary categories added</b><span>For other things you genuinely offer.</span></div></label>
+        <label class="item"><input type="checkbox" id="c8"><div><b>Business description written</b><span>What you do, who you serve and what makes you different.</span></div></label>
+        <label class="item"><input type="checkbox" id="c9"><div><b>Services or menu listed</b><span>With short descriptions and prices where it makes sense.</span></div></label>
+        <label class="item"><input type="checkbox" id="c10"><div><b>Attributes selected</b><span>Accessibility, payment options, amenities and more.</span></div></label>
+        <label class="item"><input type="checkbox" id="c11"><div><b>Booking or order link added</b><span>If customers can book or order online.</span></div></label>
+        <label class="item"><input type="checkbox" id="c12"><div><b>Holiday hours set ahead of time</b><span>So nobody shows up to a locked door.</span></div></label>
+      </div>
+      <div class="grp">
+        <h2>Photos</h2><p>Profiles with good photos look more trustworthy and get more clicks.</p>
+        <label class="item"><input type="checkbox" id="c13"><div><b>Logo and cover photo uploaded</b><span>Clear and on-brand.</span></div></label>
+        <label class="item"><input type="checkbox" id="c14"><div><b>At least 10 recent photos</b><span>Exterior, interior, team and your products or work.</span></div></label>
+        <label class="item"><input type="checkbox" id="c15"><div><b>New photos added in the last month</b><span>Fresh photos show you're active.</span></div></label>
+      </div>
+      <div class="grp">
+        <h2>Stay active</h2><p>This is where most businesses fall behind.</p>
+        <label class="item"><input type="checkbox" id="c16"><div><b>A post published in the last 7 days</b><span>An offer, update or event.</span></div></label>
+        <label class="item"><input type="checkbox" id="c17"><div><b>Every review has a reply</b><span>Good and bad, ideally within a couple of days.</span></div></label>
+        <label class="item"><input type="checkbox" id="c18"><div><b>You ask happy customers for reviews</b><span>With a simple link or QR code.</span></div></label>
+        <label class="item"><input type="checkbox" id="c19"><div><b>Questions &amp; answers are monitored</b><span>Common questions answered by you, not strangers.</span></div></label>
+        <label class="item"><input type="checkbox" id="c20"><div><b>You check your profile insights monthly</b><span>Searches, calls, directions and website clicks.</span></div></label>
+      </div>
+    </div>
+
+    <aside class="score" aria-live="polite">
+      <div class="lbl">Your profile score</div>
+      <div class="num" id="clNum">0 of 20</div>
+      <div class="track"><i id="clBar"></i></div>
+      <p id="clVerdict">Lots of room to grow. These basics are the fastest wins in local search.</p>
+      <a class="btn" href="contact.html">Have us check it for free</a>
+      <button class="reset" type="button" id="clReset">Clear my answers</button>
+    </aside>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html"><span class="dot"></span>Karla's Agency</a>
+      <p style="margin-top:14px;max-width:34ch">Local marketing for small businesses: Google profiles, social media and reviews, done every month.</p>
+      <p style="margin-top:14px">hello@karlasagency.com</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul><li><a href="services.html#gbp">Google Business Profile</a></li><li><a href="services.html#social">Social media</a></li><li><a href="services.html#reviews">Reputation</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#web">Websites</a></li><li><a href="services.html#ads">Advertising</a></li></ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li></ul>
+    </div>
+    <div>
+      <h4>Free resources</h4>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="checklist.html">Google profile checklist</a></li></ul>
+    </div>
+    <div class="legal">© 2026 Karla's Agency. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

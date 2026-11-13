@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About · Karla's Agency</title>
+<meta name="description" content="How Karla's Agency works: honest, consistent, clearly reported local marketing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.story { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.story .quote { font-family: "Fraunces", Georgia, serif; font-size: clamp(26px, 3vw, 36px); line-height: 1.25; letter-spacing: -0.02em; font-weight: 500; }
+.story .quote em { color: var(--accent); }
+.story p + p { margin-top: 14px; }
+.story .txt { color: var(--muted); font-size: 17.5px; }
+.promise { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; background: var(--line); gap: 1px; }
+.promise > div { background: var(--card); padding: 26px 28px; display: grid; grid-template-columns: 34px 1fr; gap: 14px; }
+.promise i { font-style: normal; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 700; }
+.promise h3 { font-size: 20px; margin-bottom: 4px; }
+.promise p { color: var(--muted); font-size: 15.5px; }
+.timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; border-left: 2px solid var(--ink); margin-left: 8px; }
+.timeline li { padding: 0 0 30px 30px; position: relative; }
+.timeline li::before { content: ""; position: absolute; left: -9px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 3px solid var(--accent); }
+.timeline .when { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.timeline h3 { font-size: 22px; margin: 4px 0 6px; }
+.timeline p { color: var(--muted); max-width: 60ch; }
+@media (max-width: 860px) { .story, .promise { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span class="dot"></span>Karla's Agency</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
+    <ul id="navlist"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li><li><a href="about.html" aria-current="page">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
+  </div>
+</nav>
+<main>
+<header class="page-head">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h1>Local marketing, done honestly.</h1>
+    <p class="intro">Karla's Agency is a small, hands-on marketing studio for locally owned businesses. You work directly with Karla, from your first audit to every monthly report.</p>
+  </div>
+</header>
+
+<section style="padding-top:8px">
+  <div class="wrap story">
+    <p class="quote">Small businesses are great at what they do. They just don't have time to <em>also</em> be marketers. That's where we come in.</p>
+    <div class="txt">
+      <p>Most local business owners know they should post more, ask for reviews and keep their Google profile current. The problem is time. Between serving customers, managing staff and running the business, marketing slips to the bottom of the list.</p>
+      <p>Karla's Agency takes that work off your plate and does it consistently, every month. We focus on the few things that actually bring local customers in, explain everything in plain English, and keep you in control of your accounts and your brand.</p>
+      <p>The agency is built on a proven model and guided by a mentor with more than 15 years in digital marketing for hotels and local businesses. You get one person's full attention, with an established playbook behind it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Our promises</div>
+    <h2 class="h2" style="margin-bottom:36px">What you can count on.</h2>
+    <div class="promise">
+      <div><i>1</i><div><h3>We'll be honest</h3><p>We won't promise rankings, follower counts or results we can't control. We'll tell you what's realistic.</p></div></div>
+      <div><i>2</i><div><h3>We'll be consistent</h3><p>Your content goes out on schedule, every week, every month.</p></div></div>
+      <div><i>3</i><div><h3>We'll be clear</h3><p>Every month you'll know what we did, what changed and what's next.</p></div></div>
+      <div><i>4</i><div><h3>You'll own everything</h3><p>Accounts, content, photos and website stay in your name, always.</p></div></div>
+      <div><i>5</i><div><h3>We'll keep it genuine</h3><p>Real reviews from real customers, and content that represents your business accurately.</p></div></div>
+      <div><i>6</i><div><h3>We'll respect your time</h3><p>Quick approvals, short check-ins and no unnecessary meetings.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap g2" style="align-items:start;gap:56px">
+    <div>
+      <div class="eyebrow">Working together</div>
+      <h2 class="h2">Your first 90 days.</h2>
+      <p class="intro">Here's what to expect from the day you request your audit.</p>
+    </div>
+    <ol class="timeline">
+      <li><div class="when">Week 1</div><h3>Free audit &amp; call</h3><p>We review your online presence and walk you through what we found, with a recommended package and price.</p></li>
+      <li><div class="when">Week 2</div><h3>Kickoff</h3><p>A one-hour session to learn your goals, customers and voice. We collect logins, photos and brand files.</p></li>
+      <li><div class="when">Weeks 2–4</div><h3>Setup</h3><p>Profiles cleaned up, templates designed, review system set up and your first content calendar sent for approval.</p></li>
+      <li><div class="when">Month 2</div><h3>Steady rhythm</h3><p>Content goes out weekly, reviews get replies and your first monthly report arrives.</p></li>
+      <li><div class="when">Month 3</div><h3>Review &amp; refine</h3><p>We look at what's working, adjust the plan, and decide together what to focus on next.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><div class="eyebrow">Behind the scenes</div><h2 class="h2">How we get it done.</h2></div>
+      <p class="intro">Professional tools and trusted specialists, so you get agency-level work at a small-business price.</p>
+    </div>
+    <div class="g3">
+      <div class="card"><h3>Modern tools</h3><p>Scheduling, design, CRM and reporting tools keep every client organized, plus AI to speed up research and drafts, always reviewed by a person.</p></div>
+      <div class="card"><h3>Trusted specialists</h3><p>For advanced website development and complex ad campaigns, we bring in experienced freelancers and manage the work for you.</p></div>
+      <div class="card"><h3>One point of contact</h3><p>No matter who's helping behind the scenes, you deal with one person who knows your business.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <div><h2>Let's talk about your business.</h2><p>Start with a free audit and an honest conversation about what would help most.</p></div>
+      <a class="btn" href="contact.html">Get a free audit</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer>
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html"><span class="dot"></span>Karla's Agency</a>
+      <p style="margin-top:14px;max-width:34ch">Local marketing for small businesses: Google profiles, social media and reviews, done every month.</p>
+      <p style="margin-top:14px">hello@karlasagency.com</p>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul><li><a href="services.html#gbp">Google Business Profile</a></li><li><a href="services.html#social">Social media</a></li><li><a href="services.html#reviews">Reputation</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#web">Websites</a></li><li><a href="services.html#ads">Advertising</a></li></ul>
+    </div>
+    <div>
+      <h4>Company</h4>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li></ul>
+    </div>
+    <div>
+      <h4>Free resources</h4>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="checklist.html">Google profile checklist</a></li></ul>
+    </div>
+    <div class="legal">© 2026 Karla's Agency. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
