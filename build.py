@@ -29,6 +29,12 @@ def head(title, desc, style):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc}">
+<meta property="og:image" content="assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
@@ -44,7 +50,7 @@ def nav(active):
         f'<li><a href="{h}"{" aria-current=\"page\"" if k == active else ""}>{t}</a></li>' for h, t, k in NAV)
     return f"""<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="index.html"><span class="dot"></span>Karla's Agency</a>
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla's Agency" width="180" height="38"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
     <ul id="navlist">{items}<li><a class="btn" href="contact.html">Free audit</a></li></ul>
   </div>
@@ -54,7 +60,7 @@ def nav(active):
 FOOTER = """<footer>
   <div class="wrap">
     <div>
-      <a class="logo" href="index.html"><span class="dot"></span>Karla's Agency</a>
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Karla's Agency" width="200" height="42"></a>
       <p style="margin-top:14px;max-width:34ch">Local marketing for small businesses: Google profiles, social media and reviews, done every month.</p>
       <p style="margin-top:14px">hello@karlasagency.com</p>
     </div>
@@ -94,4 +100,5 @@ for fname, (title, desc, active) in PAGES.items():
         f.write(head(title, desc, styles) + nav(active) + "<main>\n" + body + "\n</main>\n" + FOOTER.replace("__JSV__", ver("site.js")))
 for asset in ["style.css", "site.js"]:
     shutil.copy(os.path.join(ROOT, asset), os.path.join(DIST, asset))
+shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(DIST, "assets"), dirs_exist_ok=True)
 print("built", len(PAGES), "pages")
