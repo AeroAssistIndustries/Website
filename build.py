@@ -1,5 +1,5 @@
 """Wraps each page partial in src/ with the shared head, nav and footer; writes to dist/."""
-import os, re, shutil
+import os, re, shutil, hashlib
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
@@ -18,6 +18,9 @@ PAGES = {
 NAV = [("services.html", "Services", "services"), ("industries.html", "Industries", "industries"),
        ("pricing.html", "Pricing", "pricing"), ("social.html", "Social examples", "social"), ("about.html", "About", "about")]
 
+def ver(name):
+    return hashlib.md5(open(os.path.join(ROOT, name), "rb").read()).hexdigest()[:8]
+
 def head(title, desc, style):
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -29,7 +32,7 @@ def head(title, desc, style):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v={ver('style.css')}">
 <script>document.documentElement.classList.add('js')</script>
 {style}
 </head>
@@ -70,7 +73,7 @@ FOOTER = """<footer>
     <div class="legal">© 2026 Karla's Agency. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
   </div>
 </footer>
-<script src="site.js"></script>
+<script src="site.js?v=__JSV__"></script>
 </body>
 </html>
 """
@@ -88,7 +91,7 @@ for fname, (title, desc, active) in PAGES.items():
                 f'sizes="(max-width: 700px) 100vw, {w}px" alt="{alt}" loading="lazy" decoding="async">')
     body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     with open(os.path.join(DIST, fname), "w") as f:
-        f.write(head(title, desc, styles) + nav(active) + "<main>\n" + body + "\n</main>\n" + FOOTER)
+        f.write(head(title, desc, styles) + nav(active) + "<main>\n" + body + "\n</main>\n" + FOOTER.replace("__JSV__", ver("site.js")))
 for asset in ["style.css", "site.js"]:
     shutil.copy(os.path.join(ROOT, asset), os.path.join(DIST, asset))
 print("built", len(PAGES), "pages")
