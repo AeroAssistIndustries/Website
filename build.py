@@ -2,7 +2,7 @@
 import os, re, shutil
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
-SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "dist")
+SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
 
 PAGES = {
     "index.html":     ("Karla's Agency", "Karla's Agency helps local businesses get found on Google, stay active on social media and earn more reviews.", "home"),
