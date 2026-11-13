@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
 <style>
 .cl-wrap { display: grid; grid-template-columns: 1fr 320px; gap: 32px; align-items: start; }
 .score { position: sticky; top: 90px; background: var(--ink); color: #fff; border-radius: 24px; padding: 26px; }
@@ -43,7 +44,7 @@
 <header class="page-head">
   <div class="wrap">
     <div class="eyebrow">Free resource</div>
-    <h1>Google Business Profile checklist.</h1>
+    <h1 class="rise">Google Business Profile checklist.</h1>
     <p class="intro">Your Google profile is often the first impression a local customer gets. Check off what's done to see how complete yours is. Your progress is saved in this browser.</p>
   </div>
 </header>
@@ -51,7 +52,7 @@
 <section style="padding-top:0">
   <div class="wrap cl-wrap">
     <div id="gbpChecklist">
-      <div class="grp">
+      <div class="grp reveal">
         <h2>The basics</h2><p>Get these right first. They decide whether you show up at all.</p>
         <label class="item"><input type="checkbox" id="c1"><div><b>Profile is claimed and verified</b><span>You (not a former owner or agency) control the profile.</span></div></label>
         <label class="item"><input type="checkbox" id="c2"><div><b>Business name matches your signage</b><span>No extra keywords added to the name.</span></div></label>
@@ -60,7 +61,7 @@
         <label class="item"><input type="checkbox" id="c5"><div><b>Phone number and website link work</b><span>Tap them yourself from a phone.</span></div></label>
         <label class="item"><input type="checkbox" id="c6"><div><b>Regular hours are accurate</b><span>Including the time you actually close.</span></div></label>
       </div>
-      <div class="grp">
+      <div class="grp reveal">
         <h2>Complete the details</h2><p>A fuller profile helps Google match you to more searches.</p>
         <label class="item"><input type="checkbox" id="c7"><div><b>Secondary categories added</b><span>For other things you genuinely offer.</span></div></label>
         <label class="item"><input type="checkbox" id="c8"><div><b>Business description written</b><span>What you do, who you serve and what makes you different.</span></div></label>
@@ -69,13 +70,13 @@
         <label class="item"><input type="checkbox" id="c11"><div><b>Booking or order link added</b><span>If customers can book or order online.</span></div></label>
         <label class="item"><input type="checkbox" id="c12"><div><b>Holiday hours set ahead of time</b><span>So nobody shows up to a locked door.</span></div></label>
       </div>
-      <div class="grp">
+      <div class="grp reveal">
         <h2>Photos</h2><p>Profiles with good photos look more trustworthy and get more clicks.</p>
         <label class="item"><input type="checkbox" id="c13"><div><b>Logo and cover photo uploaded</b><span>Clear and on-brand.</span></div></label>
         <label class="item"><input type="checkbox" id="c14"><div><b>At least 10 recent photos</b><span>Exterior, interior, team and your products or work.</span></div></label>
         <label class="item"><input type="checkbox" id="c15"><div><b>New photos added in the last month</b><span>Fresh photos show you're active.</span></div></label>
       </div>
-      <div class="grp">
+      <div class="grp reveal">
         <h2>Stay active</h2><p>This is where most businesses fall behind.</p>
         <label class="item"><input type="checkbox" id="c16"><div><b>A post published in the last 7 days</b><span>An offer, update or event.</span></div></label>
         <label class="item"><input type="checkbox" id="c17"><div><b>Every review has a reply</b><span>Good and bad, ideally within a couple of days.</span></div></label>
@@ -90,7 +91,7 @@
       <div class="num" id="clNum">0 of 20</div>
       <div class="track"><i id="clBar"></i></div>
       <p id="clVerdict">Lots of room to grow. These basics are the fastest wins in local search.</p>
-      <a class="btn" href="contact.html">Have us check it for free</a>
+      <a class="btn" href="contact.html">Have me check it for free</a>
       <button class="reset" type="button" id="clReset">Clear my answers</button>
     </aside>
   </div>

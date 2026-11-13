@@ -30,6 +30,7 @@ def head(title, desc, style):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
 {style}
 </head>
 <body>
@@ -79,6 +80,13 @@ for fname, (title, desc, active) in PAGES.items():
     src = open(os.path.join(SRC, fname)).read()
     styles = "\n".join(re.findall(r"<style>.*?</style>", src, re.S))
     body = re.sub(r"<style>.*?</style>", "", src, flags=re.S).strip()
+    # {{img:PHOTO-ID:WIDTH:alt text}} -> responsive Unsplash image
+    def img(m):
+        pid, w, alt = m.group(1), int(m.group(2)), m.group(3)
+        base = f"https://images.unsplash.com/photo-{pid}?auto=format&fit=crop&q=75"
+        return (f'<img src="{base}&w={w}" srcset="{base}&w={w//2} {w//2}w, {base}&w={w} {w}w, {base}&w={int(w*1.6)} {int(w*1.6)}w" '
+                f'sizes="(max-width: 700px) 100vw, {w}px" alt="{alt}" loading="lazy" decoding="async">')
+    body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     with open(os.path.join(DIST, fname), "w") as f:
         f.write(head(title, desc, styles) + nav(active) + "<main>\n" + body + "\n</main>\n" + FOOTER)
 for asset in ["style.css", "site.js"]:

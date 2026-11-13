@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
 <style>
 .page-head { padding: 64px 0 28px; }
 .page-head h1 { font-size: clamp(44px, 7vw, 84px); font-weight: 800; letter-spacing: -0.045em; line-height: .96; }
@@ -19,6 +20,10 @@
 .filters button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
 
 .brand { padding: 56px 0; border-top: 1px solid var(--line); }
+.b-banner { height: 240px; border-radius: 26px; margin-bottom: 26px; }
+.b-banner span { position: absolute; right: 16px; top: 16px; background: rgba(255,255,255,.92); color: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; }
+.post .art, .post .story { transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.post:hover .art, .post:hover .story { transform: scale(1.02); }
 .brand[hidden] { display: none; }
 .b-head { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: start; margin-bottom: 30px; }
 .b-id { display: flex; gap: 16px; align-items: center; }
@@ -192,7 +197,7 @@
 <header class="page-head">
   <div class="wrap">
     <div class="eyebrow">Social media examples</div>
-    <h1>What your feed<br>could look like.</h1>
+    <h1 class="rise">What your feed<br>could look like.</h1>
     <p class="intro">Each set below is built for a sample local business: a content goal, a voice, a posting rhythm, and the posts to match. Your content is designed around your business, your customers and your goals.</p>
     <div class="filters" role="group" aria-label="Filter by industry">
       <button type="button" data-f="all" aria-pressed="true">All</button>
@@ -208,7 +213,8 @@
 <!-- CAFÉ -->
 <section class="brand" data-ind="cafe" id="cafe">
   <div class="wrap">
-    <div class="b-head">
+    <div class="b-banner ph reveal"><img src="https://images.unsplash.com/photo-1567880905822-56f8e06fe630?auto=format&fit=crop&q=75&w=1160" srcset="https://images.unsplash.com/photo-1567880905822-56f8e06fe630?auto=format&fit=crop&q=75&w=580 580w, https://images.unsplash.com/photo-1567880905822-56f8e06fe630?auto=format&fit=crop&q=75&w=1160 1160w, https://images.unsplash.com/photo-1567880905822-56f8e06fe630?auto=format&fit=crop&q=75&w=1856 1856w" sizes="(max-width: 700px) 100vw, 1160px" alt="Sample setting for Juniper Street Café" loading="lazy" decoding="async"><span>Sample brand</span></div>
+    <div class="b-head reveal">
       <div class="b-id">
         <div class="b-logo" style="background:#ffb21f;color:#2a1608">JS</div>
         <div><h2>Juniper Street Café</h2><small>Sample brand · Neighborhood café · Instagram, Facebook, Google</small></div>
@@ -220,19 +226,19 @@
       </div>
     </div>
     <div class="posts">
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#ffb21f;color:#2a1608">JS</span><div><b>juniperstreetcafe</b><small>Instagram</small></div><span class="fmt">Promo post</span></header>
         <div class="art c1"><span class="k">Early bird</span><span class="hl">Your 7am<br>just got<br>better.</span><div class="ft"><span class="price">$2<br>off</span></div><span class="cup"></span></div>
         <div class="body"><p class="caption">Early riser? We see you. ☀️ Get $2 off any latte before 9 AM, Monday to Friday. Just show this post at the counter.</p><p class="tags">#earlybird #latteart #localcoffee #supportlocal</p><p class="goal"><b>Goal:</b> more weekday morning visits</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#ffb21f;color:#2a1608">JS</span><div><b>juniperstreetcafe</b><small>Instagram</small></div><span class="fmt">Carousel · 1/5</span></header>
         <div class="art c2"><span class="k" style="color:#ffb21f">Cold brew 101</span><span class="hl serif">4 things you didn't know about our cold brew</span>
           <ol><li>Steeped for 18 hours</li><li>Beans roasted 10 miles away</li><li>Less acidic than iced coffee</li><li>Refills are half price</li></ol>
           <div class="dots"><i></i><i></i><i></i><i></i><i></i></div></div>
         <div class="body"><p class="caption">Our cold brew takes its time, so you don't have to. Swipe for the details, and save this for your next afternoon slump. 🧊</p><p class="tags">#coldbrew #coffeelovers #behindthebar</p><p class="goal"><b>Goal:</b> saves and shares, so the post reaches new people</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#ffb21f;color:#2a1608">JS</span><div><b>juniperstreetcafe</b><small>Instagram &amp; TikTok</small></div><span class="fmt">Reel · 0:30</span></header>
         <div class="art c3">
           <div class="reel">
@@ -247,7 +253,7 @@
       </article>
     </div>
 
-    <div class="extras">
+    <div class="extras reveal">
       <div class="panel">
         <h3>Sample content week</h3>
         <p>How one week of posts fits together for Juniper Street Café.</p>
@@ -276,7 +282,8 @@
 <!-- SALON -->
 <section class="brand" data-ind="salon" id="salon">
   <div class="wrap">
-    <div class="b-head">
+    <div class="b-banner ph reveal"><img src="https://images.unsplash.com/photo-1629397685944-7073f5589754?auto=format&fit=crop&q=75&w=1160" srcset="https://images.unsplash.com/photo-1629397685944-7073f5589754?auto=format&fit=crop&q=75&w=580 580w, https://images.unsplash.com/photo-1629397685944-7073f5589754?auto=format&fit=crop&q=75&w=1160 1160w, https://images.unsplash.com/photo-1629397685944-7073f5589754?auto=format&fit=crop&q=75&w=1856 1856w" sizes="(max-width: 700px) 100vw, 1160px" alt="Sample setting for Luma Hair Studio" loading="lazy" decoding="async"><span>Sample brand</span></div>
+    <div class="b-head reveal">
       <div class="b-id">
         <div class="b-logo" style="background:#b2452b;color:#fff">L</div>
         <div><h2>Luma Hair Studio</h2><small>Sample brand · Hair salon · Instagram, Facebook</small></div>
@@ -288,19 +295,19 @@
       </div>
     </div>
     <div class="posts">
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#b2452b;color:#fff">L</span><div><b>lumahairstudio</b><small>Instagram</small></div><span class="fmt">Seasonal post</span></header>
         <div class="art s1"><span class="k">Fall color edit</span><span class="hl serif">Fall color is booking now.</span>
           <div class="swatches"><div style="background:#b5602f">Copper</div><div style="background:#c99a5b">Honey</div><div style="background:#5a3423">Espresso</div><div style="background:#8c2f2f">Merlot</div></div></div>
         <div class="body"><p class="caption">Copper, honey, espresso or merlot: which one is calling you this season? 🍂 Fall color appointments are open now. Tap the link in our bio to book.</p><p class="tags">#fallhair #haircolor #copperhair #salonlife</p><p class="goal"><b>Goal:</b> book color appointments for the season</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#b2452b;color:#fff">L</span><div><b>lumahairstudio</b><small>Instagram &amp; Facebook</small></div><span class="fmt">Care tip</span></header>
         <div class="art s2"><span class="k" style="color:#b2452b">Stylist tip</span><span class="hl serif">3 ways to make your color last longer</span>
           <div class="tip"><div><b>1</b>Wait 48 hours before your first wash</div><div><b>2</b>Switch to a sulfate-free shampoo</div><div><b>3</b>Rinse with cool water, not hot</div></div></div>
         <div class="body"><p class="caption">Fresh color deserves to stay fresh. Save these tips for after your next appointment. 💛 What's your favorite color-care product?</p><p class="tags">#haircare #colorcare #stylisttips</p><p class="goal"><b>Goal:</b> build trust and keep clients coming back</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#b2452b;color:#fff">L</span><div><b>lumahairstudio</b><small>Instagram</small></div><span class="fmt">Story</span></header>
         <div class="story">
           <div class="story-in">
@@ -321,7 +328,8 @@
 <!-- HOTEL -->
 <section class="brand" data-ind="hotel" id="hotel">
   <div class="wrap">
-    <div class="b-head">
+    <div class="b-banner ph reveal"><img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=75&w=1160" srcset="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=75&w=580 580w, https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=75&w=1160 1160w, https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=75&w=1856 1856w" sizes="(max-width: 700px) 100vw, 1160px" alt="Sample setting for Mesa Vista Inn" loading="lazy" decoding="async"><span>Sample brand</span></div>
+    <div class="b-head reveal">
       <div class="b-id">
         <div class="b-logo" style="background:#3b1724;color:#ffcf88">MV</div>
         <div><h2>Mesa Vista Inn</h2><small>Sample brand · Boutique hotel · Instagram, Facebook, Google</small></div>
@@ -333,19 +341,19 @@
       </div>
     </div>
     <div class="posts">
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#3b1724;color:#ffcf88">MV</span><div><b>mesavistainn</b><small>Instagram &amp; Facebook</small></div><span class="fmt">Package post</span></header>
         <div class="art h1"><span class="k">Weekend escape</span><span class="hl serif">Two nights in the desert.</span><span class="sun"></span><span class="mesa"></span><div class="ft"><span>Breakfast included</span><span>Fri–Sun</span></div></div>
         <div class="body"><p class="caption">Slow mornings, golden sunsets and breakfast on the patio. 🌵 Our Weekend Escape package includes two nights and breakfast for two. Book direct at the link in our bio.</p><p class="tags">#weekendgetaway #desertlife #boutiquehotel</p><p class="goal"><b>Goal:</b> sell weekend packages through the hotel's own site</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#3b1724;color:#ffcf88">MV</span><div><b>mesavistainn</b><small>Instagram</small></div><span class="fmt">Direct booking</span></header>
         <div class="art h2a"><span class="k" style="color:#ffcf88">Book direct</span><span class="hl">Save 10%.</span>
           <div class="vs"><div><span>Best available rate</span><b>✓</b></div><div><span>Free early check-in, when available</span><b>✓</b></div><div><span>Late checkout on request</span><b>✓</b></div><div><span>Welcome drink on arrival</span><b>✓</b></div></div>
           <div class="ft"><span>mesavistainn.com</span></div></div>
         <div class="body"><p class="caption">When you book with us directly, you get our best rate plus a few extras we save for direct guests. 🗝️</p><p class="tags">#bookdirect #hotelperks #travellocal</p><p class="goal"><b>Goal:</b> shift bookings from travel sites to the hotel website</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#3b1724;color:#ffcf88">MV</span><div><b>mesavistainn</b><small>Instagram</small></div><span class="fmt">Carousel · Guide</span></header>
         <div class="art h3a"><span class="k" style="color:#7b2e3d">Local guide</span><span class="hl serif">5 trails within 20 minutes of the inn</span>
           <div class="trail"><div><i></i>Sunrise Ridge Loop<small>2.1 mi</small></div><div><i></i>Canyon Wash Trail<small>3.4 mi</small></div><div><i></i>Ocotillo Overlook<small>1.2 mi</small></div><div><i></i>Red Rock Spur<small>4.0 mi</small></div><div><i></i>Saguaro Flats<small>2.7 mi</small></div></div>
@@ -359,7 +367,8 @@
 <!-- DENTAL -->
 <section class="brand" data-ind="dental" id="dental">
   <div class="wrap">
-    <div class="b-head">
+    <div class="b-banner ph reveal"><img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=75&w=1160" srcset="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=75&w=580 580w, https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=75&w=1160 1160w, https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&q=75&w=1856 1856w" sizes="(max-width: 700px) 100vw, 1160px" alt="Sample setting for Ocotillo Family Dental" loading="lazy" decoding="async"><span>Sample brand</span></div>
+    <div class="b-head reveal">
       <div class="b-id">
         <div class="b-logo" style="background:#0f5141;color:#d8f2ea">OF</div>
         <div><h2>Ocotillo Family Dental</h2><small>Sample brand · Family dental practice · Facebook, Instagram, Google</small></div>
@@ -371,21 +380,21 @@
       </div>
     </div>
     <div class="posts">
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#0f5141;color:#d8f2ea">OF</span><div><b>ocotillofamilydental</b><small>Facebook</small></div><span class="fmt">Seasonal post</span></header>
         <div class="art d1"><span class="k">Back to school</span><span class="hl">Back-to-school smiles.</span>
           <div class="pencil" aria-hidden="true"><div style="background:#ffb21f"></div><div style="background:#2f45ff"></div><div style="background:#f6a5b5"></div></div>
           <div class="ft"><span class="badge2">Book your child's checkup</span></div></div>
         <div class="body"><p class="caption">New backpack ✔️ New shoes ✔️ Dental checkup? Now's the time! We have after-school appointments available all month.</p><p class="tags">#backtoschool #kidsdentist #familydentistry</p><p class="goal"><b>Goal:</b> fill after-school appointment slots</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#0f5141;color:#d8f2ea">OF</span><div><b>ocotillofamilydental</b><small>Instagram</small></div><span class="fmt">Carousel · Myth vs fact</span></header>
         <div class="art d2"><span class="k">Myth vs fact</span><span class="hl serif">Is brushing harder better?</span>
           <div class="mf"><div class="m"><b>MYTH</b>Brushing harder gets your teeth cleaner.</div><div class="f"><b>FACT</b>Gentle pressure with a soft brush protects your enamel and gums.</div></div>
           <div class="dots"><i></i><i></i><i></i><i></i></div></div>
         <div class="body"><p class="caption">Swipe for 3 more dental myths we hear every week. Which one surprised you? 🪥</p><p class="tags">#dentalmyths #oralhealth #smilecare</p><p class="goal"><b>Goal:</b> helpful content that builds trust with new families</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#0f5141;color:#d8f2ea">OF</span><div><b>ocotillofamilydental</b><small>Instagram &amp; Facebook</small></div><span class="fmt">Meet the team</span></header>
         <div class="art d3"><span class="k" style="color:#8ee6c9">Meet the team</span><span class="hl serif">The friendly faces behind your smile</span>
           <div class="q"><b>Our hygienists</b>A short weekly series introducing the team, with photos from the practice and one fun fact about each person.</div>
@@ -399,7 +408,8 @@
 <!-- ROOFING -->
 <section class="brand" data-ind="roofing" id="roofing">
   <div class="wrap">
-    <div class="b-head">
+    <div class="b-banner ph reveal"><img src="https://images.unsplash.com/photo-1643225523483-e2c434191bba?auto=format&fit=crop&q=75&w=1160" srcset="https://images.unsplash.com/photo-1643225523483-e2c434191bba?auto=format&fit=crop&q=75&w=580 580w, https://images.unsplash.com/photo-1643225523483-e2c434191bba?auto=format&fit=crop&q=75&w=1160 1160w, https://images.unsplash.com/photo-1643225523483-e2c434191bba?auto=format&fit=crop&q=75&w=1856 1856w" sizes="(max-width: 700px) 100vw, 1160px" alt="Sample setting for Copperline Roofing" loading="lazy" decoding="async"><span>Sample brand</span></div>
+    <div class="b-head reveal">
       <div class="b-id">
         <div class="b-logo" style="background:#1d232b;color:#ffb21f">CR</div>
         <div><h2>Copperline Roofing</h2><small>Sample brand · Roofing contractor · Facebook, Google, Instagram</small></div>
@@ -411,13 +421,13 @@
       </div>
     </div>
     <div class="posts">
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#1d232b;color:#ffb21f">CR</span><div><b>copperlineroofing</b><small>Facebook</small></div><span class="fmt">Checklist</span></header>
         <div class="art r1"><span class="rain"></span><span class="k">Before the storms</span><span class="hl">Monsoon-ready roof checklist</span>
           <ul><li class="done">Clear gutters and downspouts</li><li class="done">Check for loose or missing shingles</li><li>Trim branches over the roof</li><li>Inspect flashing around vents</li><li>Book a free roof inspection</li></ul></div>
         <div class="body"><p class="caption">Storm season is coming. Save this checklist, and if anything looks off, we'll take a look for free. ⛈️</p><p class="tags">#monsoonseason #roofinspection #homemaintenance</p><p class="goal"><b>Goal:</b> generate inspection requests before the busy season</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#1d232b;color:#ffb21f">CR</span><div><b>copperlineroofing</b><small>Instagram &amp; Facebook</small></div><span class="fmt">Before &amp; after</span></header>
         <div class="art r2">
           <div class="half before"><span class="k">Before</span><span class="tag2">Worn &amp; patched</span><span class="roof"></span></div>
@@ -426,7 +436,7 @@
         </div>
         <div class="body"><p class="caption">From worn and patched to built to last, in just three days. Swipe to see the crew at work. 🏠</p><p class="tags">#beforeandafter #roofreplacement #localcontractor</p><p class="goal"><b>Goal:</b> show quality and speed to homeowners getting quotes</p></div>
       </article>
-      <article class="post">
+      <article class="post reveal">
         <header><span class="av" style="background:#1d232b;color:#ffb21f">CR</span><div><b>copperlineroofing</b><small>Facebook &amp; Google</small></div><span class="fmt">FAQ</span></header>
         <div class="art r3"><span class="k">Homeowner FAQ</span><span class="hl">Repair or replace?</span>
           <div class="faq"><b>Our rule of thumb</b>If more than a third of the roof is damaged, or it's over 20 years old, replacement usually costs less over time. A free inspection tells you for sure.</div>
@@ -440,14 +450,14 @@
 <section class="alt">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow">How we create content</div><h2 class="h2">From idea to posted,<br>in four steps.</h2></div>
-      <p class="intro">You stay in control of what goes out. We handle the planning, design, writing and scheduling.</p>
+      <div><div class="eyebrow">How I create content</div><h2 class="h2">From idea to posted,<br>in four steps.</h2></div>
+      <p class="intro">You stay in control of what goes out. I handle the planning, design, writing and scheduling.</p>
     </div>
     <div class="g4">
-      <div class="card"><div class="big">01</div><h3>Brand kickoff</h3><p>We learn your goals, customers, offers and voice, and gather your logo, colors and best photos.</p></div>
+      <div class="card"><div class="big">01</div><h3>Brand kickoff</h3><p>I learn your goals, customers, offers and voice, and gather your logo, colors and best photos.</p></div>
       <div class="card"><div class="big">02</div><h3>Monthly calendar</h3><p>You get a calendar of every post for the month, built around your promotions, seasons and local events.</p></div>
-      <div class="card"><div class="big">03</div><h3>Design &amp; approve</h3><p>We design the posts and write captions. You approve or request changes before anything is published.</p></div>
-      <div class="card"><div class="big">04</div><h3>Post &amp; engage</h3><p>We schedule everything, reply to comments and messages, and report what performed best each month.</p></div>
+      <div class="card"><div class="big">03</div><h3>Design &amp; approve</h3><p>I design the posts and write captions. You approve or request changes before anything is published.</p></div>
+      <div class="card"><div class="big">04</div><h3>Post &amp; engage</h3><p>I schedule everything, reply to comments and messages, and report what performed best each month.</p></div>
     </div>
   </div>
 </section>
@@ -472,7 +482,7 @@
     <div>
       <div class="eyebrow">Your business next</div>
       <h2 class="h2">Want a feed like this?</h2>
-      <p class="intro">Start with a free audit. We'll show you where you stand and sketch your first month of content.</p>
+      <p class="intro">Start with a free audit. I'll show you where you stand and sketch your first month of content.</p>
     </div>
     <a class="btn" href="contact.html" style="padding:16px 26px;font-size:17px">Get a free audit</a>
   </div>

@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
 <style>
 .story { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 .story .quote { font-family: "Fraunces", Georgia, serif; font-size: clamp(26px, 3vw, 36px); line-height: 1.25; letter-spacing: -0.02em; font-weight: 500; }
@@ -38,21 +39,24 @@
   </div>
 </nav>
 <main>
-<header class="page-head">
+<header class="page-head split">
   <div class="wrap">
-    <div class="eyebrow">About</div>
-    <h1>Local marketing, done honestly.</h1>
-    <p class="intro">Karla's Agency is a small, hands-on marketing studio for locally owned businesses. You work directly with Karla, from your first audit to every monthly report.</p>
+    <div>
+      <div class="eyebrow rise">About</div>
+      <h1 class="rise" style="--d:.1s">Local marketing, done honestly.</h1>
+      <p class="intro rise" style="--d:.2s">Karla's Agency is a one-person marketing studio for locally owned businesses. You work directly with me, Karla, from your first audit to every monthly report.</p>
+    </div>
+    <div class="ph rise" style="--d:.2s"><img src="https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&q=75&w=700" srcset="https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&q=75&w=350 350w, https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&q=75&w=700 700w, https://images.unsplash.com/photo-1531346878377-a5be20888e57?auto=format&fit=crop&q=75&w=1120 1120w" sizes="(max-width: 700px) 100vw, 700px" alt="Open notebook next to a keyboard and pen" loading="lazy" decoding="async"></div>
   </div>
 </header>
 
-<section style="padding-top:8px">
+<section style="padding-top:24px">
   <div class="wrap story">
-    <p class="quote">Small businesses are great at what they do. They just don't have time to <em>also</em> be marketers. That's where we come in.</p>
-    <div class="txt">
+    <p class="quote reveal">Small businesses are great at what they do. They just don't have time to <em>also</em> be marketers. That's where I come in.</p>
+    <div class="txt reveal" style="--d:.1s">
       <p>Most local business owners know they should post more, ask for reviews and keep their Google profile current. The problem is time. Between serving customers, managing staff and running the business, marketing slips to the bottom of the list.</p>
-      <p>Karla's Agency takes that work off your plate and does it consistently, every month. We focus on the few things that actually bring local customers in, explain everything in plain English, and keep you in control of your accounts and your brand.</p>
-      <p>The agency is built on a proven model and guided by a mentor with more than 15 years in digital marketing for hotels and local businesses. You get one person's full attention, with an established playbook behind it.</p>
+      <p>I take that work off your plate and do it consistently, every month. I focus on the few things that actually bring local customers in, explain everything in plain English, and keep you in control of your accounts and your brand.</p>
+      <p>My agency is built on a proven model and guided by a mentor with more than 15 years in digital marketing for hotels and local businesses. You get one person's full attention, with an established playbook behind it.</p>
     </div>
   </div>
 </section>
@@ -61,13 +65,13 @@
   <div class="wrap">
     <div class="eyebrow">Our promises</div>
     <h2 class="h2" style="margin-bottom:36px">What you can count on.</h2>
-    <div class="promise">
-      <div><i>1</i><div><h3>We'll be honest</h3><p>We won't promise rankings, follower counts or results we can't control. We'll tell you what's realistic.</p></div></div>
-      <div><i>2</i><div><h3>We'll be consistent</h3><p>Your content goes out on schedule, every week, every month.</p></div></div>
-      <div><i>3</i><div><h3>We'll be clear</h3><p>Every month you'll know what we did, what changed and what's next.</p></div></div>
+    <div class="promise reveal">
+      <div><i>1</i><div><h3>I'll be honest</h3><p>I won't promise rankings, follower counts or results I can't control. I'll tell you what's realistic.</p></div></div>
+      <div><i>2</i><div><h3>I'll be consistent</h3><p>Your content goes out on schedule, every week, every month.</p></div></div>
+      <div><i>3</i><div><h3>I'll be clear</h3><p>Every month you'll know what I did, what changed and what's next.</p></div></div>
       <div><i>4</i><div><h3>You'll own everything</h3><p>Accounts, content, photos and website stay in your name, always.</p></div></div>
-      <div><i>5</i><div><h3>We'll keep it genuine</h3><p>Real reviews from real customers, and content that represents your business accurately.</p></div></div>
-      <div><i>6</i><div><h3>We'll respect your time</h3><p>Quick approvals, short check-ins and no unnecessary meetings.</p></div></div>
+      <div><i>5</i><div><h3>I'll keep it genuine</h3><p>Real reviews from real customers, and content that represents your business accurately.</p></div></div>
+      <div><i>6</i><div><h3>I'll respect your time</h3><p>Quick approvals, short check-ins and no unnecessary meetings.</p></div></div>
     </div>
   </div>
 </section>
@@ -79,9 +83,9 @@
       <h2 class="h2">Your first 90 days.</h2>
       <p class="intro">Here's what to expect from the day you request your audit.</p>
     </div>
-    <ol class="timeline">
-      <li><div class="when">Week 1</div><h3>Free audit &amp; call</h3><p>We review your online presence and walk you through what we found, with a recommended package and price.</p></li>
-      <li><div class="when">Week 2</div><h3>Kickoff</h3><p>A one-hour session to learn your goals, customers and voice. We collect logins, photos and brand files.</p></li>
+    <ol class="timeline reveal">
+      <li><div class="when">Week 1</div><h3>Free audit &amp; call</h3><p>I review your online presence and walk you through what I found, with a recommended package and price.</p></li>
+      <li><div class="when">Week 2</div><h3>Kickoff</h3><p>A one-hour session to learn your goals, customers and voice. I collect logins, photos and brand files.</p></li>
       <li><div class="when">Weeks 2–4</div><h3>Setup</h3><p>Profiles cleaned up, templates designed, review system set up and your first content calendar sent for approval.</p></li>
       <li><div class="when">Month 2</div><h3>Steady rhythm</h3><p>Content goes out weekly, reviews get replies and your first monthly report arrives.</p></li>
       <li><div class="when">Month 3</div><h3>Review &amp; refine</h3><p>We look at what's working, adjust the plan, and decide together what to focus on next.</p></li>
@@ -92,20 +96,20 @@
 <section class="alt">
   <div class="wrap">
     <div class="sec-head">
-      <div><div class="eyebrow">Behind the scenes</div><h2 class="h2">How we get it done.</h2></div>
+      <div><div class="eyebrow">Behind the scenes</div><h2 class="h2">How I get it done.</h2></div>
       <p class="intro">Professional tools and trusted specialists, so you get agency-level work at a small-business price.</p>
     </div>
-    <div class="g3">
+    <div class="g3 reveal">
       <div class="card"><h3>Modern tools</h3><p>Scheduling, design, CRM and reporting tools keep every client organized, plus AI to speed up research and drafts, always reviewed by a person.</p></div>
-      <div class="card"><h3>Trusted specialists</h3><p>For advanced website development and complex ad campaigns, we bring in experienced freelancers and manage the work for you.</p></div>
-      <div class="card"><h3>One point of contact</h3><p>No matter who's helping behind the scenes, you deal with one person who knows your business.</p></div>
+      <div class="card"><h3>Trusted specialists</h3><p>For advanced website development and complex ad campaigns, I bring in experienced freelancers and manage the work for you.</p></div>
+      <div class="card"><h3>One point of contact</h3><p>No matter who's helping behind the scenes, you deal with me, the person who knows your business.</p></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="cta-band">
+    <div class="cta-band reveal">
       <div><h2>Let's talk about your business.</h2><p>Start with a free audit and an honest conversation about what would help most.</p></div>
       <a class="btn" href="contact.html">Get a free audit</a>
     </div>

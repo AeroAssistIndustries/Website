@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js')</script>
 <style>
 .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); margin-top: 8px; }
 .flow > div { padding: 26px; background: var(--card); border-right: 1px solid var(--line); }
@@ -51,20 +52,23 @@
   </div>
 </nav>
 <main>
-<header class="page-head">
+<header class="page-head split">
   <div class="wrap">
-    <div class="eyebrow">Services</div>
-    <h1>Everything a local business needs online.</h1>
-    <p class="intro">Start with the essentials and add more as you grow. Every service is delivered monthly, reported clearly, and set up in accounts you own.</p>
+    <div>
+    <div class="eyebrow rise">Services</div>
+    <h1 class="rise" style="--d:.1s">Everything a local business needs online.</h1>
+    <p class="intro rise" style="--d:.2s">Start with the essentials and add more as you grow. Every service is delivered monthly, reported clearly, and set up in accounts you own.</p>
     <div class="jump">
       <a class="chip" href="#gbp">Google Business Profile</a><a class="chip" href="#social">Social media</a><a class="chip" href="#reviews">Reputation</a><a class="chip" href="#seo">Local SEO</a><a class="chip" href="#web">Websites</a><a class="chip" href="#ads">Advertising</a><a class="chip" href="#email">Email</a><a class="chip" href="#leads">Lead generation</a><a class="chip" href="#ai-content">AI-powered content</a><a class="chip" href="#ai-search">AI search visibility</a>
     </div>
+    </div>
+    <div class="ph rise" style="--d:.25s"><img src="https://images.unsplash.com/photo-1564697364552-7f25dd160f2f?auto=format&fit=crop&q=75&w=700" srcset="https://images.unsplash.com/photo-1564697364552-7f25dd160f2f?auto=format&fit=crop&q=75&w=350 350w, https://images.unsplash.com/photo-1564697364552-7f25dd160f2f?auto=format&fit=crop&q=75&w=700 700w, https://images.unsplash.com/photo-1564697364552-7f25dd160f2f?auto=format&fit=crop&q=75&w=1120 1120w" sizes="(max-width: 700px) 100vw, 700px" alt="Person photographing a plate of food with a phone" loading="lazy" decoding="async"></div>
   </div>
 </header>
 
 <section style="padding-top:8px">
   <div class="wrap">
-    <div class="flow">
+    <div class="flow reveal">
       <div><div class="st">Get found.</div><p>Show up when people nearby search for what you offer, on Google, Maps and AI assistants.</p><div class="chips"><a class="chip" href="#gbp">Google profile</a><a class="chip" href="#seo">Local SEO</a><a class="chip" href="#ai-search">AI search</a></div></div>
       <div><div class="st">Get chosen.</div><p>Look like the obvious choice with great reviews, an active feed and a website that answers questions.</p><div class="chips"><a class="chip" href="#reviews">Reviews</a><a class="chip" href="#social">Social</a><a class="chip" href="#web">Website</a></div></div>
       <div><div class="st">Get booked.</div><p>Turn interest into calls, bookings and repeat visits with ads, email and lead follow-up.</p><div class="chips"><a class="chip" href="#ads">Ads</a><a class="chip" href="#email">Email</a><a class="chip" href="#leads">Lead gen</a></div></div>
@@ -74,11 +78,11 @@
 
 <div class="wrap">
 
-  <article class="svc" id="gbp">
+  <article class="svc reveal" id="gbp">
     <div>
       <div class="num">01 · GET FOUND</div>
       <h2>Google Business Profile <span class="tag">Core</span></h2>
-      <p class="lede">Your Google profile is often the first thing a customer sees. We make it complete, accurate and active, so you show up in local searches and on Google Maps.</p>
+      <p class="lede">Your Google profile is often the first thing a customer sees. I make it complete, accurate and active, so you show up in local searches and on Google Maps.</p>
       <div class="best"><b>Best for</b>Any business that serves customers locally, especially restaurants, salons, clinics and contractors.</div>
       <div class="where"><span class="chip">Google Search</span><span class="chip">Google Maps</span></div>
     </div>
@@ -89,37 +93,37 @@
     </div>
   </article>
 
-  <article class="svc" id="social">
+  <article class="svc reveal" id="social">
     <div>
       <div class="num">02 · GET CHOSEN</div>
       <h2>Social Media Management <span class="tag">Core</span></h2>
-      <p class="lede">A steady, on-brand feed that gives people a reason to follow, visit and come back. We plan it, design it, write it and post it.</p>
+      <p class="lede">A steady, on-brand feed that gives people a reason to follow, visit and come back. I plan it, design it, write it and post it.</p>
       <div class="best"><b>Best for</b>Businesses where looks, atmosphere or personality sell: food, beauty, hospitality, retail and fitness.</div>
       <div class="where"><span class="chip">Instagram</span><span class="chip">Facebook</span><span class="chip">TikTok</span><span class="chip">LinkedIn</span></div>
     </div>
     <div class="panels">
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Profile and bio refresh</li><li>Brand templates for posts and Stories</li><li>Content pillars and posting rhythm</li><li>Hashtag and local tag research</li></ul></div>
       <div class="card"><h3>Every month</h3><ul class="ticks"><li>Content calendar for approval</li><li>Designed posts and carousels</li><li>Reel and TikTok shot lists</li><li>Captions in your voice</li><li>Scheduling and comment replies</li></ul></div>
-      <div class="card wide"><h3>See it in action</h3><p>Browse sample feeds for a café, a salon, a hotel, a dental office and a roofer on our <a href="social.html" style="color:#fff">social media examples page →</a></p></div>
+      <div class="card wide"><h3>See it in action</h3><p>Browse sample feeds for a café, a salon, a hotel, a dental office and a roofer on my <a href="social.html" style="color:#fff">social media examples page →</a></p></div>
     </div>
   </article>
 
-  <article class="svc" id="reviews">
+  <article class="svc reveal" id="reviews">
     <div>
       <div class="num">03 · GET CHOSEN</div>
       <h2>Reputation Management <span class="tag">Core</span></h2>
-      <p class="lede">Reviews are today's word of mouth. We help you earn more genuine reviews from happy customers and reply thoughtfully to every one.</p>
+      <p class="lede">Reviews are today's word of mouth. I help you earn more genuine reviews from happy customers and reply thoughtfully to every one.</p>
       <div class="best"><b>Best for</b>Any business where customers compare options before choosing, which is nearly all of them.</div>
       <div class="where"><span class="chip">Google</span><span class="chip">Facebook</span><span class="chip">Yelp</span><span class="chip">TripAdvisor</span></div>
     </div>
     <div class="panels">
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Simple review links and QR codes</li><li>Follow-up text and email templates</li><li>Counter cards or table tents</li><li>Response guidelines in your voice</li></ul></div>
       <div class="card"><h3>Every month</h3><ul class="ticks"><li>Replies to every new review</li><li>Alerts for negative reviews</li><li>Review request reminders</li><li>Rating and volume tracking</li></ul></div>
-      <div class="card wide"><h3>Our approach</h3><p>We only ask real customers for honest reviews. We never buy reviews, write fake ones or filter out unhappy customers. That keeps your profile trustworthy and within platform rules.</p></div>
+      <div class="card wide"><h3>My approach</h3><p>I only ask real customers for honest reviews. I never buy reviews, write fake ones or filter out unhappy customers. That keeps your profile trustworthy and within platform rules.</p></div>
     </div>
   </article>
 
-  <article class="svc" id="seo">
+  <article class="svc reveal" id="seo">
     <div>
       <div class="num">04 · GET FOUND</div>
       <h2>Local SEO</h2>
@@ -133,7 +137,7 @@
     </div>
   </article>
 
-  <article class="svc" id="web">
+  <article class="svc reveal" id="web">
     <div>
       <div class="num">05 · GET CHOSEN</div>
       <h2>Website Design &amp; Care</h2>
@@ -147,7 +151,7 @@
     </div>
   </article>
 
-  <article class="svc" id="ads">
+  <article class="svc reveal" id="ads">
     <div>
       <div class="num">06 · GET BOOKED</div>
       <h2>Digital Advertising</h2>
@@ -158,11 +162,11 @@
     <div class="panels">
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Goals and budget plan</li><li>Audience and keyword targeting</li><li>Ad copy and creative</li><li>Call and form tracking</li></ul></div>
       <div class="card"><h3>Every month</h3><ul class="ticks"><li>Bid and budget adjustments</li><li>New ad variations tested</li><li>Wasted spend cut</li><li>Cost per lead in your report</li></ul></div>
-      <div class="card wide"><h3>About ad spend</h3><p>Your ad budget is paid directly to Google or Meta from your own account. Our fee covers managing the campaigns, so you always see exactly where every dollar goes.</p></div>
+      <div class="card wide"><h3>About ad spend</h3><p>Your ad budget is paid directly to Google or Meta from your own account. My fee covers managing the campaigns, so you always see exactly where every dollar goes.</p></div>
     </div>
   </article>
 
-  <article class="svc" id="email">
+  <article class="svc reveal" id="email">
     <div>
       <div class="num">07 · GET BOOKED</div>
       <h2>Email Marketing</h2>
@@ -176,7 +180,7 @@
     </div>
   </article>
 
-  <article class="svc" id="leads">
+  <article class="svc reveal" id="leads">
     <div>
       <div class="num">08 · GET BOOKED</div>
       <h2>Lead Generation</h2>
@@ -185,17 +189,17 @@
       <div class="where"><span class="chip">Landing pages</span><span class="chip">Forms</span><span class="chip">Follow-up</span></div>
     </div>
     <div class="panels">
-      <div class="card"><h3>What we build</h3><ul class="ticks"><li>Offer-focused landing pages</li><li>Quote and booking forms</li><li>Lead tracking in a simple CRM</li></ul></div>
-      <div class="card"><h3>What we manage</h3><ul class="ticks"><li>Instant follow-up messages</li><li>Lead quality review</li><li>Leads and bookings reported monthly</li></ul></div>
+      <div class="card"><h3>What I build</h3><ul class="ticks"><li>Offer-focused landing pages</li><li>Quote and booking forms</li><li>Lead tracking in a simple CRM</li></ul></div>
+      <div class="card"><h3>What I manage</h3><ul class="ticks"><li>Instant follow-up messages</li><li>Lead quality review</li><li>Leads and bookings reported monthly</li></ul></div>
     </div>
   </article>
 
-  <article class="svc" id="ai-content">
+  <article class="svc reveal" id="ai-content">
     <div>
       <div class="num">09 · BEHIND THE SCENES</div>
       <h2>AI-Powered Marketing</h2>
-      <p class="lede">We use modern AI tools to research, draft and analyze faster, then review every piece by hand so it's accurate and sounds like you.</p>
-      <div class="best"><b>Best for</b>Every client. It's how we keep quality high and prices fair.</div>
+      <p class="lede">I use modern AI tools to research, draft and analyze faster, then review every piece by hand so it's accurate and sounds like you.</p>
+      <div class="best"><b>Best for</b>Every client. It's how I keep quality high and prices fair.</div>
     </div>
     <div class="panels">
       <div class="card"><h3>Where AI helps</h3><ul class="ticks"><li>Content ideas and first drafts</li><li>Competitor and keyword research</li><li>Report summaries</li></ul></div>
@@ -203,17 +207,17 @@
     </div>
   </article>
 
-  <article class="svc" id="ai-search">
+  <article class="svc reveal" id="ai-search">
     <div>
       <div class="num">10 · GET FOUND</div>
       <h2>AI Search Visibility</h2>
-      <p class="lede">More people now ask AI assistants for recommendations. We organize your business information so those tools can find you and describe you accurately.</p>
+      <p class="lede">More people now ask AI assistants for recommendations. I organize your business information so those tools can find you and describe you accurately.</p>
       <div class="best"><b>Best for</b>Businesses that want to stay ahead of how customers search next.</div>
       <div class="where"><span class="chip">ChatGPT</span><span class="chip">Google AI Overviews</span><span class="chip">Claude</span><span class="chip">Perplexity</span></div>
     </div>
     <div class="panels">
-      <div class="card"><h3>What we do</h3><ul class="ticks"><li>Consistent facts across the web</li><li>Clear FAQ and service pages</li><li>Structured data on your site</li></ul></div>
-      <div class="card"><h3>What we check</h3><ul class="ticks"><li>How AI tools describe you today</li><li>Missing or wrong information</li><li>Changes over time</li></ul></div>
+      <div class="card"><h3>What I do</h3><ul class="ticks"><li>Consistent facts across the web</li><li>Clear FAQ and service pages</li><li>Structured data on your site</li></ul></div>
+      <div class="card"><h3>What I check</h3><ul class="ticks"><li>How AI tools describe you today</li><li>Missing or wrong information</li><li>Changes over time</li></ul></div>
     </div>
   </article>
 
@@ -221,8 +225,8 @@
 
 <section style="padding-top:24px">
   <div class="wrap">
-    <div class="cta-band">
-      <div><h2>Not sure where to start?</h2><p>Our free audit shows which services would make the biggest difference for your business right now.</p></div>
+    <div class="cta-band reveal">
+      <div><h2>Not sure where to start?</h2><p>My free audit shows which services would make the biggest difference for your business right now.</p></div>
       <a class="btn" href="contact.html">Get a free audit</a>
     </div>
   </div>

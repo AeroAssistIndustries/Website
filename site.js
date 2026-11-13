@@ -1,4 +1,13 @@
 (function () {
+  // Scroll reveal (content stays visible if anything fails)
+  var rv = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    rv.forEach(function (el) { io.observe(el); });
+  } else { rv.forEach(function (el) { el.classList.add('in'); }); }
+
   // Mobile menu
   var mb = document.querySelector('.menu-btn'), nl = document.getElementById('navlist');
   if (mb && nl) mb.addEventListener('click', function () {
