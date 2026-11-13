@@ -17,7 +17,7 @@ Static site for Karla's Agency, a local digital marketing agency.
 - `style.css`, `site.js` — shared styles and scripts
 - `build.py` — wraps each page with the shared nav and footer and writes the finished site to `docs/`
 
-Run `python3 build.py` after editing, then deploy the `docs/` folder (Cloudflare Pages: build output directory `dist`).
+Run `python3 build.py` after editing. GitHub Pages serves the `docs/` folder from the `karlas-agency` branch.
 
 ## Before launch
 - Replace the placeholder email `hello@karlasagency.com` (in `build.py`, `site.js` and `src/`).
