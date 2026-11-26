@@ -197,6 +197,30 @@
 
   if (document.querySelector('[data-m]')) setBilling(yearly);
 
+  // ---------- Customer value calculator ----------
+  var calcEl = document.getElementById('calc');
+  if (calcEl) {
+    var val = function (id) { var v = parseFloat(document.getElementById(id).value); return isFinite(v) && v > 0 ? v : 0; };
+    var cash = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+    var runCalc = function () {
+      var spend = val('v-spend'), visits = val('v-visits'), years = val('v-years'), margin = Math.min(val('v-margin'), 100) / 100;
+      var plan = +document.getElementById('v-plan').value;
+      var rev = spend * visits * years, profit = rev * margin;
+      document.getElementById('v-rev').textContent = cash(rev);
+      document.getElementById('v-ltv').textContent = cash(profit);
+      var need = profit ? plan / profit : 0, needEl = document.getElementById('v-need'), note = document.getElementById('v-note');
+      needEl.textContent = !profit ? '–' : need < 1 ? 'Under 1' : (Math.round(need * 10) / 10).toString();
+      if (!profit) { note.textContent = 'Fill in your numbers to see the result.'; return; }
+      var every = Math.round(1 / need);
+      note.textContent = need < 1
+        ? 'One new customer every ' + (every > 1 ? every + ' months' : 'month') + ' would cover this plan. Everything beyond that is growth.'
+        : 'About ' + Math.ceil(need) + ' new customer' + (Math.ceil(need) > 1 ? 's' : '') + ' a month would cover this plan, out of everyone who finds you on Google, social media and your website.';
+    };
+    calcEl.addEventListener('input', runCalc);
+    calcEl.addEventListener('change', runCalc);
+    runCalc();
+  }
+
   // Prefill the audit form with a chosen plan
   var msgBox = document.getElementById('c-msg');
   if (msgBox) { try { var pl = sessionStorage.getItem('ka-plan'); if (pl && !msgBox.value) msgBox.value = 'Interested in: ' + pl; } catch (e) {} }

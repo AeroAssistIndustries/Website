@@ -5,6 +5,23 @@
 .proj .card h3 small { font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
 .price-head .wrap { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; }
 .price-head .facts { display: grid; gap: 10px; }
+.calc { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; align-items: stretch; }
+.calc-in { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 26px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto auto 1fr; gap: 16px 18px; }
+.cf { display: grid; gap: 8px; font-size: 14px; font-weight: 600; }
+.cf.wide { grid-column: 1 / -1; }
+.cf-row { display: flex; align-items: center; gap: 8px; font-size: 18px; font-weight: 600; background: var(--paper); border: 1.5px solid var(--line); border-radius: 14px; padding: 0 14px; }
+.cf-row input { border: 0; background: transparent; padding: 12px 0; font-size: 20px; font-weight: 600; font-family: var(--display); }
+.cf-row input:focus { background: transparent; }
+.cf-row:focus-within { border-color: var(--ink); background: #fff; }
+.calc-out { background: radial-gradient(120% 120% at 100% 0%, #2f343c, var(--ink) 60%); color: #fff; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 18px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
+.co-big b { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(54px, 6vw, 76px); line-height: 1; background: var(--metal-text); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: lining-nums; }
+.co-big span, .co-row span { color: #aeb4bd; font-size: 14.5px; }
+.co-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border-top: 1px solid #2f333a; padding-top: 16px; }
+.co-row b { display: block; font-family: var(--display); font-size: 36px; font-weight: 600; font-variant-numeric: lining-nums; }
+.co-note { color: #cfd3d9; font-size: 15px; }
+.calc-out .btn { background: var(--metal); color: var(--ink); align-self: flex-start; margin-top: auto; }
+@media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .calc-in { grid-template-columns: 1fr; } }
 .price-head .pr-ph { aspect-ratio: 16 / 9; border-radius: 20px; padding: 0; display: block; border: 0; }
 .price-head .facts div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; gap: 12px; align-items: center; font-size: 15px; }
 .price-head .facts b { font-family: var(--display); font-size: 24px; color: var(--accent); min-width: 64px; letter-spacing: -0.01em; }
@@ -34,6 +51,39 @@
   <div class="wrap reveal">
     {{packages}}
     <p class="pk-note" style="margin-top:22px;color:var(--muted);font-size:15px">Prices are per month for one location. Ad spend is paid directly to Google or Meta. The Website Growth and Pro plans include a new site with a 12-month plan instead of an upfront build fee.</p>
+  </div>
+</section>
+
+<section id="value" class="value-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">Is it worth it?</div><h2 class="h2">What is one new customer<br>worth to you?</h2></div>
+      <p class="intro">Put in your own numbers. Most local businesses are surprised how few new customers it takes to cover their marketing.</p>
+    </div>
+    <div class="calc reveal" id="calc">
+      <div class="calc-in">
+        <label class="cf"><span>Average spend per visit</span><span class="cf-row">$<input type="number" id="v-spend" min="1" step="1" value="45" inputmode="decimal"></span></label>
+        <label class="cf"><span>Visits per customer per year</span><span class="cf-row"><input type="number" id="v-visits" min="1" step="1" value="12" inputmode="numeric"></span></label>
+        <label class="cf"><span>Years a typical customer stays</span><span class="cf-row"><input type="number" id="v-years" min="0.5" step="0.5" value="2" inputmode="decimal"></span></label>
+        <label class="cf"><span>Profit margin</span><span class="cf-row"><input type="number" id="v-margin" min="1" max="100" step="1" value="40" inputmode="numeric">%</span></label>
+        <label class="cf wide"><span>Compare with a plan</span>
+          <select id="v-plan">
+            <option value="250">One service, Essentials · $250/mo</option>
+            <option value="595" selected>All-in-One Starter · $595/mo</option>
+            <option value="650">Social media, Growth · $650/mo</option>
+            <option value="1720">Complete Growth · $1,720/mo</option>
+          </select></label>
+        <p class="calc-how"><b>How it works:</b> spend per visit × visits a year × years = sales from one customer. Sales × your profit margin = what that customer is really worth. Then we compare it with the monthly plan.</p>
+      </div>
+      <div class="calc-out" aria-live="polite">
+        <span class="metal-label">Your numbers</span>
+        <div class="co-big"><b id="v-ltv">$0</b><span>profit from one new customer over time</span></div>
+        <div class="co-row"><div><b id="v-rev">$0</b><span>in sales from that customer</span></div><div><b id="v-need">0</b><span>new customers a month to cover the plan</span></div></div>
+        <p class="co-note" id="v-note"></p>
+        <a class="btn" href="contact.html#top">See how I'd bring them in</a>
+      </div>
+    </div>
+    <p class="pk-note reveal" style="margin-top:14px;color:var(--muted);font-size:14px">An estimate to help you think it through, not a promise of results. Your free audit looks at your real situation.</p>
   </div>
 </section>
 

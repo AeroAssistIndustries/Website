@@ -1,0 +1,38 @@
+"""The Guides library: one entry per article. Article bodies live in src/guides/<slug>.html."""
+
+AUTHOR = "Karla"
+GUIDES = [
+    {"slug": "guide-google-reviews", "tag": "Reputation", "minutes": 7, "date": "2026-11-26",
+     "title": "How to get more Google reviews, the right way",
+     "desc": "A simple, rule-following system for earning more genuine Google reviews and replying to every one.",
+     "photo": ("1556742049-0cfed4f6a45d", "A smiling customer talking with a shop owner at the counter"),
+     "takeaways": ["Ask every customer, not just the happy ones, and never offer anything in return.",
+                   "Make it one tap: a short review link and a QR card at the counter.",
+                   "Reply to every review within two days, good or bad.",
+                   "Fake, bought or incentivized reviews can cost you your profile and break federal rules."]},
+    {"slug": "guide-google-business-profile", "tag": "Local SEO", "minutes": 6, "date": "2026-11-26",
+     "title": "The 20-minute Google Business Profile tune-up",
+     "desc": "The settings that decide whether you show up on Google Maps, and how to fix each one in an afternoon.",
+     "photo": ("1764395294670-22fc367f3119", "A small storefront with awnings and window displays"),
+     "takeaways": ["Your primary category matters more than almost anything else on the profile.",
+                   "Use your real-world business name. Adding keywords can get a profile suspended.",
+                   "Keep hours, holiday hours and your website link accurate.",
+                   "Fresh photos and a short weekly post show Google and customers you're open and active."]},
+    {"slug": "guide-social-media-posting", "tag": "Social media", "minutes": 6, "date": "2026-11-26",
+     "title": "How often should a local business post on social media?",
+     "desc": "A realistic weekly rhythm, five content ideas that never run dry, and what to measure instead of likes.",
+     "photo": ("1507914372368-b2b085b925a1", "A smiling barista holding a portafilter in a coffee shop"),
+     "takeaways": ["Consistency beats volume. Three good posts a week is a strong start.",
+                   "Rotate five content pillars so you never stare at a blank screen.",
+                   "Plan a month at a time and batch your photos and videos.",
+                   "Measure calls, bookings, direction requests and messages, not just likes."]},
+    {"slug": "guide-marketing-to-visitors", "tag": "A worldly eye", "minutes": 7, "date": "2026-11-26",
+     "title": "How to win customers who are just visiting",
+     "desc": "Tourists, business travelers and new arrivals find local businesses differently. Here's how to show up for them.",
+     "photo": ("1534777367038-9404f45b869a", "A traveler with a backpack walking toward a landmark"),
+     "takeaways": ["Visitors decide on their phones, often before they arrive.",
+                   "Google Maps is the front door for most travelers, so make your profile work in any language.",
+                   "Some visitors plan on other apps entirely. Learn which ones your guests use.",
+                   "Small touches, like a translated menu or a WhatsApp number, win big."]},
+]
+BY_SLUG = {g["slug"]: g for g in GUIDES}
