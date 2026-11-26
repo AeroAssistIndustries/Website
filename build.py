@@ -19,7 +19,7 @@ PAGES = {
     "social.html":        ("Social Media Examples · Digital Terra", "Sample social media posts, Reels and content calendars for local businesses.", "social"),
     "about.html":         ("About · Digital Terra", "Meet Karla, a well-traveled founder bringing a worldly eye to local marketing.", "about"),
     "faq.html":           ("FAQ · Digital Terra", "Answers about plans, pricing, contracts, accounts, reporting and how working with Digital Terra works.", "faq"),
-    "resources.html":     ("Guides & Free Tools · Digital Terra", "Plain-English guides to Google reviews, your Google Business Profile, social media and reaching visitors, plus free marketing tools.", "resources"),
+    "resources.html":     ("Guides & Free Tools · Digital Terra", "Plain-English guides to Google reviews, your Google Business Profile, social media, websites and reaching visitors, plus free marketing tools.", "resources"),
     "checklist.html":     ("Google Business Profile Checklist · Digital Terra", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
     "contact.html":       ("Free Marketing Audit · Digital Terra", "Request a free marketing audit and website speed check from Digital Terra.", "contact"),
     "terms.html":         ("Terms of Service · Digital Terra", "The terms that apply to using this website and to Digital Terra's marketing services.", "legal"),
@@ -85,14 +85,26 @@ def head(fname, title, desc, style, active, extra_ld=""):
 <a class="skip" href="#main">Skip to content</a>
 """
 
-def nav(active):
-    items = "".join(
-        f'<li><a href="{h}"{" aria-current=\"page\"" if k == active else ""}>{t}</a></li>' for h, t, k in NAV)
+SUBNAV = [("social-media-management.html", "Social media management", "Posts, Reels and replies"),
+          ("local-seo.html", "Local SEO", "Google, Maps and AI search"),
+          ("reputation-management.html", "Reputation management", "More reviews, every one answered"),
+          ("website-design.html", "Websites", "Fast sites that bring in bookings")]
+
+def nav(active, fname=""):
+    def item(h, t, k):
+        cur = " aria-current=\"page\"" if k == active else ""
+        if h != "services.html":
+            return f'<li><a href="{h}"{cur}>{t}</a></li>'
+        sub = "".join(f'<li><a href="{sh}"{" aria-current=\"page\"" if sh == fname else ""}><b>{st}</b><small>{sd}</small></a></li>' for sh, st, sd in SUBNAV)
+        return (f'<li class="has-sub"><a href="{h}"{cur}>{t}</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show services">'
+                f'<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
+                f'<ul class="sub">{sub}<li class="sub-all"><a href="services.html">All services and add-ons →</a></li></ul></li>')
+    items = "".join(item(h, t, k) for h, t, k in NAV)
     return f"""<nav class="nav" aria-label="Main">
   <div class="wrap">
     <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Terra" width="179" height="52"></a>
-    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
-    <ul id="navlist">{items}<li><a class="btn" href="contact.html">Free audit</a></li></ul>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist"><span class="mb-ic" aria-hidden="true"><i></i><i></i></span><span class="mb-t">Menu</span></button>
+    <ul id="navlist">{items}<li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:{EMAIL}">{EMAIL}</a><span>Local roots. Worldly reach.</span></li></ul>
   </div>
 </nav>
 """
@@ -135,7 +147,8 @@ def img(m):
 
 def guide_cards(exclude=None, limit=None):
     items = [g for g in guides.GUIDES if g["slug"] != exclude][:limit]
-    return '<div class="g-cards">' + "".join(
+    cls = "g-cards g5" if len(items) == 5 else "g-cards"
+    return f'<div class="{cls}">' + "".join(
         f'<a class="g-card" href="{g["slug"]}.html"><div class="ph">{{{{img:{g["photo"][0]}:640:{g["photo"][1]}}}}}</div>'
         f'<div class="g-body"><span class="g-tag">{g["tag"]} · {g["minutes"]} min read</span><h3>{esc(g["title"])}</h3><p>{esc(g["desc"])}</p><span class="g-go">Read the guide →</span></div></a>'
         for g in items) + "</div>"
@@ -314,7 +327,7 @@ for fname, (title, desc, active) in PAGES.items():
     extra = guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (faq_ld(body) if fname in ("faq.html",) else "")
     mcta = "" if active in ("contact", "legal", "404") else '<a class="btn mcta" href="contact.html">Get a free marketing audit</a>\n'
     with open(os.path.join(DIST, fname), "w") as f:
-        f.write(head(fname, title, desc, styles, active, extra) + nav("resources" if active == "guide" else active) + '<main id="main">\n' + body + "\n</main>\n"
+        f.write(head(fname, title, desc, styles, active, extra) + nav("resources" if active == "guide" else active, fname) + '<main id="main">\n' + body + "\n</main>\n"
                 + FOOTER.replace("__JSV__", ver("site.js")).replace("__MCTA__", mcta))
 
 for asset in ["style.css", "site.js"]:

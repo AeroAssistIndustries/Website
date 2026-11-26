@@ -9,10 +9,36 @@
   } else { rv.forEach(function (el) { el.classList.add('in'); }); }
 
   // Mobile menu
-  var mb = document.querySelector('.menu-btn'), nl = document.getElementById('navlist');
-  if (mb && nl) mb.addEventListener('click', function () {
-    var open = nl.classList.toggle('open');
+  var mb = document.querySelector('.menu-btn'), nl = document.getElementById('navlist'), navEl = document.querySelector('.nav');
+  function setMenu(open) {
+    if (!mb || !nl) return;
+    if (navEl) document.documentElement.style.setProperty('--navh', navEl.getBoundingClientRect().height + 'px');
+    nl.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
     mb.setAttribute('aria-expanded', String(open));
+    var t = mb.querySelector('.mb-t'); if (t) t.textContent = open ? 'Close' : 'Menu';
+  }
+  if (mb && nl) {
+    mb.addEventListener('click', function () { setMenu(!nl.classList.contains('open')); });
+    nl.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        if (nl.classList.contains('open')) { setMenu(false); mb.focus(); }
+        document.querySelectorAll('.has-sub.show').forEach(function (li) { li.classList.remove('show'); li.querySelector('.sub-btn').setAttribute('aria-expanded', 'false'); });
+      }
+    });
+    window.addEventListener('resize', function () { if (window.innerWidth > 960 && nl.classList.contains('open')) setMenu(false); });
+  }
+  // Services dropdown (click/tap toggle; hover handled in CSS on desktop)
+  document.querySelectorAll('.has-sub .sub-btn').forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var li = b.parentNode, open = !li.classList.contains('show');
+      li.classList.toggle('show', open); b.setAttribute('aria-expanded', String(open));
+    });
+  });
+  document.addEventListener('click', function (e) {
+    if (window.innerWidth > 960 && !e.target.closest('.has-sub')) document.querySelectorAll('.has-sub.show').forEach(function (li) { li.classList.remove('show'); li.querySelector('.sub-btn').setAttribute('aria-expanded', 'false'); });
   });
 
   // Audit forms: build an email draft (the page itself has nowhere to send a form)

@@ -34,5 +34,13 @@ GUIDES = [
                    "Google Maps is the front door for most travelers, so make your profile work in any language.",
                    "Some visitors plan on other apps entirely. Learn which ones your guests use.",
                    "Small touches, like a translated menu or a WhatsApp number, win big."]},
+    {"slug": "guide-local-business-website", "tag": "Websites", "minutes": 7, "date": "2026-11-26",
+     "title": "What a local business website really needs",
+     "desc": "The must-haves that turn visitors into calls and bookings, the speed targets that matter, and what you can safely skip.",
+     "photo": ("1531346878377-a5be20888e57", "A laptop keyboard and notebook on a desk"),
+     "takeaways": ["Your site's job is to help people who already found you call, book or visit.",
+                   "Phone number, address, hours and one clear next step belong on every page.",
+                   "Aim for Google's Core Web Vitals: LCP 2.5s or less, INP 200ms or less, CLS 0.1 or less.",
+                   "Make sure your domain and logins are in your business's name."]},
 ]
 BY_SLUG = {g["slug"]: g for g in GUIDES}

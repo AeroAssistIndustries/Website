@@ -80,6 +80,6 @@ PAGES = [
             ("How long does a new site take?", "Most five-page sites launch within three to four weeks of getting your content and photos."),
             ("Can you work on my existing website?", "Yes. The Essentials plan keeps your current site hosted, secure and updated, and I'll tell you honestly if a rebuild would serve you better."),
             ("Can customers book or order online?", "Yes. I connect the booking or ordering tool you already use, or help you choose one. Pro includes the full setup.")],
-   "guide": None},
+   "guide": "guide-local-business-website"},
 ]
 BY_FILE = {p["file"]: p for p in PAGES}
