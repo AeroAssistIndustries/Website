@@ -1,4 +1,4 @@
-/* Digital Terra — local marketing for small businesses.
+/* Digital Mondo — local marketing for small businesses.
    Layout idea: quiet editorial serif headlines on soft paper, ink and graphite for weight, brushed silver for every highlight. */
 :root {
   --paper: #f5f5f3;
@@ -575,7 +575,7 @@ body { font-variant-numeric: lining-nums; } .ctable td, .ctable th, .ticker span
 .calc-how { grid-column: 1 / -1; margin-top: auto; border-top: 1px dashed var(--line); padding-top: 14px; color: var(--muted); font-size: 14px; }
 .calc-how b { color: var(--ink); }
 .logo img { height: 46px; width: auto; } footer .logo img { height: 63px; width: auto; }
-.logo img { height: 52px; } @media (max-width: 700px) { .logo img { height: 46px; } }
+.logo img { height: 56px; } @media (max-width: 700px) { .logo img { height: 48px; } }
 
 /* ===== Service pages ===== */
 .sp-head .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
@@ -663,7 +663,7 @@ body { font-variant-numeric: lining-nums; } .ctable td, .ctable th, .ticker span
 }
 
 /* ===== Horizon motif ===== */
-.cta-band::before { content: ""; position: absolute; width: 420px; height: 420px; right: -110px; bottom: -190px; background: url(assets/terra-mark-reversed.svg) center / contain no-repeat; opacity: .09; pointer-events: none; }
+.cta-band::before { content: ""; position: absolute; width: 420px; height: 420px; right: -110px; bottom: -190px; background: url(assets/mondo-mark-reversed.svg) center / contain no-repeat; opacity: .09; pointer-events: none; }
 .cta-band > * { position: relative; z-index: 1; }
 .horizon { display: block; width: 100%; max-width: 1200px; height: 44px; margin: 0 auto; color: var(--line); }
 footer { position: relative; }

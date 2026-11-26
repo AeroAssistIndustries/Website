@@ -6,33 +6,33 @@ from html import escape as esc
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
 
-# Where the site lives. Change both when it moves to its own domain (e.g. https://digitalterra.com and "/").
+# Where the site lives. Change both when it moves to its own domain (e.g. https://digitalmondo.com and "/").
 SITE_URL = "https://aeroassistindustries.github.io/Website/"
 SITE_PATH = "/Website/"
-EMAIL = "hello@digitalterra.com"
+EMAIL = "hello@digitalmondo.com"
 
 PAGES = {
-    "index.html":         ("Digital Terra · Local Roots. Worldly Reach.", "Social media, local SEO, reputation management and websites for local businesses, from $250 a month. One person, real attention, month to month.", "home"),
-    "services.html":      ("Services · Digital Terra", "Social media management, local SEO, online reputation management and websites for local businesses, each from $250 a month.", "services"),
-    "industries.html":    ("Industries · Digital Terra", "Marketing for hotels, restaurants, salons, real estate, contractors, dental and wellness practices, retail and local services.", "industries"),
-    "pricing.html":       ("Pricing · Digital Terra", "Plans from $250 a month, all four services from $595 a month, combos up to 20% off, and 2 months free when you pay yearly.", "pricing"),
-    "social.html":        ("Social Media Examples · Digital Terra", "Sample social media posts, Reels and content calendars for local businesses.", "social"),
-    "about.html":         ("About · Digital Terra", "Meet Karla, a well-traveled founder bringing a worldly eye to local marketing.", "about"),
-    "faq.html":           ("FAQ · Digital Terra", "Answers about plans, pricing, contracts, accounts, reporting and how working with Digital Terra works.", "faq"),
-    "resources.html":     ("Guides & Free Tools · Digital Terra", "Plain-English guides to Google reviews, your Google Business Profile, social media, websites and reaching visitors, plus free marketing tools.", "resources"),
-    "checklist.html":     ("Google Business Profile Checklist · Digital Terra", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
-    "contact.html":       ("Free Marketing Audit · Digital Terra", "Request a free marketing audit and website speed check from Digital Terra.", "contact"),
-    "terms.html":         ("Terms of Service · Digital Terra", "The terms that apply to using this website and to Digital Terra's marketing services.", "legal"),
-    "privacy.html":       ("Privacy Policy · Digital Terra", "How Digital Terra collects, uses and protects personal information.", "legal"),
-    "accessibility.html": ("Accessibility · Digital Terra", "Digital Terra's commitment to an accessible website, and how to report a barrier.", "legal"),
-    "404.html":           ("Page not found · Digital Terra", "The page you were looking for isn't here.", "404"),
+    "index.html":         ("Digital Mondo · Your Neighborhood, Seen by the World", "Social media, local SEO, reputation management and websites for local businesses, from $250 a month. One person, real attention, month to month.", "home"),
+    "services.html":      ("Services · Digital Mondo", "Social media management, local SEO, online reputation management and websites for local businesses, each from $250 a month.", "services"),
+    "industries.html":    ("Industries · Digital Mondo", "Marketing for hotels, restaurants, salons, real estate, contractors, dental and wellness practices, retail and local services.", "industries"),
+    "pricing.html":       ("Pricing · Digital Mondo", "Plans from $250 a month, all four services from $595 a month, combos up to 20% off, and 2 months free when you pay yearly.", "pricing"),
+    "social.html":        ("Social Media Examples · Digital Mondo", "Sample social media posts, Reels and content calendars for local businesses.", "social"),
+    "about.html":         ("About · Digital Mondo", "Meet Karla, a well-traveled founder bringing a worldly eye to local marketing.", "about"),
+    "faq.html":           ("FAQ · Digital Mondo", "Answers about plans, pricing, contracts, accounts, reporting and how working with Digital Mondo works.", "faq"),
+    "resources.html":     ("Guides & Free Tools · Digital Mondo", "Plain-English guides to Google reviews, your Google Business Profile, social media, websites and reaching visitors, plus free marketing tools.", "resources"),
+    "checklist.html":     ("Google Business Profile Checklist · Digital Mondo", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
+    "contact.html":       ("Free Marketing Audit · Digital Mondo", "Request a free marketing audit and website speed check from Digital Mondo.", "contact"),
+    "terms.html":         ("Terms of Service · Digital Mondo", "The terms that apply to using this website and to Digital Mondo's marketing services.", "legal"),
+    "privacy.html":       ("Privacy Policy · Digital Mondo", "How Digital Mondo collects, uses and protects personal information.", "legal"),
+    "accessibility.html": ("Accessibility · Digital Mondo", "Digital Mondo's commitment to an accessible website, and how to report a barrier.", "legal"),
+    "404.html":           ("Page not found · Digital Mondo", "The page you were looking for isn't here.", "404"),
 }
 
 NAV = [("services.html", "Services", "services"), ("industries.html", "Industries", "industries"),
        ("pricing.html", "Pricing", "pricing"), ("social.html", "Our work", "social"), ("resources.html", "Guides", "resources"), ("about.html", "About", "about")]
 
 SCHEMA = {
-    "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Terra",
+    "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Mondo",
     "url": SITE_URL, "email": EMAIL, "logo": SITE_URL + "assets/logo.svg", "image": SITE_URL + "assets/og-image.png",
     "description": "Social media, local SEO, reputation management and websites for local businesses.",
     "priceRange": "$250–$1,500 per month", "founder": {"@type": "Person", "name": "Karla"},
@@ -65,7 +65,7 @@ def head(fname, title, desc, style, active, extra_ld=""):
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="{"article" if active == "guide" else "website"}">
-<meta property="og:site_name" content="Digital Terra">
+<meta property="og:site_name" content="Digital Mondo">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canon}">
@@ -102,9 +102,9 @@ def nav(active, fname=""):
     items = "".join(item(h, t, k) for h, t, k in NAV)
     return f"""<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Terra" width="179" height="52"></a>
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Mondo" width="209" height="56"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist"><span class="mb-ic" aria-hidden="true"><i></i><i></i></span><span class="mb-t">Menu</span></button>
-    <ul id="navlist">{items}<li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:{EMAIL}">{EMAIL}</a><span>Local roots. Worldly reach.</span></li></ul>
+    <ul id="navlist">{items}<li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:{EMAIL}">{EMAIL}</a><span>Your neighborhood, seen by the world.</span></li></ul>
   </div>
 </nav>
 """
@@ -112,8 +112,8 @@ def nav(active, fname=""):
 FOOTER = f"""<footer>
   <div class="wrap">
     <div class="f-brand">
-      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Digital Terra" width="182" height="63"></a>
-      <p class="f-tag">Local roots. Worldly reach. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Digital Mondo" width="198" height="63"></a>
+      <p class="f-tag">Your neighborhood, seen by the world. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
       <a class="f-mail" href="mailto:{EMAIL}">{EMAIL}</a>
       <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>
     </div>
@@ -129,8 +129,8 @@ FOOTER = f"""<footer>
       <h4>Free tools</h4>
       <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="resources.html">Guides</a></li></ul>
     </div>
-    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Terra LLC is an independent marketing agency.</div>
-    <div class="legal"><span>© 2026 Digital Terra LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
+    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Mondo LLC is an independent marketing agency.</div>
+    <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
   </div>
 </footer>
 __MCTA__<script src="site.js?v=__JSV__"></script>
@@ -166,7 +166,7 @@ def guide_page(g):
     <nav class="crumbs" aria-label="Breadcrumb"><a href="resources.html">Guides</a><span>/</span><span>{g["tag"]}</span></nav>
     <div class="eyebrow rise">{g["tag"]}</div>
     <h1 class="rise" style="--d:.1s">{esc(g["title"])}</h1>
-    <p class="g-meta rise" style="--d:.2s"><img src="assets/terra-mark.svg" alt="" width="34" height="34"><span>By {guides.AUTHOR}, founder of Digital Terra · {nice} · {g["minutes"]} min read</span></p>
+    <p class="g-meta rise" style="--d:.2s"><img src="assets/mondo-mark.svg" alt="" width="34" height="34"><span>By {guides.AUTHOR}, founder of Digital Mondo · {nice} · {g["minutes"]} min read</span></p>
   </div>
   <div class="wrap"><div class="ph g-cover rise" style="--d:.25s">{{{{img:{g["photo"][0]}:1200:{g["photo"][1]}}}}}</div></div>
 </header>
@@ -177,7 +177,7 @@ def guide_page(g):
   <div class="g-main">
     <div class="takeaways"><span class="metal-label">Key takeaways</span><ul>{take}</ul></div>
     <div class="prose g-prose">{body}</div>
-    <div class="g-author"><img src="assets/terra-mark.svg" alt="" width="56" height="56"><div><b>Written by Karla</b><p>Karla is the founder of Digital Terra, a one-person marketing agency for local businesses. She has traveled widely and used social media the way people around the world actually use it. <a href="about.html">More about Karla →</a></p></div></div>
+    <div class="g-author"><img src="assets/mondo-mark.svg" alt="" width="56" height="56"><div><b>Written by Karla</b><p>Karla is the founder of Digital Mondo, a one-person marketing agency for local businesses. She has traveled widely and used social media the way people around the world actually use it. <a href="about.html">More about Karla →</a></p></div></div>
   </div>
 </div>
 </article>
@@ -203,7 +203,7 @@ def guide_ld(g):
            "datePublished": g["date"], "dateModified": g["date"], "mainEntityOfPage": url,
            "image": f'https://images.unsplash.com/photo-{g["photo"][0]}?auto=format&fit=crop&w=1200&q=75',
            "author": {"@type": "Person", "name": guides.AUTHOR, "url": SITE_URL + "about.html"},
-           "publisher": {"@type": "Organization", "name": "Digital Terra", "logo": {"@type": "ImageObject", "url": SITE_URL + "assets/apple-touch-icon.png"}}}
+           "publisher": {"@type": "Organization", "name": "Digital Mondo", "logo": {"@type": "ImageObject", "url": SITE_URL + "assets/apple-touch-icon.png"}}}
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
         {"@type": "ListItem", "position": 2, "name": "Guides", "item": SITE_URL + "resources.html"},
@@ -295,7 +295,7 @@ def service_ld(sp):
     url = SITE_URL + sp["file"]
     tiers = plans.BY_ID[sp["id"]]["tiers"]
     svc = {"@context": "https://schema.org", "@type": "Service", "name": sp["title"], "description": sp["desc"], "url": url,
-           "provider": {"@type": "Organization", "name": "Digital Terra", "url": SITE_URL},
+           "provider": {"@type": "Organization", "name": "Digital Mondo", "url": SITE_URL},
            "areaServed": "US",
            "offers": [{"@type": "Offer", "name": t, "price": str(tier["price"]), "priceCurrency": "USD",
                        "priceSpecification": {"@type": "UnitPriceSpecification", "price": str(tier["price"]), "priceCurrency": "USD", "unitText": "MONTH"}}
@@ -308,9 +308,9 @@ def service_ld(sp):
 
 
 for g in guides.GUIDES:
-    PAGES[g["slug"] + ".html"] = (g["title"] + " · Digital Terra", g["desc"], "guide")
+    PAGES[g["slug"] + ".html"] = (g["title"] + " · Digital Mondo", g["desc"], "guide")
 for sp in service_pages.PAGES:
-    PAGES[sp["file"]] = (sp["title"] + " · Digital Terra", sp["desc"], "services")
+    PAGES[sp["file"]] = (sp["title"] + " · Digital Mondo", sp["desc"], "services")
 
 os.makedirs(DIST, exist_ok=True)
 for fname, (title, desc, active) in PAGES.items():

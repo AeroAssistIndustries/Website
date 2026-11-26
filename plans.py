@@ -1,4 +1,4 @@
-"""Digital Terra service plans: one source for the pricing tabs, the plan builder and the JSON the page script reads."""
+"""Digital Mondo service plans: one source for the pricing tabs, the plan builder and the JSON the page script reads."""
 import json
 from html import escape
 
