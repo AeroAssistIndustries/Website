@@ -313,3 +313,7 @@ footer .legal { display: flex; justify-content: space-between; gap: 12px 24px; f
   .f-brand { grid-column: 1 / -1; }
 }
 @media (max-width: 560px) { footer .wrap { grid-template-columns: 1fr; } }
+
+.speed-acts{display:flex;gap:10px;flex-wrap:wrap}
+.btn.ghost-w{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+.btn.ghost-w:hover{background:rgba(255,255,255,.12)}

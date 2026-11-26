@@ -131,6 +131,8 @@
 
 
   // ---------- Website speed check (Google PageSpeed Insights) ----------
+  // Optional: paste a free Google PageSpeed Insights API key here so the test never hits the shared daily limit.
+  var PSI_KEY = '';
   var sf = document.getElementById('speedForm');
   if (sf) {
     var st = document.getElementById('speedStatus'), out = document.getElementById('speedOut');
@@ -148,7 +150,7 @@
       try { new URL(url); } catch (err) { st.textContent = 'That doesn’t look like a web address. Try yourbusiness.com.'; return; }
       var btn = sf.querySelector('button'); btn.disabled = true; out.hidden = true;
       st.className = 'speed-status busy'; st.textContent = 'Testing ' + url + ' on a mobile connection…';
-      var api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&url=' + encodeURIComponent(url);
+      var api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&url=' + encodeURIComponent(url) + (PSI_KEY ? '&key=' + encodeURIComponent(PSI_KEY) : '');
       var full = 'https://pagespeed.web.dev/analysis?url=' + encodeURIComponent(url);
       fetch(api).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
         var cat = d.lighthouseResult.categories, au = d.lighthouseResult.audits;
@@ -165,8 +167,12 @@
         out.hidden = false; st.className = 'speed-status'; st.textContent = 'Results for ' + url + ' (mobile).';
         var cta = document.getElementById('speedCta'); if (cta) cta.addEventListener('click', function (ev) { var f = document.querySelector('.audit-form'); if (f) { ev.preventDefault(); f.scrollIntoView({ behavior: 'smooth' }); var n = document.getElementById('c-name'); if (n) n.focus({ preventScroll: true }); } });
       }).catch(function () {
-        st.className = 'speed-status';
-        st.innerHTML = 'Google’s free test is busy or couldn’t reach that site. Try again in a minute, or <a href="' + full + '">run it on Google’s site</a>.';
+        st.className = 'speed-status'; st.textContent = 'Google’s live test is busy right now, so here’s the next best thing.';
+        ringsEl.innerHTML = ''; metEl.innerHTML = '';
+        verEl.innerHTML = '<div><b>Run the full test on Google’s site.</b><p>It takes about 30 seconds and checks the same four scores. Then send me your address and I’ll walk you through what to fix first.</p></div><div class="speed-acts"><a class="btn" href="' + full + '" target="_blank" rel="noopener">Open Google’s test</a><a class="btn ghost-w" href="contact.html#top" id="speedCta">Get my free audit</a></div>';
+        var webF2 = document.getElementById('c-web'); if (webF2 && !webF2.value) webF2.value = url;
+        out.hidden = false;
+        var cta2 = document.getElementById('speedCta'); if (cta2) cta2.addEventListener('click', function (ev) { var f = document.querySelector('.audit-form'); if (f) { ev.preventDefault(); f.scrollIntoView({ behavior: 'smooth' }); } });
       }).then(function () { btn.disabled = false; });
     });
   }
