@@ -19,7 +19,7 @@ GUIDES = [
                    "Keep hours, holiday hours and your website link accurate.",
                    "Fresh photos and a short weekly post show Google and customers you're open and active."]},
     {"slug": "guide-social-media-posting", "tag": "Social media", "minutes": 6, "date": "2026-11-26",
-     "title": "How often should a local business post on social media?",
+     "title": "How often should a local business post on social media?", "seo_title": "How often should a local business post on social?",
      "desc": "A realistic weekly rhythm, five content ideas that never run dry, and what to measure instead of likes.",
      "photo": ("1507914372368-b2b085b925a1", "A smiling barista holding a portafilter in a coffee shop"),
      "takeaways": ["Consistency beats volume. Three good posts a week is a strong start.",

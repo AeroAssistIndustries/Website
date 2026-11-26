@@ -62,7 +62,7 @@ PAGES = [
             ("Which platforms do you cover?", "Google, Facebook and Yelp on every plan. Pro adds up to three locations or extra platforms like Tripadvisor.")],
    "guide": "guide-google-reviews"},
   {"id": "web", "short": "Websites", "file": "website-design.html", "tag": "Get booked",
-   "title": "Websites for Local Businesses, With No Big Upfront Cost",
+   "title": "Local Business Websites, No Big Upfront Cost",
    "h1": "A website that brings in calls and bookings.",
    "intro": "A fast, mobile-friendly website that answers customers' questions and makes it easy to call, book or buy. Keep your current site cared for, or get a new one with no big upfront cost.",
    "desc": "Websites for local businesses from $250 a month: hosting, security and updates, or a new mobile-friendly site with no upfront build fee on a 12-month plan.",

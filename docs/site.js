@@ -284,14 +284,14 @@
         var msg = perf >= 90 ? ['Your site is fast.', 'Nice work. Speed isn’t holding you back, so the next wins are usually your Google profile and reviews.']
           : perf >= 50 ? ['Your site is a little slow on phones.', 'Most visitors are on mobile. A few fixes to images and scripts could keep more of them on your page long enough to call or book.']
           : ['Your site is losing mobile visitors.', 'Pages this slow on phones lose many visitors before they load. This is usually very fixable, and it’s one of the quickest wins I see.'];
-        verEl.innerHTML = '<div><b>' + msg[0] + '</b><p>' + msg[1] + ' <a href="' + full + '" style="color:#fff">See Google’s full report</a>.</p></div><a class="btn" href="contact.html#top" id="speedCta">Get my free audit</a>';
+        verEl.innerHTML = '<div><b>' + msg[0] + '</b><p>' + msg[1] + ' <a href="' + full + '" style="color:#fff">See Google’s full report</a>.</p></div><a class="btn" href="contact.html" id="speedCta">Get my free audit</a>';
         var webF = document.getElementById('c-web'); if (webF && !webF.value) webF.value = url;
         out.hidden = false; st.className = 'speed-status'; st.textContent = 'Results for ' + url + ' (mobile).';
         var cta = document.getElementById('speedCta'); if (cta) cta.addEventListener('click', function (ev) { var f = document.querySelector('.audit-form'); if (f) { ev.preventDefault(); f.scrollIntoView({ behavior: 'smooth' }); var n = document.getElementById('c-name'); if (n) n.focus({ preventScroll: true }); } });
       }).catch(function () {
         st.className = 'speed-status'; st.textContent = 'Google’s live test is busy right now, so here’s the next best thing.';
         ringsEl.innerHTML = ''; metEl.innerHTML = '';
-        verEl.innerHTML = '<div><b>Run the full test on Google’s site.</b><p>It takes about 30 seconds and checks the same four scores. Then send me your address and I’ll walk you through what to fix first.</p></div><div class="speed-acts"><a class="btn" href="' + full + '" target="_blank" rel="noopener">Open Google’s test</a><a class="btn ghost-w" href="contact.html#top" id="speedCta">Get my free audit</a></div>';
+        verEl.innerHTML = '<div><b>Run the full test on Google’s site.</b><p>It takes about 30 seconds and checks the same four scores. Then send me your address and I’ll walk you through what to fix first.</p></div><div class="speed-acts"><a class="btn" href="' + full + '" target="_blank" rel="noopener">Open Google’s test</a><a class="btn ghost-w" href="contact.html" id="speedCta">Get my free audit</a></div>';
         var webF2 = document.getElementById('c-web'); if (webF2 && !webF2.value) webF2.value = url;
         out.hidden = false;
         var cta2 = document.getElementById('speedCta'); if (cta2) cta2.addEventListener('click', function (ev) { var f = document.querySelector('.audit-form'); if (f) { ev.preventDefault(); f.scrollIntoView({ behavior: 'smooth' }); } });

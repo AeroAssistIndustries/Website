@@ -80,7 +80,7 @@
         <div class="co-big"><b id="v-ltv">$0</b><span>profit from one new customer over time</span></div>
         <div class="co-row"><div><b id="v-rev">$0</b><span>in sales from that customer</span></div><div><b id="v-need">0</b><span>new customers a month to cover the plan</span></div></div>
         <p class="co-note" id="v-note"></p>
-        <a class="btn" href="contact.html#top">See how I'd bring them in</a>
+        <a class="btn" href="contact.html">See how I'd bring them in</a>
       </div>
     </div>
     <p class="pk-note reveal" style="margin-top:14px;color:var(--muted);font-size:14px">An estimate to help you think it through, not a promise of results. Your free audit looks at your real situation.</p>
@@ -95,7 +95,7 @@
     </div>
     <div class="builder reveal" id="builder">
       {{builder}}
-      <aside class="summary" aria-live="polite">
+      <div class="summary" role="region" aria-label="Your plan summary" aria-live="polite">
         <h3>Your plan</h3>
         <div class="billing sm" role="group" aria-label="Billing"><button type="button" data-bill="m" aria-pressed="true">Monthly</button><button type="button" data-bill="y" aria-pressed="false">Yearly <span class="free">2 months free</span></button></div>
         <div class="lines"></div>
@@ -104,7 +104,7 @@
         <p class="total-billed"></p>
         <p class="note"></p>
         <a class="btn go" href="contact.html">Request this plan with a free audit</a>
-      </aside>
+      </div>
     </div>
     {{plans_json}}
   </div>

@@ -23,7 +23,7 @@ PAGES = {
     "checklist.html":     ("Google Business Profile Checklist · Digital Mondo", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
     "contact.html":       ("Free Marketing Audit · Digital Mondo", "Request a free marketing audit and website speed check from Digital Mondo.", "contact"),
     "terms.html":         ("Terms of Service · Digital Mondo", "The terms that apply to using this website and to Digital Mondo's marketing services.", "legal"),
-    "privacy.html":       ("Privacy Policy · Digital Mondo", "How Digital Mondo collects, uses and protects personal information.", "legal"),
+    "privacy.html":       ("Privacy Policy · Digital Mondo", "How Digital Mondo collects, uses and protects personal information from website visitors, audit requests and clients.", "legal"),
     "accessibility.html": ("Accessibility · Digital Mondo", "Digital Mondo's commitment to an accessible website, and how to report a barrier.", "legal"),
     "404.html":           ("Page not found · Digital Mondo", "The page you were looking for isn't here.", "404"),
 }
@@ -118,15 +118,15 @@ FOOTER = f"""<footer>
       <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>
     </div>
     <div>
-      <h4>Services</h4>
+      <h2 class="fh">Services</h2>
       <ul><li><a href="social-media-management.html">Social media management</a></li><li><a href="local-seo.html">Local SEO</a></li><li><a href="reputation-management.html">Reputation management</a></li><li><a href="website-design.html">Websites</a></li><li><a href="pricing.html">Plans and pricing</a></li></ul>
     </div>
     <div>
-      <h4>Company</h4>
+      <h2 class="fh">Company</h2>
       <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul>
     </div>
     <div>
-      <h4>Free tools</h4>
+      <h2 class="fh">Free tools</h2>
       <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="resources.html">Guides</a></li></ul>
     </div>
     <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Mondo LLC is an independent marketing agency.</div>
@@ -171,9 +171,9 @@ def guide_page(g):
   <div class="wrap"><div class="ph g-cover rise" style="--d:.25s">{{{{img:{g["photo"][0]}:1200:{g["photo"][1]}}}}}</div></div>
 </header>
 <div class="wrap g-layout">
-  <aside class="g-side">
+  <div class="g-side">
     <nav class="toc" aria-label="In this guide"><b>In this guide</b><ol>{toc}</ol></nav>
-  </aside>
+  </div>
   <div class="g-main">
     <div class="takeaways"><span class="metal-label">Key takeaways</span><ul>{take}</ul></div>
     <div class="prose g-prose">{body}</div>
@@ -308,7 +308,7 @@ def service_ld(sp):
 
 
 for g in guides.GUIDES:
-    PAGES[g["slug"] + ".html"] = (g["title"] + " · Digital Mondo", g["desc"], "guide")
+    PAGES[g["slug"] + ".html"] = (g.get("seo_title", g["title"]) + " · Digital Mondo", g["desc"], "guide")
 for sp in service_pages.PAGES:
     PAGES[sp["file"]] = (sp["title"] + " · Digital Mondo", sp["desc"], "services")
 
