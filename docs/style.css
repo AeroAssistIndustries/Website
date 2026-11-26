@@ -495,3 +495,4 @@ footer h4 { color: #aeb4bd; }
 :focus-visible { outline-color: #6b717a; }
 ::selection { background: #d3d7dd; color: var(--ink); }
 .eyebrow:has(> i)::before { display: none; }
+body { font-variant-numeric: lining-nums; } .ctable td, .ctable th, .ticker span { font-variant-numeric: lining-nums tabular-nums; }
