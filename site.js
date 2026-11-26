@@ -76,9 +76,30 @@
   });
 
   // Remember a chosen plan so the audit form can mention it
-  function remember(text) { try { sessionStorage.setItem('ka-plan', text); } catch (e) {} }
   var dataEl = document.getElementById('plans-data');
   var PD = dataEl ? JSON.parse(dataEl.textContent) : null;
+
+  // ---------- Monthly / yearly billing ----------
+  var YM = PD ? PD.yearMonths : 10, yearly = false, onBilling = [];
+  try { yearly = sessionStorage.getItem('ka-bill') === 'y'; } catch (e) {}
+  var money = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+  var eq = function (m) { return Math.floor(m * YM / 12); };
+  function paintPrices(root) {
+    (root || document).querySelectorAll('[data-m]').forEach(function (el) { var m = +el.dataset.m; el.textContent = money(yearly ? eq(m) : m); });
+  }
+  function setBilling(y) {
+    yearly = y;
+    try { sessionStorage.setItem('ka-bill', y ? 'y' : 'm'); } catch (e) {}
+    document.documentElement.classList.toggle('yearly', y);
+    document.querySelectorAll('.billing button').forEach(function (b) { b.setAttribute('aria-pressed', (b.dataset.bill === 'y') === y); });
+    paintPrices();
+    onBilling.forEach(function (f) { f(); });
+  }
+  document.querySelectorAll('.billing button').forEach(function (b) {
+    b.addEventListener('click', function () { setBilling(b.dataset.bill === 'y'); });
+  });
+
+  function remember(text) { if (yearly) text += ', paid yearly (2 months free)'; try { sessionStorage.setItem('ka-plan', text); } catch (e) {} }
   document.querySelectorAll('[data-pick],[data-label]').forEach(function (a) {
     a.addEventListener('click', function () {
       if (a.dataset.label) { remember(a.dataset.label); return; }
@@ -117,10 +138,13 @@
       var i = b.dataset.lvl, tier = b.textContent;
       lsw.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
       document.querySelectorAll('.combo-card').forEach(function (c) {
-        c.querySelector('.cc-price b').textContent = c.dataset['p' + i];
-        c.querySelector('.cc-price s').textContent = c.dataset['f' + i];
+        var pm = +c.dataset['p' + i];
+        c.querySelector('.cc-price b').dataset.m = pm;
+        c.querySelector('.cc-price s').dataset.m = c.dataset['f' + i];
+        var bl = c.querySelector('.billed'); if (bl) bl.textContent = 'Billed ' + money(pm * YM) + ' a year · 2 months free';
         c.querySelector('.cc-save').textContent = 'You save ' + c.dataset['s' + i] + ' a month';
-        c.querySelector('.btn').dataset.label = c.dataset.name + ' (' + tier + '), ' + c.dataset['p' + i] + '/month';
+        c.querySelector('.btn').dataset.label = c.dataset.name + ' (' + tier + '), ' + money(pm) + '/month';
+        paintPrices(c);
         c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
       });
     });
@@ -129,7 +153,7 @@
   // ---------- Plan builder ----------
   var bld = document.getElementById('builder');
   if (bld && PD) {
-    var fmt = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
+    var fmt = money;
     var lines = bld.querySelector('.lines'), totalEl = bld.querySelector('.total b'), noteEl = bld.querySelector('.note'), fc = bld.querySelector('#founding');
     function calc() {
       var picked = [], sub = 0;
@@ -143,7 +167,8 @@
         picked.push({ name: plan.short, lvl: lvl, price: price }); sub += price;
       });
       var n = picked.length, bundlePct = n >= 2 ? PD.bundle[String(Math.min(n, 4))] : 0;
-      var foundPct = fc && fc.checked ? PD.founding : 0;
+      var foundPct = fc && fc.checked && !yearly ? PD.founding : 0;
+      if (fc) { fc.disabled = yearly; fc.closest('label').classList.toggle('off', yearly); }
       var pct = Math.max(bundlePct, foundPct);
       var html = picked.map(function (x) { return '<div><span>' + x.name + ' · ' + x.lvl + '</span><span>' + fmt(x.price) + '</span></div>'; }).join('');
       if (!picked.length) html = '<div><span>Tick a service to start.</span></div>';
@@ -151,20 +176,26 @@
       lines.innerHTML = html;
       var total = pct ? Math.floor(sub * (100 - pct) / 100 / 5) * 5 : sub;
       if (pct && picked.length) lines.querySelector('.save span:last-child').textContent = '−' + fmt(sub - total);
-      totalEl.textContent = fmt(total);
+      totalEl.textContent = fmt(yearly ? eq(total) : total);
+      var billedEl = bld.querySelector('.total-billed');
+      if (billedEl) billedEl.textContent = yearly && n ? 'Billed ' + fmt(total * YM) + ' a year · you save ' + fmt(total * (12 - YM)) : '';
       noteEl.textContent = n < 2 ? 'Add a second service to save 10%. Three save 15%, all four save 20%.' : n === 2 ? 'Add a third service to save 15%, or all four to save 20%.' : n === 3 ? 'Add the fourth service to save 20% on everything.' : 'You have the Complete Package rate: 20% off all four.';
       if (foundPct) noteEl.textContent += ' The founding rate lasts 6 months and doesn’t stack with bundle savings.';
+      if (yearly) noteEl.textContent += ' Paying yearly gives you 2 months free on top of combo savings (the founding rate is for monthly plans).';
       var summary = picked.map(function (x) { return x.name + ' (' + x.lvl + ')'; }).join(', ');
-      bld.dataset.summary = summary ? summary + ', about ' + totalEl.textContent + '/month' : '';
+      bld.dataset.summary = summary ? summary + ', about ' + fmt(total) + '/month' : '';
     }
     bld.addEventListener('change', calc);
     bld.querySelectorAll('.segs').forEach(function (sg) {
       sg.addEventListener('click', function () { var cb = sg.closest('.b-row').querySelector('input[type=checkbox]'); if (!cb.checked) { cb.checked = true; } setTimeout(calc, 0); });
     });
+    onBilling.push(calc);
     var go = bld.querySelector('.go');
     if (go) go.addEventListener('click', function () { if (bld.dataset.summary) remember(bld.dataset.summary); });
     calc();
   }
+
+  if (document.querySelector('[data-m]')) setBilling(yearly);
 
   // Prefill the audit form with a chosen plan
   var msgBox = document.getElementById('c-msg');

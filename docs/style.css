@@ -497,3 +497,30 @@ footer h4 { color: #aeb4bd; }
 .eyebrow:has(> i)::before { display: none; }
 body { font-variant-numeric: lining-nums; } .ctable td, .ctable th, .ticker span { font-variant-numeric: lining-nums tabular-nums; }
 .complete-head .tab-tag, .plan-tabs .tab-tag { font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: .2em; }
+
+/* ---------- Billing toggle, yearly prices, All-in-One Starter ---------- */
+.pk-top { display: flex; justify-content: space-between; align-items: center; gap: 14px 20px; flex-wrap: wrap; margin-bottom: 22px; }
+.pk-top .pk-modes { margin: 0; }
+.billing { display: inline-flex; gap: 4px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 5px; }
+.billing button { font: inherit; font-size: 14.5px; font-weight: 700; border: 0; background: transparent; padding: 10px 18px; border-radius: 999px; cursor: pointer; color: var(--muted); display: inline-flex; align-items: center; gap: 8px; transition: background .2s, color .2s; }
+.billing button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.billing .free { font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); background: var(--metal); padding: 4px 8px 3px; border-radius: 999px; border: 1px solid rgba(255,255,255,.8); box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.18); }
+.billing.sm { background: rgba(255,255,255,.06); border-color: #2f333a; }
+.billing.sm button { font-size: 13px; padding: 8px 12px; color: #aeb4bd; }
+.billing.sm button[aria-pressed="true"] { background: var(--metal); color: var(--ink); }
+.billed { display: none; font-size: 12.5px; font-weight: 600; color: var(--steel); letter-spacing: .01em; margin-top: -4px; }
+.yearly .billed { display: block; }
+.tier.pop .billed, .complete .tier.pop .billed { color: #aeb4bd; }
+.combo-card .billed { margin-top: -6px; }
+.total-billed { font-size: 13px; color: #cfd3d9; min-height: 0; }
+.total-billed:empty { display: none; }
+.summary label.fc.off { opacity: .45; }
+.complete .tiers { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.complete .tier { padding: 24px; }
+.complete .tier-price { font-size: 50px; }
+.complete .tier.starter { background: #f3f4f5; }
+.complete .tier.starter .badge { background: var(--ink); color: #fff; border-color: var(--ink); box-shadow: none; }
+@media (max-width: 1100px) { .complete .tiers { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .complete .tiers { grid-template-columns: 1fr; } .pk-top { flex-direction: column; align-items: stretch; } .billing { justify-content: center; } .billing button { flex: 1; justify-content: center; } }
+.billing .free { white-space: nowrap; }
+@media (max-width: 640px) { .billing .free { font-size: 9.5px; letter-spacing: .08em; padding: 3px 6px 2px; } .billing button { padding: 10px 10px; gap: 6px; } }

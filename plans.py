@@ -49,6 +49,14 @@ PLANS = [
 
 BUNDLE = {"2": 10, "3": 15, "4": 20}  # % off with 2, 3 or all 4 services
 FOUNDING = 15
+YEAR_MONTHS = 10  # pay yearly: 12 months for the price of 10
+
+# The All-in-One Starter: all four services in one lighter plan, cheaper than any combo.
+STARTER = {"price": 595, "summary": {
+    "social": "1 platform, 4 posts a month",
+    "seo": "Google profile setup + 2 profile posts a month",
+    "reviews": "Replies to 15 reviews a month",
+    "web": "Hosting, security and backups"}}
 
 # One-line summary of each level, used on combo cards and the rate card.
 SUMMARY = {
@@ -76,6 +84,20 @@ COMBOS = [
 ]
 
 
+def per_month_yearly(n):
+    """Monthly equivalent when paying yearly (2 months free), rounded down."""
+    return n * YEAR_MONTHS // 12
+
+
+def M(n, cls="amt"):
+    """A price that switches between monthly and yearly billing."""
+    return f'<span class="{cls}" data-m="{n}">{money(n)}</span>'
+
+
+def billed(n):
+    return f'<span class="billed">Billed {money(n * YEAR_MONTHS)} a year · 2 months free</span>'
+
+
 def money(n):
     return f"${n:,}"
 
@@ -84,7 +106,7 @@ def tabs_html():
     """Service tabs with three tier cards each. Static HTML, so every price is in the page."""
     tabs = "".join(
         f'<button type="button" role="tab" id="tab-{p["id"]}" aria-controls="panel-{p["id"]}" aria-selected="{"true" if i == 0 else "false"}" tabindex="{0 if i == 0 else -1}">'
-        f'<span class="tab-tag">{p["tag"]}</span>{escape(p["short"])}<small>from {money(p["tiers"][0]["price"])}/mo</small></button>'
+        f'<span class="tab-tag">{p["tag"]}</span>{escape(p["short"])}<small>from {M(p["tiers"][0]["price"])}/mo</small></button>'
         for i, p in enumerate(PLANS))
     panels = ""
     for i, p in enumerate(PLANS):
@@ -94,7 +116,7 @@ def tabs_html():
             items = "".join(f"<li>{escape(x)}</li>" for x in tier["items"])
             cards += (f'<article class="tier{" pop" if pop else ""}">'
                       f'<div class="tier-top"><span class="tier-name">{t}</span>{"<span class=badge>Most popular</span>" if pop else ""}</div>'
-                      f'<div class="tier-price">{money(tier["price"])}<small>/month</small></div>'
+                      f'<div class="tier-price">{M(tier["price"])}<small>/month</small></div>{billed(tier["price"])}'
                       f'<p class="tier-for">{escape(tier["for"])}</p><ul>{items}</ul>'
                       f'<a class="btn{"" if pop else " ghost"}" href="contact.html" data-pick="{p["id"]}:{t}">Choose {t}</a></article>')
         panels += (f'<div class="plan-panel" role="tabpanel" id="panel-{p["id"]}" aria-labelledby="tab-{p["id"]}"{"" if i == 0 else " hidden"}>'
@@ -108,16 +130,16 @@ def builder_html():
     for p in PLANS:
         opts = "".join(
             f'<label class="seg"><input type="radio" name="lvl-{p["id"]}" value="{t}"{" checked" if t == "Growth" else ""}>'
-            f'<span>{t}<em>{money(tier["price"])}</em></span></label>'
+            f'<span>{t}<em>{M(tier["price"])}</em></span></label>'
             for t, tier in zip(TIERS, p["tiers"]))
         rows += (f'<div class="b-row" data-service="{p["id"]}"><label class="b-pick"><input type="checkbox" value="{p["id"]}">'
-                 f'<span><b>{escape(p["name"])}</b><small>from {money(p["tiers"][0]["price"])}/mo</small></span></label>'
+                 f'<span><b>{escape(p["name"])}</b><small>from {M(p["tiers"][0]["price"])}/mo</small></span></label>'
                  f'<div class="segs" role="radiogroup" aria-label="{escape(p["short"])} level">{opts}</div></div>')
     return f'<div class="builder-rows">{rows}</div>'
 
 
 def plans_json():
-    data = {"tiers": TIERS, "bundle": BUNDLE, "founding": FOUNDING,
+    data = {"tiers": TIERS, "bundle": BUNDLE, "founding": FOUNDING, "yearMonths": YEAR_MONTHS,
             "plans": [{"id": p["id"], "name": p["name"], "short": p["short"],
                        "prices": [t["price"] for t in p["tiers"]]} for p in PLANS]}
     return '<script type="application/json" id="plans-data">' + json.dumps(data) + "</script>"
@@ -152,7 +174,13 @@ def _chips(services):
 def complete_html():
     """The Complete Package: all four services at each level, 20% off."""
     c = COMBOS[0]; pr = combo_prices(c["services"]); pct = pct_for(4)
-    cards = ""
+    st = STARTER["price"]
+    lines = "".join(f'<li><b>{BY_ID[s]["short"]}</b> {escape(STARTER["summary"][s])}</li>' for s in c["services"])
+    cards = (f'<article class="tier combo starter">'
+             f'<div class="tier-top"><span class="tier-name">All-in-One Starter</span><span class="badge">Lowest price</span></div>'
+             f'<div class="tier-price">{M(st)}<small>/month</small></div>{billed(st)}'
+             f'<p class="tier-for">All four services in one lighter plan. The easiest way to start.</p><ul>{lines}<li class=perk>One combined monthly report</li></ul>'
+             f'<a class="btn ghost" href="contact.html" data-label="All-in-One Starter, {money(st)}/month">Choose Starter</a></article>')
     for i, t in enumerate(TIERS):
         full, price = pr[i]; pop = i == 1
         lines = "".join(f'<li><b>{BY_ID[s]["short"]}</b> {escape(SUMMARY[s][i])}</li>' for s in c["services"])
@@ -160,11 +188,11 @@ def complete_html():
         label = f'{c["name"]} ({t}), {money(price)}/month'
         cards += (f'<article class="tier combo{" pop" if pop else ""}">'
                   f'<div class="tier-top"><span class="tier-name">Complete {t}</span><span class="badge">Save {money(full - price)}/mo</span></div>'
-                  f'<div class="tier-price">{money(price)}<small>/month</small></div>'
-                  f'<p class="tier-for"><s>{money(full)}</s> à la carte · {pct}% off all four</p><ul>{lines}{perks}</ul>'
-                  f'<a class="btn{"" if pop else " ghost"}" href="contact.html" data-label="{escape(label)}">Choose Complete {t}</a></article>')
-    return (f'<div class="complete"><div class="complete-head"><span class="tab-tag">ALL 4 SERVICES · {pct}% OFF</span>'
-            f'<h3>{c["name"]}</h3><p>{escape(c["pitch"])}</p></div><div class="tiers">{cards}</div></div>')
+                  f'<div class="tier-price">{M(price)}<small>/month</small></div>{billed(price)}'
+                  f'<p class="tier-for"><s>{M(full, "amt")}</s> à la carte · {pct}% off all four</p><ul>{lines}{perks}</ul>'
+                  f'<a class="btn{"" if pop else " ghost"}" href="contact.html" data-label="{escape(label)}">Choose {t}</a></article>')
+    return (f'<div class="complete"><div class="complete-head"><span class="tab-tag">ALL 4 SERVICES IN ONE PLAN · FROM {money(st)}/MO</span>'
+            f'<h3>All-in-One Packages</h3><p>Social media, local SEO, reputation and your website in one plan, run by one person who sees the whole picture. Start light with the Starter, or take the Complete Package at 20% off à la carte.</p></div><div class="tiers">{cards}</div></div>')
 
 
 def combos_html():
@@ -173,12 +201,12 @@ def combos_html():
     cards = ""
     for c in COMBOS[1:]:
         pr = combo_prices(c["services"]); pct = pct_for(len(c["services"]))
-        data = " ".join(f'data-p{i}="{money(p)}" data-f{i}="{money(f)}" data-s{i}="{money(f - p)}"' for i, (f, p) in enumerate(pr))
+        data = " ".join(f'data-p{i}="{p}" data-f{i}="{f}" data-s{i}="{money(f - p)}"' for i, (f, p) in enumerate(pr))
         f, p = pr[1]
         cards += (f'<article class="combo-card" data-name="{escape(c["name"])}" {data}>'
                   f'<div class="cc-top"><h4>{escape(c["name"])}</h4><span class="cc-off">{pct}% off</span></div>'
                   f'<div class="cc-chips">{_chips(c["services"])}</div><p>{escape(c["pitch"])}</p>'
-                  f'<div class="cc-price"><b>{money(p)}</b><small>/month</small><s>{money(f)}</s></div>'
+                  f'<div class="cc-price"><b class="amt" data-m="{p}">{money(p)}</b><small>/month</small><s class="amt" data-m="{f}">{money(f)}</s></div>{billed(p)}'
                   f'<span class="cc-save">You save {money(f - p)} a month</span>'
                   f'<a class="btn ghost" href="contact.html" data-label="{escape(c["name"])} (Growth), {money(p)}/month">Choose {escape(c["name"])}</a></article>')
     return (f'<div class="combos-bar"><div><h3>Popular combos</h3><p>Two services save {BUNDLE["2"]}%, three save {BUNDLE["3"]}%. Pick a level to see prices.</p></div>'
@@ -194,7 +222,7 @@ def combo_table_html():
         for combo in combinations(ids, n):
             pr = combo_prices(list(combo)); pct = pct_for(n)
             named = next((c["name"] for c in COMBOS if sorted(c["services"]) == sorted(combo)), "")
-            cells = "".join(f'<td><b>{money(p)}</b><s>{money(f)}</s></td>' for f, p in pr)
+            cells = "".join(f'<td><b class="amt" data-m="{p}">{money(p)}</b><s class="amt" data-m="{f}">{money(f)}</s></td>' for f, p in pr)
             label = " + ".join(BY_ID[s]["short"] for s in combo)
             rows += (f'<tr><th scope="row">{label}{f"<em>{escape(named)}</em>" if named else ""}</th>'
                      f'<td class="off">{pct}%</td>{cells}</tr>')
@@ -204,11 +232,18 @@ def combo_table_html():
             f'<tbody>{rows}</tbody></table></div>')
 
 
+def billing_switch(extra=""):
+    return (f'<div class="billing{extra}" role="group" aria-label="Billing">'
+            '<button type="button" data-bill="m" aria-pressed="true">Monthly</button>'
+            '<button type="button" data-bill="y" aria-pressed="false">Yearly <span class="free">2 months free</span></button></div>')
+
+
 def packages_html(table=True):
     """À la carte / Combos switch wrapping the service tabs and the combo packages."""
     modes = ('<div class="pk-modes" role="tablist" aria-label="How to buy">'
              '<button type="button" role="tab" id="mode-alc" aria-controls="pk-alc" aria-selected="true">À la carte<small>One service at a time</small></button>'
              f'<button type="button" role="tab" id="mode-combo" aria-controls="pk-combo" aria-selected="false" tabindex="-1">Combos &amp; packages<small>Save up to {BUNDLE["4"]}%</small></button></div>')
+    modes = f'<div class="pk-top">{modes}{billing_switch()}</div>'
     extra = ""
     if table:
         extra = f'<details class="every"><summary>See the price of every combination</summary>{combo_table_html()}</details>'
