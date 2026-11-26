@@ -1,6 +1,6 @@
 """Wraps each page partial in src/ with the shared head, nav and footer; writes the finished site to docs/."""
 import os, re, shutil, hashlib, json
-import plans, guides, service_pages
+import plans, guides, service_pages, industry_pages
 from html import escape as esc
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -68,6 +68,7 @@ def head(fname, title, desc, style, active, extra_ld=""):
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
 <meta property="og:type" content="{"article" if active == "guide" else "website"}">
 <meta property="og:site_name" content="Digital Mondo">
 <meta property="og:title" content="{title}">
@@ -94,15 +95,21 @@ SUBNAV = [("social-media-management.html", "Social media management", "Posts, Re
           ("reputation-management.html", "Reputation management", "More reviews, every one answered"),
           ("website-design.html", "Websites", "Fast sites that bring in bookings")]
 
+SUBMENUS = {
+    "services.html": (SUBNAV, "Show services", "All services and add-ons →", ""),
+    "industries.html": ([(ip["file"], ip["name"], ip["tag"]) for ip in industry_pages.PAGES], "Show industries", "All industries →", " sub-ind"),
+}
+
 def nav(active, fname=""):
     def item(h, t, k):
         cur = " aria-current=\"page\"" if k == active else ""
-        if h != "services.html":
+        if h not in SUBMENUS:
             return f'<li><a href="{h}"{cur}>{t}</a></li>'
-        sub = "".join(f'<li><a href="{sh}"{" aria-current=\"page\"" if sh == fname else ""}><b>{st}</b><small>{sd}</small></a></li>' for sh, st, sd in SUBNAV)
-        return (f'<li class="has-sub"><a href="{h}"{cur}>{t}</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show services">'
+        entries, label, all_text, cls = SUBMENUS[h]
+        sub = "".join(f'<li><a href="{sh}"{" aria-current=\"page\"" if sh == fname else ""}><b>{st}</b><small>{sd}</small></a></li>' for sh, st, sd in entries)
+        return (f'<li class="has-sub"><a href="{h}"{cur}>{t}</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="{label}">'
                 f'<svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>'
-                f'<ul class="sub">{sub}<li class="sub-all"><a href="services.html">All services and add-ons →</a></li></ul></li>')
+                f'<ul class="sub{cls}">{sub}<li class="sub-all"><a href="{h}">{all_text}</a></li></ul></li>')
     items = "".join(item(h, t, k) for h, t, k in NAV)
     return f"""<nav class="nav" aria-label="Main">
   <div class="wrap">
@@ -311,16 +318,117 @@ def service_ld(sp):
     return ld(svc) + ld(crumbs)
 
 
+def industry_page(ip):
+    combo = [c for c in plans.COMBOS if c["id"] == ip["combo"]][0]
+    pr = plans.combo_prices(combo["services"]); pct = plans.pct_for(len(combo["services"]))
+    svc_names = " + ".join(plans.BY_ID[s]["name"] for s in combo["services"])
+    preset = "pricing.html?plan=" + ",".join(f"{s}-growth" for s in combo["services"]) + "#builder"
+    sp_links = "".join(f'<a class="chip" href="{sp["file"]}">{esc(sp["short"])}</a>' for sp in service_pages.PAGES if sp["id"] in combo["services"])
+    chall = "".join(f"<li>{esc(x)}</li>" for x in ip["challenges"])
+    focus = "".join(f"<li>{esc(x)}</li>" for x in ip["focus"])
+    month = "".join(f'<li class="reveal" style="--d:{i*.06:.2f}s"><span class="sp-n">0{i+1}</span><p>{esc(x)}</p></li>' for i, x in enumerate(ip["month"]))
+    ideas = "".join(f'<span class="chip">{esc(x)}</span>' for x in ip["ideas"])
+    planner = (f'<a class="btn ghost" href="post-planner.html?ind={ip["planner"]}">Get four weeks of post ideas →</a>' if ip["planner"] else "")
+    example = (f'<a class="btn ghost" href="{ip["example"][0]}">{esc(ip["example"][1].rstrip(" →"))} →</a>' if ip["example"] else "")
+    faqs = "".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in ip["faqs"])
+    g = guides.BY_SLUG[ip["guide"]]
+    others = "".join(f'<a class="chip" href="{o["file"]}">{esc(o["name"])}</a>' for o in industry_pages.PAGES if o["id"] != ip["id"])
+    return f"""<header class="page-head split sp-head">
+  <div class="wrap">
+    <div>
+      <nav class="crumbs rise" aria-label="Breadcrumb"><a href="industries.html">Industries</a><span>/</span><span>{esc(ip["name"])}</span></nav>
+      <div class="eyebrow rise">{esc(ip["tag"])}</div>
+      <h1 class="rise" style="--d:.1s">{esc(ip["h1"])}</h1>
+      <p class="intro rise" style="--d:.2s">{esc(ip["intro"])}</p>
+      <div class="hero-cta rise" style="--d:.3s"><a class="btn" href="contact.html">Get a free audit</a><a class="btn ghost" href="#plan">See the plan I'd suggest</a></div>
+    </div>
+    <div class="ph rise" style="--d:.25s">{{{{img:{ip["photo"]}:700:{ip["name"]}}}}}</div>
+  </div>
+</header>
+
+<section class="sp-sec">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">Where it gets stuck</div><h2 class="h2">What I see most with {esc(ip["noun"])}.</h2></div>
+    <div class="in-cmp reveal" style="--d:.1s">
+      <div class="card"><h3>Common challenges</h3><ul class="xl">{chall}</ul></div>
+      <div class="card in-fix"><h3>What I focus on</h3><ul class="ticks">{focus}</ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">A typical month</div><h2 class="h2">What you can expect.</h2></div>
+    <ol class="sp-steps in-month">{month}</ol>
+    <div class="in-ideas reveal"><b>Content ideas</b>{ideas}</div>
+    <div class="in-links reveal">{planner}{example}</div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="wrap">
+    <div class="in-plan reveal">
+      <div>
+        <div class="eyebrow">Where I'd start</div>
+        <h2 class="h2">{esc(combo["name"])}</h2>
+        <p class="intro">{esc(combo["pitch"])}</p>
+        <div class="in-svcs">{sp_links}</div>
+      </div>
+      <div class="in-price">
+        <span class="lbl">{esc(svc_names)}</span>
+        <div class="in-amt">from <b><span class="amt" data-m="{pr[0][1]}">${pr[0][1]:,}</span></b>/month</div>
+        <p>Essentials level, {pct}% off for combining. Growth is <span class="amt" data-m="{pr[1][1]}">${pr[1][1]:,}</span>/month. Every plan is month to month, or pay yearly for 2 months free.</p>
+        <a class="btn" href="{preset}">Open this plan in the builder</a>
+        <a class="in-all" href="pricing.html">Compare every plan →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap sp-faq">
+    <div class="reveal"><div class="eyebrow">Questions</div><h2 class="h2">Good to know.</h2><p class="intro">More answers on the <a href="faq.html">FAQ page</a>.</p></div>
+    <div class="faq reveal" style="--d:.1s">{faqs}</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <a class="sp-guide reveal" href="{g["slug"]}.html"><div class="ph">{{{{img:{g["photo"][0]}:480:{g["photo"][1]}}}}}</div><div><span class="g-tag">Free guide · {g["minutes"]} min read</span><h3>{esc(g["title"])}</h3><p>{esc(g["desc"])}</p><span class="g-go">Read the guide →</span></div></a>
+    <div class="sp-more reveal"><div class="eyebrow">Other industries</div><div class="in-others">{others}</div></div>
+    <div class="cta-band reveal">
+      <div><h2>See where you stand, free.</h2><p>Your free marketing audit compares you with two or three nearby competitors and lists the quickest wins, in plain English.</p></div>
+      <a class="btn" href="contact.html">Get a free marketing audit</a>
+    </div>
+  </div>
+</section>"""
+
+
+def industry_ld(ip):
+    url = SITE_URL + ip["file"]
+    svc = {"@context": "https://schema.org", "@type": "Service", "name": ip["title"], "description": ip["desc"], "url": url,
+           "serviceType": "Marketing", "audience": {"@type": "BusinessAudience", "name": ip["name"]},
+           "provider": {"@type": "Organization", "name": "Digital Mondo", "url": SITE_URL}, "areaServed": "US"}
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+        {"@type": "ListItem", "position": 2, "name": "Industries", "item": SITE_URL + "industries.html"},
+        {"@type": "ListItem", "position": 3, "name": ip["name"], "item": url}]}
+    return ld(svc) + ld(crumbs)
+
+
 for g in guides.GUIDES:
     PAGES[g["slug"] + ".html"] = (g.get("seo_title", g["title"]) + " · Digital Mondo", g["desc"], "guide")
 for sp in service_pages.PAGES:
     PAGES[sp["file"]] = (sp["title"] + " · Digital Mondo", sp["desc"], "services")
+for ip in industry_pages.PAGES:
+    PAGES[ip["file"]] = (ip["title"] + " · Digital Mondo", ip["desc"], "industries")
 
 os.makedirs(DIST, exist_ok=True)
 for fname, (title, desc, active) in PAGES.items():
     gd = guides.BY_SLUG.get(fname[:-5])
     sp = service_pages.BY_FILE.get(fname)
-    src = guide_page(gd) if gd else service_page(sp) if sp else open(os.path.join(SRC, fname)).read()
+    ipg = industry_pages.BY_FILE.get(fname)
+    src = guide_page(gd) if gd else service_page(sp) if sp else industry_page(ipg) if ipg else open(os.path.join(SRC, fname)).read()
     styles = "\n".join(re.findall(r"<style>.*?</style>", src, re.S))
     body = re.sub(r"<style>.*?</style>", "", src, flags=re.S).strip()
     body = body.replace("{{packages}}", plans.packages_html()).replace("{{packages_home}}", plans.packages_html(table=False)).replace("{{plans}}", plans.tabs_html()).replace("{{builder}}", plans.builder_html()).replace("{{plans_json}}", plans.plans_json())
@@ -328,7 +436,7 @@ for fname, (title, desc, active) in PAGES.items():
     body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     # The first photo on a page is usually above the fold: load it right away.
     body = body.replace('loading="lazy" decoding="async"', 'loading="eager" fetchpriority="high" decoding="async"', 1)
-    extra = guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (faq_ld(body) if fname in ("faq.html",) else "")
+    extra = guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (industry_ld(ipg) + faq_ld(body)) if ipg else (faq_ld(body) if fname in ("faq.html",) else "")
     mcta = "" if active in ("contact", "legal", "404") else '<a class="btn mcta" href="contact.html">Get a free marketing audit</a>\n'
     with open(os.path.join(DIST, fname), "w") as f:
         f.write(head(fname, title, desc, styles, active, extra) + nav("resources" if active == "guide" else active, fname) + '<main id="main">\n' + body + "\n</main>\n"

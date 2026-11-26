@@ -682,3 +682,33 @@ footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; hei
 
 .hp { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .audit-form button[disabled] { opacity: .6; cursor: progress; }
+
+/* ===== Industry pages ===== */
+.in-cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+.in-cmp .card { padding: 28px; }
+.in-cmp h3 { font-family: var(--body); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+.in-cmp .in-fix { background: var(--ink); color: #fff; border-color: var(--ink); }
+.in-cmp .in-fix h3 { color: #c9ced5; }
+.in-cmp .in-fix .ticks li { color: #eef0f2; }
+.xl { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; color: var(--muted); font-size: 16px; }
+.xl li { padding-left: 22px; position: relative; }
+.xl li::before { content: "×"; position: absolute; left: 0; font-weight: 700; color: var(--steel); }
+.in-month li p { color: var(--ink); font-size: 16px; margin-top: 12px; }
+.in-ideas { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 28px; }
+.in-ideas b { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; margin-right: 6px; }
+.in-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.in-plan { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 28px; padding: 40px; }
+.in-svcs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+.in-price { background: var(--ink); color: #fff; border-radius: 22px; padding: 28px; display: grid; gap: 10px; }
+.in-price .lbl { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #c9ced5; }
+.in-amt { font-size: 16px; color: #c9ced5; }
+.in-amt b { font-family: var(--display); font-size: 52px; font-weight: 600; color: #fff; line-height: 1; font-variant-numeric: lining-nums; }
+.in-price p { color: #c9ced5; font-size: 14.5px; }
+.in-price .btn { justify-content: center; background: var(--metal); color: var(--ink); margin-top: 6px; }
+.in-all { color: #fff; font-weight: 600; font-size: 14.5px; text-align: center; }
+.in-others { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+@media (max-width: 960px) { .in-cmp, .in-plan { grid-template-columns: 1fr; } .in-plan { padding: 24px; gap: 24px; } }
+@media (min-width: 961px) {
+  .nav .sub.sub-ind { width: 460px; grid-template-columns: 1fr 1fr; }
+  .nav .sub.sub-ind .sub-all { grid-column: 1 / -1; }
+}
