@@ -10,6 +10,7 @@ SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
 SITE_URL = "https://aeroassistindustries.github.io/Website/"
 SITE_PATH = "/Website/"
 EMAIL = "hello@digitalmondo.com"
+SAMPLE_FONTS = "&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bricolage+Grotesque:opsz,wght@12..96,600..800"
 # Where the audit form posts (a form service or Cloudflare Worker URL). Empty: visitors get an email draft instead.
 FORM_ENDPOINT = ""
 
@@ -64,7 +65,7 @@ def head(fname, title, desc, style, active, extra_ld=""):
 {base}<title>{title}</title>
 <meta name="description" content="{desc}">
 {robots}<link rel="canonical" href="{canon}">
-<meta name="theme-color" content="#16181c">
+<meta name="theme-color" content="#13294b">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -81,7 +82,7 @@ def head(fname, title, desc, style, active, extra_ld=""):
 <meta name="twitter:image" content="{SITE_URL}assets/og-image.png">
 {schema}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600;700{SAMPLE_FONTS if fname == "social.html" else ""}&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v={ver('style.css')}">
 <script>document.documentElement.classList.add('js')</script>
 {style}
@@ -113,7 +114,7 @@ def nav(active, fname=""):
     items = "".join(item(h, t, k) for h, t, k in NAV)
     return f"""<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Mondo" width="209" height="56"></a>
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Mondo" width="207" height="56"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist"><span class="mb-ic" aria-hidden="true"><i></i><i></i></span><span class="mb-t">Menu</span></button>
     <ul id="navlist">{items}<li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:{EMAIL}">{EMAIL}</a><span>Your neighborhood, seen by the world.</span></li></ul>
   </div>
@@ -123,7 +124,7 @@ def nav(active, fname=""):
 FOOTER = f"""<footer>
   <div class="wrap">
     <div class="f-brand">
-      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Digital Mondo" width="198" height="63"></a>
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Digital Mondo" width="196" height="63"></a>
       <p class="f-tag">Your neighborhood, seen by the world. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
       <a class="f-mail" href="mailto:{EMAIL}">{EMAIL}</a>
       <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>
