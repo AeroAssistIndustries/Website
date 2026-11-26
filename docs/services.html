@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=a1e527b7">
+<link rel="stylesheet" href="style.css?v=d73ac3df">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); margin-top: 8px; }
@@ -41,6 +41,10 @@
 .svc .panels .wide { grid-column: 1 / -1; background: var(--ink); color: #fff; border-color: var(--ink); }
 .svc .panels .wide p { color: #c9ccd2; font-size: 15px; }
 .svc .panels .wide h3 { color: var(--sun); }
+.svc .lvls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.svc .lvls span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13.5px; }
+.svc .lvls b { color: var(--accent); }
+.addons-head { padding: 64px 0 8px; border-top: 1px solid var(--line); }
 @media (max-width: 960px) {
   .svc { grid-template-columns: 1fr; gap: 24px; }
   .flow { grid-template-columns: 1fr; }
@@ -54,7 +58,7 @@
   <div class="wrap">
     <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla's Agency" width="180" height="38"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
-    <ul id="navlist"><li><a href="services.html" aria-current="page">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li><li><a href="about.html">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
+    <ul id="navlist"><li><a href="services.html" aria-current="page">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Our work</a></li><li><a href="about.html">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
   </div>
 </nav>
 <main>
@@ -62,11 +66,9 @@
   <div class="wrap">
     <div>
     <div class="eyebrow rise">Services</div>
-    <h1 class="rise" style="--d:.1s">Everything a local business needs online.</h1>
-    <p class="intro rise" style="--d:.2s">Start with the essentials and add more as you grow. Every service is delivered monthly, reported clearly, and set up in accounts you own.</p>
-    <div class="jump">
-      <a class="chip" href="#gbp">Google Business Profile</a><a class="chip" href="#social">Social media</a><a class="chip" href="#reviews">Reputation</a><a class="chip" href="#seo">Local SEO</a><a class="chip" href="#web">Websites</a><a class="chip" href="#ads">Advertising</a><a class="chip" href="#email">Email</a><a class="chip" href="#leads">Lead generation</a><a class="chip" href="#ai-content">AI-powered content</a><a class="chip" href="#ai-search">AI search visibility</a>
-    </div>
+    <h1 class="rise" style="--d:.1s">Four services that bring local customers in.</h1>
+    <p class="intro rise" style="--d:.2s">Social media, local SEO, reputation and websites, each from $250 a month. Start with one, add more as you grow, and save when you combine them.</p>
+    <div class="jump"><a class="chip" href="#social">Social media</a><a class="chip" href="#seo">Local SEO</a><a class="chip" href="#reviews">Reputation</a><a class="chip" href="#web">Website</a><a class="chip" href="#ads">Ads</a><a class="chip" href="#email">Email</a><a class="chip" href="#leads">Lead follow-up</a><a class="chip" href="pricing.html">Pricing</a></div>
     </div>
     <div class="ph rise" style="--d:.25s"><img src="https://images.unsplash.com/photo-1564697364552-7f25dd160f2f?auto=format&fit=crop&q=75&w=700" srcset="https://images.unsplash.com/photo-1564697364552-7f25dd160f2f?auto=format&fit=crop&q=75&w=350 350w, https://images.unsplash.com/photo-1564697364552-7f25dd160f2f?auto=format&fit=crop&q=75&w=700 700w, https://images.unsplash.com/photo-1564697364552-7f25dd160f2f?auto=format&fit=crop&q=75&w=1120 1120w" sizes="(max-width: 700px) 100vw, 700px" alt="Person photographing a plate of food with a phone" loading="lazy" decoding="async"></div>
   </div>
@@ -75,7 +77,7 @@
 <section style="padding-top:8px">
   <div class="wrap">
     <div class="flow reveal">
-      <div><div class="st">Get found.</div><p>Show up when people nearby search for what you offer, on Google, Maps and AI assistants.</p><div class="chips"><a class="chip" href="#gbp">Google profile</a><a class="chip" href="#seo">Local SEO</a><a class="chip" href="#ai-search">AI search</a></div></div>
+      <div><div class="st">Get found.</div><p>Show up when people nearby search for what you offer, on Google, Maps and AI assistants.</p><div class="chips"><a class="chip" href="#seo">Local SEO</a><a class="chip" href="#seo">Google profile</a><a class="chip" href="#seo">AI search</a></div></div>
       <div><div class="st">Get chosen.</div><p>Look like the obvious choice with great reviews, an active feed and a website that answers questions.</p><div class="chips"><a class="chip" href="#reviews">Reviews</a><a class="chip" href="#social">Social</a><a class="chip" href="#web">Website</a></div></div>
       <div><div class="st">Get booked.</div><p>Turn interest into calls, bookings and repeat visits with ads, email and lead follow-up.</p><div class="chips"><a class="chip" href="#ads">Ads</a><a class="chip" href="#email">Email</a><a class="chip" href="#leads">Lead gen</a></div></div>
     </div>
@@ -84,28 +86,24 @@
 
 <div class="wrap">
 
-  <article class="svc reveal" id="gbp">
-    <div>
-      <div class="num">01 · GET FOUND</div>
-      <h2>Google Business Profile <span class="tag">Core</span></h2>
-      <p class="lede">Your Google profile is often the first thing a customer sees. I make it complete, accurate and active, so you show up in local searches and on Google Maps.</p>
-      <div class="best"><b>Best for</b>Any business that serves customers locally, especially restaurants, salons, clinics and contractors.</div>
-      <div class="where"><span class="chip">Google Search</span><span class="chip">Google Maps</span></div>
-    </div>
-    <div class="panels">
-      <div class="card"><h3>Setup &amp; cleanup</h3><ul class="ticks"><li>Verify and claim ownership</li><li>Categories, services and attributes</li><li>Business description written for search</li><li>Photos, logo and cover image</li><li>Fix duplicate or wrong listings</li></ul></div>
-      <div class="card"><h3>Every month</h3><ul class="ticks"><li>Weekly posts: offers, updates, events</li><li>New photos added</li><li>Holiday and special hours kept current</li><li>Questions answered</li><li>Profile insights in your report</li></ul></div>
-      <div class="card wide"><h3>What you'll see</h3><p>A profile that looks cared for, with up-to-date hours, fresh photos and recent posts. Your monthly report tracks searches, calls, direction requests and website clicks from your profile.</p></div>
-    </div>
-  </article>
+  
+
+  
+
+  
+
+  
+
+  
 
   <article class="svc reveal" id="social">
     <div>
-      <div class="num">02 · GET CHOSEN</div>
-      <h2>Social Media Management <span class="tag">Core</span></h2>
+      <div class="num">01 · GET CHOSEN</div>
+      <h2>Social Media Management <span class="tag">From $250/mo</span></h2>
       <p class="lede">A steady, on-brand feed that gives people a reason to follow, visit and come back. I plan it, design it, write it and post it.</p>
       <div class="best"><b>Best for</b>Businesses where looks, atmosphere or personality sell: food, beauty, hospitality, retail and fitness.</div>
       <div class="where"><span class="chip">Instagram</span><span class="chip">Facebook</span><span class="chip">TikTok</span><span class="chip">LinkedIn</span></div>
+      <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $650</span><span><b>Pro</b> $1,500</span></div>
     </div>
     <div class="panels">
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Profile and bio refresh</li><li>Brand templates for posts and Stories</li><li>Content pillars and posting rhythm</li><li>Hashtag and local tag research</li></ul></div>
@@ -114,13 +112,30 @@
     </div>
   </article>
 
+  <article class="svc reveal" id="seo">
+    <div>
+      <div class="num">02 · GET FOUND</div>
+      <h2>Local SEO <span class="tag">From $250/mo</span></h2>
+      <p class="lede">Show up when people nearby search for what you do, on Google Search, Google Maps and AI assistants like ChatGPT. It starts with a complete, active Google Business Profile.</p>
+      <div class="best"><b>Best for</b>Any business that serves customers locally, especially restaurants, salons, clinics and contractors.</div>
+      <div class="where"><span class="chip">Google Search</span><span class="chip">Google Maps</span><span class="chip">Apple Maps</span><span class="chip">AI search</span></div>
+      <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $600</span><span><b>Pro</b> $1,200</span></div>
+    </div>
+    <div class="panels">
+      <div class="card"><h3>Google Business Profile</h3><ul class="ticks"><li>Categories, services and description</li><li>Weekly posts and new photos</li><li>Hours and holiday hours kept current</li><li>Questions answered</li></ul></div>
+      <div class="card"><h3>Search and listings</h3><ul class="ticks"><li>Keyword and competitor research</li><li>On-page SEO for key pages</li><li>Consistent listings on 10–25 directories</li><li>New service pages and articles</li></ul></div>
+      <div class="card wide"><h3>AI search visibility</h3><p>More people now ask AI assistants for recommendations. I keep your business facts consistent across the web and check how tools like ChatGPT and Google's AI Overviews describe you.</p></div>
+    </div>
+  </article>
+
   <article class="svc reveal" id="reviews">
     <div>
-      <div class="num">03 · GET CHOSEN</div>
-      <h2>Reputation Management <span class="tag">Core</span></h2>
+      <div class="num">03 · GET TRUSTED</div>
+      <h2>Online Reputation Management <span class="tag">From $250/mo</span></h2>
       <p class="lede">Reviews are today's word of mouth. I help you earn more genuine reviews from happy customers and reply thoughtfully to every one.</p>
       <div class="best"><b>Best for</b>Any business where customers compare options before choosing, which is nearly all of them.</div>
       <div class="where"><span class="chip">Google</span><span class="chip">Facebook</span><span class="chip">Yelp</span><span class="chip">TripAdvisor</span></div>
+      <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $400</span><span><b>Pro</b> $750</span></div>
     </div>
     <div class="panels">
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Simple review links and QR codes</li><li>Follow-up text and email templates</li><li>Counter cards or table tents</li><li>Response guidelines in your voice</li></ul></div>
@@ -129,37 +144,26 @@
     </div>
   </article>
 
-  <article class="svc reveal" id="seo">
+  <article class="svc reveal" id="web">
     <div>
-      <div class="num">04 · GET FOUND</div>
-      <h2>Local SEO</h2>
-      <p class="lede">Help your website and listings rank when people search for your services in your area, like “roofer near me” or “best brunch in town”.</p>
-      <div class="best"><b>Best for</b>Service businesses and practices that get most new customers from search.</div>
-      <div class="where"><span class="chip">Google Search</span><span class="chip">Bing</span><span class="chip">Apple Maps</span></div>
+      <div class="num">04 · GET BOOKED</div>
+      <h2>Website <span class="tag">From $250/mo</span></h2>
+      <p class="lede">A fast, mobile-friendly website that answers customers' questions and makes it easy to call, book or buy. Keep your current site cared for, or get a new one with no big upfront cost.</p>
+      <div class="best"><b>Best for</b>Businesses with an outdated site, no site at all, or a site that doesn't bring in inquiries.</div>
+      <div class="where"><span class="chip">Mobile</span><span class="chip">Desktop</span><span class="chip">Online booking</span></div>
+      <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $500</span><span><b>Pro</b> $1,000</span></div>
     </div>
     <div class="panels">
-      <div class="card"><h3>Foundation</h3><ul class="ticks"><li>Keyword and competitor research</li><li>Page titles and descriptions</li><li>Service and location pages</li><li>Directory listing consistency</li></ul></div>
-      <div class="card"><h3>Ongoing</h3><ul class="ticks"><li>New listings and citations</li><li>On-page improvements</li><li>Local links and partnerships</li><li>Ranking checks in your report</li></ul></div>
+      <div class="card"><h3>New website (Growth and Pro)</h3><ul class="ticks"><li>Design built around your brand</li><li>Clear service and pricing pages</li><li>Call, booking and contact buttons</li><li>Basic SEO setup</li><li>Launch on your own domain</li></ul></div>
+      <div class="card"><h3>Website care (all plans)</h3><ul class="ticks"><li>Text, photo and menu updates</li><li>New pages and promotions</li><li>Speed and security checks</li><li>Form and booking tests</li></ul></div>
     </div>
   </article>
 
-  <article class="svc reveal" id="web">
-    <div>
-      <div class="num">05 · GET CHOSEN</div>
-      <h2>Website Design &amp; Care</h2>
-      <p class="lede">A fast, mobile-friendly website that answers customers' questions and makes it easy to call, book or buy.</p>
-      <div class="best"><b>Best for</b>Businesses with an outdated site, no site at all, or a site that doesn't bring in inquiries.</div>
-      <div class="where"><span class="chip">Mobile</span><span class="chip">Desktop</span><span class="chip">Online booking</span></div>
-    </div>
-    <div class="panels">
-      <div class="card"><h3>New website</h3><ul class="ticks"><li>Design built around your brand</li><li>Clear service and pricing pages</li><li>Call, booking and contact buttons</li><li>Basic SEO setup</li><li>Launch on your own domain</li></ul></div>
-      <div class="card"><h3>Website care</h3><ul class="ticks"><li>Text, photo and menu updates</li><li>New pages and promotions</li><li>Speed and security checks</li><li>Form and booking tests</li></ul></div>
-    </div>
-  </article>
+  <div class="addons-head reveal"><div class="eyebrow">Add-ons</div><h2 class="h2">Also available.</h2><p class="intro">Add these to any plan. I quote them after your free audit.</p></div>
 
   <article class="svc reveal" id="ads">
     <div>
-      <div class="num">06 · GET BOOKED</div>
+      <div class="num">ADD-ON · GET BOOKED</div>
       <h2>Digital Advertising</h2>
       <p class="lede">Targeted ads that put your offer in front of nearby customers who are ready to buy, with a budget you set.</p>
       <div class="best"><b>Best for</b>Businesses with a clear offer that want faster results than organic content alone.</div>
@@ -174,7 +178,7 @@
 
   <article class="svc reveal" id="email">
     <div>
-      <div class="num">07 · GET BOOKED</div>
+      <div class="num">ADD-ON · GET BOOKED</div>
       <h2>Email Marketing</h2>
       <p class="lede">Stay in touch with past customers and turn first-time visitors into regulars with friendly, useful emails.</p>
       <div class="best"><b>Best for</b>Businesses with repeat customers: restaurants, salons, hotels, retail and clinics.</div>
@@ -188,7 +192,7 @@
 
   <article class="svc reveal" id="leads">
     <div>
-      <div class="num">08 · GET BOOKED</div>
+      <div class="num">ADD-ON · GET BOOKED</div>
       <h2>Lead Generation</h2>
       <p class="lede">Find people who need what you offer and make it easy for them to become appointments, quotes and sales.</p>
       <div class="best"><b>Best for</b>Contractors, real estate, wellness practices and B2B services that rely on inquiries.</div>
@@ -202,7 +206,7 @@
 
   <article class="svc reveal" id="ai-content">
     <div>
-      <div class="num">09 · BEHIND THE SCENES</div>
+      <div class="num">HOW I WORK</div>
       <h2>AI-Powered Marketing</h2>
       <p class="lede">I use modern AI tools to research, draft and analyze faster, then review every piece by hand so it's accurate and sounds like you.</p>
       <div class="best"><b>Best for</b>Every client. It's how I keep quality high and prices fair.</div>
@@ -213,26 +217,14 @@
     </div>
   </article>
 
-  <article class="svc reveal" id="ai-search">
-    <div>
-      <div class="num">10 · GET FOUND</div>
-      <h2>AI Search Visibility</h2>
-      <p class="lede">More people now ask AI assistants for recommendations. I organize your business information so those tools can find you and describe you accurately.</p>
-      <div class="best"><b>Best for</b>Businesses that want to stay ahead of how customers search next.</div>
-      <div class="where"><span class="chip">ChatGPT</span><span class="chip">Google AI Overviews</span><span class="chip">Claude</span><span class="chip">Perplexity</span></div>
-    </div>
-    <div class="panels">
-      <div class="card"><h3>What I do</h3><ul class="ticks"><li>Consistent facts across the web</li><li>Clear FAQ and service pages</li><li>Structured data on your site</li></ul></div>
-      <div class="card"><h3>What I check</h3><ul class="ticks"><li>How AI tools describe you today</li><li>Missing or wrong information</li><li>Changes over time</li></ul></div>
-    </div>
-  </article>
+  
 
 </div>
 
 <section style="padding-top:24px">
   <div class="wrap">
     <div class="cta-band reveal">
-      <div><h2>Not sure where to start?</h2><p>My free audit shows which services would make the biggest difference for your business right now.</p></div>
+      <div><h2>Not sure where to start?</h2><p>My free audit shows which service would make the biggest difference for your business right now, with an exact monthly price.</p></div>
       <a class="btn" href="contact.html">Get a free audit</a>
     </div>
   </div>
@@ -247,11 +239,11 @@
     </div>
     <div>
       <h4>Services</h4>
-      <ul><li><a href="services.html#gbp">Google Business Profile</a></li><li><a href="services.html#social">Social media</a></li><li><a href="services.html#reviews">Reputation</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#web">Websites</a></li><li><a href="services.html#ads">Advertising</a></li></ul>
+      <ul><li><a href="services.html#social">Social media management</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#reviews">Reputation management</a></li><li><a href="services.html#web">Websites</a></li><li><a href="pricing.html">Plans from $250/month</a></li></ul>
     </div>
     <div>
       <h4>Company</h4>
-      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social media examples</a></li></ul>
     </div>
     <div>
       <h4>Free resources</h4>
@@ -260,6 +252,7 @@
     <div class="legal">© 2026 Karla's Agency. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
   </div>
 </footer>
-<script src="site.js?v=e14b4f11"></script>
+<a class="btn mcta" href="contact.html">Get a free marketing audit</a>
+<script src="site.js?v=d30bea32"></script>
 </body>
 </html>

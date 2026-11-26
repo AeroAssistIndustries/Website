@@ -1,5 +1,6 @@
 """Wraps each page partial in src/ with the shared head, nav and footer; writes to dist/."""
 import os, re, shutil, hashlib
+import plans
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
@@ -16,7 +17,7 @@ PAGES = {
 }
 
 NAV = [("services.html", "Services", "services"), ("industries.html", "Industries", "industries"),
-       ("pricing.html", "Pricing", "pricing"), ("social.html", "Social examples", "social"), ("about.html", "About", "about")]
+       ("pricing.html", "Pricing", "pricing"), ("social.html", "Our work", "social"), ("about.html", "About", "about")]
 
 def ver(name):
     return hashlib.md5(open(os.path.join(ROOT, name), "rb").read()).hexdigest()[:8]
@@ -66,11 +67,11 @@ FOOTER = """<footer>
     </div>
     <div>
       <h4>Services</h4>
-      <ul><li><a href="services.html#gbp">Google Business Profile</a></li><li><a href="services.html#social">Social media</a></li><li><a href="services.html#reviews">Reputation</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#web">Websites</a></li><li><a href="services.html#ads">Advertising</a></li></ul>
+      <ul><li><a href="services.html#social">Social media management</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#reviews">Reputation management</a></li><li><a href="services.html#web">Websites</a></li><li><a href="pricing.html">Plans from $250/month</a></li></ul>
     </div>
     <div>
       <h4>Company</h4>
-      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social media examples</a></li></ul>
     </div>
     <div>
       <h4>Free resources</h4>
@@ -79,7 +80,7 @@ FOOTER = """<footer>
     <div class="legal">© 2026 Karla's Agency. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
   </div>
 </footer>
-<script src="site.js?v=__JSV__"></script>
+__MCTA__<script src="site.js?v=__JSV__"></script>
 </body>
 </html>
 """
@@ -95,9 +96,10 @@ for fname, (title, desc, active) in PAGES.items():
         base = f"https://images.unsplash.com/photo-{pid}?auto=format&fit=crop&q=75"
         return (f'<img src="{base}&w={w}" srcset="{base}&w={w//2} {w//2}w, {base}&w={w} {w}w, {base}&w={int(w*1.6)} {int(w*1.6)}w" '
                 f'sizes="(max-width: 700px) 100vw, {w}px" alt="{alt}" loading="lazy" decoding="async">')
+    body = body.replace("{{plans}}", plans.tabs_html()).replace("{{builder}}", plans.builder_html()).replace("{{plans_json}}", plans.plans_json())
     body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     with open(os.path.join(DIST, fname), "w") as f:
-        f.write(head(title, desc, styles) + nav(active) + "<main>\n" + body + "\n</main>\n" + FOOTER.replace("__JSV__", ver("site.js")))
+        f.write(head(title, desc, styles) + nav(active) + "<main>\n" + body + "\n</main>\n" + FOOTER.replace("__JSV__", ver("site.js")).replace("__MCTA__", "" if active == "contact" else '<a class="btn mcta" href="contact.html">Get a free marketing audit</a>\n'))
 for asset in ["style.css", "site.js"]:
     shutil.copy(os.path.join(ROOT, asset), os.path.join(DIST, asset))
 shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(DIST, "assets"), dirs_exist_ok=True)

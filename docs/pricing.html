@@ -14,38 +14,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=a1e527b7">
+<link rel="stylesheet" href="style.css?v=d73ac3df">
 <script>document.documentElement.classList.add('js')</script>
 <style>
-.pkgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
-.pkg { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 14px; }
-.pkg.pop { background: var(--ink); color: #fff; border-color: var(--ink); }
-.pkg .tier { font-weight: 700; font-size: 15px; display: flex; justify-content: space-between; align-items: center; }
-.pkg .badge { background: var(--sun); color: var(--ink); font-size: 12px; padding: 4px 10px; border-radius: 999px; }
-.pkg .price { font-family: var(--display); font-size: 52px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
-.pkg .price small { font-family: var(--body); font-size: 15px; font-weight: 500; letter-spacing: 0; color: var(--muted); }
-.pkg.pop .price small, .pkg.pop .for { color: #b9bdc6; }
-.pkg .for { color: var(--muted); font-size: 15px; flex: 1; }
-.pkg .btn { justify-content: center; }
-.pkg.pop .btn { background: var(--sun); color: var(--ink); }
-
-.tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 22px; background: var(--card); }
-table.compare { width: 100%; border-collapse: collapse; min-width: 640px; font-size: 15.5px; }
-.compare th, .compare td { padding: 14px 20px; text-align: left; border-bottom: 1px solid var(--line); }
-.compare thead th { font-family: var(--display); font-size: 20px; font-weight: 750; position: sticky; top: 0; background: var(--card); }
-.compare thead th:nth-child(3) { color: var(--accent); }
-.compare td:not(:first-child), .compare th:not(:first-child) { text-align: center; width: 18%; font-variant-numeric: tabular-nums; }
-.compare tr.grp td { background: var(--paper); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.compare td:nth-child(3) { background: rgba(47,69,255,.04); }
-.compare .y { color: var(--accent); font-weight: 800; font-size: 18px; }
-.compare .n { color: #b8bbb4; }
-.compare tbody tr:last-child td { border-bottom: 0; }
-
 .addon { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
 .addon .q { font-size: 13px; font-weight: 700; color: var(--accent); white-space: nowrap; }
 .proj .card h3 { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
 .proj .card h3 small { font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
-@media (max-width: 960px) { .pkgs { grid-template-columns: 1fr; } }
+.price-head .wrap { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; }
+.price-head .facts { display: grid; gap: 10px; }
+.price-head .facts div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; gap: 12px; align-items: center; font-size: 15px; }
+.price-head .facts b { font-family: var(--display); font-size: 24px; color: var(--accent); min-width: 64px; letter-spacing: -0.03em; }
+@media (max-width: 900px) { .price-head .wrap { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -53,102 +33,80 @@ table.compare { width: 100%; border-collapse: collapse; min-width: 640px; font-s
   <div class="wrap">
     <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla's Agency" width="180" height="38"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
-    <ul id="navlist"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html" aria-current="page">Pricing</a></li><li><a href="social.html">Social examples</a></li><li><a href="about.html">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
+    <ul id="navlist"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html" aria-current="page">Pricing</a></li><li><a href="social.html">Our work</a></li><li><a href="about.html">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
   </div>
 </nav>
 <main>
-<header class="page-head">
+<div class="offer"><div class="wrap"><b>Founding client offer</b><span>15% off your first 6 months for my first 3 clients.</span><a href="#builder">Build your plan →</a></div></div>
+
+<header class="page-head price-head">
   <div class="wrap">
-    <div class="eyebrow">Pricing</div>
-    <h1 class="rise">Simple monthly packages.</h1>
-    <p class="intro">Month-to-month, no long-term contract. Every package starts with a free audit and a kickoff session, and includes a plain-English monthly report.</p>
+    <div>
+      <div class="eyebrow rise">Pricing</div>
+      <h1 class="rise" style="--d:.1s">Plans from $250 a month.</h1>
+      <p class="intro rise" style="--d:.2s">Pick one service or combine them. Every plan is month to month, starts with a free audit, and includes a plain-English report every month.</p>
+    </div>
+    <div class="facts rise" style="--d:.25s">
+      <div><b>4</b>services: social media, local SEO, reputation and websites</div>
+      <div><b>10%</b>off with two services, 15% off with three or more</div>
+      <div><b>$0</b>setup fee on monthly plans and no long-term contract</div>
+    </div>
   </div>
 </header>
 
-<section style="padding-top:0">
-  <div class="wrap">
-    <div class="pkgs">
-      <div class="pkg reveal">
-        <div class="tier">Starter</div>
-        <div class="price">$500<small> /month and up</small></div>
-        <p class="for">Get found and look trustworthy on Google. Ideal for businesses starting from scratch or with a neglected profile.</p>
-        <a class="btn ghost" href="contact.html">Start with a free audit</a>
-      </div>
-      <div class="pkg pop reveal" style="--d:.1s">
-        <div class="tier">Growth <span class="badge">Most popular</span></div>
-        <div class="price">$900<small> /month and up</small></div>
-        <p class="for">Everything in Starter, plus an active social presence and a steady stream of new reviews.</p>
-        <a class="btn" href="contact.html">Start with a free audit</a>
-      </div>
-      <div class="pkg reveal">
-        <div class="tier">Premium</div>
-        <div class="price">$1,500<small> /month and up</small></div>
-        <p class="for">Full-service marketing with ads, lead generation, email and website support for businesses ready to grow faster.</p>
-        <a class="btn ghost" href="contact.html">Start with a free audit</a>
-      </div>
-    </div>
+<section style="padding-top:8px">
+  <div class="wrap reveal">
+    <div class="plans"><div class="plan-tabs" role="tablist" aria-label="Services"><button type="button" role="tab" id="tab-social" aria-controls="panel-social" aria-selected="true" tabindex="0"><span class="tab-tag">SMM</span>Social media<small>from $250/mo</small></button><button type="button" role="tab" id="tab-seo" aria-controls="panel-seo" aria-selected="false" tabindex="-1"><span class="tab-tag">SEO</span>Local SEO<small>from $250/mo</small></button><button type="button" role="tab" id="tab-reviews" aria-controls="panel-reviews" aria-selected="false" tabindex="-1"><span class="tab-tag">ORM</span>Reputation<small>from $250/mo</small></button><button type="button" role="tab" id="tab-web" aria-controls="panel-web" aria-selected="false" tabindex="-1"><span class="tab-tag">WEB</span>Website<small>from $250/mo</small></button></div><div class="plan-panel" role="tabpanel" id="panel-social" aria-labelledby="tab-social"><p class="plan-pitch"><b>Social Media Management.</b> A steady, on-brand feed that gives people a reason to visit.</p><div class="tiers"><article class="tier"><div class="tier-top"><span class="tier-name">Essentials</span></div><div class="tier-price">$250<small>/month</small></div><p class="tier-for">Get consistent on one platform.</p><ul><li>1 platform (Instagram or Facebook)</li><li>8 designed posts a month</li><li>Captions and hashtags in your voice</li><li>Scheduling and posting</li><li>Monthly report</li></ul><a class="btn ghost" href="contact.html" data-pick="social:Essentials">Choose Essentials</a></article><article class="tier pop"><div class="tier-top"><span class="tier-name">Growth</span><span class=badge>Most popular</span></div><div class="tier-price">$650<small>/month</small></div><p class="tier-for">Grow on the two platforms that matter most.</p><ul><li>2 platforms</li><li>12 designed posts a month</li><li>2 Reels or TikToks planned and edited</li><li>Weekly Stories</li><li>Comment and DM replies</li><li>Monthly content calendar for approval</li></ul><a class="btn" href="contact.html" data-pick="social:Growth">Choose Growth</a></article><article class="tier"><div class="tier-top"><span class="tier-name">Pro</span></div><div class="tier-price">$1,500<small>/month</small></div><p class="tier-for">Full-service social, handled every day.</p><ul><li>Up to 3 platforms</li><li>20 designed posts a month</li><li>4 Reels or TikToks edited</li><li>Daily community management</li><li>Boosted post management (ad spend separate)</li><li>Monthly strategy call</li></ul><a class="btn ghost" href="contact.html" data-pick="social:Pro">Choose Pro</a></article></div></div><div class="plan-panel" role="tabpanel" id="panel-seo" aria-labelledby="tab-seo" hidden><p class="plan-pitch"><b>Local SEO.</b> Show up when people nearby search on Google, Maps and AI assistants.</p><div class="tiers"><article class="tier"><div class="tier-top"><span class="tier-name">Essentials</span></div><div class="tier-price">$250<small>/month</small></div><p class="tier-for">Fix the foundations of local search.</p><ul><li>Google Business Profile optimization</li><li>4 Google profile posts a month</li><li>Listing cleanup on 10 directories</li><li>Monthly ranking snapshot</li></ul><a class="btn ghost" href="contact.html" data-pick="seo:Essentials">Choose Essentials</a></article><article class="tier pop"><div class="tier-top"><span class="tier-name">Growth</span><span class=badge>Most popular</span></div><div class="tier-price">$600<small>/month</small></div><p class="tier-for">Climb for the searches that bring customers.</p><ul><li>Everything in Essentials</li><li>On-page SEO for up to 5 pages</li><li>Listings on 25 directories</li><li>1 new service page or article a month</li><li>10 local keywords tracked</li></ul><a class="btn" href="contact.html" data-pick="seo:Growth">Choose Growth</a></article><article class="tier"><div class="tier-top"><span class="tier-name">Pro</span></div><div class="tier-price">$1,200<small>/month</small></div><p class="tier-for">Own your neighborhood in search.</p><ul><li>Everything in Growth</li><li>2 new pages or articles a month</li><li>Local link building</li><li>Technical SEO fixes</li><li>AI search visibility checks</li><li>25 keywords tracked, monthly call</li></ul><a class="btn ghost" href="contact.html" data-pick="seo:Pro">Choose Pro</a></article></div></div><div class="plan-panel" role="tabpanel" id="panel-reviews" aria-labelledby="tab-reviews" hidden><p class="plan-pitch"><b>Online Reputation Management.</b> More genuine reviews, and a thoughtful reply to every one.</p><div class="tiers"><article class="tier"><div class="tier-top"><span class="tier-name">Essentials</span></div><div class="tier-price">$250<small>/month</small></div><p class="tier-for">Never leave a review unanswered.</p><ul><li>Monitoring on Google, Facebook and Yelp</li><li>Replies to up to 30 reviews a month</li><li>Alerts for negative reviews</li><li>Monthly reputation report</li></ul><a class="btn ghost" href="contact.html" data-pick="reviews:Essentials">Choose Essentials</a></article><article class="tier pop"><div class="tier-top"><span class="tier-name">Growth</span><span class=badge>Most popular</span></div><div class="tier-price">$400<small>/month</small></div><p class="tier-for">Turn happy customers into new reviews.</p><ul><li>Everything in Essentials</li><li>Unlimited review replies</li><li>Review request system (links and QR cards)</li><li>Negative reviews answered within 24 hours</li></ul><a class="btn" href="contact.html" data-pick="reviews:Growth">Choose Growth</a></article><article class="tier"><div class="tier-top"><span class="tier-name">Pro</span></div><div class="tier-price">$750<small>/month</small></div><p class="tier-for">Reputation across every platform and location.</p><ul><li>Everything in Growth</li><li>Up to 3 locations or extra platforms</li><li>Review showcase on your website</li><li>Quarterly customer sentiment report</li><li>Response plan for difficult reviews</li></ul><a class="btn ghost" href="contact.html" data-pick="reviews:Pro">Choose Pro</a></article></div></div><div class="plan-panel" role="tabpanel" id="panel-web" aria-labelledby="tab-web" hidden><p class="plan-pitch"><b>Website.</b> A fast, mobile-friendly site that turns visitors into calls and bookings.</p><div class="tiers"><article class="tier"><div class="tier-top"><span class="tier-name">Essentials</span></div><div class="tier-price">$250<small>/month</small></div><p class="tier-for">Keep your current site fast, safe and up to date.</p><ul><li>Hosting, security and backups</li><li>Uptime monitoring</li><li>Up to 1 hour of updates a month</li><li>Speed and form checks</li></ul><a class="btn ghost" href="contact.html" data-pick="web:Essentials">Choose Essentials</a></article><article class="tier pop"><div class="tier-top"><span class="tier-name">Growth</span><span class=badge>Most popular</span></div><div class="tier-price">$500<small>/month</small></div><p class="tier-for">A new site with no big upfront cost.</p><ul><li>New 5-page website built for you</li><li>No upfront build fee on a 12-month plan</li><li>Hosting, security and backups</li><li>Up to 2 hours of updates a month</li><li>Booking or contact buttons on every page</li></ul><a class="btn" href="contact.html" data-pick="web:Growth">Choose Growth</a></article><article class="tier"><div class="tier-top"><span class="tier-name">Pro</span></div><div class="tier-price">$1,000<small>/month</small></div><p class="tier-for">A website that works as hard as you do.</p><ul><li>New site with up to 12 pages</li><li>Online booking or ordering set up</li><li>A new landing page every month</li><li>Up to 4 hours of updates a month</li><li>Monthly conversion review</li></ul><a class="btn ghost" href="contact.html" data-pick="web:Pro">Choose Pro</a></article></div></div></div>
+    <p class="pk-note" style="margin-top:22px;color:var(--muted);font-size:15px">Prices are per month for one location. Ad spend is paid directly to Google or Meta. The Website Growth and Pro plans include a new site with a 12-month plan instead of an upfront build fee.</p>
   </div>
 </section>
 
-<section style="padding-top:0">
+<section class="alt" id="builder-section">
   <div class="wrap">
-    <div class="eyebrow">Compare</div>
-    <h2 class="h2" style="margin-bottom:32px">What's in each package.</h2>
-    <div class="tbl-wrap reveal">
-      <table class="compare">
-        <thead><tr><th scope="col">Included each month</th><th scope="col">Starter</th><th scope="col">Growth</th><th scope="col">Premium</th></tr></thead>
-        <tbody>
-          <tr class="grp"><td colspan="4">Google &amp; local</td></tr>
-          <tr><td>Google Business Profile management</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-          <tr><td>Google profile posts</td><td>4</td><td>4</td><td>8</td></tr>
-          <tr><td>Local listings cleanup and monitoring</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-          <tr><td>Local SEO</td><td class="n">—</td><td>Basic</td><td>Full</td></tr>
-          <tr class="grp"><td colspan="4">Social media</td></tr>
-          <tr><td>Designed social posts</td><td class="n">—</td><td>12</td><td>16</td></tr>
-          <tr><td>Reels or TikToks planned</td><td class="n">—</td><td>1</td><td>4</td></tr>
-          <tr><td>Comment and message replies</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
-          <tr class="grp"><td colspan="4">Reputation</td></tr>
-          <tr><td>Replies to every review</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-          <tr><td>Review request system</td><td class="n">—</td><td class="y">✓</td><td class="y">✓</td></tr>
-          <tr class="grp"><td colspan="4">Growth</td></tr>
-          <tr><td>Google or Meta ad management</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
-          <tr><td>Lead generation and follow-up</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
-          <tr><td>Email newsletter</td><td class="n">—</td><td class="n">—</td><td>1</td></tr>
-          <tr><td>Website updates</td><td class="n">—</td><td class="n">—</td><td class="y">✓</td></tr>
-          <tr class="grp"><td colspan="4">Reporting &amp; support</td></tr>
-          <tr><td>Monthly report</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-          <tr><td>Strategy call</td><td class="n">—</td><td>Quarterly</td><td>Monthly</td></tr>
-        </tbody>
-      </table>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">Plan builder</div><h2 class="h2">Build your plan.</h2></div>
+      <p class="intro">Tick the services you want and choose a level. Your monthly total updates as you go, with bundle savings included.</p>
     </div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <div><div class="eyebrow">Add-ons</div><h2 class="h2">Add what you need.</h2></div>
-      <p class="intro">Add any of these to a package. I'll quote them alongside your plan after the audit.</p>
+    <div class="builder reveal" id="builder">
+      <div class="builder-rows"><div class="b-row" data-service="social"><label class="b-pick"><input type="checkbox" value="social"><span><b>Social Media Management</b><small>from $250/mo</small></span></label><div class="segs" role="radiogroup" aria-label="Social media level"><label class="seg"><input type="radio" name="lvl-social" value="Essentials"><span>Essentials<em>$250</em></span></label><label class="seg"><input type="radio" name="lvl-social" value="Growth" checked><span>Growth<em>$650</em></span></label><label class="seg"><input type="radio" name="lvl-social" value="Pro"><span>Pro<em>$1,500</em></span></label></div></div><div class="b-row" data-service="seo"><label class="b-pick"><input type="checkbox" value="seo"><span><b>Local SEO</b><small>from $250/mo</small></span></label><div class="segs" role="radiogroup" aria-label="Local SEO level"><label class="seg"><input type="radio" name="lvl-seo" value="Essentials"><span>Essentials<em>$250</em></span></label><label class="seg"><input type="radio" name="lvl-seo" value="Growth" checked><span>Growth<em>$600</em></span></label><label class="seg"><input type="radio" name="lvl-seo" value="Pro"><span>Pro<em>$1,200</em></span></label></div></div><div class="b-row" data-service="reviews"><label class="b-pick"><input type="checkbox" value="reviews"><span><b>Online Reputation Management</b><small>from $250/mo</small></span></label><div class="segs" role="radiogroup" aria-label="Reputation level"><label class="seg"><input type="radio" name="lvl-reviews" value="Essentials"><span>Essentials<em>$250</em></span></label><label class="seg"><input type="radio" name="lvl-reviews" value="Growth" checked><span>Growth<em>$400</em></span></label><label class="seg"><input type="radio" name="lvl-reviews" value="Pro"><span>Pro<em>$750</em></span></label></div></div><div class="b-row" data-service="web"><label class="b-pick"><input type="checkbox" value="web"><span><b>Website</b><small>from $250/mo</small></span></label><div class="segs" role="radiogroup" aria-label="Website level"><label class="seg"><input type="radio" name="lvl-web" value="Essentials"><span>Essentials<em>$250</em></span></label><label class="seg"><input type="radio" name="lvl-web" value="Growth" checked><span>Growth<em>$500</em></span></label><label class="seg"><input type="radio" name="lvl-web" value="Pro"><span>Pro<em>$1,000</em></span></label></div></div></div>
+      <aside class="summary" aria-live="polite">
+        <h3>Your monthly plan</h3>
+        <div class="lines"></div>
+        <label class="fc"><input type="checkbox" id="founding"> I'd like the founding client rate</label>
+        <div class="total"><span>Per month</span><b>$0</b></div>
+        <p class="note"></p>
+        <a class="btn go" href="contact.html">Request this plan with a free audit</a>
+      </aside>
     </div>
-    <div class="g3 reveal">
-      <div class="card addon"><div><h3>Extra Reels</h3><p>More short-form video, planned shot by shot.</p></div><span class="q">Quoted</span></div>
-      <div class="card addon"><div><h3>Ad management</h3><p>Add Google or Meta ads to Starter or Growth.</p></div><span class="q">Quoted</span></div>
-      <div class="card addon"><div><h3>Email newsletter</h3><p>A monthly email to your customer list.</p></div><span class="q">Quoted</span></div>
-      <div class="card addon"><div><h3>Extra platform</h3><p>Add TikTok, LinkedIn or another channel.</p></div><span class="q">Quoted</span></div>
-      <div class="card addon"><div><h3>Review cards</h3><p>Printed QR cards for your counter or tables.</p></div><span class="q">Quoted</span></div>
-      <div class="card addon"><div><h3>Photo day</h3><p>A half-day shoot for a month of fresh content.</p></div><span class="q">Quoted</span></div>
-    </div>
+    <script type="application/json" id="plans-data">{"tiers": ["Essentials", "Growth", "Pro"], "bundle": {"2": 10, "3": 15}, "founding": 15, "plans": [{"id": "social", "name": "Social Media Management", "short": "Social media", "prices": [250, 650, 1500]}, {"id": "seo", "name": "Local SEO", "short": "Local SEO", "prices": [250, 600, 1200]}, {"id": "reviews", "name": "Online Reputation Management", "short": "Reputation", "prices": [250, 400, 750]}, {"id": "web", "name": "Website", "short": "Website", "prices": [250, 500, 1000]}]}</script>
   </div>
 </section>
 
 <section>
   <div class="wrap">
-    <div class="eyebrow">One-time projects</div>
-    <h2 class="h2" style="margin-bottom:36px">Start fresh.</h2>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">Add-ons</div><h2 class="h2">Add what you need.</h2></div>
+      <p class="intro">Add any of these to a plan. I'll quote them alongside your plan after the audit.</p>
+    </div>
+    <div class="g3 reveal">
+      <div class="card addon"><div><h3>Ad management</h3><p>Google or Meta ads with tracking and monthly tuning.</p></div><span class="q">Quoted</span></div>
+      <div class="card addon"><div><h3>Email newsletter</h3><p>A monthly email to your customer list.</p></div><span class="q">Quoted</span></div>
+      <div class="card addon"><div><h3>Extra location</h3><p>Add a second shop, clinic or property to any plan.</p></div><span class="q">Quoted</span></div>
+      <div class="card addon"><div><h3>Content day</h3><p>A half-day on site for a month of photos and short videos.</p></div><span class="q">Quoted</span></div>
+      <div class="card addon"><div><h3>Review cards</h3><p>Printed QR cards for your counter or tables.</p></div><span class="q">Quoted</span></div>
+      <div class="card addon"><div><h3>Lead follow-up</h3><p>Landing pages and instant replies for new inquiries.</p></div><span class="q">Quoted</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow reveal">One-time projects</div>
+    <h2 class="h2 reveal" style="margin-bottom:36px">Start fresh.</h2>
     <div class="g2 proj reveal">
-      <div class="card"><h3>New website <small>Quoted per project</small></h3><p>A mobile-friendly site on your own domain, with service pages, booking or contact buttons and basic SEO.</p></div>
+      <div class="card"><h3>Website build <small>Quoted per project</small></h3><p>Prefer to own your site outright? I'll build it for a one-time fee instead of a Website plan.</p></div>
       <div class="card"><h3>Brand starter kit <small>Quoted per project</small></h3><p>Logo, colors, fonts and post templates so everything you publish looks consistent.</p></div>
-      <div class="card"><h3>Google profile setup <small>Quoted per project</small></h3><p>Claim, verify and fully build out your profile, then hand it to you or keep it under a package.</p></div>
+      <div class="card"><h3>Google profile setup <small>Quoted per project</small></h3><p>Claim, verify and fully build out your profile, then hand it to you or keep it on a plan.</p></div>
       <div class="card"><h3>Social media refresh <small>Quoted per project</small></h3><p>New bios, highlights, templates and a first month of content to restart a quiet account.</p></div>
     </div>
   </div>
@@ -156,15 +114,16 @@ table.compare { width: 100%; border-collapse: collapse; min-width: 640px; font-s
 
 <section style="padding-top:0">
   <div class="wrap">
-    <div class="eyebrow">Billing questions</div>
-    <h2 class="h2" style="margin-bottom:32px">Good to know.</h2>
+    <div class="eyebrow reveal">Billing questions</div>
+    <h2 class="h2 reveal" style="margin-bottom:32px">Good to know.</h2>
     <div class="faq reveal">
-      <details><summary>Is there a contract?</summary><p>No long-term contract. Packages run month to month, and I ask for 30 days' notice before you stop.</p></details>
-      <details><summary>Why does each price say “and up”?</summary><p>Most businesses fit the starting price. Businesses with several locations, more platforms or a lot of reviews may need more work each month, and I'll tell you upfront after the audit.</p></details>
+      <details><summary>Is there a contract?</summary><p>Monthly plans run month to month with 30 days' notice to stop. The only exception is the Website Growth and Pro plans, which include a new site with no build fee in exchange for a 12-month plan.</p></details>
+      <details><summary>Which plan should I start with?</summary><p>Most local businesses start with Local SEO or Reputation, because that's where nearby customers find and judge you first. Your free audit ends with a clear recommendation and an exact monthly price.</p></details>
+      <details><summary>How do bundle savings work?</summary><p>Choose two services and save 10% on the total, or three or more and save 15%. Founding clients can choose 15% off for their first 6 months instead; the discounts don't stack.</p></details>
       <details><summary>Is ad spend included?</summary><p>No. Your ad budget is paid directly to Google or Meta from your own account. My fee covers managing the ads.</p></details>
       <details><summary>Who owns my accounts and content?</summary><p>You do. I work inside accounts in your name, and every post, photo and page I create is yours to keep.</p></details>
-      <details><summary>Can I change packages?</summary><p>Yes. You can move up or down at the start of any month.</p></details>
-      <details><summary>How do I pay?</summary><p>I send a monthly invoice you can pay online by card or bank transfer.</p></details>
+      <details><summary>Can I change plans?</summary><p>Yes. Move up, down or add a service at the start of any month.</p></details>
+      <details><summary>How do I pay?</summary><p>You get a monthly invoice you can pay online by card or bank transfer (ACH).</p></details>
     </div>
   </div>
 </section>
@@ -172,7 +131,7 @@ table.compare { width: 100%; border-collapse: collapse; min-width: 640px; font-s
 <section style="padding-top:0">
   <div class="wrap">
     <div class="cta-band reveal">
-      <div><h2>Find the right package.</h2><p>Your free audit includes a package recommendation and an exact monthly price for your business.</p></div>
+      <div><h2>Not sure which plan fits?</h2><p>Your free audit shows where you stand and ends with one clear recommendation and price.</p></div>
       <a class="btn" href="contact.html">Get a free audit</a>
     </div>
   </div>
@@ -187,11 +146,11 @@ table.compare { width: 100%; border-collapse: collapse; min-width: 640px; font-s
     </div>
     <div>
       <h4>Services</h4>
-      <ul><li><a href="services.html#gbp">Google Business Profile</a></li><li><a href="services.html#social">Social media</a></li><li><a href="services.html#reviews">Reputation</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#web">Websites</a></li><li><a href="services.html#ads">Advertising</a></li></ul>
+      <ul><li><a href="services.html#social">Social media management</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#reviews">Reputation management</a></li><li><a href="services.html#web">Websites</a></li><li><a href="pricing.html">Plans from $250/month</a></li></ul>
     </div>
     <div>
       <h4>Company</h4>
-      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social examples</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social media examples</a></li></ul>
     </div>
     <div>
       <h4>Free resources</h4>
@@ -200,6 +159,7 @@ table.compare { width: 100%; border-collapse: collapse; min-width: 640px; font-s
     <div class="legal">© 2026 Karla's Agency. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
   </div>
 </footer>
-<script src="site.js?v=e14b4f11"></script>
+<a class="btn mcta" href="contact.html">Get a free marketing audit</a>
+<script src="site.js?v=d30bea32"></script>
 </body>
 </html>

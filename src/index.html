@@ -38,12 +38,14 @@
 .sig { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 30px; color: var(--accent); margin-top: 26px; }
 
 /* Core services */
-.core { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.core { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.core .from { margin-top: auto; padding-top: 10px; font-weight: 700; color: var(--accent); text-decoration: none; }
+.core .from:hover { text-decoration: underline; }
 .core article { background: var(--card); border: 1px solid var(--line); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; }
 .core .ph { aspect-ratio: 16 / 10; border-radius: 0; }
 .core .bd { padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .core .num { font-family: var(--display); font-weight: 800; color: var(--accent); font-size: 14px; letter-spacing: .06em; }
-.core h3 { font-size: 26px; }
+.core h3 { font-size: 24px; }
 .core p { color: var(--muted); font-size: 16px; }
 .core ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 6px; font-size: 15px; }
 .core li::before { content: "→ "; color: var(--accent); font-weight: 700; }
@@ -120,12 +122,14 @@
   .hero .wrap, .meet .wrap, .month, .teaser, .audit .wrap { grid-template-columns: 1fr; }
   .collage { height: 460px; }
   .chip-ui.c1 { left: 8px; } .chip-ui.c2 { right: 8px; }
-  .core, .pkgs { grid-template-columns: 1fr; }
+  .core { grid-template-columns: 1fr 1fr; }
+  .pkgs { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; row-gap: 28px; }
   .tiles-ind { grid-template-columns: repeat(2, 1fr); }
   .teaser { padding: 36px 24px; }
 }
 @media (max-width: 560px) {
+  .core { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr; }
   .collage { height: 380px; }
   .chip-ui.c2 { display: none; }
@@ -133,17 +137,19 @@
 }
 </style>
 
+<div class="offer"><div class="wrap"><b>Founding client offer</b><span>15% off your first 6 months for my first 3 clients.</span><a href="pricing.html#builder">Build your plan →</a></div></div>
+
 <header class="hero">
   <div class="wrap">
     <div>
       <div class="eyebrow rise"><i></i>Local marketing by Karla · Taking new clients</div>
       <h1><span class="rise" style="--d:.08s">Get found.</span><span class="rise" style="--d:.2s">Get <span class="blue">chosen.</span></span><span class="rise" style="--d:.32s">Get <span class="mark-anim">booked.</span></span></h1>
-      <p class="sub rise" style="--d:.45s">I'm Karla. I help local businesses show up on Google, keep their social media active, and turn happy customers into five-star reviews. One person, real attention, every single month.</p>
+      <p class="sub rise" style="--d:.45s">I'm Karla. I help local businesses show up on Google, keep their social media active, earn five-star reviews and turn website visitors into bookings. One person, real attention, plans from $250 a month.</p>
       <div class="ctas rise" style="--d:.55s">
         <a class="btn" href="contact.html">Get a free marketing audit</a>
         <a class="btn ghost" href="social.html">See social media examples</a>
       </div>
-      <div class="assure rise" style="--d:.65s"><span>Month to month</span><span>No long-term contracts</span><span>You own everything</span></div>
+      <div class="assure rise" style="--d:.65s"><span>Plans from $250/month</span><span>Month to month</span><span>You own everything</span></div>
     </div>
 
     <div class="collage rise" style="--d:.25s">
@@ -186,29 +192,34 @@
 <section class="alt" id="services">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div><div class="eyebrow">What I do</div><h2 class="h2">Three things that bring<br>local customers in.</h2></div>
+      <div><div class="eyebrow">What I do</div><h2 class="h2">Four services. One person<br>who does them all.</h2></div>
       <p class="intro">I focus on the work that actually moves the needle for a local business, and I do it consistently, every month.</p>
     </div>
     <div class="core">
       <article class="reveal">
         <div class="ph">{{img:1512221684154-3a1f36dac982:600:Person using a smartphone camera}}</div>
-        <div class="bd"><div class="num">01 · GET FOUND</div><h3>Google Business Profile</h3><p>Show up in local searches and on Maps with a complete, accurate, active profile.</p>
-        <ul><li>Full profile setup and cleanup</li><li>Weekly posts and photo updates</li><li>Hours, services and menu kept current</li></ul></div>
+        <div class="bd"><div class="num">LOCAL SEO · GET FOUND</div><h3>Local SEO</h3><p>Show up on Google Search, Maps and AI assistants when people nearby look for what you do.</p>
+        <ul><li>Google Business Profile, fully optimized</li><li>Listings cleaned up everywhere</li><li>Pages that rank for local searches</li></ul><a class="from" href="pricing.html#seo">From $250/month →</a></div>
       </article>
-      <article class="reveal" style="--d:.1s">
+      <article class="reveal" style="--d:.08s">
         <div class="ph">{{img:1544633909-3de7702b9602:600:Person photographing food with a phone for social media}}</div>
-        <div class="bd"><div class="num">02 · GET CHOSEN</div><h3>Social Media Management</h3><p>A steady feed that looks like your business and gives people a reason to visit.</p>
-        <ul><li>Monthly content plan and calendar</li><li>Designed posts, carousels and Reels</li><li>Captions written in your voice</li></ul></div>
+        <div class="bd"><div class="num">SMM · GET CHOSEN</div><h3>Social Media</h3><p>A steady, on-brand feed that gives people a reason to follow and visit.</p>
+        <ul><li>Designed posts and Reels</li><li>Captions in your voice</li><li>Scheduling and replies</li></ul><a class="from" href="pricing.html#social">From $250/month →</a></div>
       </article>
-      <article class="reveal" style="--d:.2s">
+      <article class="reveal" style="--d:.16s">
         <div class="ph">{{img:1521017432531-fbd92d768814:600:Customers relaxing inside a busy café}}</div>
-        <div class="bd"><div class="num">03 · GET BOOKED</div><h3>Reputation Management</h3><p>More genuine reviews from happy customers, and a thoughtful reply to every one.</p>
-        <ul><li>Simple review request system</li><li>Professional replies to every review</li><li>Monthly reputation snapshot</li></ul></div>
+        <div class="bd"><div class="num">ORM · GET TRUSTED</div><h3>Reputation</h3><p>More genuine reviews from happy customers, and a thoughtful reply to every one.</p>
+        <ul><li>Every review answered</li><li>Review request links and QR cards</li><li>Alerts for negative reviews</li></ul><a class="from" href="pricing.html#reviews">From $250/month →</a></div>
+      </article>
+      <article class="reveal" style="--d:.24s">
+        <div class="ph">{{img:1531346878377-a5be20888e57:600:Laptop keyboard and notebook on a desk}}</div>
+        <div class="bd"><div class="num">WEB · GET BOOKED</div><h3>Website</h3><p>A fast, mobile-friendly site that turns visitors into calls and bookings.</p>
+        <ul><li>Care plans for your current site</li><li>New site with no upfront fee</li><li>Booking and contact buttons</li></ul><a class="from" href="pricing.html#web">From $250/month →</a></div>
       </article>
     </div>
     <div class="also reveal">
       <span class="lbl">Also available:</span>
-      <span class="chip">Website design</span><span class="chip">Local SEO</span><span class="chip">Google &amp; Meta ads</span><span class="chip">Email marketing</span><span class="chip">Lead generation</span><span class="chip">AI search visibility</span>
+      <span class="chip">Google &amp; Meta ads</span><span class="chip">Email marketing</span><span class="chip">Lead follow-up</span><span class="chip">Content days</span><span class="chip">Brand kits</span>
       <a class="btn ghost" href="services.html" style="margin-left:auto">Explore all services →</a>
     </div>
   </div>
@@ -245,6 +256,28 @@
 <section>
   <div class="wrap">
     <div class="sec-head reveal">
+      <div><div class="eyebrow">Why one person</div><h2 class="h2">The attention of a freelancer.<br>The playbook of an agency.</h2></div>
+      <p class="intro">Here's how working with me compares with hiring a big agency or doing it all yourself.</p>
+    </div>
+    <div class="vs-wrap reveal">
+      <table class="vs">
+        <thead><tr><th scope="col"></th><th scope="col">Karla's Agency</th><th scope="col">Big agency</th><th scope="col">Doing it yourself</th></tr></thead>
+        <tbody>
+          <tr><td>Who does the work</td><td>Me, every time</td><td>Often a junior account manager</td><td>You, after hours</td></tr>
+          <tr><td>Starting price</td><td>$250 a month</td><td>Often several thousand a month</td><td>Free, but costs your time</td></tr>
+          <tr><td>Contract</td><td>Month to month</td><td>Often 6–12 months</td><td>None</td></tr>
+          <tr><td>Who owns your accounts</td><td>You, always</td><td>Sometimes the agency</td><td>You</td></tr>
+          <tr><td>Reporting</td><td>Plain English, every month</td><td>Dashboards and jargon</td><td>Whatever you track</td></tr>
+          <tr><td>Response time</td><td>Same business day</td><td>Ticket queues</td><td>When you find the time</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
       <div><div class="eyebrow">Who I help</div><h2 class="h2">Built for local businesses.</h2></div>
       <a class="btn ghost" href="industries.html">See every industry →</a>
     </div>
@@ -263,32 +296,16 @@
 
 <section class="alt" id="packages">
   <div class="wrap">
-    <div class="reveal"><div class="eyebrow">Packages</div><h2 class="h2">Pick a starting point.</h2>
-    <p class="intro">Month-to-month packages. Every plan includes a kickoff audit and a monthly report.</p></div>
-    <div class="pkgs">
-      <div class="pkg reveal">
-        <div class="tier">Starter</div>
-        <div class="price">$500<small> /month and up</small></div>
-        <p class="for">For businesses that need to be found and look trustworthy on Google.</p>
-        <ul><li>Google Business Profile management</li><li>Local listings cleanup</li><li>Review monitoring and replies</li><li>Monthly report</li></ul>
-        <a class="btn ghost" href="contact.html">Start with a free audit</a>
-      </div>
-      <div class="pkg pop reveal" style="--d:.1s">
-        <div class="tier">Growth <span class="badge">Most popular</span></div>
-        <div class="price">$900<small> /month and up</small></div>
-        <p class="for">Everything in Starter, plus a social presence that keeps you top of mind.</p>
-        <ul><li>Social media management</li><li>12 designed posts per month</li><li>Basic SEO and local visibility</li><li>Review request system</li><li>Performance report</li></ul>
-        <a class="btn" href="contact.html">Start with a free audit</a>
-      </div>
-      <div class="pkg reveal" style="--d:.2s">
-        <div class="tier">Premium</div>
-        <div class="price">$1,500<small> /month and up</small></div>
-        <p class="for">Full-service marketing for businesses ready to grow faster.</p>
-        <ul><li>Everything in Growth</li><li>Ad campaign management</li><li>Lead generation</li><li>Website updates and support</li><li>Monthly strategy call</li></ul>
-        <a class="btn ghost" href="contact.html">Start with a free audit</a>
-      </div>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">Plans</div><h2 class="h2">Simple plans from<br>$250 a month.</h2></div>
+      <p class="intro">Choose a service, then the level that fits. Combine two and save 10%, or three or more and save 15%.</p>
     </div>
-    <p class="pk-note">Need a new website, branding or a one-time setup? I quote those as one-time projects. <a href="pricing.html">Compare packages in detail →</a></p>
+    <div class="reveal">{{plans}}</div>
+    {{plans_json}}
+    <div class="also reveal" style="margin-top:24px">
+      <a class="btn" href="pricing.html#builder">Build your plan and see your total →</a>
+      <span class="pk-note" style="margin:0;color:var(--muted)">Month to month · Free audit first · Ad spend paid directly to Google or Meta</span>
+    </div>
   </div>
 </section>
 
@@ -317,6 +334,7 @@
   <div class="wrap">
     <div class="reveal"><div class="eyebrow">Questions</div><h2 class="h2" style="margin-bottom:32px">Common questions.</h2></div>
     <div class="faq reveal">
+      <details><summary>What does it cost to get started?</summary><p>Plans start at $250 a month for one service, like reputation management or a website care plan. Most businesses start with one service and add another once they see it working. Two services save 10%, three or more save 15%.</p></details>
       <details><summary>Is it really just you?</summary><p>Yes. I do the strategy, writing, design and reporting myself. For specialized work like advanced web development or large ad campaigns, I bring in trusted specialists and manage them for you, so you still have one point of contact.</p></details>
       <details><summary>Do I have to sign a long-term contract?</summary><p>No. Packages are month to month. I ask for 30 days' notice if you decide to stop, so I can hand everything over cleanly.</p></details>
       <details><summary>How soon will I see results?</summary><p>Profile fixes and fresh content start working right away, but most local marketing builds over two to three months. I'll set realistic expectations in your audit and show progress in every monthly report.</p></details>
