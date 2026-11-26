@@ -1,6 +1,6 @@
 """Wraps each page partial in src/ with the shared head, nav and footer; writes the finished site to docs/."""
 import os, re, shutil, hashlib, json
-import plans, guides
+import plans, guides, service_pages
 from html import escape as esc
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -107,7 +107,7 @@ FOOTER = f"""<footer>
     </div>
     <div>
       <h4>Services</h4>
-      <ul><li><a href="services.html#social">Social media management</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#reviews">Reputation management</a></li><li><a href="services.html#web">Websites</a></li><li><a href="pricing.html">Plans and pricing</a></li></ul>
+      <ul><li><a href="social-media-management.html">Social media management</a></li><li><a href="local-seo.html">Local SEO</a></li><li><a href="reputation-management.html">Reputation management</a></li><li><a href="website-design.html">Websites</a></li><li><a href="pricing.html">Plans and pricing</a></li></ul>
     </div>
     <div>
       <h4>Company</h4>
@@ -207,13 +207,103 @@ def faq_ld(body):
         {"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": strip(a)}} for q, a in qa]})
 
 
+def service_page(sp):
+    others = [o for o in service_pages.PAGES if o["id"] != sp["id"]]
+    inc = "".join(f'<div class="card"><h3>{esc(h)}</h3><ul class="ticks">' + "".join(f"<li>{esc(x)}</li>" for x in items) + "</ul></div>" for h, items in sp["included"])
+    steps = "".join(f'<li class="reveal" style="--d:{i*.08:.2f}s"><span class="sp-n">0{i+1}</span><h3>{esc(h)}</h3><p>{esc(t)}</p></li>' for i, (h, t) in enumerate(sp["steps"]))
+    faqs = "".join(f"<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>" for q, a in sp["faqs"])
+    where = "".join(f'<span class="chip">{esc(w)}</span>' for w in sp["where"])
+    low = plans.BY_ID[sp["id"]]["tiers"][0]["price"]
+    g = guides.BY_SLUG.get(sp["guide"]) if sp["guide"] else None
+    guide = (f'<a class="sp-guide reveal" href="{g["slug"]}.html"><div class="ph">{{{{img:{g["photo"][0]}:480:{g["photo"][1]}}}}}</div>'
+             f'<div><span class="g-tag">Free guide · {g["minutes"]} min read</span><h3>{esc(g["title"])}</h3><p>{esc(g["desc"])}</p><span class="g-go">Read the guide →</span></div></a>') if g else \
+            ('<a class="sp-guide reveal" href="contact.html#speed"><div class="ph">{{img:1460925895917-afdab827c52f:480:A laptop showing website analytics charts}}</div>'
+             '<div><span class="g-tag">Free tool</span><h3>Check your website speed</h3><p>See how fast your site loads on a phone, scored by Google, in under a minute.</p><span class="g-go">Run the speed check →</span></div></a>')
+    more = "".join(f'<a class="sp-other" href="{o["file"]}"><span class="g-tag">{o["tag"]}</span><b>{esc(o["short"])}</b><span class="g-go">From ${plans.BY_ID[o["id"]]["tiers"][0]["price"]}/mo →</span></a>' for o in others)
+    return f"""<header class="page-head split sp-head">
+  <div class="wrap">
+    <div>
+      <nav class="crumbs rise" aria-label="Breadcrumb"><a href="services.html">Services</a><span>/</span><span>{esc(sp["tag"])}</span></nav>
+      <div class="eyebrow rise">{esc(sp["short"])}</div>
+      <h1 class="rise" style="--d:.1s">{esc(sp["h1"])}</h1>
+      <p class="intro rise" style="--d:.2s">{esc(sp["intro"])}</p>
+      <div class="hero-cta rise" style="--d:.3s"><a class="btn" href="#plans">See plans from ${low}/mo</a><a class="btn ghost" href="contact.html">Get a free audit</a></div>
+      <div class="where rise" style="--d:.35s">{where}</div>
+    </div>
+    <div class="ph rise" style="--d:.25s">{{{{img:{sp["photo"][0]}:700:{sp["photo"][1]}}}}}</div>
+  </div>
+</header>
+
+<section class="sp-sec">
+  <div class="wrap sp-inc">
+    <div class="reveal">
+      <div class="eyebrow">What's included</div>
+      <h2 class="h2">Everything handled, start to finish.</h2>
+      <div class="best"><b>Best for</b>{esc(sp["best"])}</div>
+    </div>
+    <div class="sp-cards reveal" style="--d:.1s">{inc}</div>
+  </div>
+</section>
+
+<section class="alt" id="plans">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="eyebrow">Plans</div><h2 class="h2">Pick your level.</h2></div><p class="intro">Month to month, no setup fees. Pay yearly and get 2 months free, or add another service and save up to 20%. <a href="pricing.html">Compare all plans →</a></p></div>
+    <div class="reveal">{plans.service_plans_html(sp["id"])}</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="reveal"><div class="eyebrow">How it works</div><h2 class="h2">Four simple steps.</h2></div>
+    <ol class="sp-steps">{steps}</ol>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap sp-faq">
+    <div class="reveal"><div class="eyebrow">Questions</div><h2 class="h2">Good to know.</h2><p class="intro">More answers on the <a href="faq.html">FAQ page</a>.</p></div>
+    <div class="faq reveal" style="--d:.1s">{faqs}</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    {guide}
+    <div class="sp-more reveal"><div class="eyebrow">Other services</div><div class="sp-others">{more}</div></div>
+    <div class="cta-band reveal">
+      <div><h2>See where you stand, free.</h2><p>Your free marketing audit shows what's working, what's missing and the quickest wins, in plain English.</p></div>
+      <a class="btn" href="contact.html">Get a free marketing audit</a>
+    </div>
+  </div>
+</section>"""
+
+
+def service_ld(sp):
+    url = SITE_URL + sp["file"]
+    tiers = plans.BY_ID[sp["id"]]["tiers"]
+    svc = {"@context": "https://schema.org", "@type": "Service", "name": sp["title"], "description": sp["desc"], "url": url,
+           "provider": {"@type": "Organization", "name": "Digital Terra", "url": SITE_URL},
+           "areaServed": "US",
+           "offers": [{"@type": "Offer", "name": t, "price": str(tier["price"]), "priceCurrency": "USD",
+                       "priceSpecification": {"@type": "UnitPriceSpecification", "price": str(tier["price"]), "priceCurrency": "USD", "unitText": "MONTH"}}
+                      for t, tier in zip(plans.TIERS, tiers)]}
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+        {"@type": "ListItem", "position": 2, "name": "Services", "item": SITE_URL + "services.html"},
+        {"@type": "ListItem", "position": 3, "name": sp["title"], "item": url}]}
+    return ld(svc) + ld(crumbs)
+
+
 for g in guides.GUIDES:
     PAGES[g["slug"] + ".html"] = (g["title"] + " · Digital Terra", g["desc"], "guide")
+for sp in service_pages.PAGES:
+    PAGES[sp["file"]] = (sp["title"] + " · Digital Terra", sp["desc"], "services")
 
 os.makedirs(DIST, exist_ok=True)
 for fname, (title, desc, active) in PAGES.items():
     gd = guides.BY_SLUG.get(fname[:-5])
-    src = guide_page(gd) if gd else open(os.path.join(SRC, fname)).read()
+    sp = service_pages.BY_FILE.get(fname)
+    src = guide_page(gd) if gd else service_page(sp) if sp else open(os.path.join(SRC, fname)).read()
     styles = "\n".join(re.findall(r"<style>.*?</style>", src, re.S))
     body = re.sub(r"<style>.*?</style>", "", src, flags=re.S).strip()
     body = body.replace("{{packages}}", plans.packages_html()).replace("{{packages_home}}", plans.packages_html(table=False)).replace("{{plans}}", plans.tabs_html()).replace("{{builder}}", plans.builder_html()).replace("{{plans_json}}", plans.plans_json())
@@ -221,7 +311,7 @@ for fname, (title, desc, active) in PAGES.items():
     body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     # The first photo on a page is usually above the fold: load it right away.
     body = body.replace('loading="lazy" decoding="async"', 'loading="eager" fetchpriority="high" decoding="async"', 1)
-    extra = guide_ld(gd) if gd else (faq_ld(body) if fname in ("faq.html",) else "")
+    extra = guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (faq_ld(body) if fname in ("faq.html",) else "")
     mcta = "" if active in ("contact", "legal", "404") else '<a class="btn mcta" href="contact.html">Get a free marketing audit</a>\n'
     with open(os.path.join(DIST, fname), "w") as f:
         f.write(head(fname, title, desc, styles, active, extra) + nav("resources" if active == "guide" else active) + '<main id="main">\n' + body + "\n</main>\n"

@@ -576,3 +576,39 @@ body { font-variant-numeric: lining-nums; } .ctable td, .ctable th, .ticker span
 .calc-how b { color: var(--ink); }
 .logo img { height: 46px; width: auto; } footer .logo img { height: 63px; width: auto; }
 .logo img { height: 52px; } @media (max-width: 700px) { .logo img { height: 46px; } }
+
+/* ===== Service pages ===== */
+.sp-head .hero-cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.sp-head .where { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
+.sp-inc { display: grid; grid-template-columns: .8fr 1.2fr; gap: 48px; align-items: start; }
+.sp-inc .best { margin-top: 22px; font-size: 16px; color: var(--muted); max-width: 40ch; }
+.sp-inc .best b { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
+.sp-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sp-cards .card { padding: 24px; }
+.sp-cards h3 { font-family: var(--body); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+.sp-steps { list-style: none; padding: 0; margin: 36px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: none; }
+.sp-steps li { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; position: relative; overflow: hidden; }
+.sp-steps li::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: var(--metal); }
+.sp-n { font-family: var(--display); font-size: 40px; font-weight: 600; line-height: 1; color: var(--steel); font-variant-numeric: lining-nums; }
+.sp-steps h3 { font-size: 22px; font-weight: 600; margin: 14px 0 8px; }
+.sp-steps p { color: var(--muted); font-size: 15px; }
+.sp-faq { display: grid; grid-template-columns: .7fr 1.3fr; gap: 48px; align-items: start; }
+.sp-guide { display: grid; grid-template-columns: 320px 1fr; gap: 28px; align-items: center; text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 14px 28px 14px 14px; margin-bottom: 40px; transition: transform .25s, box-shadow .25s; }
+.sp-guide:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -24px rgba(22,24,28,.35); }
+.sp-guide .ph { aspect-ratio: 16 / 10; border-radius: 16px; }
+.sp-guide h3 { font-size: 26px; font-weight: 600; margin: 8px 0; }
+.sp-guide p { color: var(--muted); font-size: 15.5px; margin-bottom: 8px; }
+.sp-more { margin-bottom: 48px; }
+.sp-others { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+.sp-other { display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: inherit; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; transition: border-color .2s, transform .2s; }
+.sp-other:hover { border-color: var(--ink); transform: translateY(-2px); }
+.sp-other b { font-family: var(--display); font-size: 24px; font-weight: 600; line-height: 1.1; }
+.sp-other .g-go { font-size: 14px; }
+@media (max-width: 960px) {
+  .sp-inc, .sp-faq { grid-template-columns: 1fr; gap: 24px; }
+  .sp-steps { grid-template-columns: 1fr 1fr; }
+  .sp-guide { grid-template-columns: 1fr; padding: 14px 14px 22px; }
+  .sp-guide > div:last-child { padding: 0 8px; }
+  .sp-others { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) { .sp-cards, .sp-steps { grid-template-columns: 1fr; } }

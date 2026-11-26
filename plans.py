@@ -102,6 +102,25 @@ def money(n):
     return f"${n:,}"
 
 
+def tier_cards(p):
+    cards = ""
+    for t, tier in zip(TIERS, p["tiers"]):
+        pop = tier.get("popular")
+        items = "".join(f"<li>{escape(x)}</li>" for x in tier["items"])
+        cards += (f'<article class="tier{" pop" if pop else ""}">'
+                  f'<div class="tier-top"><span class="tier-name">{t}</span>{"<span class=badge>Most popular</span>" if pop else ""}</div>'
+                  f'<div class="tier-price">{M(tier["price"])}<small>/month</small></div>{billed(tier["price"])}'
+                  f'<p class="tier-for">{escape(tier["for"])}</p><ul>{items}</ul>'
+                  f'<a class="btn{"" if pop else " ghost"}" href="contact.html" data-pick="{p["id"]}:{t}">Choose {t}</a></article>')
+    return cards
+
+
+def service_plans_html(sid):
+    """One service's three plans with the billing switch, for its own page."""
+    p = BY_ID[sid]
+    return (f'<div class="pk-top">{billing_switch()}</div><div class="tiers">{tier_cards(p)}</div>')
+
+
 def tabs_html():
     """Service tabs with three tier cards each. Static HTML, so every price is in the page."""
     tabs = "".join(
@@ -110,15 +129,7 @@ def tabs_html():
         for i, p in enumerate(PLANS))
     panels = ""
     for i, p in enumerate(PLANS):
-        cards = ""
-        for t, tier in zip(TIERS, p["tiers"]):
-            pop = tier.get("popular")
-            items = "".join(f"<li>{escape(x)}</li>" for x in tier["items"])
-            cards += (f'<article class="tier{" pop" if pop else ""}">'
-                      f'<div class="tier-top"><span class="tier-name">{t}</span>{"<span class=badge>Most popular</span>" if pop else ""}</div>'
-                      f'<div class="tier-price">{M(tier["price"])}<small>/month</small></div>{billed(tier["price"])}'
-                      f'<p class="tier-for">{escape(tier["for"])}</p><ul>{items}</ul>'
-                      f'<a class="btn{"" if pop else " ghost"}" href="contact.html" data-pick="{p["id"]}:{t}">Choose {t}</a></article>')
+        cards = tier_cards(p)
         panels += (f'<div class="plan-panel" role="tabpanel" id="panel-{p["id"]}" aria-labelledby="tab-{p["id"]}"{"" if i == 0 else " hidden"}>'
                    f'<p class="plan-pitch"><b>{escape(p["name"])}.</b> {escape(p["pitch"])}</p><div class="tiers">{cards}</div></div>')
     return f'<div class="plans"><div class="plan-tabs" role="tablist" aria-label="Services">{tabs}</div>{panels}</div>'
