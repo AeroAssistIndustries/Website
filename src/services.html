@@ -2,7 +2,7 @@
 .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); margin-top: 8px; }
 .flow > div { padding: 26px; background: var(--card); border-right: 1px solid var(--line); }
 .flow > div:last-child { border-right: 0; }
-.flow .st { font-family: var(--display); font-size: 34px; font-weight: 800; letter-spacing: -0.04em; }
+.flow .st { font-family: var(--display); font-size: 34px; font-weight: 600; letter-spacing: -0.01em; }
 .flow > div:nth-child(1) .st { color: var(--accent); }
 .flow > div:nth-child(3) .st { background: linear-gradient(transparent 62%, var(--sun) 62%, var(--sun) 92%, transparent 92%); display: inline; }
 .flow p { color: var(--muted); font-size: 15px; margin: 8px 0 14px; }
@@ -10,9 +10,10 @@
 .flow a.chip { text-decoration: none; }
 
 .svc { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; padding: 56px 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
-.svc .num { font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--accent); letter-spacing: .04em; }
-.svc h2 { font-size: clamp(32px, 4vw, 44px); font-weight: 750; margin: 8px 0 14px; }
-.svc .tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--sun); color: var(--ink); padding: 4px 10px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+.svc .num { font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--accent); letter-spacing: .04em; }
+.svc h2 { font-size: clamp(32px, 4vw, 44px); font-weight: 600; margin: 8px 0 14px; }
+.svc .tag { display: inline-block; font-family: var(--body); font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; background: var(--metal); color: var(--ink); padding: 5px 11px; border-radius: 999px; margin-left: 8px; vertical-align: middle; border: 1px solid rgba(255,255,255,.8); box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.18); }
+.svc-ph { grid-column: 1 / -1; aspect-ratio: 21 / 9; border-radius: 20px; }
 .svc .lede { font-size: 18px; color: var(--muted); max-width: 46ch; }
 .svc .best { margin-top: 20px; font-size: 15px; }
 .svc .best b { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
@@ -22,7 +23,7 @@
 .svc .panels h3 { font-family: var(--body); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
 .svc .panels .wide { grid-column: 1 / -1; background: var(--ink); color: #fff; border-color: var(--ink); }
 .svc .panels .wide p { color: #c9ccd2; font-size: 15px; }
-.svc .panels .wide h3 { color: var(--sun); }
+.svc .panels .wide h3 { background: var(--metal-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .svc .lvls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .svc .lvls span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13.5px; }
 .svc .lvls b { color: var(--accent); }
@@ -79,6 +80,7 @@
       <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $650</span><span><b>Pro</b> $1,500</span></div>
     </div>
     <div class="panels">
+      <div class="ph svc-ph">{{img:1690883793939-f8cca2f28ee0:760:A hand holding a phone with social media apps}}</div>
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Profile and bio refresh</li><li>Brand templates for posts and Stories</li><li>Content pillars and posting rhythm</li><li>Hashtag and local tag research</li></ul></div>
       <div class="card"><h3>Every month</h3><ul class="ticks"><li>Content calendar for approval</li><li>Designed posts and carousels</li><li>Reel and TikTok shot lists</li><li>Captions in your voice</li><li>Scheduling and comment replies</li></ul></div>
       <div class="card wide"><h3>See it in action</h3><p>Browse sample feeds for a café, a salon, a hotel, a dental office and a roofer on my <a href="social.html" style="color:#fff">social media examples page →</a></p></div>
@@ -95,6 +97,7 @@
       <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $600</span><span><b>Pro</b> $1,200</span></div>
     </div>
     <div class="panels">
+      <div class="ph svc-ph">{{img:1528698827591-e19ccd7bc23d:760:A bicycle parked outside a local lamp shop}}</div>
       <div class="card"><h3>Google Business Profile</h3><ul class="ticks"><li>Categories, services and description</li><li>Weekly posts and new photos</li><li>Hours and holiday hours kept current</li><li>Questions answered</li></ul></div>
       <div class="card"><h3>Search and listings</h3><ul class="ticks"><li>Keyword and competitor research</li><li>On-page SEO for key pages</li><li>Consistent listings on 10–25 directories</li><li>New service pages and articles</li></ul></div>
       <div class="card wide"><h3>AI search visibility</h3><p>More people now ask AI assistants for recommendations. I keep your business facts consistent across the web and check how tools like ChatGPT and Google's AI Overviews describe you.</p></div>
@@ -111,6 +114,7 @@
       <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $400</span><span><b>Pro</b> $750</span></div>
     </div>
     <div class="panels">
+      <div class="ph svc-ph">{{img:1753351052363-53ce102830eb:760:A smiling owner standing in her coffee shop}}</div>
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Simple review links and QR codes</li><li>Follow-up text and email templates</li><li>Counter cards or table tents</li><li>Response guidelines in your voice</li></ul></div>
       <div class="card"><h3>Every month</h3><ul class="ticks"><li>Replies to every new review</li><li>Alerts for negative reviews</li><li>Review request reminders</li><li>Rating and volume tracking</li></ul></div>
       <div class="card wide"><h3>My approach</h3><p>I only ask real customers for honest reviews. I never buy reviews, write fake ones or filter out unhappy customers. That keeps your profile trustworthy and within platform rules.</p></div>
@@ -127,6 +131,7 @@
       <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $500</span><span><b>Pro</b> $1,000</span></div>
     </div>
     <div class="panels">
+      <div class="ph svc-ph">{{img:1441015401724-70d16b783f5c:760:Someone working on a laptop with a mug of tea}}</div>
       <div class="card"><h3>New website (Growth and Pro)</h3><ul class="ticks"><li>Design built around your brand</li><li>Clear service and pricing pages</li><li>Call, booking and contact buttons</li><li>Basic SEO setup</li><li>Launch on your own domain</li></ul></div>
       <div class="card"><h3>Website care (all plans)</h3><ul class="ticks"><li>Text, photo and menu updates</li><li>New pages and promotions</li><li>Speed and security checks</li><li>Form and booking tests</li></ul></div>
     </div>

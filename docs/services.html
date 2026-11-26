@@ -6,7 +6,7 @@
 <title>Services · Karla Digital</title>
 <meta name="description" content="Social media management, local SEO, online reputation management and websites for local businesses, each from $250 a month.">
 <link rel="canonical" href="https://aeroassistindustries.github.io/Website/services.html">
-<meta name="theme-color" content="#2f45ff">
+<meta name="theme-color" content="#16181c">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -22,14 +22,14 @@
 <meta name="twitter:image" content="https://aeroassistindustries.github.io/Website/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=04cafc88">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=06b3085c">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 .flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-radius: 24px; overflow: hidden; border: 1px solid var(--line); margin-top: 8px; }
 .flow > div { padding: 26px; background: var(--card); border-right: 1px solid var(--line); }
 .flow > div:last-child { border-right: 0; }
-.flow .st { font-family: var(--display); font-size: 34px; font-weight: 800; letter-spacing: -0.04em; }
+.flow .st { font-family: var(--display); font-size: 34px; font-weight: 600; letter-spacing: -0.01em; }
 .flow > div:nth-child(1) .st { color: var(--accent); }
 .flow > div:nth-child(3) .st { background: linear-gradient(transparent 62%, var(--sun) 62%, var(--sun) 92%, transparent 92%); display: inline; }
 .flow p { color: var(--muted); font-size: 15px; margin: 8px 0 14px; }
@@ -37,9 +37,10 @@
 .flow a.chip { text-decoration: none; }
 
 .svc { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; padding: 56px 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
-.svc .num { font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--accent); letter-spacing: .04em; }
-.svc h2 { font-size: clamp(32px, 4vw, 44px); font-weight: 750; margin: 8px 0 14px; }
-.svc .tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--sun); color: var(--ink); padding: 4px 10px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+.svc .num { font-family: var(--display); font-weight: 600; font-size: 15px; color: var(--accent); letter-spacing: .04em; }
+.svc h2 { font-size: clamp(32px, 4vw, 44px); font-weight: 600; margin: 8px 0 14px; }
+.svc .tag { display: inline-block; font-family: var(--body); font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; background: var(--metal); color: var(--ink); padding: 5px 11px; border-radius: 999px; margin-left: 8px; vertical-align: middle; border: 1px solid rgba(255,255,255,.8); box-shadow: inset 0 1px 0 #fff, 0 1px 2px rgba(0,0,0,.18); }
+.svc-ph { grid-column: 1 / -1; aspect-ratio: 21 / 9; border-radius: 20px; }
 .svc .lede { font-size: 18px; color: var(--muted); max-width: 46ch; }
 .svc .best { margin-top: 20px; font-size: 15px; }
 .svc .best b { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin-bottom: 6px; }
@@ -49,7 +50,7 @@
 .svc .panels h3 { font-family: var(--body); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 12px; }
 .svc .panels .wide { grid-column: 1 / -1; background: var(--ink); color: #fff; border-color: var(--ink); }
 .svc .panels .wide p { color: #c9ccd2; font-size: 15px; }
-.svc .panels .wide h3 { color: var(--sun); }
+.svc .panels .wide h3 { background: var(--metal-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .svc .lvls { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .svc .lvls span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13.5px; }
 .svc .lvls b { color: var(--accent); }
@@ -66,7 +67,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla Digital" width="170" height="36"></a>
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla Digital" width="178" height="40"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
     <ul id="navlist"><li><a href="services.html" aria-current="page">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Our work</a></li><li><a href="about.html">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
   </div>
@@ -116,6 +117,7 @@
       <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $650</span><span><b>Pro</b> $1,500</span></div>
     </div>
     <div class="panels">
+      <div class="ph svc-ph"><img src="https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0?auto=format&fit=crop&q=75&w=760" srcset="https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0?auto=format&fit=crop&q=75&w=380 380w, https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0?auto=format&fit=crop&q=75&w=760 760w, https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0?auto=format&fit=crop&q=75&w=1216 1216w" sizes="(max-width: 700px) 100vw, 760px" alt="A hand holding a phone with social media apps" loading="lazy" decoding="async"></div>
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Profile and bio refresh</li><li>Brand templates for posts and Stories</li><li>Content pillars and posting rhythm</li><li>Hashtag and local tag research</li></ul></div>
       <div class="card"><h3>Every month</h3><ul class="ticks"><li>Content calendar for approval</li><li>Designed posts and carousels</li><li>Reel and TikTok shot lists</li><li>Captions in your voice</li><li>Scheduling and comment replies</li></ul></div>
       <div class="card wide"><h3>See it in action</h3><p>Browse sample feeds for a café, a salon, a hotel, a dental office and a roofer on my <a href="social.html" style="color:#fff">social media examples page →</a></p></div>
@@ -132,6 +134,7 @@
       <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $600</span><span><b>Pro</b> $1,200</span></div>
     </div>
     <div class="panels">
+      <div class="ph svc-ph"><img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=75&w=760" srcset="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=75&w=380 380w, https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=75&w=760 760w, https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&q=75&w=1216 1216w" sizes="(max-width: 700px) 100vw, 760px" alt="A bicycle parked outside a local lamp shop" loading="lazy" decoding="async"></div>
       <div class="card"><h3>Google Business Profile</h3><ul class="ticks"><li>Categories, services and description</li><li>Weekly posts and new photos</li><li>Hours and holiday hours kept current</li><li>Questions answered</li></ul></div>
       <div class="card"><h3>Search and listings</h3><ul class="ticks"><li>Keyword and competitor research</li><li>On-page SEO for key pages</li><li>Consistent listings on 10–25 directories</li><li>New service pages and articles</li></ul></div>
       <div class="card wide"><h3>AI search visibility</h3><p>More people now ask AI assistants for recommendations. I keep your business facts consistent across the web and check how tools like ChatGPT and Google's AI Overviews describe you.</p></div>
@@ -148,6 +151,7 @@
       <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $400</span><span><b>Pro</b> $750</span></div>
     </div>
     <div class="panels">
+      <div class="ph svc-ph"><img src="https://images.unsplash.com/photo-1753351052363-53ce102830eb?auto=format&fit=crop&q=75&w=760" srcset="https://images.unsplash.com/photo-1753351052363-53ce102830eb?auto=format&fit=crop&q=75&w=380 380w, https://images.unsplash.com/photo-1753351052363-53ce102830eb?auto=format&fit=crop&q=75&w=760 760w, https://images.unsplash.com/photo-1753351052363-53ce102830eb?auto=format&fit=crop&q=75&w=1216 1216w" sizes="(max-width: 700px) 100vw, 760px" alt="A smiling owner standing in her coffee shop" loading="lazy" decoding="async"></div>
       <div class="card"><h3>Setup</h3><ul class="ticks"><li>Simple review links and QR codes</li><li>Follow-up text and email templates</li><li>Counter cards or table tents</li><li>Response guidelines in your voice</li></ul></div>
       <div class="card"><h3>Every month</h3><ul class="ticks"><li>Replies to every new review</li><li>Alerts for negative reviews</li><li>Review request reminders</li><li>Rating and volume tracking</li></ul></div>
       <div class="card wide"><h3>My approach</h3><p>I only ask real customers for honest reviews. I never buy reviews, write fake ones or filter out unhappy customers. That keeps your profile trustworthy and within platform rules.</p></div>
@@ -164,6 +168,7 @@
       <div class="lvls"><span><b>Essentials</b> $250</span><span><b>Growth</b> $500</span><span><b>Pro</b> $1,000</span></div>
     </div>
     <div class="panels">
+      <div class="ph svc-ph"><img src="https://images.unsplash.com/photo-1441015401724-70d16b783f5c?auto=format&fit=crop&q=75&w=760" srcset="https://images.unsplash.com/photo-1441015401724-70d16b783f5c?auto=format&fit=crop&q=75&w=380 380w, https://images.unsplash.com/photo-1441015401724-70d16b783f5c?auto=format&fit=crop&q=75&w=760 760w, https://images.unsplash.com/photo-1441015401724-70d16b783f5c?auto=format&fit=crop&q=75&w=1216 1216w" sizes="(max-width: 700px) 100vw, 760px" alt="Someone working on a laptop with a mug of tea" loading="lazy" decoding="async"></div>
       <div class="card"><h3>New website (Growth and Pro)</h3><ul class="ticks"><li>Design built around your brand</li><li>Clear service and pricing pages</li><li>Call, booking and contact buttons</li><li>Basic SEO setup</li><li>Launch on your own domain</li></ul></div>
       <div class="card"><h3>Website care (all plans)</h3><ul class="ticks"><li>Text, photo and menu updates</li><li>New pages and promotions</li><li>Speed and security checks</li><li>Form and booking tests</li></ul></div>
     </div>
@@ -243,7 +248,7 @@
 <footer>
   <div class="wrap">
     <div class="f-brand">
-      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Karla Digital" width="190" height="40"></a>
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Karla Digital" width="214" height="48"></a>
       <p class="f-tag">Local marketing with a worldly eye. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
       <a class="f-mail" href="mailto:hello@karladigital.com">hello@karladigital.com</a>
       <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>

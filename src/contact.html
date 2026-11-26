@@ -2,12 +2,12 @@
 .contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
 .next { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 14px; counter-reset: s; }
 .next li { counter-increment: s; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px 18px 68px; position: relative; }
-.next li::before { content: counter(s); position: absolute; left: 20px; top: 18px; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--display); font-weight: 800; display: grid; place-items: center; }
+.next li::before { content: counter(s); position: absolute; left: 20px; top: 18px; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: #fff; font-family: var(--display); font-weight: 600; display: grid; place-items: center; }
 .next b { display: block; font-size: 17px; }
 .next span { color: var(--muted); font-size: 15px; }
 .reach { margin-top: 26px; background: var(--ink); color: #fff; border-radius: 18px; padding: 20px 22px; }
 .reach b { color: var(--sun); display: block; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 6px; }
-.audit-form h2 { font-size: 26px; font-weight: 750; }
+.audit-form h2 { font-size: 26px; font-weight: 600; }
 .audit-form .sub { color: var(--muted); font-size: 15px; margin-top: -8px; }
 @media (max-width: 900px) { .contact { grid-template-columns: 1fr; } }
 .speed { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px; }
@@ -27,12 +27,12 @@
 .ring small { color: var(--muted); font-size: 12.5px; }
 .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .metrics div { border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
-.metrics b { display: block; font-family: var(--display); font-size: 22px; letter-spacing: -0.02em; }
+.metrics b { display: block; font-family: var(--display); font-size: 22px; letter-spacing: -0.01em; }
 .metrics span { font-size: 13px; color: var(--muted); }
 .verdict { background: var(--ink); color: #fff; border-radius: 18px; padding: 20px 22px; display: flex; justify-content: space-between; gap: 18px; align-items: center; flex-wrap: wrap; }
 .verdict p { color: #d6d9df; max-width: 60ch; }
 .verdict b { color: var(--sun); font-family: var(--display); font-size: 20px; display: block; margin-bottom: 4px; }
-.verdict .btn { background: var(--sun); color: var(--ink); }
+.verdict .btn { background: var(--metal); color: var(--ink); }
 @media (max-width: 760px) { .rings, .metrics { grid-template-columns: 1fr 1fr; } }
 </style>
 

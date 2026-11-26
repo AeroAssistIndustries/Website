@@ -5,8 +5,9 @@
 .proj .card h3 small { font-family: var(--body); font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
 .price-head .wrap { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: end; }
 .price-head .facts { display: grid; gap: 10px; }
+.price-head .pr-ph { aspect-ratio: 16 / 9; border-radius: 20px; padding: 0; display: block; border: 0; }
 .price-head .facts div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; gap: 12px; align-items: center; font-size: 15px; }
-.price-head .facts b { font-family: var(--display); font-size: 24px; color: var(--accent); min-width: 64px; letter-spacing: -0.03em; }
+.price-head .facts b { font-family: var(--display); font-size: 24px; color: var(--accent); min-width: 64px; letter-spacing: -0.01em; }
 @media (max-width: 900px) { .price-head .wrap { grid-template-columns: 1fr; } }
 </style>
 
@@ -20,6 +21,7 @@
       <p class="intro rise" style="--d:.2s">Buy one service à la carte, pick a ready-made combo, or get all four in the Complete Package. Every plan is month to month, starts with a free audit, and includes a plain-English report every month.</p>
     </div>
     <div class="facts rise" style="--d:.25s">
+      <div class="ph pr-ph">{{img:1609270460854-e8ea8c0b591f:640:Two women looking at a laptop together in a café}}</div>
       <div><b>4</b>services: social media, local SEO, reputation and websites</div>
       <div><b>20%</b>off all four services, 15% off three, 10% off two</div>
       <div><b>$0</b>setup fee on monthly plans and no long-term contract</div>

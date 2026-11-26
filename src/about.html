@@ -1,6 +1,6 @@
 <style>
 .story { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-.story .quote { font-family: "Fraunces", Georgia, serif; font-size: clamp(26px, 3vw, 36px); line-height: 1.25; letter-spacing: -0.02em; font-weight: 500; }
+.story .quote { font-family: var(--display); font-size: clamp(26px, 3vw, 36px); line-height: 1.25; letter-spacing: -0.01em; font-weight: 500; }
 .story .quote em { color: var(--accent); }
 .story p + p { margin-top: 14px; }
 .story .txt { color: var(--muted); font-size: 17.5px; }
@@ -11,24 +11,33 @@
 .promise p { color: var(--muted); font-size: 15.5px; }
 .timeline { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; border-left: 2px solid var(--ink); margin-left: 8px; }
 .timeline li { padding: 0 0 30px 30px; position: relative; }
-.timeline li::before { content: ""; position: absolute; left: -9px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 3px solid var(--accent); }
-.timeline .when { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.timeline li::before { content: ""; position: absolute; left: -9px; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--metal); border: 1px solid #9aa1ab; box-shadow: 0 0 0 4px var(--paper); }
+.timeline .when { font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--steel); }
 .timeline h3 { font-size: 22px; margin: 4px 0 6px; }
 .timeline p { color: var(--muted); max-width: 60ch; }
 @media (max-width: 860px) { .story, .promise { grid-template-columns: 1fr; } }
+.travel { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.3fr; gap: 14px; }
+.travel .ph { aspect-ratio: 4 / 5; border-radius: 22px; }
+.travel .ph:nth-child(even) { margin-top: 48px; }
+@media (max-width: 860px) { .travel { grid-template-columns: 1fr 1fr; } .travel .ph:nth-child(even) { margin-top: 0; } }
 .founder .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: center; }
-.f-card { position: relative; aspect-ratio: 4 / 5; border-radius: 32px; background: var(--accent); overflow: hidden; color: #fff; }
-.f-mono { position: absolute; left: 50%; top: 44%; translate: -50% -50%; font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 260px; line-height: 1; color: rgba(255,255,255,.95); }
-.f-pins span { position: absolute; width: 18px; height: 18px; border-radius: 50% 50% 50% 0; --r: -45deg; transform: rotate(-45deg); background: var(--sun); box-shadow: 0 0 0 6px rgba(255,178,31,.25); animation: floaty 6s ease-in-out infinite; }
+.f-card { position: relative; aspect-ratio: 4 / 5; border-radius: 32px; background: #111316; overflow: hidden; color: #fff; box-shadow: 0 40px 80px -50px rgba(0,0,0,.6); }
+.f-card .f-bg { position: absolute; inset: 0; }
+.f-card .f-bg img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.4) brightness(.62) contrast(1.05); }
+.f-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,19,22,.15), rgba(17,19,22,.75)); }
+.f-card > *:not(.f-bg) { z-index: 2; }
+.f-mono { position: absolute; left: 50%; top: 42%; translate: -50% -50%; width: 46%; filter: drop-shadow(0 20px 40px rgba(0,0,0,.5)); }
+.f-mono img { width: 100%; height: auto; display: block; }
+.f-pins span { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--metal); box-shadow: 0 0 0 5px rgba(255,255,255,.12), 0 0 18px rgba(255,255,255,.35); animation: floaty 6s ease-in-out infinite; }
 .f-pins span:nth-child(1) { left: 14%; top: 16%; } .f-pins span:nth-child(2) { right: 16%; top: 22%; animation-delay: -1.5s; }
 .f-pins span:nth-child(3) { left: 22%; bottom: 30%; animation-delay: -3s; } .f-pins span:nth-child(4) { right: 22%; bottom: 36%; animation-delay: -4.5s; }
 .f-pins span:nth-child(5) { left: 52%; top: 10%; animation-delay: -2s; }
-.f-cap { position: absolute; left: 24px; bottom: 24px; background: var(--ink); border-radius: 16px; padding: 14px 18px; font-size: 14px; color: #c9ccd2; }
-.f-cap b { display: block; font-family: var(--display); font-size: 22px; color: var(--sun); letter-spacing: -0.02em; }
+.f-cap { position: absolute; left: 24px; bottom: 24px; background: rgba(17,19,22,.72); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.14); border-radius: 16px; padding: 14px 18px; font-size: 14px; color: #c9ccd2; }
+.f-cap b { display: block; font-family: var(--display); font-size: 26px; background: var(--metal-text); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: -0.01em; }
 .f-lead { font-size: 20px; color: var(--ink); margin-top: 18px; max-width: 56ch; }
 .f-body { color: var(--muted); margin-top: 14px; max-width: 60ch; font-size: 17px; }
 .f-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
-.sig { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 30px; color: var(--accent); margin-top: 22px; }
+.sig { font-family: var(--display); font-style: italic; font-weight: 500; font-size: 38px; color: var(--ink); margin-top: 22px; }
 @media (max-width: 860px) { .founder .wrap { grid-template-columns: 1fr; } .f-mono { font-size: 200px; } }
 </style>
 
@@ -57,7 +66,8 @@
 <section class="founder" id="karla">
   <div class="wrap">
     <div class="f-card reveal" aria-hidden="true">
-      <div class="f-mono">K</div>
+      <div class="f-bg">{{img:1542213244404-91901302758d:700:}}</div>
+      <div class="f-mono"><img src="assets/ka-seal-reversed.svg" alt=""></div>
       <div class="f-pins"><span></span><span></span><span></span><span></span><span></span></div>
       <div class="f-cap"><b>Karla</b>Founder, Karla Digital</div>
     </div>
@@ -84,6 +94,15 @@
       <div class="card"><div class="big">02</div><h3>I meet them where they are</h3><p>Visitors from abroad often plan trips on platforms most local businesses ignore. I know which ones matter for your customers and how to show up there.</p></div>
       <div class="card"><div class="big">03</div><h3>I bring fresh ideas</h3><p>I've seen what makes cafés, salons, shops and hotels memorable around the world, and I bring the best of those ideas to your feed and your Google profile.</p></div>
     </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap travel reveal" aria-label="Places that shaped how I see marketing">
+    <div class="ph">{{img:1665091982331-e66db14feae6:520:A yellow tram on a hilly city street}}</div>
+    <div class="ph">{{img:1597730763269-c49ab9f9db0f:520:A narrow street lined with small shops and lanterns}}</div>
+    <div class="ph">{{img:1526139334526-f591a54b477c:520:A busy night market under paper lanterns}}</div>
+    <div class="ph">{{img:1585944285854-d06c019aaca3:520:Café tables along a cobblestone street}}</div>
   </div>
 </section>
 
