@@ -132,7 +132,7 @@ for fname, (title, desc, active) in PAGES.items():
     src = open(os.path.join(SRC, fname)).read()
     styles = "\n".join(re.findall(r"<style>.*?</style>", src, re.S))
     body = re.sub(r"<style>.*?</style>", "", src, flags=re.S).strip()
-    body = body.replace("{{plans}}", plans.tabs_html()).replace("{{builder}}", plans.builder_html()).replace("{{plans_json}}", plans.plans_json())
+    body = body.replace("{{packages}}", plans.packages_html()).replace("{{packages_home}}", plans.packages_html(table=False)).replace("{{plans}}", plans.tabs_html()).replace("{{builder}}", plans.builder_html()).replace("{{plans_json}}", plans.plans_json())
     body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     mcta = "" if active in ("contact", "legal", "404") else '<a class="btn mcta" href="contact.html">Get a free marketing audit</a>\n'
     with open(os.path.join(DIST, fname), "w") as f:

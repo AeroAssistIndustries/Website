@@ -47,7 +47,33 @@ PLANS = [
      ]},
 ]
 
-BUNDLE = {"2": 10, "3": 15}  # % off with 2 services, with 3 or more
+BUNDLE = {"2": 10, "3": 15, "4": 20}  # % off with 2, 3 or all 4 services
+FOUNDING = 15
+
+# One-line summary of each level, used on combo cards and the rate card.
+SUMMARY = {
+    "social": ["1 platform, 8 posts a month", "2 platforms, 12 posts + 2 Reels", "3 platforms, 20 posts + 4 Reels, daily care"],
+    "seo": ["Google profile + 10 directories", "On-page SEO, 25 directories, 1 article", "2 articles, links, technical and AI search"],
+    "reviews": ["Replies to 30 reviews, alerts", "Unlimited replies + review requests", "3 locations, showcase, sentiment report"],
+    "web": ["Hosting, security, 1 hr updates", "New 5-page site, 2 hrs updates", "Up to 12 pages, booking, monthly landing page"],
+}
+
+# Named combos. Every combo uses the same level for each service; the plan builder mixes levels.
+COMBOS = [
+    {"id": "complete", "name": "The Complete Package", "services": ["social", "seo", "reviews", "web"],
+     "pitch": "Everything a local business needs to get found, get chosen and get booked, run by one person who sees the whole picture.",
+     "perks": ["One combined monthly report", "Quarterly strategy session", "Monthly strategy session"]},
+    {"id": "found", "name": "Get Found", "services": ["seo", "reviews"],
+     "pitch": "Rank on Google and Maps, and win the click with strong reviews."},
+    {"id": "chosen", "name": "Get Chosen", "services": ["social", "reviews"],
+     "pitch": "An active feed and a five-star reputation that make people pick you."},
+    {"id": "booked", "name": "Get Booked", "services": ["web", "seo"],
+     "pitch": "A site that ranks locally and turns visits into calls and bookings."},
+    {"id": "seen", "name": "Get Seen", "services": ["social", "web"],
+     "pitch": "A feed people follow and a website ready for the traffic it sends."},
+    {"id": "growth", "name": "Local Growth", "services": ["social", "seo", "reviews"],
+     "pitch": "The big three for steady growth, when your website is already in good shape."},
+]
 
 
 def money(n):
@@ -91,7 +117,100 @@ def builder_html():
 
 
 def plans_json():
-    data = {"tiers": TIERS, "bundle": BUNDLE, "founding": 15,
+    data = {"tiers": TIERS, "bundle": BUNDLE, "founding": FOUNDING,
             "plans": [{"id": p["id"], "name": p["name"], "short": p["short"],
                        "prices": [t["price"] for t in p["tiers"]]} for p in PLANS]}
     return '<script type="application/json" id="plans-data">' + json.dumps(data) + "</script>"
+
+
+BY_ID = {p["id"]: p for p in PLANS}
+
+
+def pct_for(n):
+    return BUNDLE.get(str(min(n, 4)), 0) if n >= 2 else 0
+
+
+def discounted(total, pct):
+    """Bundle price: the discount, rounded down to the nearest $5 in the client's favor."""
+    return int(total * (100 - pct) / 100 // 5 * 5)
+
+
+def combo_prices(services):
+    """[(full, price)] per tier for a set of services, all at the same level."""
+    pct = pct_for(len(services))
+    out = []
+    for i in range(3):
+        full = sum(BY_ID[s]["tiers"][i]["price"] for s in services)
+        out.append((full, discounted(full, pct)))
+    return out
+
+
+def _chips(services):
+    return "".join(f'<span class="chip-s">{BY_ID[s]["short"]}</span>' for s in services)
+
+
+def complete_html():
+    """The Complete Package: all four services at each level, 20% off."""
+    c = COMBOS[0]; pr = combo_prices(c["services"]); pct = pct_for(4)
+    cards = ""
+    for i, t in enumerate(TIERS):
+        full, price = pr[i]; pop = i == 1
+        lines = "".join(f'<li><b>{BY_ID[s]["short"]}</b> {escape(SUMMARY[s][i])}</li>' for s in c["services"])
+        perks = "".join(f"<li class=perk>{escape(x)}</li>" for x in ([c["perks"][0]] + ([c["perks"][i]] if i else [])))
+        label = f'{c["name"]} ({t}), {money(price)}/month'
+        cards += (f'<article class="tier combo{" pop" if pop else ""}">'
+                  f'<div class="tier-top"><span class="tier-name">Complete {t}</span><span class="badge">Save {money(full - price)}/mo</span></div>'
+                  f'<div class="tier-price">{money(price)}<small>/month</small></div>'
+                  f'<p class="tier-for"><s>{money(full)}</s> à la carte · {pct}% off all four</p><ul>{lines}{perks}</ul>'
+                  f'<a class="btn{"" if pop else " ghost"}" href="contact.html" data-label="{escape(label)}">Choose Complete {t}</a></article>')
+    return (f'<div class="complete"><div class="complete-head"><span class="tab-tag">ALL 4 SERVICES · {pct}% OFF</span>'
+            f'<h3>{c["name"]}</h3><p>{escape(c["pitch"])}</p></div><div class="tiers">{cards}</div></div>')
+
+
+def combos_html():
+    """Smaller named combos with one level switch for all cards."""
+    seg = "".join(f'<button type="button" data-lvl="{i}" aria-pressed="{"true" if i == 1 else "false"}">{t}</button>' for i, t in enumerate(TIERS))
+    cards = ""
+    for c in COMBOS[1:]:
+        pr = combo_prices(c["services"]); pct = pct_for(len(c["services"]))
+        data = " ".join(f'data-p{i}="{money(p)}" data-f{i}="{money(f)}" data-s{i}="{money(f - p)}"' for i, (f, p) in enumerate(pr))
+        f, p = pr[1]
+        cards += (f'<article class="combo-card" data-name="{escape(c["name"])}" {data}>'
+                  f'<div class="cc-top"><h4>{escape(c["name"])}</h4><span class="cc-off">{pct}% off</span></div>'
+                  f'<div class="cc-chips">{_chips(c["services"])}</div><p>{escape(c["pitch"])}</p>'
+                  f'<div class="cc-price"><b>{money(p)}</b><small>/month</small><s>{money(f)}</s></div>'
+                  f'<span class="cc-save">You save {money(f - p)} a month</span>'
+                  f'<a class="btn ghost" href="contact.html" data-label="{escape(c["name"])} (Growth), {money(p)}/month">Choose {escape(c["name"])}</a></article>')
+    return (f'<div class="combos-bar"><div><h3>Popular combos</h3><p>Two services save {BUNDLE["2"]}%, three save {BUNDLE["3"]}%. Pick a level to see prices.</p></div>'
+            f'<div class="lvl-switch" role="group" aria-label="Combo level">{seg}</div></div><div class="combo-grid">{cards}</div>')
+
+
+def combo_table_html():
+    """Every possible combination at every level."""
+    from itertools import combinations
+    ids = [p["id"] for p in PLANS]
+    rows = ""
+    for n in (4, 3, 2):
+        for combo in combinations(ids, n):
+            pr = combo_prices(list(combo)); pct = pct_for(n)
+            named = next((c["name"] for c in COMBOS if sorted(c["services"]) == sorted(combo)), "")
+            cells = "".join(f'<td><b>{money(p)}</b><s>{money(f)}</s></td>' for f, p in pr)
+            label = " + ".join(BY_ID[s]["short"] for s in combo)
+            rows += (f'<tr><th scope="row">{label}{f"<em>{escape(named)}</em>" if named else ""}</th>'
+                     f'<td class="off">{pct}%</td>{cells}</tr>')
+    head = "".join(f"<th scope=col>{t}</th>" for t in TIERS)
+    return (f'<div class="ctable-wrap"><table class="ctable"><caption>Monthly price for every combination, with each service at the same level. '
+            f'Crossed-out prices are à la carte.</caption><thead><tr><th scope="col">Services</th><th scope="col">Off</th>{head}</tr></thead>'
+            f'<tbody>{rows}</tbody></table></div>')
+
+
+def packages_html(table=True):
+    """À la carte / Combos switch wrapping the service tabs and the combo packages."""
+    modes = ('<div class="pk-modes" role="tablist" aria-label="How to buy">'
+             '<button type="button" role="tab" id="mode-alc" aria-controls="pk-alc" aria-selected="true">À la carte<small>One service at a time</small></button>'
+             f'<button type="button" role="tab" id="mode-combo" aria-controls="pk-combo" aria-selected="false" tabindex="-1">Combos &amp; packages<small>Save up to {BUNDLE["4"]}%</small></button></div>')
+    extra = ""
+    if table:
+        extra = f'<details class="every"><summary>See the price of every combination</summary>{combo_table_html()}</details>'
+    return (modes + f'<div class="pk-panel" role="tabpanel" id="pk-alc" aria-labelledby="mode-alc">{tabs_html()}</div>'
+            f'<div class="pk-panel" role="tabpanel" id="pk-combo" aria-labelledby="mode-combo" hidden>{complete_html()}{combos_html()}{extra}</div>')

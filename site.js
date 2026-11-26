@@ -79,13 +79,52 @@
   function remember(text) { try { sessionStorage.setItem('ka-plan', text); } catch (e) {} }
   var dataEl = document.getElementById('plans-data');
   var PD = dataEl ? JSON.parse(dataEl.textContent) : null;
-  document.querySelectorAll('[data-pick]').forEach(function (a) {
+  document.querySelectorAll('[data-pick],[data-label]').forEach(function (a) {
     a.addEventListener('click', function () {
+      if (a.dataset.label) { remember(a.dataset.label); return; }
       var bits = a.dataset.pick.split(':');
       var name = PD ? PD.plans.filter(function (p) { return p.id === bits[0]; })[0].name : bits[0];
       remember(name + ' (' + bits[1] + ')');
     });
   });
+
+  // ---------- À la carte / Combos switch ----------
+  var modes = document.querySelector('.pk-modes');
+  if (modes) {
+    var mBtns = [].slice.call(modes.querySelectorAll('[role=tab]'));
+    var showMode = function (btn, focus) {
+      mBtns.forEach(function (b) {
+        var on = b === btn; b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1;
+        document.getElementById(b.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) btn.focus();
+    };
+    mBtns.forEach(function (b, i) {
+      b.addEventListener('click', function () { showMode(b); });
+      b.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); showMode(mBtns[(i + (e.key === 'ArrowRight' ? 1 : mBtns.length - 1)) % mBtns.length], true); }
+      });
+    });
+    if (/^#(combos|complete)$/.test(location.hash)) { showMode(mBtns[1]); var pk = document.getElementById('packages'); if (pk) setTimeout(function () { pk.scrollIntoView(); }, 50); }
+    document.querySelectorAll('a[href$="#combos"]').forEach(function (a) {
+      if (a.pathname === location.pathname) a.addEventListener('click', function (e) { e.preventDefault(); showMode(mBtns[1]); document.getElementById('packages').scrollIntoView({ behavior: 'smooth' }); });
+    });
+  }
+  var lsw = document.querySelector('.lvl-switch');
+  if (lsw) {
+    lsw.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      var i = b.dataset.lvl, tier = b.textContent;
+      lsw.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+      document.querySelectorAll('.combo-card').forEach(function (c) {
+        c.querySelector('.cc-price b').textContent = c.dataset['p' + i];
+        c.querySelector('.cc-price s').textContent = c.dataset['f' + i];
+        c.querySelector('.cc-save').textContent = 'You save ' + c.dataset['s' + i] + ' a month';
+        c.querySelector('.btn').dataset.label = c.dataset.name + ' (' + tier + '), ' + c.dataset['p' + i] + '/month';
+        c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump');
+      });
+    });
+  }
 
   // ---------- Plan builder ----------
   var bld = document.getElementById('builder');
@@ -103,15 +142,17 @@
         var price = plan.prices[PD.tiers.indexOf(lvl)];
         picked.push({ name: plan.short, lvl: lvl, price: price }); sub += price;
       });
-      var bundlePct = picked.length >= 3 ? PD.bundle['3'] : picked.length === 2 ? PD.bundle['2'] : 0;
+      var n = picked.length, bundlePct = n >= 2 ? PD.bundle[String(Math.min(n, 4))] : 0;
       var foundPct = fc && fc.checked ? PD.founding : 0;
       var pct = Math.max(bundlePct, foundPct);
       var html = picked.map(function (x) { return '<div><span>' + x.name + ' · ' + x.lvl + '</span><span>' + fmt(x.price) + '</span></div>'; }).join('');
       if (!picked.length) html = '<div><span>Tick a service to start.</span></div>';
-      if (pct && picked.length) html += '<div class="save"><span>' + (pct === foundPct && foundPct >= bundlePct ? 'Founding client' : 'Bundle') + ' savings (' + pct + '%)</span><span>−' + fmt(sub * pct / 100) + '</span></div>';
+      if (pct && picked.length) html += '<div class="save"><span>' + (pct === foundPct && foundPct >= bundlePct ? 'Founding client' : 'Combo') + ' savings (' + pct + '%)</span><span>−' + fmt(sub * pct / 100) + '</span></div>';
       lines.innerHTML = html;
-      totalEl.textContent = fmt(sub * (1 - pct / 100));
-      noteEl.textContent = picked.length < 2 ? 'Add a second service to save 10%, or three or more to save 15%.' : picked.length === 2 ? 'Add one more service to save 15%.' : 'You are getting the best bundle rate.';
+      var total = pct ? Math.floor(sub * (100 - pct) / 100 / 5) * 5 : sub;
+      if (pct && picked.length) lines.querySelector('.save span:last-child').textContent = '−' + fmt(sub - total);
+      totalEl.textContent = fmt(total);
+      noteEl.textContent = n < 2 ? 'Add a second service to save 10%. Three save 15%, all four save 20%.' : n === 2 ? 'Add a third service to save 15%, or all four to save 20%.' : n === 3 ? 'Add the fourth service to save 20% on everything.' : 'You have the Complete Package rate: 20% off all four.';
       if (foundPct) noteEl.textContent += ' The founding rate lasts 6 months and doesn’t stack with bundle savings.';
       var summary = picked.map(function (x) { return x.name + ' (' + x.lvl + ')'; }).join(', ');
       bld.dataset.summary = summary ? summary + ', about ' + totalEl.textContent + '/month' : '';
