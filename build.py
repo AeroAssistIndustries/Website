@@ -6,33 +6,33 @@ from html import escape as esc
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
 
-# Where the site lives. Change both when it moves to its own domain (e.g. https://karladigital.com and "/").
+# Where the site lives. Change both when it moves to its own domain (e.g. https://digitalterra.com and "/").
 SITE_URL = "https://aeroassistindustries.github.io/Website/"
 SITE_PATH = "/Website/"
-EMAIL = "hello@karladigital.com"
+EMAIL = "hello@digitalterra.com"
 
 PAGES = {
-    "index.html":         ("Karla Digital · Local Marketing with a Worldly Eye", "Social media, local SEO, reputation management and websites for local businesses, from $250 a month. One person, real attention, month to month.", "home"),
-    "services.html":      ("Services · Karla Digital", "Social media management, local SEO, online reputation management and websites for local businesses, each from $250 a month.", "services"),
-    "industries.html":    ("Industries · Karla Digital", "Marketing for hotels, restaurants, salons, real estate, contractors, dental and wellness practices, retail and local services.", "industries"),
-    "pricing.html":       ("Pricing · Karla Digital", "Plans from $250 a month, all four services from $595 a month, combos up to 20% off, and 2 months free when you pay yearly.", "pricing"),
-    "social.html":        ("Social Media Examples · Karla Digital", "Sample social media posts, Reels and content calendars for local businesses.", "social"),
-    "about.html":         ("About · Karla Digital", "Meet Karla, a well-traveled founder bringing a worldly eye to local marketing.", "about"),
-    "faq.html":           ("FAQ · Karla Digital", "Answers about plans, pricing, contracts, accounts, reporting and how working with Karla Digital works.", "faq"),
-    "resources.html":     ("Guides & Free Tools · Karla Digital", "Plain-English guides to Google reviews, your Google Business Profile, social media and reaching visitors, plus free marketing tools.", "resources"),
-    "checklist.html":     ("Google Business Profile Checklist · Karla Digital", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
-    "contact.html":       ("Free Marketing Audit · Karla Digital", "Request a free marketing audit and website speed check from Karla Digital.", "contact"),
-    "terms.html":         ("Terms of Service · Karla Digital", "The terms that apply to using this website and to Karla Digital's marketing services.", "legal"),
-    "privacy.html":       ("Privacy Policy · Karla Digital", "How Karla Digital collects, uses and protects personal information.", "legal"),
-    "accessibility.html": ("Accessibility · Karla Digital", "Karla Digital's commitment to an accessible website, and how to report a barrier.", "legal"),
-    "404.html":           ("Page not found · Karla Digital", "The page you were looking for isn't here.", "404"),
+    "index.html":         ("Digital Terra · Local Roots. Worldly Reach.", "Social media, local SEO, reputation management and websites for local businesses, from $250 a month. One person, real attention, month to month.", "home"),
+    "services.html":      ("Services · Digital Terra", "Social media management, local SEO, online reputation management and websites for local businesses, each from $250 a month.", "services"),
+    "industries.html":    ("Industries · Digital Terra", "Marketing for hotels, restaurants, salons, real estate, contractors, dental and wellness practices, retail and local services.", "industries"),
+    "pricing.html":       ("Pricing · Digital Terra", "Plans from $250 a month, all four services from $595 a month, combos up to 20% off, and 2 months free when you pay yearly.", "pricing"),
+    "social.html":        ("Social Media Examples · Digital Terra", "Sample social media posts, Reels and content calendars for local businesses.", "social"),
+    "about.html":         ("About · Digital Terra", "Meet Karla, a well-traveled founder bringing a worldly eye to local marketing.", "about"),
+    "faq.html":           ("FAQ · Digital Terra", "Answers about plans, pricing, contracts, accounts, reporting and how working with Digital Terra works.", "faq"),
+    "resources.html":     ("Guides & Free Tools · Digital Terra", "Plain-English guides to Google reviews, your Google Business Profile, social media and reaching visitors, plus free marketing tools.", "resources"),
+    "checklist.html":     ("Google Business Profile Checklist · Digital Terra", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
+    "contact.html":       ("Free Marketing Audit · Digital Terra", "Request a free marketing audit and website speed check from Digital Terra.", "contact"),
+    "terms.html":         ("Terms of Service · Digital Terra", "The terms that apply to using this website and to Digital Terra's marketing services.", "legal"),
+    "privacy.html":       ("Privacy Policy · Digital Terra", "How Digital Terra collects, uses and protects personal information.", "legal"),
+    "accessibility.html": ("Accessibility · Digital Terra", "Digital Terra's commitment to an accessible website, and how to report a barrier.", "legal"),
+    "404.html":           ("Page not found · Digital Terra", "The page you were looking for isn't here.", "404"),
 }
 
 NAV = [("services.html", "Services", "services"), ("industries.html", "Industries", "industries"),
        ("pricing.html", "Pricing", "pricing"), ("social.html", "Our work", "social"), ("resources.html", "Guides", "resources"), ("about.html", "About", "about")]
 
 SCHEMA = {
-    "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Karla Digital",
+    "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Terra",
     "url": SITE_URL, "email": EMAIL, "logo": SITE_URL + "assets/logo.svg", "image": SITE_URL + "assets/og-image.png",
     "description": "Social media, local SEO, reputation management and websites for local businesses.",
     "priceRange": "$250–$1,500 per month", "founder": {"@type": "Person", "name": "Karla"},
@@ -65,7 +65,7 @@ def head(fname, title, desc, style, active, extra_ld=""):
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="{"article" if active == "guide" else "website"}">
-<meta property="og:site_name" content="Karla Digital">
+<meta property="og:site_name" content="Digital Terra">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canon}">
@@ -90,7 +90,7 @@ def nav(active):
         f'<li><a href="{h}"{" aria-current=\"page\"" if k == active else ""}>{t}</a></li>' for h, t, k in NAV)
     return f"""<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla Digital" width="178" height="40"></a>
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Terra" width="179" height="52"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
     <ul id="navlist">{items}<li><a class="btn" href="contact.html">Free audit</a></li></ul>
   </div>
@@ -100,8 +100,8 @@ def nav(active):
 FOOTER = f"""<footer>
   <div class="wrap">
     <div class="f-brand">
-      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Karla Digital" width="214" height="48"></a>
-      <p class="f-tag">Local marketing with a worldly eye. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Digital Terra" width="182" height="63"></a>
+      <p class="f-tag">Local roots. Worldly reach. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
       <a class="f-mail" href="mailto:{EMAIL}">{EMAIL}</a>
       <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>
     </div>
@@ -111,14 +111,14 @@ FOOTER = f"""<footer>
     </div>
     <div>
       <h4>Company</h4>
-      <ul><li><a href="about.html">About Karla</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul>
     </div>
     <div>
       <h4>Free tools</h4>
       <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="resources.html">Guides</a></li></ul>
     </div>
-    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Karla Digital LLC is an independent marketing agency.</div>
-    <div class="legal"><span>© 2026 Karla Digital LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
+    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Terra LLC is an independent marketing agency.</div>
+    <div class="legal"><span>© 2026 Digital Terra LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
   </div>
 </footer>
 __MCTA__<script src="site.js?v=__JSV__"></script>
@@ -153,7 +153,7 @@ def guide_page(g):
     <nav class="crumbs" aria-label="Breadcrumb"><a href="resources.html">Guides</a><span>/</span><span>{g["tag"]}</span></nav>
     <div class="eyebrow rise">{g["tag"]}</div>
     <h1 class="rise" style="--d:.1s">{esc(g["title"])}</h1>
-    <p class="g-meta rise" style="--d:.2s"><img src="assets/ka-seal.svg" alt="" width="34" height="34"><span>By {guides.AUTHOR}, founder of Karla Digital · {nice} · {g["minutes"]} min read</span></p>
+    <p class="g-meta rise" style="--d:.2s"><img src="assets/terra-mark.svg" alt="" width="34" height="34"><span>By {guides.AUTHOR}, founder of Digital Terra · {nice} · {g["minutes"]} min read</span></p>
   </div>
   <div class="wrap"><div class="ph g-cover rise" style="--d:.25s">{{{{img:{g["photo"][0]}:1200:{g["photo"][1]}}}}}</div></div>
 </header>
@@ -164,7 +164,7 @@ def guide_page(g):
   <div class="g-main">
     <div class="takeaways"><span class="metal-label">Key takeaways</span><ul>{take}</ul></div>
     <div class="prose g-prose">{body}</div>
-    <div class="g-author"><img src="assets/ka-seal.svg" alt="" width="56" height="56"><div><b>Written by Karla</b><p>Karla is the founder of Karla Digital, a one-person marketing agency for local businesses. She has traveled widely and used social media the way people around the world actually use it. <a href="about.html">More about Karla →</a></p></div></div>
+    <div class="g-author"><img src="assets/terra-mark.svg" alt="" width="56" height="56"><div><b>Written by Karla</b><p>Karla is the founder of Digital Terra, a one-person marketing agency for local businesses. She has traveled widely and used social media the way people around the world actually use it. <a href="about.html">More about Karla →</a></p></div></div>
   </div>
 </div>
 </article>
@@ -190,7 +190,7 @@ def guide_ld(g):
            "datePublished": g["date"], "dateModified": g["date"], "mainEntityOfPage": url,
            "image": f'https://images.unsplash.com/photo-{g["photo"][0]}?auto=format&fit=crop&w=1200&q=75',
            "author": {"@type": "Person", "name": guides.AUTHOR, "url": SITE_URL + "about.html"},
-           "publisher": {"@type": "Organization", "name": "Karla Digital", "logo": {"@type": "ImageObject", "url": SITE_URL + "assets/apple-touch-icon.png"}}}
+           "publisher": {"@type": "Organization", "name": "Digital Terra", "logo": {"@type": "ImageObject", "url": SITE_URL + "assets/apple-touch-icon.png"}}}
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
         {"@type": "ListItem", "position": 2, "name": "Guides", "item": SITE_URL + "resources.html"},
@@ -208,7 +208,7 @@ def faq_ld(body):
 
 
 for g in guides.GUIDES:
-    PAGES[g["slug"] + ".html"] = (g["title"] + " · Karla Digital", g["desc"], "guide")
+    PAGES[g["slug"] + ".html"] = (g["title"] + " · Digital Terra", g["desc"], "guide")
 
 os.makedirs(DIST, exist_ok=True)
 for fname, (title, desc, active) in PAGES.items():

@@ -32,8 +32,8 @@
         if (el.type === 'checkbox') { if (el.checked) lines.push(el.name + ': yes'); return; }
         if (el.value.trim()) lines.push((el.dataset.label || el.name) + ': ' + el.value.trim());
       });
-      var href = 'mailto:hello@karladigital.com?subject=' + encodeURIComponent('Free audit request: ' + biz) + '&body=' + encodeURIComponent(lines.join('\n'));
-      msg.innerHTML = 'Your request is ready. <a href="' + href + '">Open it in your email app</a> to send it, or email hello@karladigital.com directly.';
+      var href = 'mailto:hello@digitalterra.com?subject=' + encodeURIComponent('Free audit request: ' + biz) + '&body=' + encodeURIComponent(lines.join('\n'));
+      msg.innerHTML = 'Your request is ready. <a href="' + href + '">Open it in your email app</a> to send it, or email hello@digitalterra.com directly.';
       msg.classList.add('show');
     });
   });

@@ -1,4 +1,4 @@
-/* Karla Digital — local marketing for small businesses.
+/* Digital Terra — local marketing for small businesses.
    Layout idea: quiet editorial serif headlines on soft paper, ink and graphite for weight, brushed silver for every highlight. */
 :root {
   --paper: #f5f5f3;
@@ -574,3 +574,5 @@ body { font-variant-numeric: lining-nums; } .ctable td, .ctable th, .ticker span
 .metal-label { text-transform: uppercase; }
 .calc-how { grid-column: 1 / -1; margin-top: auto; border-top: 1px dashed var(--line); padding-top: 14px; color: var(--muted); font-size: 14px; }
 .calc-how b { color: var(--ink); }
+.logo img { height: 46px; width: auto; } footer .logo img { height: 63px; width: auto; }
+.logo img { height: 52px; } @media (max-width: 700px) { .logo img { height: 46px; } }
