@@ -10,6 +10,8 @@ SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
 SITE_URL = "https://aeroassistindustries.github.io/Website/"
 SITE_PATH = "/Website/"
 EMAIL = "hello@digitalmondo.com"
+# Where the audit form posts (a form service or Cloudflare Worker URL). Empty: visitors get an email draft instead.
+FORM_ENDPOINT = ""
 
 PAGES = {
     "index.html":         ("Digital Mondo · Your Neighborhood, Seen by the World", "Social media, local SEO, reputation management and websites for local businesses, from $250 a month. One person, real attention, month to month.", "home"),
@@ -21,6 +23,8 @@ PAGES = {
     "faq.html":           ("FAQ · Digital Mondo", "Answers about plans, pricing, contracts, accounts, reporting and how working with Digital Mondo works.", "faq"),
     "resources.html":     ("Guides & Free Tools · Digital Mondo", "Plain-English guides to Google reviews, your Google Business Profile, social media, websites and reaching visitors, plus free marketing tools.", "resources"),
     "checklist.html":     ("Google Business Profile Checklist · Digital Mondo", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
+    "post-planner.html":  ("Free Social Media Post Planner · Digital Mondo", "Pick your type of business and how often you post, and get four weeks of social media post ideas with caption starters. Free.", "resources"),
+    "review-cards.html":  ("Free Review QR Card Maker · Digital Mondo", "Make a printable counter card or business card with a QR code that takes customers straight to your Google review form. Free.", "resources"),
     "contact.html":       ("Free Marketing Audit · Digital Mondo", "Request a free marketing audit and website speed check from Digital Mondo.", "contact"),
     "terms.html":         ("Terms of Service · Digital Mondo", "The terms that apply to using this website and to Digital Mondo's marketing services.", "legal"),
     "privacy.html":       ("Privacy Policy · Digital Mondo", "How Digital Mondo collects, uses and protects personal information from website visitors, audit requests and clients.", "legal"),
@@ -127,7 +131,7 @@ FOOTER = f"""<footer>
     </div>
     <div>
       <h2 class="fh">Free tools</h2>
-      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="resources.html">Guides</a></li></ul>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li></ul>
     </div>
     <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Mondo LLC is an independent marketing agency.</div>
     <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
@@ -330,8 +334,9 @@ for fname, (title, desc, active) in PAGES.items():
         f.write(head(fname, title, desc, styles, active, extra) + nav("resources" if active == "guide" else active, fname) + '<main id="main">\n' + body + "\n</main>\n"
                 + FOOTER.replace("__JSV__", ver("site.js")).replace("__MCTA__", mcta))
 
-for asset in ["style.css", "site.js"]:
-    shutil.copy(os.path.join(ROOT, asset), os.path.join(DIST, asset))
+shutil.copy(os.path.join(ROOT, "style.css"), os.path.join(DIST, "style.css"))
+with open(os.path.join(ROOT, "site.js")) as f_in, open(os.path.join(DIST, "site.js"), "w") as f_out:
+    f_out.write(f_in.read().replace("__FORM_ENDPOINT__", FORM_ENDPOINT).replace("__EMAIL__", EMAIL))
 shutil.copytree(os.path.join(ROOT, "assets"), os.path.join(DIST, "assets"), dirs_exist_ok=True)
 
 # Search engines: sitemap and robots

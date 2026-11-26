@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Social Media Post Planner · Digital Mondo</title>
+<meta name="description" content="Pick your type of business and how often you post, and get four weeks of social media post ideas with caption starters. Free.">
+<link rel="canonical" href="https://aeroassistindustries.github.io/Website/post-planner.html">
+<meta name="theme-color" content="#16181c">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Digital Mondo">
+<meta property="og:title" content="Free Social Media Post Planner · Digital Mondo">
+<meta property="og:description" content="Pick your type of business and how often you post, and get four weeks of social media post ideas with caption starters. Free.">
+<meta property="og:url" content="https://aeroassistindustries.github.io/Website/post-planner.html">
+<meta property="og:image" content="https://aeroassistindustries.github.io/Website/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Social Media Post Planner · Digital Mondo">
+<meta name="twitter:description" content="Pick your type of business and how often you post, and get four weeks of social media post ideas with caption starters. Free.">
+<meta name="twitter:image" content="https://aeroassistindustries.github.io/Website/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=7aa0a70f">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+.pp-wrap { display: grid; grid-template-columns: 330px 1fr; gap: 32px; align-items: start; }
+.pp-form { position: sticky; top: 90px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 24px; display: grid; gap: 16px; }
+.pp-form label { display: grid; gap: 6px; font-weight: 600; font-size: 14.5px; }
+.pp-form select, .pp-form input { font: inherit; font-weight: 400; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); }
+.pp-freq { display: flex; gap: 6px; background: var(--paper); border-radius: 999px; padding: 4px; }
+.pp-freq button { flex: 1; border: 0; background: none; font: inherit; font-weight: 600; font-size: 14px; padding: 9px 6px; border-radius: 999px; cursor: pointer; color: var(--muted); }
+.pp-freq button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.pp-lbl { display: block; font-weight: 600; font-size: 14.5px; margin-bottom: 6px; }
+.pp-form .hint { color: var(--muted); font-size: 13.5px; font-weight: 400; }
+.pp-acts { display: grid; gap: 8px; }
+.pp-acts .btn { justify-content: center; }
+.pp-msg { min-height: 1.2em; font-size: 14px; color: var(--muted); }
+.pp-legend { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .04em; padding: 5px 10px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); }
+.pill i { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.p-bts i { color: #676d76; } .p-people i { color: #9a5b2e; } .p-tip i { color: #2f6b5a; } .p-proof i { color: #3d5a8a; } .p-offer i { color: #8a3d5f; }
+.pp-week { margin-bottom: 26px; }
+.pp-week h2 { font-family: var(--body); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.pp-post { display: grid; grid-template-columns: 92px 1fr; gap: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; }
+.pp-post + .pp-post { margin-top: 10px; }
+.pp-date { font-family: var(--display); font-size: 30px; font-weight: 600; line-height: 1; font-variant-numeric: lining-nums; }
+.pp-date small { display: block; font-family: var(--body); font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.pp-top { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.pp-post h3 { font-size: 18px; font-weight: 700; font-family: var(--body); margin-bottom: 6px; }
+.pp-post p { color: var(--muted); font-size: 15px; }
+.pp-post p b { color: var(--ink); font-weight: 600; }
+.pp-empty { color: var(--muted); }
+@media (max-width: 900px) { .pp-wrap { grid-template-columns: 1fr; } .pp-form { position: static; } }
+@media (max-width: 520px) { .pp-post { grid-template-columns: 1fr; gap: 8px; } }
+@media print {
+  .nav, footer, .mcta, .page-head .intro, .pp-form, .pp-note, .cta-band { display: none !important; }
+  .pp-wrap { display: block; } .pp-post { break-inside: avoid; border-color: #bbb; }
+  section { padding: 0 !important; } .page-head { padding: 0 0 12px !important; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Mondo" width="209" height="56"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist"><span class="mb-ic" aria-hidden="true"><i></i><i></i></span><span class="mb-t">Menu</span></button>
+    <ul id="navlist"><li class="has-sub"><a href="services.html">Services</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show services"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="social-media-management.html"><b>Social media management</b><small>Posts, Reels and replies</small></a></li><li><a href="local-seo.html"><b>Local SEO</b><small>Google, Maps and AI search</small></a></li><li><a href="reputation-management.html"><b>Reputation management</b><small>More reviews, every one answered</small></a></li><li><a href="website-design.html"><b>Websites</b><small>Fast sites that bring in bookings</small></a></li><li class="sub-all"><a href="services.html">All services and add-ons →</a></li></ul></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Our work</a></li><li><a href="resources.html" aria-current="page">Guides</a></li><li><a href="about.html">About</a></li><li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a><span>Your neighborhood, seen by the world.</span></li></ul>
+  </div>
+</nav>
+<main id="main">
+<header class="page-head">
+  <div class="wrap">
+    <div class="eyebrow rise">Free tool</div>
+    <h1 class="rise" style="--d:.1s">Four weeks of post ideas.</h1>
+    <p class="intro rise" style="--d:.2s">Pick your type of business and how often you want to post. You'll get a month of ideas that rotate through the five content pillars, with a caption starter for each. Print it, copy it or download it for your calendar.</p>
+  </div>
+</header>
+
+<section style="padding-top:0">
+  <div class="wrap pp-wrap">
+    <form class="pp-form" id="ppForm" onsubmit="return false">
+      <label>Type of business
+        <select id="ppInd">
+          <option value="cafe">Café, bakery or restaurant</option>
+          <option value="salon">Salon, spa or barber</option>
+          <option value="hotel">Hotel, inn or vacation rental</option>
+          <option value="retail">Shop or boutique</option>
+          <option value="fitness">Gym, studio or wellness</option>
+          <option value="home">Home services or contractor</option>
+          <option value="health">Dental, medical or clinic</option>
+        </select>
+      </label>
+      <div><span class="pp-lbl" id="ppFreqLbl">Posts a week</span>
+        <div class="pp-freq" role="group" aria-labelledby="ppFreqLbl" id="ppFreq"><button type="button" data-n="3" aria-pressed="true">3</button><button type="button" data-n="4" aria-pressed="false">4</button><button type="button" data-n="5" aria-pressed="false">5</button></div>
+        <p class="hint" style="margin-top:6px">Three good posts a week is a strong start for most local businesses.</p>
+      </div>
+      <label for="ppStart">Starting
+        <input type="date" id="ppStart">
+      </label>
+      <div class="pp-acts">
+        <button type="button" class="btn" id="ppCopy">Copy the plan</button>
+        <button type="button" class="btn ghost" id="ppCsv">Download for a spreadsheet</button>
+        <button type="button" class="btn ghost" id="ppPrint">Print</button>
+        <p class="pp-msg" id="ppMsg" aria-live="polite"></p>
+      </div>
+    </form>
+    <div>
+      <div class="pp-legend" aria-label="Content pillars"><span class="pill p-bts"><i></i>Behind the scenes</span><span class="pill p-people"><i></i>People</span><span class="pill p-tip"><i></i>Helpful tip</span><span class="pill p-proof"><i></i>Proof</span><span class="pill p-offer"><i></i>Offer or news</span></div>
+      <div id="ppOut" aria-live="polite"><p class="pp-empty">Your plan appears here.</p></div>
+      <p class="pp-note" style="color:var(--muted);font-size:15px;margin-top:8px">Words in [brackets] are yours to fill in. Why these five pillars and this rhythm? Read <a href="guide-social-media-posting.html">how often a local business should post</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div><h2>Rather not plan it yourself?</h2><p>On a social media plan I write, design and post every one of these for you, and you approve the month before anything goes out.</p></div>
+      <a class="btn" href="social-media-management.html">See social media plans</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var P = { bts: ['Behind the scenes', 'p-bts'], people: ['People', 'p-people'], tip: ['Helpful tip', 'p-tip'], proof: ['Proof', 'p-proof'], offer: ['Offer or news', 'p-offer'] };
+  var ORDER = ['bts', 'people', 'tip', 'proof', 'bts', 'people', 'tip', 'offer', 'proof', 'tip'];
+  var D = {
+    cafe: {
+      bts: [['Reel', 'Opening routine in 15 seconds', 'Lights on, ovens on, first pour of the day. This is what [time] looks like at [business].'], ['Photo', 'Close-up of something being made', 'Made by hand, every morning. Can you guess what this turns into?'], ['Reel', 'Where your ingredients come from', 'Meet [supplier], the reason our [ingredient] tastes like it does.']],
+      people: [['Photo', 'Introduce a team member', 'Say hi to [name]! Ask them about [fun fact] next time you’re in.'], ['Carousel', 'A regular’s go-to order (with permission)', '[Name] has ordered the [item] every [day] for [time]. Here’s why it’s their favorite.'], ['Photo', 'The owner’s favorite item and why', 'If I could only eat one thing on our menu, it would be [item]. Here’s why.']],
+      tip: [['Carousel', 'How to enjoy something at home', 'Taking [item] home? Here’s how to keep it tasting fresh.'], ['Photo', 'Menu term explained', 'What’s the difference between [term] and [term]? Quick guide below.'], ['Reel', 'Pairing suggestion', 'Our favorite pairing this week: [item] + [item]. Trust us.']],
+      proof: [['Photo', 'Share a real review', '“[short quote from a real review]” Thank you, [first name]! Reviews like this make our day.'], ['Photo', 'Busy moment or full tables', 'Saturday mornings at [business]. Thank you for making this place what it is.']],
+      offer: [['Photo', 'Seasonal or new item', 'New this [season]: [item]. Here until [date]. Who’s trying it first?'], ['Photo', 'Event or special hours', 'Mark your calendar: [event] on [date]. [details].']]
+    },
+    salon: {
+      bts: [['Reel', 'A color or cut in progress, sped up', 'From start to finish in 20 seconds. Swipe for the reveal.'], ['Photo', 'Your station and tools', 'Where the magic happens. A tidy station is a happy stylist.'], ['Reel', 'Prepping for a big day (wedding, event)', 'Up early for a bridal party today. Here’s a peek behind the chair.']],
+      people: [['Photo', 'Meet a stylist or therapist', 'Meet [name], our [specialty] expert. Book with [name] for [service].'], ['Carousel', 'Why the owner started the salon', 'I opened [business] because [reason]. [Number] years later, here’s what I’ve learned.'], ['Photo', 'Team favorite products', 'The one product every stylist here swears by: [product].']],
+      tip: [['Carousel', 'Make your color last longer', '3 ways to keep your color fresh between visits.'], ['Reel', 'Quick at-home styling tip', 'Second-day hair? Try this in under two minutes.'], ['Photo', 'How often to book a trim or treatment', 'How often should you book a [service]? Here’s our honest answer.']],
+      proof: [['Carousel', 'Before and after (with permission)', 'Before and after: [service] for [first name]. Swipe to see the change.'], ['Photo', 'Share a real review', '“[short quote from a real review]” Thank you, [first name]!']],
+      offer: [['Photo', 'Open appointments this week', 'A few openings left this week: [days/times]. Book at the link in bio.'], ['Photo', 'New service or product', 'Now offering [service]. Here’s what to expect and who it’s for.']]
+    },
+    hotel: {
+      bts: [['Reel', 'A room being prepared for arrival', 'Every room, every day: here’s how we get it ready for you.'], ['Photo', 'Morning at the property', 'Good morning from [property]. Coffee’s on.'], ['Reel', 'Breakfast or amenities being set up', 'What’s on the breakfast table at [time] every morning.']],
+      people: [['Photo', 'Meet the front desk or host', 'Meet [name], who will probably be the first face you see here. Ask them for [local tip].'], ['Carousel', 'Staff picks: favorite local spots', 'Our team’s favorite places within [distance]: [spot], [spot] and [spot].'], ['Photo', 'The story of the building or property', '[Property] has been here since [year]. Here’s a bit of its story.']],
+      tip: [['Carousel', 'A perfect day nearby', 'Staying with us? Here’s how to spend a perfect day in [area].'], ['Photo', 'Best time of year to visit', 'When is the best time to visit [area]? Our honest take.'], ['Carousel', 'What to pack', 'Packing for [area] in [season]? Don’t forget [item].']],
+      proof: [['Photo', 'Share a real guest review', '“[short quote from a real review]” Thank you for staying with us, [first name].'], ['Photo', 'Guest photo (with permission)', 'Loved seeing [area] through [guest]’s eyes. Thanks for sharing!']],
+      offer: [['Photo', 'Book direct perk', 'Booking direct gets you [perk]. Link in bio.'], ['Photo', 'Local event coming up', '[Event] is on [date]. Rooms are going fast, so plan ahead.']]
+    },
+    retail: {
+      bts: [['Reel', 'Unboxing new arrivals', 'Fresh delivery just landed. Here’s a first look.'], ['Photo', 'Setting up a display', 'Rearranging the front window today. What do you think?'], ['Reel', 'How you wrap or pack an order', 'Every order gets wrapped like a gift. Here’s how we do it.']],
+      people: [['Photo', 'Meet the owner or a team member', 'Hi, I’m [name]! I opened [business] because [reason].'], ['Carousel', 'Staff picks of the month', 'What our team is loving right now: [item], [item] and [item].'], ['Photo', 'A local maker you carry', 'Meet [maker], who makes our [product] right here in [town].']],
+      tip: [['Carousel', 'How to style or use a product three ways', 'One [item], three ways to wear it.'], ['Photo', 'Gift guide for a type of person', 'Shopping for [type of person]? Start here.'], ['Carousel', 'How to care for a product', 'Make your [item] last for years with these tips.']],
+      proof: [['Photo', 'Share a real review', '“[short quote from a real review]” Thank you, [first name]!'], ['Photo', 'Customer photo (with permission)', 'Love seeing our [item] out in the world. Thanks for the photo, [name]!']],
+      offer: [['Photo', 'Back in stock or limited item', 'Back in stock: [item]. Only [number] left.'], ['Photo', 'In-store event or sale', 'Join us [date] for [event]. [details].']]
+    },
+    fitness: {
+      bts: [['Reel', 'Setting up for a class', '6 a.m. setup. Who’s joining us tomorrow?'], ['Photo', 'The space before the crowd', 'Quiet before the class rush. See you at [time].'], ['Reel', 'A coach planning a workout', 'How [coach] plans this week’s workouts.']],
+      people: [['Photo', 'Meet a coach or instructor', 'Meet [name]. Specialty: [specialty]. Catch their class on [day].'], ['Carousel', 'A member milestone (with permission)', 'Huge congrats to [first name] on [milestone]!'], ['Photo', 'Why the owner started the studio', 'Why I opened [business]: [reason].']],
+      tip: [['Reel', 'One move done right', 'Doing [exercise]? Watch for these two common mistakes.'], ['Carousel', 'How to start if you’re new', 'New to [activity]? Here’s what your first week should look like.'], ['Photo', 'Recovery or rest-day tip', 'Rest days count too. Here’s how we recommend using them.']],
+      proof: [['Photo', 'Share a real review', '“[short quote from a real review]” Thank you, [first name]!'], ['Photo', 'A packed class', 'Full house this morning. Thank you for showing up!']],
+      offer: [['Photo', 'Intro offer or free class', 'Try your first class for [offer]. Book at the link in bio.'], ['Photo', 'New class or schedule change', 'New on the schedule: [class], [day] at [time].']]
+    },
+    home: {
+      bts: [['Reel', 'A job in progress, sped up', 'A day’s work in 20 seconds: [job] in [area].'], ['Photo', 'The tools you trust', 'The tool we’d never do a job without: [tool]. Here’s why.'], ['Photo', 'Loading up for the day', 'Truck’s loaded. Heading to [area] for a [job].']],
+      people: [['Photo', 'Meet a technician or crew member', 'Meet [name]: [number] years in the trade. Best part of the job? [answer].'], ['Carousel', 'How the business got started', '[Business] started with one truck in [year]. Here’s our story.'], ['Photo', 'Crew on a finished job', 'Proud of this crew. Another job done right in [area].']],
+      tip: [['Carousel', 'Seasonal maintenance checklist', 'Before [season] hits, check these [number] things around your home.'], ['Photo', 'Warning signs to call a pro', '[Number] signs your [system] needs attention soon.'], ['Reel', 'A quick fix homeowners can do', 'You can fix this yourself in five minutes. Here’s how.']],
+      proof: [['Carousel', 'Before and after of a job', 'Before and after: [job] in [area]. Swipe to see the difference.'], ['Photo', 'Share a real review', '“[short quote from a real review]” Thank you, [first name]!']],
+      offer: [['Photo', 'Seasonal service reminder', 'Booking now for [season] [service]. Spots fill up fast.'], ['Photo', 'Now serving a new area', 'Now serving [area]! Call [phone] or book online.']]
+    },
+    health: {
+      bts: [['Photo', 'The office before opening', 'Ready for you. Here’s a peek at our [room] before the first appointment.'], ['Reel', 'How equipment is cleaned', 'You asked how we keep things clean. Here’s our routine.'], ['Photo', 'New equipment or upgrade', 'New in the office: [equipment]. Here’s what it means for your visit.']],
+      people: [['Photo', 'Meet a team member', 'Meet [name], our [role]. Fun fact: [fact].'], ['Carousel', 'Why the doctor chose this field', 'Why I became a [profession]: [reason].'], ['Photo', 'Team celebrating a milestone', 'Celebrating [milestone] with this amazing team!']],
+      tip: [['Carousel', 'Myth vs fact', 'Myth or fact: [myth]? Here’s the truth.'], ['Photo', 'A simple daily habit', 'One small habit that makes a big difference: [habit].'], ['Carousel', 'What to expect at a first visit', 'Nervous about your first visit? Here’s exactly what happens.']],
+      proof: [['Photo', 'Share a real review', '“[short quote from a real review]” Thank you, [first name]!'], ['Photo', 'Community involvement', 'We loved being part of [event] this week.']],
+      offer: [['Photo', 'New patients welcome', 'Now welcoming new patients. Book online or call [phone].'], ['Photo', 'Hours or holiday schedule', 'Holiday hours: [hours]. Need us sooner? Book now.']]
+    }
+  };
+  var DAYS = { 3: [2, 4, 6], 4: [1, 3, 5, 6], 5: [1, 2, 4, 5, 6] }; // 0 = Sunday
+  var form = document.getElementById('ppForm'), out = document.getElementById('ppOut'), msg = document.getElementById('ppMsg');
+  var ind = document.getElementById('ppInd'), start = document.getElementById('ppStart'), freqBtns = [].slice.call(document.querySelectorAll('#ppFreq button'));
+  var freq = 3, plan = [];
+  var iso = function (d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+  var nextMonday = function () { var d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + ((8 - d.getDay()) % 7 || 7)); return d; };
+  try { var saved = JSON.parse(localStorage.getItem('dm-planner') || '{}'); if (saved.ind && D[saved.ind]) ind.value = saved.ind; if (DAYS[saved.freq]) freq = saved.freq; } catch (e) {}
+  start.value = iso(nextMonday());
+  var esc = function (s) { return s.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  function build() {
+    freqBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(+b.dataset.n === freq)); });
+    try { localStorage.setItem('dm-planner', JSON.stringify({ ind: ind.value, freq: freq })); } catch (e) {}
+    var data = D[ind.value], s = start.value ? new Date(start.value + 'T12:00:00') : nextMonday();
+    if (isNaN(s)) s = nextMonday();
+    var used = { bts: 0, people: 0, tip: 0, proof: 0, offer: 0 }, k = 0, reels = 0, maxReels = freq + 1;
+    plan = [];
+    for (var i = 0; i < 28; i++) {
+      var d = new Date(s); d.setDate(s.getDate() + i);
+      if (DAYS[freq].indexOf(d.getDay()) < 0) continue;
+      var pil = ORDER[k % ORDER.length]; k++;
+      var list = data[pil], pick = list[used[pil] % list.length]; used[pil]++;
+      var fmt = pick[0];
+      if (fmt === 'Reel') { if (reels >= maxReels) fmt = 'Photo'; else reels++; }
+      plan.push({ date: d, week: Math.floor(i / 7) + 1, pillar: pil, format: fmt, idea: pick[1], caption: pick[2] });
+    }
+    var html = '', wk = 0;
+    plan.forEach(function (p) {
+      if (p.week !== wk) { if (wk) html += '</div>'; wk = p.week; html += '<div class="pp-week"><h2>Week ' + wk + '</h2>'; }
+      html += '<article class="pp-post"><div class="pp-date"><small>' + p.date.toLocaleDateString('en-US', { weekday: 'short' }) + ' · ' + p.date.toLocaleDateString('en-US', { month: 'short' }) + '</small>' + p.date.getDate() + '</div><div>' +
+        '<div class="pp-top"><span class="pill ' + P[p.pillar][1] + '"><i></i>' + P[p.pillar][0] + '</span><span class="pill">' + p.format + '</span></div>' +
+        '<h3>' + esc(p.idea) + '</h3><p><b>Caption starter:</b> ' + esc(p.caption) + '</p></div></article>';
+    });
+    out.innerHTML = html + (wk ? '</div>' : '');
+    msg.textContent = '';
+  }
+  function rows() { return plan.map(function (p) { return [iso(p.date), p.date.toLocaleDateString('en-US', { weekday: 'long' }), P[p.pillar][0], p.format, p.idea, p.caption]; }); }
+  var HEAD = ['Date', 'Day', 'Pillar', 'Format', 'Idea', 'Caption starter'];
+  freqBtns.forEach(function (b) { b.addEventListener('click', function () { freq = +b.dataset.n; build(); }); });
+  ind.addEventListener('change', build); start.addEventListener('change', build);
+  document.getElementById('ppCopy').addEventListener('click', function () {
+    var text = rows().map(function (r) { return r[0] + ' (' + r[1] + ') · ' + r[2] + ' · ' + r[3] + '\n' + r[4] + '\nCaption: ' + r[5]; }).join('\n\n');
+    var done = function () { msg.textContent = 'Copied ' + plan.length + ' post ideas.'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { msg.textContent = 'Copying isn’t allowed here. Try Download instead.'; });
+    else msg.textContent = 'Copying isn’t supported in this browser. Try Download instead.';
+  });
+  document.getElementById('ppCsv').addEventListener('click', function () {
+    var q = function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; };
+    var csv = [HEAD].concat(rows()).map(function (r) { return r.map(q).join(','); }).join('\r\n');
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }));
+    a.download = 'post-plan-' + start.value + '.csv'; document.body.appendChild(a); a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+    msg.textContent = 'Downloaded. It opens in Excel, Google Sheets or Numbers.';
+  });
+  document.getElementById('ppPrint').addEventListener('click', function () { window.print(); });
+  build();
+})();
+</script>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Digital Mondo" width="198" height="63"></a>
+      <p class="f-tag">Your neighborhood, seen by the world. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
+      <a class="f-mail" href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a>
+      <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>
+    </div>
+    <div>
+      <h2 class="fh">Services</h2>
+      <ul><li><a href="social-media-management.html">Social media management</a></li><li><a href="local-seo.html">Local SEO</a></li><li><a href="reputation-management.html">Reputation management</a></li><li><a href="website-design.html">Websites</a></li><li><a href="pricing.html">Plans and pricing</a></li></ul>
+    </div>
+    <div>
+      <h2 class="fh">Company</h2>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </div>
+    <div>
+      <h2 class="fh">Free tools</h2>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li></ul>
+    </div>
+    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Mondo LLC is an independent marketing agency.</div>
+    <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
+  </div>
+</footer>
+<a class="btn mcta" href="contact.html">Get a free marketing audit</a>
+<script src="site.js?v=453701a3"></script>
+</body>
+</html>

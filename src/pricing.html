@@ -26,6 +26,24 @@
 .price-head .facts div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; display: flex; gap: 12px; align-items: center; font-size: 15px; }
 .price-head .facts b { font-family: var(--display); font-size: 24px; color: var(--accent); min-width: 64px; letter-spacing: -0.01em; }
 @media (max-width: 900px) { .price-head .wrap { grid-template-columns: 1fr; } }
+
+.share-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; margin-top: 14px; }
+.link-btn { background: none; border: 0; padding: 4px 0; font: inherit; font-size: 14px; font-weight: 600; color: #e9ebee; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.link-btn:hover { color: #fff; }
+.share-msg { min-height: 1.2em; font-size: 13.5px; color: #c9ccd2; text-align: center; margin-top: 6px; word-break: break-all; }
+.print-only { display: none; }
+@media print {
+  body.print-quote main > *:not(#builder-section), body.print-quote .nav, body.print-quote footer, body.print-quote .mcta { display: none !important; }
+  body.print-quote #builder-section > .wrap > *:not(.builder) { display: none !important; }
+  body.print-quote .builder { display: block !important; }
+  body.print-quote .builder-rows, body.print-quote .summary .billing, body.print-quote .summary .fc, body.print-quote .summary .go, body.print-quote .share-row, body.print-quote .share-msg { display: none !important; }
+  body.print-quote .summary { position: static !important; max-width: 5.5in; margin: 0 auto; background: #fff !important; color: #16181c !important; border: 1px solid #bbb; box-shadow: none !important; }
+  body.print-quote .summary * { color: #16181c !important; }
+  body.print-quote .print-only { display: block; font-size: 11px; margin-top: 14px; }
+  body.print-quote .print-head { display: flex; justify-content: space-between; align-items: center; margin: 0 0 18px; padding-bottom: 14px; border-bottom: 1px solid #ddd; }
+  body.print-quote main { padding-top: 0.3in; }
+  body.print-quote section { padding: 0 !important; }
+}
 </style>
 
 <div class="offer"><div class="wrap"><b>Founding client offer</b><span>15% off your first 6 months for my first 3 clients.</span><a href="#builder">Build your plan →</a></div></div>
@@ -96,6 +114,7 @@
     <div class="builder reveal" id="builder">
       {{builder}}
       <div class="summary" role="region" aria-label="Your plan summary" aria-live="polite">
+        <div class="print-only print-head"><img src="assets/logo.svg" alt="Digital Mondo" width="168" height="45"><span id="bQuoteDate"></span></div>
         <h3>Your plan</h3>
         <div class="billing sm" role="group" aria-label="Billing"><button type="button" data-bill="m" aria-pressed="true">Monthly</button><button type="button" data-bill="y" aria-pressed="false">Yearly <span class="free">2 months free</span></button></div>
         <div class="lines"></div>
@@ -104,6 +123,9 @@
         <p class="total-billed"></p>
         <p class="note"></p>
         <a class="btn go" href="contact.html">Request this plan with a free audit</a>
+        <div class="share-row"><button type="button" class="link-btn" id="bShare">Copy a link to this plan</button><button type="button" class="link-btn" id="bPrint">Print or save as PDF</button></div>
+        <p class="share-msg" id="bShareMsg" aria-live="polite"></p>
+        <p class="print-only print-foot">Digital Mondo · hello@digitalmondo.com · Prices per month in US dollars. Monthly plans have no setup fee and no long-term contract.</p>
       </div>
     </div>
     {{plans_json}}

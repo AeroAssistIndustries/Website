@@ -41,7 +41,9 @@
     if (window.innerWidth > 960 && !e.target.closest('.has-sub')) document.querySelectorAll('.has-sub.show').forEach(function (li) { li.classList.remove('show'); li.querySelector('.sub-btn').setAttribute('aria-expanded', 'false'); });
   });
 
-  // Audit forms: build an email draft (the page itself has nowhere to send a form)
+  // Audit forms. With FORM_ENDPOINT set (a form service or Cloudflare Worker URL) requests are sent
+  // straight to the inbox; without it, or if sending fails, the visitor gets a ready-made email draft.
+  var FORM_ENDPOINT = '__FORM_ENDPOINT__', EMAIL = '__EMAIL__';
   document.querySelectorAll('form.audit-form').forEach(function (f) {
     f.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -52,15 +54,28 @@
         msg.textContent = 'Please add your name, business name and a valid email.';
         msg.classList.add('show'); return;
       }
+      if (f.elements._gotcha && f.elements._gotcha.value) return; // a bot filled the hidden field
       var lines = [];
       Array.prototype.forEach.call(f.elements, function (el) {
-        if (!el.name || el.type === 'submit') return;
+        if (!el.name || el.type === 'submit' || el.name === '_gotcha') return;
         if (el.type === 'checkbox') { if (el.checked) lines.push(el.name + ': yes'); return; }
         if (el.value.trim()) lines.push((el.dataset.label || el.name) + ': ' + el.value.trim());
       });
-      var href = 'mailto:hello@digitalmondo.com?subject=' + encodeURIComponent('Free audit request: ' + biz) + '&body=' + encodeURIComponent(lines.join('\n'));
-      msg.innerHTML = 'Your request is ready. <a href="' + href + '">Open it in your email app</a> to send it, or email hello@digitalmondo.com directly.';
-      msg.classList.add('show');
+      var href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Free audit request: ' + biz) + '&body=' + encodeURIComponent(lines.join('\n'));
+      var draft = function (lead) {
+        msg.innerHTML = lead + ' <a href="' + href + '">Open it in your email app</a> to send it, or email ' + EMAIL + ' directly.';
+        msg.classList.add('show');
+      };
+      if (!FORM_ENDPOINT || !window.fetch) { draft('Your request is ready.'); return; }
+      var btn = f.querySelector('[type=submit]'), label = btn.textContent;
+      btn.disabled = true; btn.textContent = 'Sending…';
+      var data = new FormData(f); data.append('_subject', 'Free audit request: ' + biz); data.append('summary', lines.join('\n'));
+      fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        f.reset(); msg.textContent = 'Thank you, ' + name + '! Your request is in. I\u2019ll reply within one business day.'; msg.classList.add('show');
+        try { sessionStorage.removeItem('ka-plan'); } catch (e) {}
+      }).catch(function () { draft('That didn\u2019t go through, but your request is ready.'); })
+        .then(function () { btn.disabled = false; btn.textContent = label; });
     });
   });
 
@@ -216,6 +231,47 @@
       sg.addEventListener('click', function () { var cb = sg.closest('.b-row').querySelector('input[type=checkbox]'); if (!cb.checked) { cb.checked = true; } setTimeout(calc, 0); });
     });
     onBilling.push(calc);
+    // Restore a shared plan: pricing.html?plan=social-growth,seo-pro&billing=yearly&founding=1#builder
+    try {
+      var qs = new URLSearchParams(location.search), want = (qs.get('plan') || '').toLowerCase();
+      if (want) {
+        want.split(',').forEach(function (bit) {
+          var kv = bit.split('-'), row = bld.querySelector('.b-row[data-service="' + kv[0] + '"]');
+          if (!row) return;
+          row.querySelector('input[type=checkbox]').checked = true;
+          var lv = (kv[1] || '').charAt(0).toUpperCase() + (kv[1] || '').slice(1);
+          var r = row.querySelector('input[type=radio][value="' + lv + '"]'); if (r) r.checked = true;
+        });
+        yearly = qs.get('billing') === 'yearly';
+        if (qs.get('founding') === '1' && fc) fc.checked = true;
+      }
+    } catch (e) {}
+    function planLink() {
+      var bits = [];
+      bld.querySelectorAll('.b-row').forEach(function (row) {
+        if (!row.querySelector('input[type=checkbox]').checked) return;
+        var lv = (row.querySelector('input[type=radio]:checked') || {}).value || 'Growth';
+        bits.push(row.dataset.service + '-' + lv.toLowerCase());
+      });
+      if (!bits.length) return '';
+      var q = '?plan=' + bits.join(',') + (yearly ? '&billing=yearly' : '') + (fc && fc.checked && !yearly ? '&founding=1' : '');
+      return location.origin + location.pathname + q + '#builder';
+    }
+    var shareBtn = document.getElementById('bShare'), printBtn = document.getElementById('bPrint'), shareMsg = document.getElementById('bShareMsg');
+    if (shareBtn) shareBtn.addEventListener('click', function () {
+      var url = planLink();
+      if (!url) { shareMsg.textContent = 'Tick at least one service first.'; return; }
+      var shown = function () { shareMsg.textContent = 'Copy this link: ' + url; };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { shareMsg.textContent = 'Link copied. Anyone who opens it sees this plan.'; }, shown);
+      else shown();
+    });
+    if (printBtn) printBtn.addEventListener('click', function () {
+      if (!planLink()) { shareMsg.textContent = 'Tick at least one service first.'; return; }
+      var qd = document.getElementById('bQuoteDate'); if (qd) qd.textContent = 'Plan quote · ' + new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      document.body.classList.add('print-quote'); window.print();
+      setTimeout(function () { document.body.classList.remove('print-quote'); }, 500);
+    });
+    window.addEventListener('afterprint', function () { document.body.classList.remove('print-quote'); });
     var go = bld.querySelector('.go');
     if (go) go.addEventListener('click', function () { if (bld.dataset.summary) remember(bld.dataset.summary); });
     calc();

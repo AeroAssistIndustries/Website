@@ -679,3 +679,6 @@ footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; hei
   .g-cards.g5 > .g-card:nth-child(-n+2) .ph { aspect-ratio: 16 / 8; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+.hp { position: absolute !important; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.audit-form button[disabled] { opacity: .6; cursor: progress; }
