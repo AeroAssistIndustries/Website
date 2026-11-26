@@ -6,14 +6,14 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
 
 PAGES = {
-    "index.html":     ("Karla's Agency", "Karla's Agency helps local businesses get found on Google, stay active on social media and earn more reviews.", "home"),
-    "services.html":  ("Services · Karla's Agency", "Google Business Profile, social media, reviews, local SEO, websites, ads, email and AI search visibility for local businesses.", "services"),
-    "industries.html":("Industries · Karla's Agency", "Marketing for hotels, restaurants, salons, real estate, contractors, dental and wellness practices, retail and local services.", "industries"),
-    "pricing.html":   ("Pricing · Karla's Agency", "Month-to-month marketing packages for local businesses, plus add-ons and one-time projects.", "pricing"),
-    "social.html":    ("Social Media Examples · Karla's Agency", "Sample social media posts, Reels and content calendars from Karla's Agency.", "social"),
-    "about.html":     ("About · Karla's Agency", "How Karla's Agency works: honest, consistent, clearly reported local marketing.", "about"),
-    "checklist.html": ("Google Business Profile Checklist · Karla's Agency", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
-    "contact.html":   ("Free Marketing Audit · Karla's Agency", "Request a free marketing audit from Karla's Agency.", "contact"),
+    "index.html":     ("Karla Digital", "Karla Digital helps local businesses get found on Google, stay active on social media and earn more reviews.", "home"),
+    "services.html":  ("Services · Karla Digital", "Google Business Profile, social media, reviews, local SEO, websites, ads, email and AI search visibility for local businesses.", "services"),
+    "industries.html":("Industries · Karla Digital", "Marketing for hotels, restaurants, salons, real estate, contractors, dental and wellness practices, retail and local services.", "industries"),
+    "pricing.html":   ("Pricing · Karla Digital", "Month-to-month marketing packages for local businesses, plus add-ons and one-time projects.", "pricing"),
+    "social.html":    ("Social Media Examples · Karla Digital", "Sample social media posts, Reels and content calendars from Karla Digital.", "social"),
+    "about.html":     ("About · Karla Digital", "How Karla Digital works: honest, consistent, clearly reported local marketing.", "about"),
+    "checklist.html": ("Google Business Profile Checklist · Karla Digital", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
+    "contact.html":   ("Free Marketing Audit · Karla Digital", "Request a free marketing audit from Karla Digital.", "contact"),
 }
 
 NAV = [("services.html", "Services", "services"), ("industries.html", "Industries", "industries"),
@@ -51,7 +51,7 @@ def nav(active):
         f'<li><a href="{h}"{" aria-current=\"page\"" if k == active else ""}>{t}</a></li>' for h, t, k in NAV)
     return f"""<nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla's Agency" width="180" height="38"></a>
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla Digital" width="180" height="38"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
     <ul id="navlist">{items}<li><a class="btn" href="contact.html">Free audit</a></li></ul>
   </div>
@@ -61,9 +61,9 @@ def nav(active):
 FOOTER = """<footer>
   <div class="wrap">
     <div>
-      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Karla's Agency" width="200" height="42"></a>
-      <p style="margin-top:14px;max-width:34ch">Local marketing for small businesses: Google profiles, social media and reviews, done every month.</p>
-      <p style="margin-top:14px">hello@karlasagency.com</p>
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Karla Digital" width="200" height="42"></a>
+      <p style="margin-top:14px;max-width:34ch">Local marketing with a worldly eye. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
+      <p style="margin-top:14px">hello@karladigital.com</p>
     </div>
     <div>
       <h4>Services</h4>
@@ -77,7 +77,7 @@ FOOTER = """<footer>
       <h4>Free resources</h4>
       <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="checklist.html">Google profile checklist</a></li></ul>
     </div>
-    <div class="legal">© 2026 Karla's Agency. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
+    <div class="legal">© 2026 Karla Digital. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
   </div>
 </footer>
 __MCTA__<script src="site.js?v=__JSV__"></script>

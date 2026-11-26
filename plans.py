@@ -1,4 +1,4 @@
-"""Karla's Agency service plans: one source for the pricing tabs, the plan builder and the JSON the page script reads."""
+"""Karla Digital service plans: one source for the pricing tabs, the plan builder and the JSON the page script reads."""
 import json
 from html import escape
 

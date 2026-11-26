@@ -16,6 +16,20 @@
 .timeline h3 { font-size: 22px; margin: 4px 0 6px; }
 .timeline p { color: var(--muted); max-width: 60ch; }
 @media (max-width: 860px) { .story, .promise { grid-template-columns: 1fr; } }
+.founder .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: center; }
+.f-card { position: relative; aspect-ratio: 4 / 5; border-radius: 32px; background: var(--accent); overflow: hidden; color: #fff; }
+.f-mono { position: absolute; left: 50%; top: 44%; translate: -50% -50%; font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 260px; line-height: 1; color: rgba(255,255,255,.95); }
+.f-pins span { position: absolute; width: 18px; height: 18px; border-radius: 50% 50% 50% 0; --r: -45deg; transform: rotate(-45deg); background: var(--sun); box-shadow: 0 0 0 6px rgba(255,178,31,.25); animation: floaty 6s ease-in-out infinite; }
+.f-pins span:nth-child(1) { left: 14%; top: 16%; } .f-pins span:nth-child(2) { right: 16%; top: 22%; animation-delay: -1.5s; }
+.f-pins span:nth-child(3) { left: 22%; bottom: 30%; animation-delay: -3s; } .f-pins span:nth-child(4) { right: 22%; bottom: 36%; animation-delay: -4.5s; }
+.f-pins span:nth-child(5) { left: 52%; top: 10%; animation-delay: -2s; }
+.f-cap { position: absolute; left: 24px; bottom: 24px; background: var(--ink); border-radius: 16px; padding: 14px 18px; font-size: 14px; color: #c9ccd2; }
+.f-cap b { display: block; font-family: var(--display); font-size: 22px; color: var(--sun); letter-spacing: -0.02em; }
+.f-lead { font-size: 20px; color: var(--ink); margin-top: 18px; max-width: 56ch; }
+.f-body { color: var(--muted); margin-top: 14px; max-width: 60ch; font-size: 17px; }
+.f-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.sig { font-family: "Fraunces", Georgia, serif; font-style: italic; font-size: 30px; color: var(--accent); margin-top: 22px; }
+@media (max-width: 860px) { .founder .wrap { grid-template-columns: 1fr; } .f-mono { font-size: 200px; } }
 </style>
 
 <header class="page-head split">
@@ -23,7 +37,7 @@
     <div>
       <div class="eyebrow rise">About</div>
       <h1 class="rise" style="--d:.1s">Local marketing, done honestly.</h1>
-      <p class="intro rise" style="--d:.2s">Karla's Agency is a one-person marketing studio for locally owned businesses. You work directly with me, Karla, from your first audit to every monthly report.</p>
+      <p class="intro rise" style="--d:.2s">Karla Digital is a one-person marketing studio for locally owned businesses, run by a well-traveled founder who knows how people around the world find the places they love. You work directly with me from your first audit to every monthly report.</p>
     </div>
     <div class="ph rise" style="--d:.2s">{{img:1531346878377-a5be20888e57:700:Open notebook next to a keyboard and pen}}</div>
   </div>
@@ -36,6 +50,39 @@
       <p>Most local business owners know they should post more, ask for reviews and keep their Google profile current. The problem is time. Between serving customers, managing staff and running the business, marketing slips to the bottom of the list.</p>
       <p>I take that work off your plate and do it consistently, every month. I focus on the few things that actually bring local customers in, explain everything in plain English, and keep you in control of your accounts and your brand.</p>
       <p>My agency is built on a proven model and guided by a mentor with more than 15 years in digital marketing for hotels and local businesses. You get one person's full attention, with an established playbook behind it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="founder" id="karla">
+  <div class="wrap">
+    <div class="f-card reveal" aria-hidden="true">
+      <div class="f-mono">K</div>
+      <div class="f-pins"><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="f-cap"><b>Karla</b>Founder, Karla Digital</div>
+    </div>
+    <div class="reveal" style="--d:.1s">
+      <div class="eyebrow">Meet the founder</div>
+      <h2 class="h2">Hi, I'm Karla.</h2>
+      <p class="f-lead">I've traveled widely, and everywhere I go I notice how people find the places they love: the café a local recommends in a group chat, the salon someone saves on Instagram, the hotel a friend shares on TikTok.</p>
+      <p class="f-body">Along the way I've used social media the way people around the world actually use it, from Instagram, TikTok, Facebook and YouTube to Pinterest, LinkedIn, X, Snapchat, WhatsApp, Telegram, WeChat and LINE. That's what lets me help you reach the customers you want, whether they're your neighbors or visitors from the other side of the world.</p>
+      <p class="f-body">I started Karla Digital to bring that perspective home to local businesses: honest, consistent marketing from one person who knows your business and understands your audience.</p>
+      <div class="f-chips"><span class="chip">Well traveled</span><span class="chip">Fluent in every major platform</span><span class="chip">Locals and visitors alike</span></div>
+      <div class="sig">Karla</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">A worldly eye</div><h2 class="h2">Why my travels help<br>your marketing.</h2></div>
+      <p class="intro">Local marketing works best when you understand who you're talking to. Seeing how people live, shop and scroll in different places is how I learned.</p>
+    </div>
+    <div class="g3 reveal">
+      <div class="card"><div class="big">01</div><h3>I know your audience</h3><p>Locals, commuters, tourists and new arrivals all search and decide differently. I tailor your message to the people you actually want walking in.</p></div>
+      <div class="card"><div class="big">02</div><h3>I meet them where they are</h3><p>Visitors from abroad often plan trips on platforms most local businesses ignore. I know which ones matter for your customers and how to show up there.</p></div>
+      <div class="card"><div class="big">03</div><h3>I bring fresh ideas</h3><p>I've seen what makes cafés, salons, shops and hotels memorable around the world, and I bring the best of those ideas to your feed and your Google profile.</p></div>
     </div>
   </div>
 </section>

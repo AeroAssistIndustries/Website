@@ -1,6 +1,6 @@
-# Karla's Agency — website (staging)
+# Karla Digital — website (staging)
 
-Static site for Karla's Agency, a local digital marketing agency.
+Static site for Karla Digital, a local digital marketing agency.
 
 ## Pages
 - `index.html` — Home
@@ -20,4 +20,4 @@ Static site for Karla's Agency, a local digital marketing agency.
 Run `python3 build.py` after editing. GitHub Pages serves the `docs/` folder from the `karlas-agency` branch.
 
 ## Before launch
-- Replace the placeholder email `hello@karlasagency.com` (in `build.py`, `site.js` and `src/`).
+- Replace the placeholder email `hello@karladigital.com` (in `build.py`, `site.js` and `src/`).
