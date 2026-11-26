@@ -129,6 +129,48 @@
   var msgBox = document.getElementById('c-msg');
   if (msgBox) { try { var pl = sessionStorage.getItem('ka-plan'); if (pl && !msgBox.value) msgBox.value = 'Interested in: ' + pl; } catch (e) {} }
 
+
+  // ---------- Website speed check (Google PageSpeed Insights) ----------
+  var sf = document.getElementById('speedForm');
+  if (sf) {
+    var st = document.getElementById('speedStatus'), out = document.getElementById('speedOut');
+    var ringsEl = document.getElementById('speedRings'), metEl = document.getElementById('speedMetrics'), verEl = document.getElementById('speedVerdict');
+    var color = function (n) { return n >= 90 ? '#1a8f5a' : n >= 50 ? '#c77700' : '#c2412f'; };
+    var ring = function (label, n) {
+      var c = 2 * Math.PI * 40, off = c * (1 - n / 100);
+      return '<div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40" fill="none" stroke="#e6e8e2" stroke-width="9"/><circle cx="50" cy="50" r="40" fill="none" stroke="' + color(n) + '" stroke-width="9" stroke-linecap="round" stroke-dasharray="' + c.toFixed(1) + '" stroke-dashoffset="' + off.toFixed(1) + '" transform="rotate(-90 50 50)"/><text x="50" y="58" text-anchor="middle" font-size="26" font-weight="800" fill="' + color(n) + '" font-family="Bricolage Grotesque, sans-serif">' + n + '</text></svg><b>' + label + '</b><small>' + (n >= 90 ? 'Good' : n >= 50 ? 'Needs work' : 'Poor') + '</small></div>';
+    };
+    sf.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var raw = sf.elements.url.value.trim();
+      if (!raw) { st.textContent = 'Enter your website address, like yourbusiness.com.'; return; }
+      var url = /^https?:\/\//i.test(raw) ? raw : 'https://' + raw;
+      try { new URL(url); } catch (err) { st.textContent = 'That doesn’t look like a web address. Try yourbusiness.com.'; return; }
+      var btn = sf.querySelector('button'); btn.disabled = true; out.hidden = true;
+      st.className = 'speed-status busy'; st.textContent = 'Testing ' + url + ' on a mobile connection…';
+      var api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&category=accessibility&category=best-practices&category=seo&url=' + encodeURIComponent(url);
+      var full = 'https://pagespeed.web.dev/analysis?url=' + encodeURIComponent(url);
+      fetch(api).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (d) {
+        var cat = d.lighthouseResult.categories, au = d.lighthouseResult.audits;
+        var sc = function (k) { return Math.round((cat[k] && cat[k].score || 0) * 100); };
+        var perf = sc('performance');
+        ringsEl.innerHTML = ring('Performance', perf) + ring('Accessibility', sc('accessibility')) + ring('Best practices', sc('best-practices')) + ring('SEO', sc('seo'));
+        var m = function (k, label) { return au[k] ? '<div><b>' + au[k].displayValue + '</b><span>' + label + '</span></div>' : ''; };
+        metEl.innerHTML = m('largest-contentful-paint', 'Main content shows') + m('first-contentful-paint', 'First thing appears') + m('total-blocking-time', 'Time frozen by scripts') + m('cumulative-layout-shift', 'Layout jumping (lower is better)');
+        var msg = perf >= 90 ? ['Your site is fast.', 'Nice work. Speed isn’t holding you back, so the next wins are usually your Google profile and reviews.']
+          : perf >= 50 ? ['Your site is a little slow on phones.', 'Most visitors are on mobile. A few fixes to images and scripts could keep more of them on your page long enough to call or book.']
+          : ['Your site is losing mobile visitors.', 'Pages this slow on phones lose many visitors before they load. This is usually very fixable, and it’s one of the quickest wins I see.'];
+        verEl.innerHTML = '<div><b>' + msg[0] + '</b><p>' + msg[1] + ' <a href="' + full + '" style="color:#fff">See Google’s full report</a>.</p></div><a class="btn" href="contact.html#top" id="speedCta">Get my free audit</a>';
+        var webF = document.getElementById('c-web'); if (webF && !webF.value) webF.value = url;
+        out.hidden = false; st.className = 'speed-status'; st.textContent = 'Results for ' + url + ' (mobile).';
+        var cta = document.getElementById('speedCta'); if (cta) cta.addEventListener('click', function (ev) { var f = document.querySelector('.audit-form'); if (f) { ev.preventDefault(); f.scrollIntoView({ behavior: 'smooth' }); var n = document.getElementById('c-name'); if (n) n.focus({ preventScroll: true }); } });
+      }).catch(function () {
+        st.className = 'speed-status';
+        st.innerHTML = 'Google’s free test is busy or couldn’t reach that site. Try again in a minute, or <a href="' + full + '">run it on Google’s site</a>.';
+      }).then(function () { btn.disabled = false; });
+    });
+  }
+
   // Google Business Profile checklist
   var cl = document.getElementById('gbpChecklist');
   if (cl) {

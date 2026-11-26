@@ -4,17 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Free Marketing Audit · Karla Digital</title>
-<meta name="description" content="Request a free marketing audit from Karla Digital.">
+<meta name="description" content="Request a free marketing audit and website speed check from Karla Digital.">
+<link rel="canonical" href="https://aeroassistindustries.github.io/Website/contact.html">
+<meta name="theme-color" content="#2f45ff">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Karla Digital">
 <meta property="og:title" content="Free Marketing Audit · Karla Digital">
-<meta property="og:description" content="Request a free marketing audit from Karla Digital.">
-<meta property="og:image" content="assets/og-image.png">
+<meta property="og:description" content="Request a free marketing audit and website speed check from Karla Digital.">
+<meta property="og:url" content="https://aeroassistindustries.github.io/Website/contact.html">
+<meta property="og:image" content="https://aeroassistindustries.github.io/Website/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Marketing Audit · Karla Digital">
+<meta name="twitter:description" content="Request a free marketing audit and website speed check from Karla Digital.">
+<meta name="twitter:image" content="https://aeroassistindustries.github.io/Website/assets/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,500..800;1,9..144,500..700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=624f241c">
+<link rel="stylesheet" href="style.css?v=533c4ecb">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 .contact { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
@@ -28,17 +37,42 @@
 .audit-form h2 { font-size: 26px; font-weight: 750; }
 .audit-form .sub { color: var(--muted); font-size: 15px; margin-top: -8px; }
 @media (max-width: 900px) { .contact { grid-template-columns: 1fr; } }
+.speed { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px; }
+.speed-form { display: flex; gap: 10px; flex-wrap: wrap; }
+.speed-form input { flex: 1 1 260px; font-size: 17px; padding: 15px 16px; }
+.speed-form .btn { padding: 15px 24px; font-size: 16px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.speed-status { margin-top: 12px; font-size: 14.5px; color: var(--muted); }
+.speed-status.busy::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: 8px; border-radius: 50%; border: 2px solid var(--accent); border-right-color: transparent; animation: spin .8s linear infinite; vertical-align: -1px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.speed-out { margin-top: 22px; display: grid; gap: 20px; }
+.speed-out[hidden] { display: none; }
+.rings { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.ring { text-align: center; background: var(--paper); border-radius: 18px; padding: 16px 10px; }
+.ring svg { width: 92px; height: 92px; display: block; margin: 0 auto 8px; }
+.ring b { display: block; font-size: 14px; }
+.ring small { color: var(--muted); font-size: 12.5px; }
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.metrics div { border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+.metrics b { display: block; font-family: var(--display); font-size: 22px; letter-spacing: -0.02em; }
+.metrics span { font-size: 13px; color: var(--muted); }
+.verdict { background: var(--ink); color: #fff; border-radius: 18px; padding: 20px 22px; display: flex; justify-content: space-between; gap: 18px; align-items: center; flex-wrap: wrap; }
+.verdict p { color: #d6d9df; max-width: 60ch; }
+.verdict b { color: var(--sun); font-family: var(--display); font-size: 20px; display: block; margin-bottom: 4px; }
+.verdict .btn { background: var(--sun); color: var(--ink); }
+@media (max-width: 760px) { .rings, .metrics { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <nav class="nav" aria-label="Main">
   <div class="wrap">
-    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla Digital" width="180" height="38"></a>
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Karla Digital" width="170" height="36"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist">Menu</button>
     <ul id="navlist"><li><a href="services.html">Services</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Our work</a></li><li><a href="about.html">About</a></li><li><a class="btn" href="contact.html">Free audit</a></li></ul>
   </div>
 </nav>
-<main>
+<main id="main">
 <header class="page-head split">
   <div class="wrap">
     <div>
@@ -98,6 +132,28 @@
   </div>
 </section>
 
+<section class="alt" id="speed">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">Free tool</div><h2 class="h2">Check your website speed.</h2></div>
+      <p class="intro">Slow sites lose customers before they ever see your menu or booking button. Enter your web address for Google's mobile speed test, explained in plain English.</p>
+    </div>
+    <div class="speed reveal">
+      <form class="speed-form" id="speedForm" novalidate>
+        <label for="speed-url" class="sr">Your website address</label>
+        <input id="speed-url" name="url" type="url" inputmode="url" placeholder="yourbusiness.com" autocomplete="url">
+        <button class="btn" type="submit">Run free test</button>
+      </form>
+      <p class="speed-status" id="speedStatus" role="status" aria-live="polite">The test takes about 20–40 seconds and runs on Google PageSpeed Insights.</p>
+      <div class="speed-out" id="speedOut" hidden>
+        <div class="rings" id="speedRings"></div>
+        <div class="metrics" id="speedMetrics"></div>
+        <div class="verdict" id="speedVerdict"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section style="padding-top:0">
   <div class="wrap">
     <div class="eyebrow">About the audit</div>
@@ -112,26 +168,28 @@
 </main>
 <footer>
   <div class="wrap">
-    <div>
-      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Karla Digital" width="200" height="42"></a>
-      <p style="margin-top:14px;max-width:34ch">Local marketing with a worldly eye. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
-      <p style="margin-top:14px">hello@karladigital.com</p>
+    <div class="f-brand">
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Karla Digital" width="190" height="40"></a>
+      <p class="f-tag">Local marketing with a worldly eye. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
+      <a class="f-mail" href="mailto:hello@karladigital.com">hello@karladigital.com</a>
+      <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>
     </div>
     <div>
       <h4>Services</h4>
-      <ul><li><a href="services.html#social">Social media management</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#reviews">Reputation management</a></li><li><a href="services.html#web">Websites</a></li><li><a href="pricing.html">Plans from $250/month</a></li></ul>
+      <ul><li><a href="services.html#social">Social media management</a></li><li><a href="services.html#seo">Local SEO</a></li><li><a href="services.html#reviews">Reputation management</a></li><li><a href="services.html#web">Websites</a></li><li><a href="pricing.html">Plans and pricing</a></li></ul>
     </div>
     <div>
       <h4>Company</h4>
-      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Social media examples</a></li></ul>
+      <ul><li><a href="about.html">About Karla</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul>
     </div>
     <div>
-      <h4>Free resources</h4>
-      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="checklist.html">Google profile checklist</a></li></ul>
+      <h4>Free tools</h4>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#builder">Plan builder</a></li></ul>
     </div>
-    <div class="legal">© 2026 Karla Digital. All rights reserved. Brands shown in examples are sample businesses created to illustrate our work.</div>
+    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Karla Digital LLC is an independent marketing agency.</div>
+    <div class="legal"><span>© 2026 Karla Digital LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
   </div>
 </footer>
-<script src="site.js?v=a98c3c17"></script>
+<script src="site.js?v=a2eb9e1b"></script>
 </body>
 </html>

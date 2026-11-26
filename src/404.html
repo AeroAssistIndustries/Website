@@ -1,0 +1,16 @@
+<style>
+.nf { padding: 96px 0 120px; text-align: center; }
+.nf .pin { width: 84px; height: 84px; margin: 0 auto 26px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--accent); position: relative; animation: floaty 5s ease-in-out infinite; --r: -45deg; }
+.nf .pin::after { content: ""; position: absolute; inset: 27px; border-radius: 50%; background: var(--sun); }
+.nf h1 { font-size: clamp(44px, 7vw, 84px); font-weight: 800; letter-spacing: -0.045em; }
+.nf p { color: var(--muted); font-size: 19px; margin: 16px auto 30px; max-width: 46ch; }
+.nf .row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+</style>
+<section class="nf">
+  <div class="wrap">
+    <div class="pin" aria-hidden="true"></div>
+    <h1>This page got lost.</h1>
+    <p>The page you were looking for has moved or never existed. Let's get you somewhere useful.</p>
+    <div class="row"><a class="btn" href="index.html">Go to the home page</a><a class="btn ghost" href="pricing.html">See plans and pricing</a><a class="btn ghost" href="contact.html">Get a free audit</a></div>
+  </div>
+</section>
