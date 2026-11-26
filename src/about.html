@@ -16,8 +16,8 @@
 .timeline h3 { font-size: 22px; margin: 4px 0 6px; }
 .timeline p { color: var(--muted); max-width: 60ch; }
 @media (max-width: 860px) { .story, .promise { grid-template-columns: 1fr; } }
-.travel { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.3fr; gap: 14px; }
-.travel .ph { aspect-ratio: 4 / 5; border-radius: 22px; }
+.travel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; align-items: start; }
+.travel .ph { aspect-ratio: 3 / 4; border-radius: 22px; }
 .travel .ph:nth-child(even) { margin-top: 48px; }
 @media (max-width: 860px) { .travel { grid-template-columns: 1fr 1fr; } .travel .ph:nth-child(even) { margin-top: 0; } }
 .founder .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: center; }

@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=06b3085c">
+<link rel="stylesheet" href="style.css?v=6aebda4c">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 /* Hero */
@@ -72,7 +72,7 @@
 .core article { background: var(--card); border: 1px solid var(--line); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; }
 .core .ph { aspect-ratio: 16 / 10; border-radius: 0; }
 .core .bd { padding: 24px 26px 28px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-.core .num { font-family: var(--display); font-weight: 600; color: var(--accent); font-size: 14px; letter-spacing: .06em; }
+.core .num { font-family: var(--body); font-weight: 700; color: var(--steel); font-size: 11.5px; letter-spacing: .18em; }
 .core h3 { font-size: 24px; }
 .core p { color: var(--muted); font-size: 16px; }
 .core ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 6px; font-size: 15px; }
@@ -128,7 +128,8 @@
 .band { position: relative; padding: 0; min-height: 520px; display: grid; align-items: end; color: #fff; overflow: hidden; background: #111316; }
 .band-ph { position: absolute; inset: 0; }
 .band-ph img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.55) contrast(1.05) brightness(.85); }
-.band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,19,22,.05) 10%, rgba(17,19,22,.88) 85%); }
+.band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(17,19,22,.92) 0%, rgba(17,19,22,.78) 38%, rgba(17,19,22,.3) 72%, rgba(17,19,22,.15) 100%), linear-gradient(0deg, rgba(17,19,22,.6), transparent 40%); }
+@media (max-width: 700px) { .band::after { background: rgba(17,19,22,.74); } }
 .band-in { position: relative; z-index: 2; padding: 80px 0 72px; }
 .band-q { font-family: var(--display); font-weight: 500; font-size: clamp(38px, 5.4vw, 72px); line-height: 1.02; max-width: 18ch; margin: 18px 0 30px; letter-spacing: -0.01em; }
 .band-btn { background: var(--metal) !important; color: var(--ink) !important; border: 1px solid rgba(255,255,255,.7); }
