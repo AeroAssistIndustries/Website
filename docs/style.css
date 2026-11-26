@@ -496,3 +496,4 @@ footer h4 { color: #aeb4bd; }
 ::selection { background: #d3d7dd; color: var(--ink); }
 .eyebrow:has(> i)::before { display: none; }
 body { font-variant-numeric: lining-nums; } .ctable td, .ctable th, .ticker span { font-variant-numeric: lining-nums tabular-nums; }
+.complete-head .tab-tag, .plan-tabs .tab-tag { font-family: var(--body); font-weight: 700; font-size: 11px; letter-spacing: .2em; }
