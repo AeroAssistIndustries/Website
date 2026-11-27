@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Marketing Health Check · Digital Mondo</title>
+<meta name="description" content="Sixteen quick questions score your Google, social media, reviews and website, with your three quickest wins and a plan that fits.">
+<link rel="canonical" href="https://aeroassistindustries.github.io/Website/health-check.html">
+<meta name="theme-color" content="#16181c">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://images.unsplash.com">
+<link rel="manifest" href="assets/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Digital Mondo blog" href="https://aeroassistindustries.github.io/Website/rss.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Digital Mondo">
+<meta property="og:title" content="Free Marketing Health Check · Digital Mondo">
+<meta property="og:description" content="Sixteen quick questions score your Google, social media, reviews and website, with your three quickest wins and a plan that fits.">
+<meta property="og:url" content="https://aeroassistindustries.github.io/Website/health-check.html">
+<meta property="og:image" content="https://aeroassistindustries.github.io/Website/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free Marketing Health Check · Digital Mondo">
+<meta name="twitter:description" content="Sixteen quick questions score your Google, social media, reviews and website, with your three quickest wins and a plan that fits.">
+<meta name="twitter:image" content="https://aeroassistindustries.github.io/Website/assets/og-image.png">
+<link rel="preload" href="assets/fonts/sora-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=c71bb31e">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+.hc-wrap { display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start; }
+.hc-area { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 24px 26px 10px; }
+.hc-area + .hc-area { margin-top: 16px; }
+.hc-area > header { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+.hc-area > header .t-ic { width: 44px; height: 44px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; flex: none; box-shadow: inset 0 0 0 2px #3a3f47; }
+.hc-area > header .t-ic svg { width: 20px; height: 20px; }
+.hc-area h2 { font-size: 24px; font-weight: 600; }
+.hc-area > header small { display: block; color: var(--muted); font-size: 14px; }
+.hc-q { border: 0; margin: 0; padding: 16px 0 18px; border-top: 1px solid var(--line); min-width: 0; }
+.hc-area > header + .hc-q { border-top: 0; }
+.hc-q legend { float: left; width: 100%; font-weight: 600; font-size: 16.5px; line-height: 1.35; margin-bottom: 10px; padding: 0; color: var(--ink); }
+.hc-q legend span { color: var(--steel); font-weight: 700; font-size: 13px; letter-spacing: .08em; margin-right: 6px; }
+.hc-opts { clear: both; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.hc-opts label { position: relative; display: block; cursor: pointer; }
+.hc-opts input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.hc-opts span { display: flex; align-items: center; min-height: 52px; height: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 14px; font-size: 14.5px; line-height: 1.3; background: var(--paper); transition: border-color .2s, background .2s, color .2s; }
+.hc-opts label:hover span { border-color: #b9bdc4; }
+.hc-opts input:checked + span { background: var(--ink); border-color: var(--ink); color: #fff; }
+.hc-opts input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+.hc-panel { position: sticky; top: 90px; background: var(--ink); color: #fff; border-radius: 26px; padding: 28px; }
+.hc-panel .lbl { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--sun); }
+.hc-ring { position: relative; width: 168px; height: 168px; margin: 16px auto 8px; }
+.hc-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.hc-ring circle { fill: none; stroke-width: 12; }
+.hc-ring .bg { stroke: #2c2f35; }
+.hc-ring .fg { stroke: url(#hcGrad); stroke-linecap: round; transition: stroke-dashoffset .6s cubic-bezier(.2,.7,.2,1); }
+.hc-ring .val { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; }
+.hc-ring b { font-family: var(--display); font-size: 50px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.hc-ring small { display: block; color: #aab0b9; font-size: 13px; margin-top: 4px; }
+.hc-verdict { text-align: center; color: #dfe2e6; font-size: 15.5px; min-height: 44px; }
+.hc-bars { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 12px; }
+.hc-bars li { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; font-size: 14.5px; }
+.hc-bars .track { grid-column: 1 / -1; height: 8px; background: #2c2f35; border-radius: 999px; overflow: hidden; }
+.hc-bars .track i { display: block; height: 100%; width: 0; background: var(--metal); border-radius: 999px; transition: width .5s; }
+.hc-bars em { font-style: normal; color: #c9ccd2; font-variant-numeric: tabular-nums; }
+.hc-prog { margin-top: 18px; font-size: 14px; color: #aab0b9; text-align: center; }
+.hc-panel .btn { width: 100%; justify-content: center; margin-top: 16px; background: var(--metal); color: var(--ink); }
+.hc-panel .reset { margin-top: 10px; background: none; border: 0; color: #9aa1ab; font: inherit; font-size: 14px; cursor: pointer; text-decoration: underline; width: 100%; }
+.hc-results { margin-top: 40px; }
+.hc-results[hidden], .hc-panel .btn[hidden], .hc-acts .btn[hidden] { display: none; }
+.hc-res-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 18px; }
+.hc-box { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px; }
+.hc-box h2 { font-size: 26px; margin-bottom: 6px; }
+.hc-box > p { color: var(--muted); font-size: 15px; }
+.hc-wins { list-style: none; padding: 0; margin: 14px 0 0; counter-reset: w; }
+.hc-wins li { counter-increment: w; display: grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line); }
+.hc-wins li::before { content: counter(w); width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.hc-wins b { display: block; font-size: 16px; }
+.hc-wins span { color: var(--muted); font-size: 14.5px; }
+.hc-wins a { color: var(--ink); font-weight: 600; font-size: 14.5px; }
+.hc-plan { list-style: none; padding: 0; margin: 14px 0 0; }
+.hc-plan li { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 15.5px; }
+.hc-plan li b { font-weight: 600; }
+.hc-plan .tot { font-weight: 700; }
+.hc-box .btn { margin-top: 18px; }
+.hc-acts { display: flex; flex-wrap: wrap; gap: 10px; }
+.hc-note { font-size: 13.5px; color: var(--muted); margin-top: 12px; }
+@media (max-width: 1000px) { .hc-wrap { grid-template-columns: 1fr; } .hc-panel { position: static; } .hc-res-grid { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .hc-opts { grid-template-columns: 1fr; } .hc-opts span { min-height: 46px; } .hc-area { padding: 20px 18px 6px; } }
+@media print { .nav, footer, .mbar, .hc-wrap form, .hc-panel .btn, .hc-panel .reset, .hc-acts, .page-head .intro { display: none !important; } .hc-wrap { display: block; } .hc-panel { position: static; } .hc-results { margin-top: 20px; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Mondo" width="207" height="56"></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist"><span class="mb-ic" aria-hidden="true"><i></i><i></i></span><span class="mb-t">Menu</span></button>
+    <ul id="navlist"><li class="has-sub"><a href="services.html">Services</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show services"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="social-media-management.html"><b>Social media management</b><small>Posts, Reels and replies</small></a></li><li><a href="local-seo.html"><b>Local SEO</b><small>Google, Maps and AI search</small></a></li><li><a href="reputation-management.html"><b>Reputation management</b><small>More reviews, every one answered</small></a></li><li><a href="website-design.html"><b>Websites</b><small>Fast sites that bring in bookings</small></a></li><li class="sub-all"><a href="services.html">All services and add-ons →</a></li></ul></li><li class="has-sub"><a href="industries.html">Industries</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show industries"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub sub-ind"><li><a href="marketing-for-hotels.html"><b>Hotels & inns</b><small>Direct bookings</small></a></li><li><a href="marketing-for-restaurants.html"><b>Restaurants & cafés</b><small>Foot traffic</small></a></li><li><a href="marketing-for-salons.html"><b>Salons & spas</b><small>Full books</small></a></li><li><a href="marketing-for-real-estate.html"><b>Real estate</b><small>Listings & leads</small></a></li><li><a href="marketing-for-contractors.html"><b>Contractors</b><small>Calls & quotes</small></a></li><li><a href="marketing-for-dentists.html"><b>Dental & wellness</b><small>New patients</small></a></li><li><a href="marketing-for-retail.html"><b>Retail shops</b><small>Walk-ins</small></a></li><li><a href="marketing-for-local-services.html"><b>Local services</b><small>Bookings</small></a></li><li class="sub-all"><a href="industries.html">All industries →</a></li></ul></li><li><a href="pricing.html">Pricing</a></li><li class="has-sub"><a href="resources.html">Resources</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show resources"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="blog.html"><b>Blog</b><small>Quick tips you can use today</small></a></li><li><a href="resources.html"><b>Guides</b><small>Plain-English deep dives</small></a></li><li><a href="post-planner.html"><b>Post planner</b><small>A month of post ideas, free</small></a></li><li><a href="review-cards.html"><b>Review card maker</b><small>A QR card for your counter</small></a></li><li><a href="health-check.html" aria-current="page"><b>Marketing health check</b><small>Score your marketing in 3 minutes</small></a></li><li><a href="checklist.html"><b>Google profile checklist</b><small>See what your profile is missing</small></a></li><li class="sub-all"><a href="resources.html">All guides and free tools →</a></li></ul></li><li><a href="about.html">About</a></li><li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a><span>Your neighborhood, seen by the world.</span></li></ul>
+  </div>
+</nav>
+<main id="main">
+<header class="page-head">
+  <div class="wrap">
+    <div class="eyebrow rise">Free tool · 3 minutes</div>
+    <h1 class="rise" style="--d:.1s">Marketing health check.</h1>
+    <p class="intro rise" style="--d:.2s">Sixteen quick questions about Google, social media, reviews and your website. Get a score for each, your three quickest wins and a plan that fits. Private: your answers stay in this browser.</p>
+  </div>
+</header>
+
+<section style="padding-top:0">
+  <div class="wrap hc-wrap">
+    <form id="hcForm" novalidate>
+      <div class="hc-area reveal" data-area="seo">
+        <header><span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><h2>Google &amp; Maps</h2><small>Whether people nearby find you</small></div></header>
+        <fieldset class="hc-q" data-q="q1"><legend><span>01</span>Have you claimed your Google Business Profile?</legend><div class="hc-opts"><label><input type="radio" name="q1" value="0"><span>No, or not sure</span></label><label><input type="radio" name="q1" value="1"><span>Yes, but it's not up to date</span></label><label><input type="radio" name="q1" value="2"><span>Yes, and it's complete</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q2"><legend><span>02</span>Search “[what you do] near me” on your phone. Where do you show up?</legend><div class="hc-opts"><label><input type="radio" name="q2" value="0"><span>Not on the map at all</span></label><label><input type="radio" name="q2" value="1"><span>On the map, below the top 3</span></label><label><input type="radio" name="q2" value="2"><span>In the top 3</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q3"><legend><span>03</span>Are your name, phone, address and hours the same everywhere online?</legend><div class="hc-opts"><label><input type="radio" name="q3" value="0"><span>Not sure</span></label><label><input type="radio" name="q3" value="1"><span>Mostly</span></label><label><input type="radio" name="q3" value="2"><span>Yes, I've checked</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q4"><legend><span>04</span>How often do you add photos or updates to your Google profile?</legend><div class="hc-opts"><label><input type="radio" name="q4" value="0"><span>Never</span></label><label><input type="radio" name="q4" value="1"><span>A few times a year</span></label><label><input type="radio" name="q4" value="2"><span>Every week or two</span></label></div></fieldset>
+      </div>
+
+      <div class="hc-area reveal" data-area="social">
+        <header><span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5v.01"/></svg></span><div><h2>Social media</h2><small>Whether people choose you</small></div></header>
+        <fieldset class="hc-q" data-q="q5"><legend><span>05</span>How often do you post on social media?</legend><div class="hc-opts"><label><input type="radio" name="q5" value="0"><span>Rarely or never</span></label><label><input type="radio" name="q5" value="1"><span>A few times a month</span></label><label><input type="radio" name="q5" value="2"><span>Twice a week or more</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q6"><legend><span>06</span>Do you post short videos, like Reels or TikToks?</legend><div class="hc-opts"><label><input type="radio" name="q6" value="0"><span>No</span></label><label><input type="radio" name="q6" value="1"><span>Now and then</span></label><label><input type="radio" name="q6" value="2"><span>Regularly</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q7"><legend><span>07</span>How quickly do you answer comments and messages?</legend><div class="hc-opts"><label><input type="radio" name="q7" value="0"><span>Days later, or not at all</span></label><label><input type="radio" name="q7" value="1"><span>Within a day or two</span></label><label><input type="radio" name="q7" value="2"><span>The same day</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q8"><legend><span>08</span>Do your posts tell people what to do next: call, book or visit?</legend><div class="hc-opts"><label><input type="radio" name="q8" value="0"><span>Rarely</span></label><label><input type="radio" name="q8" value="1"><span>Sometimes</span></label><label><input type="radio" name="q8" value="2"><span>Almost always</span></label></div></fieldset>
+      </div>
+
+      <div class="hc-area reveal" data-area="reviews">
+        <header><span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.4 4.2 1 6-5.3-2.8-5.3 2.8 1-6L3.3 9.4l6-.9z"/></svg></span><div><h2>Reviews</h2><small>Whether people trust you</small></div></header>
+        <fieldset class="hc-q" data-q="q9"><legend><span>09</span>How many Google reviews do you have?</legend><div class="hc-opts"><label><input type="radio" name="q9" value="0"><span>Fewer than 20</span></label><label><input type="radio" name="q9" value="1"><span>20 to 100</span></label><label><input type="radio" name="q9" value="2"><span>More than 100</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q10"><legend><span>10</span>When did your most recent review come in?</legend><div class="hc-opts"><label><input type="radio" name="q10" value="0"><span>Over 3 months ago</span></label><label><input type="radio" name="q10" value="1"><span>1 to 3 months ago</span></label><label><input type="radio" name="q10" value="2"><span>In the last month</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q11"><legend><span>11</span>Do you reply to your reviews?</legend><div class="hc-opts"><label><input type="radio" name="q11" value="0"><span>Rarely</span></label><label><input type="radio" name="q11" value="1"><span>Some of them</span></label><label><input type="radio" name="q11" value="2"><span>Every one</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q12"><legend><span>12</span>Do you ask happy customers to leave a review?</legend><div class="hc-opts"><label><input type="radio" name="q12" value="0"><span>No</span></label><label><input type="radio" name="q12" value="1"><span>When I remember</span></label><label><input type="radio" name="q12" value="2"><span>Every time, with a link or QR card</span></label></div></fieldset>
+      </div>
+
+      <div class="hc-area reveal" data-area="web">
+        <header><span class="t-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span><div><h2>Website</h2><small>Whether people get in touch</small></div></header>
+        <fieldset class="hc-q" data-q="q13"><legend><span>13</span>How does your website work on a phone?</legend><div class="hc-opts"><label><input type="radio" name="q13" value="0"><span>Badly, or I have no website</span></label><label><input type="radio" name="q13" value="1"><span>It's OK</span></label><label><input type="radio" name="q13" value="2"><span>Fast and easy to use</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q14"><legend><span>14</span>Can visitors call, book or message you in one tap?</legend><div class="hc-opts"><label><input type="radio" name="q14" value="0"><span>No</span></label><label><input type="radio" name="q14" value="1"><span>It takes some looking</span></label><label><input type="radio" name="q14" value="2"><span>Yes, from every page</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q15"><legend><span>15</span>Does the first screen say clearly what you do and where?</legend><div class="hc-opts"><label><input type="radio" name="q15" value="0"><span>No</span></label><label><input type="radio" name="q15" value="1"><span>Sort of</span></label><label><input type="radio" name="q15" value="2"><span>Yes</span></label></div></fieldset>
+        <fieldset class="hc-q" data-q="q16"><legend><span>16</span>When was your website last updated?</legend><div class="hc-opts"><label><input type="radio" name="q16" value="0"><span>Over 2 years ago, or never</span></label><label><input type="radio" name="q16" value="1"><span>In the last 1 to 2 years</span></label><label><input type="radio" name="q16" value="2"><span>In the last 6 months</span></label></div></fieldset>
+      </div>
+    </form>
+
+    <aside class="hc-panel" aria-label="Your score">
+      <div class="lbl">Your marketing health</div>
+      <div class="hc-ring">
+        <svg viewBox="0 0 168 168" aria-hidden="true"><defs><linearGradient id="hcGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8f9fb"/><stop offset=".5" stop-color="#a7adb6"/><stop offset="1" stop-color="#e2e5e9"/></linearGradient></defs><circle class="bg" cx="84" cy="84" r="72"/><circle class="fg" id="hcArc" cx="84" cy="84" r="72" stroke-dasharray="452.4" stroke-dashoffset="452.4"/></svg>
+        <div class="val"><div><b id="hcScore">0</b><small>out of 100</small></div></div>
+      </div>
+      <p class="hc-verdict" id="hcVerdict" role="status" aria-live="polite">Answer the questions to see your score.</p>
+      <ul class="hc-bars">
+        <li data-bar="seo">Google &amp; Maps <em>–</em><span class="track"><i></i></span></li>
+        <li data-bar="social">Social media <em>–</em><span class="track"><i></i></span></li>
+        <li data-bar="reviews">Reviews <em>–</em><span class="track"><i></i></span></li>
+        <li data-bar="web">Website <em>–</em><span class="track"><i></i></span></li>
+      </ul>
+      <p class="hc-prog" id="hcProg">0 of 16 answered</p>
+      <a class="btn" href="health-check.html#hcResults" id="hcSee">See my quick wins ↓</a>
+      <button type="button" class="reset" id="hcReset">Start over</button>
+    </aside>
+  </div>
+
+  <div class="wrap hc-results" id="hcResults" hidden>
+    <div class="hc-res-grid">
+      <div class="hc-box">
+        <span class="metal-label">Your quick wins</span>
+        <h2 style="margin-top:12px">Start with these three.</h2>
+        <p>The changes that should make the biggest difference for the least effort, based on your answers.</p>
+        <ol class="hc-wins" id="hcWins"></ol>
+      </div>
+      <div class="hc-box">
+        <span class="metal-label">A plan that fits</span>
+        <h2 style="margin-top:12px" id="hcPlanTitle">Your recommended plan.</h2>
+        <p id="hcPlanIntro">Based on where you scored lowest. Month to month, cancel any time.</p>
+        <ul class="hc-plan" id="hcPlan"></ul>
+        <p class="hc-note" id="hcPlanNote">Combos save 10 to 20%. The plan builder shows your exact price.</p>
+        <div class="hc-acts">
+          <a class="btn" id="hcBuild" href="pricing.html#builder">Open this plan in the builder</a>
+          <a class="btn ghost" href="contact.html">Get a free audit</a>
+        </div>
+        <div class="hc-acts" style="margin-top:10px">
+          <a class="btn ghost" id="hcMail" href="contact.html">Email my results to Karla</a>
+          <button type="button" class="btn ghost" id="hcPrint">Print or save as PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div><h2>Want a real person to look?</h2><p>The free marketing audit checks your actual Google profile, website, reviews and social pages, and shows you exactly what to fix.</p></div>
+      <div class="cta-acts"><a class="btn" href="contact.html">Get a free marketing audit</a><a class="btn btn-line" href="book.html">Book a call</a></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var PRICES = {"social":{"Essentials":250,"Growth":650,"Pro":1500},"seo":{"Essentials":250,"Growth":600,"Pro":1200},"reviews":{"Essentials":250,"Growth":400,"Pro":750},"web":{"Essentials":250,"Growth":500,"Pro":1000}};
+  var EMAIL = 'hello@digitalmondo.com';
+  var AREAS = { seo: 'Google & Maps', social: 'Social media', reviews: 'Reviews', web: 'Website' };
+  var SERVICE = { seo: 'Local SEO', social: 'Social media', reviews: 'Reputation', web: 'Website' };
+  var TIPS = {
+    q1: ['Claim and complete your Google profile', 'It is free and decides whether you appear on Maps at all.', 'guide-google-business-profile.html', 'The 20-minute tune-up'],
+    q2: ['Work on your place in the map results', 'Categories, services, photos and reviews all move you up the local results.', 'checklist.html', 'Google profile checklist'],
+    q3: ['Make your details match everywhere', 'Google, Apple Maps, Yelp and Facebook should show the same name, phone, address and hours.', 'blog-ai-search-local-business.html', 'Why it matters for AI search'],
+    q4: ['Add a photo or update to Google every week', 'Fresh activity shows customers, and Google, that you are open and busy.', 'blog-google-business-profile-features.html', '8 features most businesses ignore'],
+    q5: ['Post on a steady rhythm', 'Two or three posts a week beats bursts and long silences.', 'post-planner.html', 'Get a month of post ideas'],
+    q6: ['Try one short video a week', 'Short vertical videos reach people who do not follow you yet.', 'guide-social-media-posting.html', 'The posting guide'],
+    q7: ['Reply to comments and messages the same day', 'Many people message to ask a question or book; a quick answer often wins the customer.', 'blog-instagram-facebook-tiktok.html', 'Where to focus your time'],
+    q8: ['End every post with a next step', 'Tell people exactly what to do: call, book, visit or message.', 'blog-what-to-post.html', '30 post ideas'],
+    q9: ['Build up your review count', 'A simple, consistent way of asking is the fastest route to more genuine reviews.', 'guide-google-reviews.html', 'Get more reviews, the right way'],
+    q10: ['Keep new reviews coming in', 'Recent reviews matter to customers as much as the total.', 'review-cards.html', 'Make a review QR card'],
+    q11: ['Reply to every review', 'Thank the good ones and answer the bad ones calmly. Future customers read your replies.', 'blog-reply-to-negative-review.html', 'Reply templates'],
+    q12: ['Ask every happy customer', 'A QR card at the counter and a link in your follow-up message make it easy.', 'review-cards.html', 'Make a review QR card'],
+    q13: ['Make your website work well on phones', 'Most local searches happen on a phone. Test yours for free.', 'contact.html#speed', 'Website speed check'],
+    q14: ['Add one-tap call and booking buttons', 'Put them at the top of every page so nobody has to hunt.', 'guide-local-business-website.html', 'What your website needs'],
+    q15: ['Say what you do and where, up top', 'Visitors decide in seconds. Lead with your service, your area and one clear button.', 'guide-local-business-website.html', 'What your website needs'],
+    q16: ['Refresh your website', 'Current photos, prices and hours build trust and help you show up in search.', 'guide-local-business-website.html', 'What your website needs']
+  };
+  var form = document.getElementById('hcForm'), KEY = 'dm-health-check';
+  var arc = document.getElementById('hcArc'), C = 452.4;
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var money = function (n) { return '$' + n.toLocaleString('en-US'); };
+
+  function answers() {
+    var a = {};
+    form.querySelectorAll('input:checked').forEach(function (i) { a[i.name] = +i.value; });
+    return a;
+  }
+  function areaScores(a) {
+    var out = {};
+    form.querySelectorAll('.hc-area').forEach(function (box) {
+      var got = 0, n = 0;
+      box.querySelectorAll('.hc-q').forEach(function (q) { if (q.dataset.q in a) { got += a[q.dataset.q]; n++; } });
+      out[box.dataset.area] = n ? { pct: Math.round(got / (n * 2) * 100), n: n } : null;
+    });
+    return out;
+  }
+  function tierFor(pct) { return pct < 50 ? 'Growth' : pct < 75 ? 'Essentials' : null; }
+
+  function render() {
+    var a = answers(), n = Object.keys(a).length, s = areaScores(a);
+    var total = 0; for (var k in a) total += a[k];
+    var score = n ? Math.round(total / (n * 2) * 100) : 0;
+    document.getElementById('hcScore').textContent = score;
+    arc.style.strokeDashoffset = C - C * score / 100;
+    document.getElementById('hcProg').textContent = n === 16 ? 'All 16 answered' : n + ' of 16 answered';
+    Object.keys(AREAS).forEach(function (id) {
+      var li = document.querySelector('[data-bar="' + id + '"]');
+      li.querySelector('em').textContent = s[id] ? s[id].pct + '%' : '–';
+      li.querySelector('i').style.width = (s[id] ? s[id].pct : 0) + '%';
+    });
+    var v = document.getElementById('hcVerdict');
+    if (!n) v.textContent = 'Answer the questions to see your score.';
+    else if (n < 16) v.textContent = 'Keep going: ' + (16 - n) + ' to go for your full results.';
+    else v.textContent = score >= 80 ? 'Strong. You are ahead of most local businesses; keep it consistent.'
+      : score >= 60 ? 'Good foundations, with some easy wins left on the table.'
+      : score >= 40 ? 'Customers can find you, but you are likely losing some to competitors.'
+      : 'Plenty of room to grow. A few basics will make a real difference.';
+
+    var res = document.getElementById('hcResults'), see = document.getElementById('hcSee');
+    see.hidden = n < 16;
+    res.hidden = n < 16;
+    if (n < 16) return;
+
+    // Quick wins: the lowest answers, weakest areas first
+    var order = Object.keys(a).sort(function (x, y) {
+      var ax = form.querySelector('[data-q="' + x + '"]').closest('.hc-area').dataset.area, ay = form.querySelector('[data-q="' + y + '"]').closest('.hc-area').dataset.area;
+      return (a[x] - a[y]) || (s[ax].pct - s[ay].pct) || (+x.slice(1) - +y.slice(1));
+    }).filter(function (q) { return a[q] < 2; });
+    var seen = {}, wins = [];
+    order.forEach(function (q) { var t = TIPS[q]; if (wins.length < 3 && !seen[t[2] + t[0]]) { seen[t[2] + t[0]] = 1; wins.push(t); } });
+    var ol = document.getElementById('hcWins');
+    ol.innerHTML = wins.length ? wins.map(function (t) {
+      return '<li><div><b>' + esc(t[0]) + '</b><span>' + esc(t[1]) + '</span><br><a href="' + t[2] + '">' + esc(t[3]) + ' →</a></div></li>';
+    }).join('') : '<li><div><b>Keep doing what you are doing</b><span>You answered the top option everywhere. Consistency is the hard part, and you have it.</span></div></li>';
+
+    // Plan: weaker areas get a level, strongest areas none
+    var picks = [], sum = 0;
+    Object.keys(AREAS).forEach(function (id) { var t = tierFor(s[id].pct); if (t) { picks.push([id, t]); sum += PRICES[id][t]; } });
+    var ul = document.getElementById('hcPlan'), build = document.getElementById('hcBuild');
+    if (picks.length) {
+      document.getElementById('hcPlanTitle').textContent = picks.length === 1 ? 'One service would cover it.' : 'Your recommended plan.';
+      ul.innerHTML = picks.map(function (p) { return '<li><span><b>' + SERVICE[p[0]] + '</b> · ' + p[1] + '</span><span>' + money(PRICES[p[0]][p[1]]) + '/mo</span></li>'; }).join('')
+        + '<li class="tot"><span>Before combo savings</span><span>' + money(sum) + '/mo</span></li>';
+      document.getElementById('hcPlanNote').textContent = picks.length > 1 ? 'Combining services saves 10 to 20%. The plan builder shows your exact price.' : 'Month to month. The plan builder shows the price with yearly billing too.';
+      build.href = 'pricing.html?plan=' + picks.map(function (p) { return p[0] + '-' + p[1].toLowerCase(); }).join(',') + '#builder';
+      build.hidden = false;
+    } else {
+      document.getElementById('hcPlanTitle').textContent = 'You may not need a plan yet.';
+      ul.innerHTML = '<li><span>Every area scored 75% or more. A free audit can confirm it and spot anything this quiz cannot.</span></li>';
+      document.getElementById('hcPlanNote').textContent = '';
+      build.hidden = true;
+    }
+    var body = 'My marketing health check: ' + score + '/100\n\n' + Object.keys(AREAS).map(function (id) { return AREAS[id] + ': ' + s[id].pct + '%'; }).join('\n')
+      + '\n\nQuick wins:\n' + wins.map(function (t, i) { return (i + 1) + '. ' + t[0]; }).join('\n')
+      + (picks.length ? '\n\nSuggested plan: ' + picks.map(function (p) { return SERVICE[p[0]] + ' ' + p[1]; }).join(', ') : '')
+      + '\n\nMy business name:\nBest way to reach me:\n';
+    document.getElementById('hcMail').href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Health check results: ' + score + '/100') + '&body=' + encodeURIComponent(body);
+  }
+
+  form.addEventListener('change', function () {
+    try { localStorage.setItem(KEY, JSON.stringify(answers())); } catch (e) {}
+    render();
+  });
+  document.getElementById('hcReset').addEventListener('click', function () {
+    form.reset();
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.getElementById('hcPrint').addEventListener('click', function () { window.print(); });
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    Object.keys(saved).forEach(function (q) { var i = form.querySelector('input[name="' + q + '"][value="' + saved[q] + '"]'); if (i) i.checked = true; });
+  } catch (e) {}
+  render();
+})();
+</script>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="f-brand">
+      <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Digital Mondo" width="196" height="63"></a>
+      <p class="f-tag">Your neighborhood, seen by the world. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
+      <a class="f-mail" href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a>
+      <ul class="f-social" aria-label="Digital Mondo on social media"><li><span class="soc" role="img" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></span></li><li><span class="soc" role="img" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 21v-7.5h2.6l.4-3H14V8.7c0-.9.3-1.5 1.6-1.5H17V4.5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.7 1.4-3.7 3.9v2.2H8.5v3H11V21"/></svg></span></li><li><span class="soc" role="img" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.3 5 4.5"/></svg></span></li><li><span class="soc" role="img" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16M8 7.6v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16"/></svg></span></li><li><span class="soc" role="img" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.3v5.4l4.6-2.7z" fill="currentColor" stroke="none"/></svg></span></li><li><span class="soc" role="img" aria-label="Google Business Profile" title="Google Business Profile"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5 5.6 4h12.8L20 9.5"/><path d="M4 9.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/><path d="M5.5 12.5V20h13v-7.5"/><path d="M10 20v-4h4v4"/></svg></span></li></ul>
+      <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>
+    </div>
+    <div>
+      <h2 class="fh">Services</h2>
+      <ul><li><a href="social-media-management.html">Social media management</a></li><li><a href="local-seo.html">Local SEO</a></li><li><a href="reputation-management.html">Reputation management</a></li><li><a href="website-design.html">Websites</a></li><li><a href="pricing.html">Plans and pricing</a></li></ul>
+    </div>
+    <div>
+      <h2 class="fh">Company</h2>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="faq.html">FAQ</a></li><li><a href="book.html">Book a call</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </div>
+    <div>
+      <h2 class="fh">Free tools</h2>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="health-check.html">Marketing health check</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li><li><a href="blog.html">Blog</a></li></ul>
+    </div>
+    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Digital Mondo LLC is an independent marketing agency.</div>
+    <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
+  </div>
+</footer>
+<aside class="mbar" aria-label="Get started"><a class="btn" href="contact.html">Free audit</a><a class="btn ghost" href="book.html">Book a call</a></aside>
+<button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script src="site.js?v=08d09e70"></script>
+
+</body>
+</html>

@@ -36,6 +36,7 @@ PAGES = {
     "faq.html":           ("FAQ · Digital Mondo", "Answers about plans, pricing, contracts, accounts, reporting and how working with Digital Mondo works.", "faq"),
     "blog.html":          ("Blog · Digital Mondo", "Short, practical marketing tips for local businesses: Google and Maps, social media, reviews, AI search and seasonal ideas.", "resources"),
     "resources.html":     ("Guides & Free Tools · Digital Mondo", "Plain-English guides to Google reviews, your Google Business Profile, social media, websites and reaching visitors, plus free marketing tools.", "resources"),
+    "health-check.html":  ("Free Marketing Health Check · Digital Mondo", "Sixteen quick questions score your Google, social media, reviews and website, with your three quickest wins and a plan that fits.", "checklist"),
     "checklist.html":     ("Google Business Profile Checklist · Digital Mondo", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
     "post-planner.html":  ("Free Social Media Post Planner · Digital Mondo", "Pick your type of business and how often you post, and get four weeks of social media post ideas with caption starters. Free.", "resources"),
     "review-cards.html":  ("Free Review QR Card Maker · Digital Mondo", "Make a printable counter card or business card with a QR code that takes customers straight to your Google review form. Free.", "resources"),
@@ -117,7 +118,7 @@ SUBMENUS = {
     "industries.html": ([(ip["file"], ip["name"], ip["tag"]) for ip in industry_pages.PAGES], "Show industries", "All industries →", " sub-ind"),
     "resources.html": ([("blog.html", "Blog", "Quick tips you can use today"), ("resources.html", "Guides", "Plain-English deep dives"),
                         ("post-planner.html", "Post planner", "A month of post ideas, free"), ("review-cards.html", "Review card maker", "A QR card for your counter"),
-                        ("checklist.html", "Google profile checklist", "See what your profile is missing")], "Show resources", "All guides and free tools →", ""),
+                        ("health-check.html", "Marketing health check", "Score your marketing in 3 minutes"), ("checklist.html", "Google profile checklist", "See what your profile is missing")], "Show resources", "All guides and free tools →", ""),
 }
 
 def nav(active, fname=""):
@@ -185,7 +186,7 @@ FOOTER = f"""<footer>
     </div>
     <div>
       <h2 class="fh">Free tools</h2>
-      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li><li><a href="blog.html">Blog</a></li></ul>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="health-check.html">Marketing health check</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li><li><a href="blog.html">Blog</a></li></ul>
     </div>
     <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Digital Mondo LLC is an independent marketing agency.</div>
     <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
@@ -276,6 +277,9 @@ def guide_ld(g):
         {"@type": "ListItem", "position": 2, "name": "Guides", "item": SITE_URL + "resources.html"},
         {"@type": "ListItem", "position": 3, "name": g["title"], "item": url}]}
     return ld(art) + ld(crumbs)
+
+
+PLAN_PRICES = json.dumps({p["id"]: dict(zip(plans.TIERS, [t["price"] for t in p["tiers"]])) for p in plans.PLANS}, separators=(",", ":"))
 
 
 def nice_date(d):
@@ -635,7 +639,7 @@ for fname, (title, desc, active) in PAGES.items():
     styles = "\n".join(re.findall(r"<style>.*?</style>", src, re.S))
     body = re.sub(r"<style>.*?</style>", "", src, flags=re.S).strip()
     body = body.replace("{{packages}}", plans.packages_html()).replace("{{packages_home}}", plans.packages_html(table=False)).replace("{{plans}}", plans.tabs_html()).replace("{{builder}}", plans.builder_html()).replace("{{plans_json}}", plans.plans_json())
-    body = body.replace("{{guide_cards_3}}", guide_cards(limit=3)).replace("{{guide_cards}}", guide_cards()).replace("{{blog_cards_3}}", blog_cards(3)).replace("{{booking}}", BOOKING_BTN).replace("{{booking_calendar}}", BOOKING_CAL)
+    body = body.replace("{{guide_cards_3}}", guide_cards(limit=3)).replace("{{guide_cards}}", guide_cards()).replace("{{blog_cards_3}}", blog_cards(3)).replace("{{plan_prices}}", PLAN_PRICES).replace("{{email}}", EMAIL).replace("{{booking}}", BOOKING_BTN).replace("{{booking_calendar}}", BOOKING_CAL)
     body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     # The first photo on a page is usually above the fold: load it right away.
     body = body.replace('loading="lazy" decoding="async"', 'loading="eager" fetchpriority="high" decoding="async"', 1)
