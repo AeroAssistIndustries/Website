@@ -12,7 +12,7 @@ EXTRA = {
     "desc": "Marketing for independent hotels, inns and vacation rentals: Google hotel profile, book-direct messaging, local guides, social media and replies to every review.",
     "combo": "booked", "planner": "hotel", "guide": "guide-marketing-to-visitors",
     "month": ["Weekly Google profile posts with current offers and events", "Room, view and amenity photos kept fresh everywhere guests look", "A local guide or itinerary post that gives people a reason to stay longer", "Replies to every review on Google, Tripadvisor and booking sites"],
-    "faqs": [("Can you help us get fewer bookings through travel sites?", "Travel sites will always bring some guests, but you can win more direct bookings by making your own website easy to book on, giving people a reason to book direct, such as a perk or better terms, and making sure your Google profile links to your own booking page."),
+    "faqs": [("Can you help us rely less on travel sites?", "Travel sites will always bring some guests, but you can win more direct bookings by making your own website easy to book on, giving people a reason to book direct, such as a perk or better terms, and making sure your Google profile links to your own booking page."),
              ("Do you manage reviews on Tripadvisor and booking sites?", "Yes. Google, Facebook and Yelp are on every reputation plan, and Pro adds extra platforms such as Tripadvisor. Replies are written in your voice."),
              ("We are a small inn. Is this overkill?", "Not at all. Many small properties start with one service, often Local SEO or Reputation Management, and add more once they see results.")]},
   "restaurants": {"file": "marketing-for-restaurants.html", "noun": "restaurants and cafés",

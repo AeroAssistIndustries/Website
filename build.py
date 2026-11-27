@@ -438,7 +438,7 @@ for fname, (title, desc, active) in PAGES.items():
     # The first photo on a page is usually above the fold: load it right away.
     body = body.replace('loading="lazy" decoding="async"', 'loading="eager" fetchpriority="high" decoding="async"', 1)
     extra = guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (industry_ld(ipg) + faq_ld(body)) if ipg else (faq_ld(body) if fname in ("faq.html",) else "")
-    mcta = "" if active in ("contact", "legal", "404") else '<a class="btn mcta" href="contact.html">Get a free marketing audit</a>\n'
+    mcta = "" if active in ("contact", "legal", "404") else '<aside aria-label="Free audit"><a class="btn mcta" href="contact.html">Get a free marketing audit</a></aside>\n'
     with open(os.path.join(DIST, fname), "w") as f:
         f.write(head(fname, title, desc, styles, active, extra) + nav("resources" if active == "guide" else active, fname) + '<main id="main">\n' + body + "\n</main>\n"
                 + FOOTER.replace("__JSV__", ver("site.js")).replace("__MCTA__", mcta))
