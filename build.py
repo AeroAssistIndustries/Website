@@ -32,7 +32,6 @@ PAGES = {
     "services.html":      ("Services · Digital Mondo", "Social media management, local SEO, online reputation management and websites for local businesses, each from $250 a month.", "services"),
     "industries.html":    ("Industries · Digital Mondo", "Marketing for hotels, restaurants, salons, real estate, contractors, dental and wellness practices, retail and local services.", "industries"),
     "pricing.html":       ("Pricing · Digital Mondo", "Plans from $250 a month, all four services from $595 a month, combos up to 20% off, and 2 months free when you pay yearly.", "pricing"),
-    "social.html":        ("Social Media Examples · Digital Mondo", "Sample social media posts, Reels and content calendars for local businesses.", "social"),
     "about.html":         ("About · Digital Mondo", "Meet Karla, a well-traveled founder bringing a worldly eye to local marketing.", "about"),
     "faq.html":           ("FAQ · Digital Mondo", "Answers about plans, pricing, contracts, accounts, reporting and how working with Digital Mondo works.", "faq"),
     "blog.html":          ("Blog · Digital Mondo", "Short, practical marketing tips for local businesses: Google and Maps, social media, reviews, AI search and seasonal ideas.", "resources"),
@@ -49,7 +48,7 @@ PAGES = {
 }
 
 NAV = [("services.html", "Services", "services"), ("industries.html", "Industries", "industries"),
-       ("pricing.html", "Pricing", "pricing"), ("social.html", "Our work", "social"), ("resources.html", "Resources", "resources"), ("about.html", "About", "about")]
+       ("pricing.html", "Pricing", "pricing"), ("resources.html", "Resources", "resources"), ("about.html", "About", "about")]
 
 SCHEMA = {
     "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Mondo",
@@ -85,6 +84,7 @@ def head(fname, title, desc, style, active, extra_ld="", og_image=None):
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="manifest" href="assets/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Digital Mondo blog" href="{SITE_URL}rss.xml">
 <meta property="og:type" content="{"article" if active in ("guide", "post") else "website"}">
@@ -181,13 +181,13 @@ FOOTER = f"""<footer>
     </div>
     <div>
       <h2 class="fh">Company</h2>
-      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="book.html">Book a call</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="faq.html">FAQ</a></li><li><a href="book.html">Book a call</a></li><li><a href="contact.html">Contact</a></li></ul>
     </div>
     <div>
       <h2 class="fh">Free tools</h2>
       <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li><li><a href="blog.html">Blog</a></li></ul>
     </div>
-    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Mondo LLC is an independent marketing agency.</div>
+    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Digital Mondo LLC is an independent marketing agency.</div>
     <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
   </div>
 </footer>
@@ -640,7 +640,7 @@ for fname, (title, desc, active) in PAGES.items():
     # The first photo on a page is usually above the fold: load it right away.
     body = body.replace('loading="lazy" decoding="async"', 'loading="eager" fetchpriority="high" decoding="async"', 1)
     extra = blog_ld(bp) if bp else blog_index_ld() if fname == "blog.html" else guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (industry_ld(ipg) + faq_ld(body)) if ipg else (faq_ld(body) if fname in ("faq.html",) else "")
-    mcta = "" if active in ("contact", "legal", "404") else '<aside aria-label="Free audit"><a class="btn mcta" href="contact.html">Get a free marketing audit</a></aside>\n'
+    mcta = "" if active in ("contact", "legal", "404") else '<aside class="mbar" aria-label="Get started"><a class="btn" href="contact.html">Free audit</a><a class="btn ghost" href="book.html">Book a call</a></aside>\n'
     with open(os.path.join(DIST, fname), "w") as f:
         ph = (gd or bp or {}).get("photo")
         og = (f"https://images.unsplash.com/photo-{ph[0]}?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=75" if ph else None)

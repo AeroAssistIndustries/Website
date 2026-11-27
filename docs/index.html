@@ -10,6 +10,7 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://images.unsplash.com">
 <link rel="manifest" href="assets/site.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="Digital Mondo blog" href="https://aeroassistindustries.github.io/Website/rss.xml">
 <meta property="og:type" content="website">
@@ -25,7 +26,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Mondo", "url": "https://aeroassistindustries.github.io/Website/", "email": "hello@digitalmondo.com", "logo": "https://aeroassistindustries.github.io/Website/assets/logo.svg", "image": "https://aeroassistindustries.github.io/Website/assets/og-image.png", "description": "Social media, local SEO, reputation management and websites for local businesses.", "priceRange": "$250\u2013$1,500 per month", "founder": {"@type": "Person", "name": "Karla"}, "areaServed": "US", "makesOffer": [{"@type": "Offer", "name": "Social Media Management", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 250, "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Local SEO", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 250, "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Online Reputation Management", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 250, "priceCurrency": "USD", "unitText": "MONTH"}}, {"@type": "Offer", "name": "Website", "priceSpecification": {"@type": "UnitPriceSpecification", "price": 250, "priceCurrency": "USD", "unitText": "MONTH"}}]}</script>
 <link rel="preload" href="assets/fonts/sora-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=0a5c4989">
+<link rel="stylesheet" href="style.css?v=a1f51aaf">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 /* Hero */
@@ -136,21 +137,6 @@
 .band-btn { background: var(--metal) !important; color: var(--ink) !important; border: 1px solid rgba(255,255,255,.7); }
 @media (max-width: 700px) { .band { min-height: 460px; } }
 
-/* Social teaser */
-.teaser { background: radial-gradient(120% 140% at 100% 0%, #2a2f37 0%, #16181c 60%); color: #fff; border-radius: 32px; padding: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; overflow: hidden; }
-.teaser .eyebrow { color: var(--ink); }
-.teaser p { color: #c9ccd2; margin-top: 14px; font-size: 18px; max-width: 44ch; }
-.teaser .btn { background: #fff; color: var(--ink); margin-top: 28px; }
-.teaser .btn:hover { background: var(--metal); }
-.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; transform: rotate(-4deg); }
-.tile { aspect-ratio: 4 / 5; border-radius: 14px; padding: 12px; display: flex; flex-direction: column; justify-content: flex-end; font-family: var(--display); font-weight: 600; font-size: 17px; line-height: .98; letter-spacing: -0.01em; position: relative; overflow: hidden; }
-.tile:nth-child(1) { background: var(--metal); color: var(--ink); }
-.tile:nth-child(3) { background: #2a2f37; color: #d6dae0; }
-.tile:nth-child(4) { background: #e8e9e6; color: #2a2f37; }
-.tile:nth-child(6) { background: #3a3f47; color: #e4e6e9; }
-.tile.photo { color: #fff; padding: 0; }
-.tile.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.tile.photo span { position: relative; z-index: 2; padding: 12px; background: linear-gradient(transparent, rgba(0,0,0,.65)); }
 
 /* Audit */
 .audit .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
@@ -159,14 +145,13 @@
 .audit ul.check li::before { content: "✓"; position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--ink); color: #fff; font-size: 12px; display: grid; place-items: center; font-weight: 700; }
 
 @media (max-width: 1000px) {
-  .hero .wrap, .meet .wrap, .month, .teaser, .audit .wrap { grid-template-columns: 1fr; }
+  .hero .wrap, .meet .wrap, .month, .audit .wrap { grid-template-columns: 1fr; }
   .collage { height: 460px; }
   .chip-ui.c1 { left: 8px; } .chip-ui.c2 { right: 8px; }
   .core { grid-template-columns: 1fr 1fr; }
   .pkgs { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; row-gap: 28px; }
   .tiles-ind { grid-template-columns: repeat(2, 1fr); }
-  .teaser { padding: 36px 24px; }
 }
 @media (max-width: 560px) {
   .core { grid-template-columns: 1fr; }
@@ -186,7 +171,7 @@
   <div class="wrap">
     <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Mondo" width="207" height="56"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist"><span class="mb-ic" aria-hidden="true"><i></i><i></i></span><span class="mb-t">Menu</span></button>
-    <ul id="navlist"><li class="has-sub"><a href="services.html">Services</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show services"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="social-media-management.html"><b>Social media management</b><small>Posts, Reels and replies</small></a></li><li><a href="local-seo.html"><b>Local SEO</b><small>Google, Maps and AI search</small></a></li><li><a href="reputation-management.html"><b>Reputation management</b><small>More reviews, every one answered</small></a></li><li><a href="website-design.html"><b>Websites</b><small>Fast sites that bring in bookings</small></a></li><li class="sub-all"><a href="services.html">All services and add-ons →</a></li></ul></li><li class="has-sub"><a href="industries.html">Industries</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show industries"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub sub-ind"><li><a href="marketing-for-hotels.html"><b>Hotels & inns</b><small>Direct bookings</small></a></li><li><a href="marketing-for-restaurants.html"><b>Restaurants & cafés</b><small>Foot traffic</small></a></li><li><a href="marketing-for-salons.html"><b>Salons & spas</b><small>Full books</small></a></li><li><a href="marketing-for-real-estate.html"><b>Real estate</b><small>Listings & leads</small></a></li><li><a href="marketing-for-contractors.html"><b>Contractors</b><small>Calls & quotes</small></a></li><li><a href="marketing-for-dentists.html"><b>Dental & wellness</b><small>New patients</small></a></li><li><a href="marketing-for-retail.html"><b>Retail shops</b><small>Walk-ins</small></a></li><li><a href="marketing-for-local-services.html"><b>Local services</b><small>Bookings</small></a></li><li class="sub-all"><a href="industries.html">All industries →</a></li></ul></li><li><a href="pricing.html">Pricing</a></li><li><a href="social.html">Our work</a></li><li class="has-sub"><a href="resources.html">Resources</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show resources"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="blog.html"><b>Blog</b><small>Quick tips you can use today</small></a></li><li><a href="resources.html"><b>Guides</b><small>Plain-English deep dives</small></a></li><li><a href="post-planner.html"><b>Post planner</b><small>A month of post ideas, free</small></a></li><li><a href="review-cards.html"><b>Review card maker</b><small>A QR card for your counter</small></a></li><li><a href="checklist.html"><b>Google profile checklist</b><small>See what your profile is missing</small></a></li><li class="sub-all"><a href="resources.html">All guides and free tools →</a></li></ul></li><li><a href="about.html">About</a></li><li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a><span>Your neighborhood, seen by the world.</span></li></ul>
+    <ul id="navlist"><li class="has-sub"><a href="services.html">Services</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show services"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="social-media-management.html"><b>Social media management</b><small>Posts, Reels and replies</small></a></li><li><a href="local-seo.html"><b>Local SEO</b><small>Google, Maps and AI search</small></a></li><li><a href="reputation-management.html"><b>Reputation management</b><small>More reviews, every one answered</small></a></li><li><a href="website-design.html"><b>Websites</b><small>Fast sites that bring in bookings</small></a></li><li class="sub-all"><a href="services.html">All services and add-ons →</a></li></ul></li><li class="has-sub"><a href="industries.html">Industries</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show industries"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub sub-ind"><li><a href="marketing-for-hotels.html"><b>Hotels & inns</b><small>Direct bookings</small></a></li><li><a href="marketing-for-restaurants.html"><b>Restaurants & cafés</b><small>Foot traffic</small></a></li><li><a href="marketing-for-salons.html"><b>Salons & spas</b><small>Full books</small></a></li><li><a href="marketing-for-real-estate.html"><b>Real estate</b><small>Listings & leads</small></a></li><li><a href="marketing-for-contractors.html"><b>Contractors</b><small>Calls & quotes</small></a></li><li><a href="marketing-for-dentists.html"><b>Dental & wellness</b><small>New patients</small></a></li><li><a href="marketing-for-retail.html"><b>Retail shops</b><small>Walk-ins</small></a></li><li><a href="marketing-for-local-services.html"><b>Local services</b><small>Bookings</small></a></li><li class="sub-all"><a href="industries.html">All industries →</a></li></ul></li><li><a href="pricing.html">Pricing</a></li><li class="has-sub"><a href="resources.html">Resources</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show resources"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="blog.html"><b>Blog</b><small>Quick tips you can use today</small></a></li><li><a href="resources.html"><b>Guides</b><small>Plain-English deep dives</small></a></li><li><a href="post-planner.html"><b>Post planner</b><small>A month of post ideas, free</small></a></li><li><a href="review-cards.html"><b>Review card maker</b><small>A QR card for your counter</small></a></li><li><a href="checklist.html"><b>Google profile checklist</b><small>See what your profile is missing</small></a></li><li class="sub-all"><a href="resources.html">All guides and free tools →</a></li></ul></li><li><a href="about.html">About</a></li><li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a><span>Your neighborhood, seen by the world.</span></li></ul>
   </div>
 </nav>
 <main id="main">
@@ -200,7 +185,7 @@
       <p class="sub rise" style="--d:.45s">Social media, Google and Maps, online reviews and a website that brings in bookings, all managed for you every month. More calls, more visits, more customers. Plans from $250 a month, month to month.</p>
       <div class="ctas rise" style="--d:.55s">
         <a class="btn" href="contact.html">Get a free marketing audit</a>
-        <a class="btn ghost" href="social.html">See social media examples</a>
+        <a class="btn ghost" href="book.html">Book a free call</a>
       </div>
       <div class="assure rise" style="--d:.65s"><span>Plans from $250/month</span><span>Month to month</span><span>You own everything</span></div>
     </div>
@@ -374,22 +359,11 @@
 
 <section>
   <div class="wrap">
-    <div class="teaser reveal">
-      <div>
-        <div class="eyebrow">Social media examples</div>
-        <h2 class="h2">See what your feed could look like.</h2>
-        <p>Browse sample posts, Reels and a weekly content calendar for a café, a salon, a boutique hotel, a dental office and a roofing company.</p>
-        <a class="btn" href="social.html">View the examples →</a>
-      </div>
-      <div class="tiles" aria-hidden="true">
-        <div class="tile float" style="--r:0deg">Your 7am just got better.</div>
-        <div class="tile photo float" style="--d:-1s"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=75&w=240" srcset="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=75&w=120 120w, https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=75&w=240 240w, https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&q=75&w=384 384w" sizes="(max-width: 700px) 100vw, 240px" alt="" loading="lazy" decoding="async"><span>Fall color is booking now.</span></div>
-        <div class="tile float" style="--d:-2s">Two nights in the desert.</div>
-        <div class="tile float" style="--d:-3s">Back-to-school smiles.</div>
-        <div class="tile photo float" style="--d:-4s"><img src="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?auto=format&fit=crop&q=75&w=240" srcset="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?auto=format&fit=crop&q=75&w=120 120w, https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?auto=format&fit=crop&q=75&w=240 240w, https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?auto=format&fit=crop&q=75&w=384 384w" sizes="(max-width: 700px) 100vw, 240px" alt="" loading="lazy" decoding="async"><span>Monsoon-ready roof checklist</span></div>
-        <div class="tile float" style="--d:-5s">Book direct, save 10%.</div>
-      </div>
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">From the blog</div><h2 class="h2">Practical tips,<br>in plain English.</h2></div>
+      <a class="btn ghost" href="blog.html">All blog posts →</a>
     </div>
+    <div class="reveal"><div class="b-grid"><a class="b-post" href="blog-holiday-marketing-checklist.html" data-cat="Seasonal" data-text="the holiday marketing checklist for local businesses holiday hours, gift cards, posts and follow-ups: a short checklist to make the busiest weeks of the year count. seasonal"><div class="ph"><img src="https://images.unsplash.com/photo-1597730763269-c49ab9f9db0f?auto=format&fit=crop&q=75&w=640" srcset="https://images.unsplash.com/photo-1597730763269-c49ab9f9db0f?auto=format&fit=crop&q=75&w=320 320w, https://images.unsplash.com/photo-1597730763269-c49ab9f9db0f?auto=format&fit=crop&q=75&w=640 640w, https://images.unsplash.com/photo-1597730763269-c49ab9f9db0f?auto=format&fit=crop&q=75&w=1024 1024w" sizes="(max-width: 700px) 100vw, 640px" alt="A street strung with glowing lanterns in the evening" loading="lazy" decoding="async"></div><div class="b-body"><span class="g-tag">Seasonal · 2 min read</span><h3 class="b-t">The holiday marketing checklist for local businesses</h3><p>Holiday hours, gift cards, posts and follow-ups: a short checklist to make the busiest weeks of the year count.</p><span class="b-date"><time datetime="2026-11-26">November 26, 2026</time></span></div></a><a class="b-post" href="blog-ai-search-local-business.html" data-cat="AI search" data-text="how ai search is changing the way people find local businesses more people now ask an ai assistant where to eat or who to call. what that means for you, and the basics that still win. ai search"><div class="ph"><img src="https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&q=75&w=640" srcset="https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&q=75&w=320 320w, https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&q=75&w=640 640w, https://images.unsplash.com/photo-1488998427799-e3362cec87c3?auto=format&fit=crop&q=75&w=1024 1024w" sizes="(max-width: 700px) 100vw, 640px" alt="A notebook, phone and laptop on a desk" loading="lazy" decoding="async"></div><div class="b-body"><span class="g-tag">AI search · 2 min read</span><h3 class="b-t">How AI search is changing the way people find local businesses</h3><p>More people now ask an AI assistant where to eat or who to call. What that means for you, and the basics that still win.</p><span class="b-date"><time datetime="2026-11-24">November 24, 2026</time></span></div></a><a class="b-post" href="blog-instagram-facebook-tiktok.html" data-cat="Social media" data-text="instagram, facebook or tiktok: where should a local business show up? you don&#x27;t need to be everywhere. how to choose the one or two platforms that fit your customers and your time. social media"><div class="ph"><img src="https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0?auto=format&fit=crop&q=75&w=640" srcset="https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0?auto=format&fit=crop&q=75&w=320 320w, https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0?auto=format&fit=crop&q=75&w=640 640w, https://images.unsplash.com/photo-1690883793939-f8cca2f28ee0?auto=format&fit=crop&q=75&w=1024 1024w" sizes="(max-width: 700px) 100vw, 640px" alt="A phone screen showing a folder of social media apps" loading="lazy" decoding="async"></div><div class="b-body"><span class="g-tag">Social media · 2 min read</span><h3 class="b-t">Instagram, Facebook or TikTok: where should a local business show up?</h3><p>You don&#x27;t need to be everywhere. How to choose the one or two platforms that fit your customers and your time.</p><span class="b-date"><time datetime="2026-11-22">November 22, 2026</time></span></div></a></div></div>
   </div>
 </section>
 
@@ -423,6 +397,7 @@
     <div class="reveal"><div class="eyebrow">Questions</div><h2 class="h2" style="margin-bottom:32px">Common questions.</h2></div>
     <div class="faq reveal">
       <details><summary>What does it cost to get started?</summary><p>Plans start at $250 a month for one service, like reputation management or a website care plan. Most businesses start with one service and add another once they see it working. Two services save 10% and three save 15%. All four services start at $595 a month with the All-in-One Starter, and paying yearly gets you 2 months free.</p></details>
+      <details><summary>You're a new agency. Why should I trust you?</summary><p>Fair question. Instead of a long client list, you get a free audit so you can judge my work before paying anything, month-to-month plans with no long contract, and every account kept in your name. Each month you get a plain-English report showing exactly what I did and what changed.</p></details>
       <details><summary>Is it really just you?</summary><p>Yes. I do the strategy, writing, design and reporting myself. For specialized work like advanced web development or large ad campaigns, I bring in trusted specialists and manage them for you, so you still have one point of contact.</p></details>
       <details><summary>Do I have to sign a long-term contract?</summary><p>No. Packages are month to month. I ask for 30 days' notice if you decide to stop, so I can hand everything over cleanly.</p></details>
       <details><summary>How soon will I see results?</summary><p>Profile fixes and fresh content start working right away, but most local marketing builds over two to three months. I'll set realistic expectations in your audit and show progress in every monthly report.</p></details>
@@ -481,17 +456,17 @@
     </div>
     <div>
       <h2 class="fh">Company</h2>
-      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="book.html">Book a call</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="faq.html">FAQ</a></li><li><a href="book.html">Book a call</a></li><li><a href="contact.html">Contact</a></li></ul>
     </div>
     <div>
       <h2 class="fh">Free tools</h2>
       <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li><li><a href="blog.html">Blog</a></li></ul>
     </div>
-    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Mondo LLC is an independent marketing agency.</div>
+    <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Digital Mondo LLC is an independent marketing agency.</div>
     <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
   </div>
 </footer>
-<aside aria-label="Free audit"><a class="btn mcta" href="contact.html">Get a free marketing audit</a></aside>
+<aside class="mbar" aria-label="Get started"><a class="btn" href="contact.html">Free audit</a><a class="btn ghost" href="book.html">Book a call</a></aside>
 <button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 <script src="site.js?v=08d09e70"></script>
 

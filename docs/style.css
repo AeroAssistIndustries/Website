@@ -265,9 +265,11 @@ table.vs { width: 100%; border-collapse: collapse; min-width: 640px; font-size: 
 .vs tbody tr:last-child td { border-bottom: 0; }
 
 /* Sticky mobile CTA */
-.mcta { display: none; }
+.mbar { display: none; }
 @media (max-width: 760px) {
-  .mcta { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; justify-content: center; box-shadow: 0 14px 30px -10px rgba(21,23,26,.5); }
+  .mbar { display: flex; gap: 8px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; padding: 6px; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 14px 30px -10px rgba(21,23,26,.45); }
+  .mbar .btn { flex: 1; justify-content: center; min-height: 46px; padding-left: 12px; padding-right: 12px; }
+
   footer { padding-bottom: 96px; }
 }
 
@@ -669,7 +671,7 @@ body { font-variant-numeric: lining-nums; } .ctable td, .ctable th, .ticker span
   .nav-foot a { color: var(--ink); font-weight: 600; }
   body.menu-open { overflow: hidden; }
   body.menu-open .nav { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--paper); }
-  body.menu-open .mcta { display: none; }
+  body.menu-open .mbar { display: none; }
 }
 
 /* ===== Horizon motif ===== */
@@ -799,3 +801,4 @@ span.soc { cursor: default; }
 @media (max-width: 1000px) { .b-grid { grid-template-columns: 1fr 1fr; } .b-feat { grid-template-columns: 1fr; } .b-feat .ph { min-height: 0; aspect-ratio: 16 / 9; } .b-feat .b-body { padding: 26px; } .news-box { grid-template-columns: 1fr; } }
 @media (max-width: 620px) { .b-grid { grid-template-columns: 1fr; } .b-search { min-width: 0; flex: 1 1 100%; } .b-pn { grid-template-columns: 1fr; } .b-next { text-align: left; } .news-box { padding: 28px 22px; } }
 .b-post[hidden], .b-featwrap[hidden] { display: none !important; }
+@media (max-width: 760px) { .to-top { bottom: 84px; right: 16px; } }
