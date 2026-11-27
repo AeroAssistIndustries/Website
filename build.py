@@ -1,6 +1,6 @@
 """Wraps each page partial in src/ with the shared head, nav and footer; writes the finished site to docs/."""
 import os, re, shutil, hashlib, json
-import plans, guides, service_pages, industry_pages
+import plans, guides, service_pages, industry_pages, blog
 from urllib.parse import quote
 from html import escape as esc
 
@@ -35,10 +35,12 @@ PAGES = {
     "social.html":        ("Social Media Examples · Digital Mondo", "Sample social media posts, Reels and content calendars for local businesses.", "social"),
     "about.html":         ("About · Digital Mondo", "Meet Karla, a well-traveled founder bringing a worldly eye to local marketing.", "about"),
     "faq.html":           ("FAQ · Digital Mondo", "Answers about plans, pricing, contracts, accounts, reporting and how working with Digital Mondo works.", "faq"),
+    "blog.html":          ("Blog · Digital Mondo", "Short, practical marketing tips for local businesses: Google and Maps, social media, reviews, AI search and seasonal ideas.", "resources"),
     "resources.html":     ("Guides & Free Tools · Digital Mondo", "Plain-English guides to Google reviews, your Google Business Profile, social media, websites and reaching visitors, plus free marketing tools.", "resources"),
     "checklist.html":     ("Google Business Profile Checklist · Digital Mondo", "A free, interactive checklist to see how complete your Google Business Profile is.", "checklist"),
     "post-planner.html":  ("Free Social Media Post Planner · Digital Mondo", "Pick your type of business and how often you post, and get four weeks of social media post ideas with caption starters. Free.", "resources"),
     "review-cards.html":  ("Free Review QR Card Maker · Digital Mondo", "Make a printable counter card or business card with a QR code that takes customers straight to your Google review form. Free.", "resources"),
+    "book.html":          ("Book a Free 20-Minute Call · Digital Mondo", "Pick a topic, day and time for a free 20-minute call with Karla about getting more customers from Google, social media and your website.", "contact"),
     "contact.html":       ("Free Marketing Audit · Digital Mondo", "Request a free marketing audit and website speed check from Digital Mondo.", "contact"),
     "terms.html":         ("Terms of Service · Digital Mondo", "The terms that apply to using this website and to Digital Mondo's marketing services.", "legal"),
     "privacy.html":       ("Privacy Policy · Digital Mondo", "How Digital Mondo collects, uses and protects personal information from website visitors, audit requests and clients.", "legal"),
@@ -47,7 +49,7 @@ PAGES = {
 }
 
 NAV = [("services.html", "Services", "services"), ("industries.html", "Industries", "industries"),
-       ("pricing.html", "Pricing", "pricing"), ("social.html", "Our work", "social"), ("resources.html", "Guides", "resources"), ("about.html", "About", "about")]
+       ("pricing.html", "Pricing", "pricing"), ("social.html", "Our work", "social"), ("resources.html", "Resources", "resources"), ("about.html", "About", "about")]
 
 SCHEMA = {
     "@context": "https://schema.org", "@type": "ProfessionalService", "name": "Digital Mondo",
@@ -79,12 +81,13 @@ def head(fname, title, desc, style, active, extra_ld="", og_image=None):
 {base}<title>{title}</title>
 <meta name="description" content="{desc}">
 {robots}<link rel="canonical" href="{canon}">
-<meta name="theme-color" content="#13294b">
+<meta name="theme-color" content="#16181c">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="assets/site.webmanifest">
-<meta property="og:type" content="{"article" if active == "guide" else "website"}">
+<link rel="alternate" type="application/rss+xml" title="Digital Mondo blog" href="{SITE_URL}rss.xml">
+<meta property="og:type" content="{"article" if active in ("guide", "post") else "website"}">
 <meta property="og:site_name" content="Digital Mondo">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
@@ -112,6 +115,9 @@ SUBNAV = [("social-media-management.html", "Social media management", "Posts, Re
 SUBMENUS = {
     "services.html": (SUBNAV, "Show services", "All services and add-ons →", ""),
     "industries.html": ([(ip["file"], ip["name"], ip["tag"]) for ip in industry_pages.PAGES], "Show industries", "All industries →", " sub-ind"),
+    "resources.html": ([("blog.html", "Blog", "Quick tips you can use today"), ("resources.html", "Guides", "Plain-English deep dives"),
+                        ("post-planner.html", "Post planner", "A month of post ideas, free"), ("review-cards.html", "Review card maker", "A QR card for your counter"),
+                        ("checklist.html", "Google profile checklist", "See what your profile is missing")], "Show resources", "All guides and free tools →", ""),
 }
 
 def nav(active, fname=""):
@@ -155,7 +161,8 @@ def social_html():
     return f'<ul class="f-social" aria-label="Digital Mondo on social media">{"".join(out)}</ul>'
 
 
-BOOKING_BTN = (f'<a class="btn ghost book-btn" href="{BOOKING_URL}" target="_blank" rel="noopener">Book a 20-minute call</a>' if BOOKING_URL else "")
+BOOKING_BTN = '<a class="btn ghost book-btn" href="book.html">Book a free 20-minute call</a>'
+BOOKING_CAL = (f'<a class="btn book-btn" href="{BOOKING_URL}" target="_blank" rel="noopener">See my live calendar</a>' if BOOKING_URL else "")
 ANALYTICS = (f"<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{\"token\": \"{ANALYTICS_TOKEN}\"}}'></script>\\n" if ANALYTICS_TOKEN else "")
 
 
@@ -174,11 +181,11 @@ FOOTER = f"""<footer>
     </div>
     <div>
       <h2 class="fh">Company</h2>
-      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="book.html">Book a call</a></li><li><a href="contact.html">Contact</a></li></ul>
     </div>
     <div>
       <h2 class="fh">Free tools</h2>
-      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li></ul>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li><li><a href="blog.html">Blog</a></li></ul>
     </div>
     <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Mondo LLC is an independent marketing agency.</div>
     <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
@@ -251,7 +258,7 @@ def guide_page(g):
   <div class="wrap">
     <div class="cta-band reveal">
       <div><h2>Want this done for you?</h2><p>Your free marketing audit shows exactly where you stand and the quickest wins, in plain English.</p></div>
-      <a class="btn" href="contact.html">Get a free marketing audit</a>
+      <div class="cta-acts"><a class="btn" href="contact.html">Get a free marketing audit</a><a class="btn btn-line" href="book.html">Book a call</a></div>
     </div>
   </div>
 </section>"""
@@ -269,6 +276,150 @@ def guide_ld(g):
         {"@type": "ListItem", "position": 2, "name": "Guides", "item": SITE_URL + "resources.html"},
         {"@type": "ListItem", "position": 3, "name": g["title"], "item": url}]}
     return ld(art) + ld(crumbs)
+
+
+def nice_date(d):
+    from datetime import date
+    return date.fromisoformat(d).strftime("%B %-d, %Y")
+
+
+NEWSLETTER = """<div class="news-box">
+  <div><span class="metal-label">The Mondo note</span><h2>One useful marketing tip, once a month.</h2><p>Short, practical and written for local business owners. No spam, and you can unsubscribe any time.</p></div>
+  <form class="news-form" novalidate>
+    <label class="sr-only" for="__ID__">Your email</label>
+    <input id="__ID__" type="email" name="email" placeholder="you@yourbusiness.com" autocomplete="email" required>
+    <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+    <button class="btn" type="submit">Subscribe</button>
+    <p class="news-msg" role="status" aria-live="polite"></p>
+  </form>
+</div>"""
+
+
+def news(uid):
+    return NEWSLETTER.replace("__ID__", uid)
+
+
+def blog_card(p, big=False, h="h3"):
+    text = esc((p["title"] + " " + p["desc"] + " " + p["cat"]).lower())
+    w = 1100 if big else 640
+    return (f'<a class="b-post{" b-feat" if big else ""}" href="{p["slug"]}.html" data-cat="{esc(p["cat"])}" data-text="{text}">'
+            f'<div class="ph">{{{{img:{p["photo"][0]}:{w}:{p["photo"][1]}}}}}</div>'
+            f'<div class="b-body"><span class="g-tag">{esc(p["cat"])} · {p["minutes"]} min read</span><{h} class="b-t">{esc(p["title"])}</{h}><p>{esc(p["desc"])}</p>'
+            f'<span class="b-date"><time datetime="{p["date"]}">{nice_date(p["date"])}</time></span></div></a>')
+
+
+def blog_cards(limit=3, exclude=None, items=None):
+    items = items or [p for p in blog.POSTS if p["slug"] != exclude][:limit]
+    return '<div class="b-grid">' + "".join(blog_card(p) for p in items) + "</div>"
+
+
+def blog_index():
+    first, rest = blog.POSTS[0], blog.POSTS[1:]
+    chips = '<button type="button" class="b-chip" data-cat="all" aria-pressed="true">All</button>' + "".join(
+        f'<button type="button" class="b-chip" data-cat="{esc(c)}" aria-pressed="false">{esc(c)}</button>' for c in blog.CATS)
+    return f"""<header class="page-head b-hero">
+  <div class="wrap">
+    <div class="eyebrow rise">The Digital Mondo blog</div>
+    <h1 class="rise" style="--d:.1s">Marketing tips for local businesses, in plain English.</h1>
+    <p class="intro rise" style="--d:.2s">Short, practical posts on Google and Maps, social media, reviews and AI search. Read one in a few minutes and use it the same day.</p>
+  </div>
+</header>
+<section class="b-sec">
+  <div class="wrap">
+    <div class="reveal b-featwrap">{blog_card(first, big=True, h="h2")}</div>
+    <div class="b-tools" role="search">
+      <div class="b-chips" aria-label="Filter posts by topic">{chips}</div>
+      <label class="b-search"><span class="sr-only">Search the blog</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+        <input type="search" id="blogQ" placeholder="Search posts" autocomplete="off"></label>
+    </div>
+    <p class="b-count" id="blogCount" role="status" aria-live="polite">{len(blog.POSTS)} posts</p>
+    <div class="b-grid" id="blogGrid">{"".join(blog_card(p, h="h2") for p in rest)}</div>
+    <p class="b-empty" id="blogEmpty" hidden>No posts match that yet. Try another word, or <a href="contact.html">suggest a topic</a>.</p>
+  </div>
+</section>
+<section class="alt">
+  <div class="wrap">
+    <div class="reveal">{news("news-blog")}</div>
+    <p class="b-more reveal">Prefer a deep dive? <a href="resources.html">Browse the guides</a> or follow along with the <a href="rss.xml">RSS feed</a>.</p>
+  </div>
+</section>"""
+
+
+def blog_page(p):
+    body = blog.body(p)
+    toc = "".join(f'<li><a href="{p["slug"]}.html#{i}">{re.sub("<[^>]+>", "", t)}</a></li>' for i, t in re.findall(r'<h2 id="([^"]+)">(.*?)</h2>', body))
+    url = SITE_URL + p["slug"] + ".html"
+    i = blog.POSTS.index(p)
+    newer, older = (blog.POSTS[i - 1] if i > 0 else None), (blog.POSTS[i + 1] if i + 1 < len(blog.POSTS) else None)
+    pn = (f'<nav class="b-pn" aria-label="More posts">'
+          + (f'<a class="b-prev" href="{older["slug"]}.html"><small>Previous post</small><b>{esc(older["title"])}</b></a>' if older else "<span></span>")
+          + (f'<a class="b-next" href="{newer["slug"]}.html"><small>Next post</small><b>{esc(newer["title"])}</b></a>' if newer else "<span></span>")
+          + "</nav>")
+    return f"""<div class="read-progress" aria-hidden="true"><i></i></div>
+<article class="guide post">
+<header class="g-head">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="blog.html">Blog</a><span>/</span><a href="blog.html?cat={quote(p["cat"])}">{esc(p["cat"])}</a></nav>
+    <div class="eyebrow rise">{esc(p["cat"])}</div>
+    <h1 class="rise" style="--d:.1s">{esc(p["title"])}</h1>
+    <p class="g-meta rise" style="--d:.2s"><img src="assets/mondo-mark.svg" alt="" width="34" height="34"><span>By {blog.AUTHOR} · <time datetime="{p["date"]}">{nice_date(p["date"])}</time> · {p["minutes"]} min read</span></p>
+  </div>
+  <div class="wrap"><div class="ph g-cover rise" style="--d:.25s">{{{{img:{p["photo"][0]}:1200:{p["photo"][1]}}}}}</div></div>
+</header>
+<div class="wrap g-layout">
+  <div class="g-side">
+    <nav class="toc" aria-label="In this post"><b>In this post</b><ol>{toc}</ol></nav>
+  </div>
+  <div class="g-main">
+    <div class="prose g-prose">{body}</div>
+    <div class="g-share" aria-label="Share this post"><b>Share this post</b>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={quote(url, safe="")}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={quote(url, safe="")}" target="_blank" rel="noopener">Facebook</a>
+      <a href="mailto:?subject={quote(p["title"])}&amp;body={quote(url)}">Email</a>
+      <button type="button" class="copy-link" data-url="{url}">Copy link</button>
+    </div>
+    <div class="g-author"><img src="assets/mondo-mark.svg" alt="" width="56" height="56"><div><b>Written by Karla</b><p>Karla is the founder of Digital Mondo, a one-person marketing agency for local businesses. She has traveled widely and used social media the way people around the world actually use it. <a href="about.html">More about Karla →</a></p></div></div>
+    {pn}
+    {news("news-" + p["slug"])}
+  </div>
+</div>
+</article>
+<section class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div><div class="eyebrow">Keep reading</div><h2 class="h2">More from the blog.</h2></div><a class="btn ghost" href="blog.html">All posts →</a></div>
+    <div class="reveal">{blog_cards(items=blog.related(p))}</div>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <div><h2>Want this done for you?</h2><p>Your free marketing audit shows exactly where you stand and the quickest wins, in plain English.</p></div>
+      <div class="cta-acts"><a class="btn" href="contact.html">Get a free marketing audit</a><a class="btn btn-line" href="book.html">Book a call</a></div>
+    </div>
+  </div>
+</section>"""
+
+
+def blog_ld(p):
+    url = SITE_URL + p["slug"] + ".html"
+    art = {"@context": "https://schema.org", "@type": "BlogPosting", "headline": p["title"], "description": p["desc"],
+           "datePublished": p["date"], "dateModified": p["date"], "mainEntityOfPage": url, "wordCount": p["words"],
+           "articleSection": p["cat"],
+           "image": f'https://images.unsplash.com/photo-{p["photo"][0]}?auto=format&fit=crop&w=1200&q=75',
+           "author": {"@type": "Person", "name": blog.AUTHOR, "url": SITE_URL + "about.html"},
+           "publisher": {"@type": "Organization", "name": "Digital Mondo", "logo": {"@type": "ImageObject", "url": SITE_URL + "assets/apple-touch-icon.png"}}}
+    crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE_URL},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": SITE_URL + "blog.html"},
+        {"@type": "ListItem", "position": 3, "name": p["title"], "item": url}]}
+    return ld(art) + ld(crumbs)
+
+
+def blog_index_ld():
+    return ld({"@context": "https://schema.org", "@type": "Blog", "name": "The Digital Mondo blog", "url": SITE_URL + "blog.html",
+               "publisher": {"@type": "Organization", "name": "Digital Mondo"},
+               "blogPost": [{"@type": "BlogPosting", "headline": p["title"], "url": SITE_URL + p["slug"] + ".html", "datePublished": p["date"]} for p in blog.POSTS]})
 
 
 def faq_ld(body):
@@ -345,7 +496,7 @@ def service_page(sp):
     <div class="sp-more reveal"><div class="eyebrow">Other services</div><div class="sp-others">{more}</div></div>
     <div class="cta-band reveal">
       <div><h2>See where you stand, free.</h2><p>Your free marketing audit shows what's working, what's missing and the quickest wins, in plain English.</p></div>
-      <a class="btn" href="contact.html">Get a free marketing audit</a>
+      <div class="cta-acts"><a class="btn" href="contact.html">Get a free marketing audit</a><a class="btn btn-line" href="book.html">Book a call</a></div>
     </div>
   </div>
 </section>"""
@@ -447,7 +598,7 @@ def industry_page(ip):
     <div class="sp-more reveal"><div class="eyebrow">Other industries</div><div class="in-others">{others}</div></div>
     <div class="cta-band reveal">
       <div><h2>See where you stand, free.</h2><p>Your free marketing audit compares you with two or three nearby competitors and lists the quickest wins, in plain English.</p></div>
-      <a class="btn" href="contact.html">Get a free marketing audit</a>
+      <div class="cta-acts"><a class="btn" href="contact.html">Get a free marketing audit</a><a class="btn btn-line" href="book.html">Book a call</a></div>
     </div>
   </div>
 </section>"""
@@ -467,6 +618,8 @@ def industry_ld(ip):
 
 for g in guides.GUIDES:
     PAGES[g["slug"] + ".html"] = (g.get("seo_title", g["title"]) + " · Digital Mondo", g["desc"], "guide")
+for p in blog.POSTS:
+    PAGES[p["slug"] + ".html"] = (p.get("seo_title", p["title"]) + " · Digital Mondo", p["desc"], "post")
 for sp in service_pages.PAGES:
     PAGES[sp["file"]] = (sp["title"] + " · Digital Mondo", sp["desc"], "services")
 for ip in industry_pages.PAGES:
@@ -477,19 +630,21 @@ for fname, (title, desc, active) in PAGES.items():
     gd = guides.BY_SLUG.get(fname[:-5])
     sp = service_pages.BY_FILE.get(fname)
     ipg = industry_pages.BY_FILE.get(fname)
-    src = guide_page(gd) if gd else service_page(sp) if sp else industry_page(ipg) if ipg else open(os.path.join(SRC, fname)).read()
+    bp = blog.BY_SLUG.get(fname[:-5])
+    src = blog_page(bp) if bp else blog_index() if fname == "blog.html" else guide_page(gd) if gd else service_page(sp) if sp else industry_page(ipg) if ipg else open(os.path.join(SRC, fname)).read()
     styles = "\n".join(re.findall(r"<style>.*?</style>", src, re.S))
     body = re.sub(r"<style>.*?</style>", "", src, flags=re.S).strip()
     body = body.replace("{{packages}}", plans.packages_html()).replace("{{packages_home}}", plans.packages_html(table=False)).replace("{{plans}}", plans.tabs_html()).replace("{{builder}}", plans.builder_html()).replace("{{plans_json}}", plans.plans_json())
-    body = body.replace("{{guide_cards_3}}", guide_cards(limit=3)).replace("{{guide_cards}}", guide_cards()).replace("{{booking}}", BOOKING_BTN)
+    body = body.replace("{{guide_cards_3}}", guide_cards(limit=3)).replace("{{guide_cards}}", guide_cards()).replace("{{blog_cards_3}}", blog_cards(3)).replace("{{booking}}", BOOKING_BTN).replace("{{booking_calendar}}", BOOKING_CAL)
     body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     # The first photo on a page is usually above the fold: load it right away.
     body = body.replace('loading="lazy" decoding="async"', 'loading="eager" fetchpriority="high" decoding="async"', 1)
-    extra = guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (industry_ld(ipg) + faq_ld(body)) if ipg else (faq_ld(body) if fname in ("faq.html",) else "")
+    extra = blog_ld(bp) if bp else blog_index_ld() if fname == "blog.html" else guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (industry_ld(ipg) + faq_ld(body)) if ipg else (faq_ld(body) if fname in ("faq.html",) else "")
     mcta = "" if active in ("contact", "legal", "404") else '<aside aria-label="Free audit"><a class="btn mcta" href="contact.html">Get a free marketing audit</a></aside>\n'
     with open(os.path.join(DIST, fname), "w") as f:
-        og = (f"https://images.unsplash.com/photo-{gd['photo'][0]}?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=75" if gd else None)
-        f.write(head(fname, title, desc, styles, active, extra, og) + nav("resources" if active == "guide" else active, fname) + '<main id="main">\n' + body + "\n</main>\n"
+        ph = (gd or bp or {}).get("photo")
+        og = (f"https://images.unsplash.com/photo-{ph[0]}?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=75" if ph else None)
+        f.write(head(fname, title, desc, styles, active, extra, og) + nav("resources" if active in ("guide", "post") else active, fname) + '<main id="main">\n' + body + "\n</main>\n"
                 + FOOTER.replace("__JSV__", ver("site.js")).replace("__MCTA__", mcta).replace("__SOCIAL__", social_html()).replace("__ANALYTICS__", ANALYTICS))
 
 shutil.copy(os.path.join(ROOT, "style.css"), os.path.join(DIST, "style.css"))
@@ -502,6 +657,17 @@ urls = [SITE_URL + ("" if f == "index.html" else f) for f in PAGES if f != "404.
 with open(os.path.join(DIST, "sitemap.xml"), "w") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
             + "".join(f"  <url><loc>{u}</loc></url>\n" for u in urls) + "</urlset>\n")
+from email.utils import format_datetime
+from datetime import datetime, timezone
+def rfc(d): return format_datetime(datetime.fromisoformat(d).replace(hour=9, tzinfo=timezone.utc))
+with open(os.path.join(DIST, "rss.xml"), "w") as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n<channel>\n'
+            f'<title>The Digital Mondo blog</title>\n<link>{SITE_URL}blog.html</link>\n'
+            '<description>Short, practical marketing tips for local businesses.</description>\n<language>en-us</language>\n'
+            f'<atom:link href="{SITE_URL}rss.xml" rel="self" type="application/rss+xml"/>\n<lastBuildDate>{rfc(blog.POSTS[0]["date"])}</lastBuildDate>\n'
+            + "".join(f'<item><title>{esc(p["title"])}</title><link>{SITE_URL}{p["slug"]}.html</link><guid>{SITE_URL}{p["slug"]}.html</guid>'
+                      f'<pubDate>{rfc(p["date"])}</pubDate><category>{esc(p["cat"])}</category><description>{esc(p["desc"])}</description></item>\n' for p in blog.POSTS)
+            + "</channel>\n</rss>\n")
 with open(os.path.join(DIST, "robots.txt"), "w") as f:
     f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}sitemap.xml\n")
 print("built", len(PAGES), "pages")

@@ -1,0 +1,132 @@
+<style>
+.bk-wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 40px; align-items: start; }
+.bk-side { position: sticky; top: 96px; display: grid; gap: 16px; }
+.bk-card { background: var(--ink); color: #fff; border-radius: 24px; padding: 28px; position: relative; overflow: hidden; }
+.bk-card::after { content: ""; position: absolute; width: 260px; height: 260px; right: -90px; bottom: -110px; background: url(assets/mondo-mark-reversed.svg) center / contain no-repeat; opacity: .1; }
+.bk-card h2 { font-size: 26px; font-weight: 600; margin-bottom: 14px; }
+.bk-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; position: relative; z-index: 1; }
+.bk-card li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; color: #d6d9df; font-size: 15.5px; }
+.bk-card li svg { color: var(--sun); margin-top: 2px; }
+.bk-card li b { color: #fff; display: block; }
+.bk-alt { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px 22px; font-size: 15px; color: var(--muted); }
+.bk-alt a { font-weight: 600; color: var(--ink); }
+.step-lbl { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; margin-bottom: 10px; }
+.step-lbl span { width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; display: grid; place-items: center; font-size: 13px; font-family: var(--display); }
+.opt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.opt-grid label, .day-grid label { position: relative; cursor: pointer; }
+.opt-grid input, .day-grid input, .time-grid input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.opt-grid span, .time-grid span { display: block; padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: #fff; font-size: 14.5px; font-weight: 600; line-height: 1.3; transition: border-color .2s, background .2s, color .2s; }
+.opt-grid small, .time-grid small { display: block; font-weight: 400; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.day-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+.day-grid span { display: grid; place-items: center; text-align: center; padding: 10px 4px; border: 1px solid var(--line); border-radius: 14px; background: #fff; transition: border-color .2s, background .2s, color .2s; }
+.day-grid span small { font-size: 11.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.day-grid span b { font-family: var(--display); font-size: 22px; font-weight: 600; line-height: 1.1; }
+.day-grid span em { font-style: normal; font-size: 12px; color: var(--muted); }
+.time-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.time-grid label { cursor: pointer; position: relative; }
+.opt-grid input:checked + span, .day-grid input:checked + span, .time-grid input:checked + span { border-color: var(--ink); background: var(--ink); color: #fff; }
+.opt-grid input:checked + span small, .day-grid input:checked + span small, .day-grid input:checked + span em, .time-grid input:checked + span small { color: #c9ccd2; }
+.opt-grid input:focus-visible + span, .day-grid input:focus-visible + span, .time-grid input:focus-visible + span { outline: 3px solid var(--accent); outline-offset: 2px; }
+.tz { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
+.bk-sum { background: var(--paper); border: 1px dashed var(--line); border-radius: 14px; padding: 14px 16px; font-size: 15px; }
+.bk-sum b { display: block; font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+@media (max-width: 960px) { .bk-wrap { grid-template-columns: 1fr; } .bk-side { position: static; order: 2; } }
+@media (max-width: 520px) { .day-grid { grid-template-columns: repeat(3, 1fr); } .time-grid { grid-template-columns: 1fr; } }
+</style>
+
+<header class="page-head">
+  <div class="wrap">
+    <div class="eyebrow rise">Free call</div>
+    <h1 class="rise" style="--d:.1s">Book a free 20-minute call.</h1>
+    <p class="intro rise" style="--d:.2s">Pick a topic, a day and a time that suits you. I'll confirm by email within one business day, with a video or phone link, whichever you prefer.</p>
+  </div>
+</header>
+
+<section style="padding-top:0">
+  <div class="wrap bk-wrap">
+    <aside class="bk-side" aria-label="About the call">
+      <div class="bk-card">
+        <h2>What we'll cover</h2>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Where you stand</b>Your Google profile, website, reviews and social pages at a glance.</div></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Your quickest wins</b>Two or three things you could fix this week, with or without me.</div></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><div><b>Honest next options</b>A plan only if it makes sense for your business. No pressure, no hard sell.</div></li>
+        </ul>
+      </div>
+      <div class="bk-alt">Rather start with a written review? <a href="contact.html">Request a free marketing audit</a>, or email <a href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a>.</div>
+      {{booking_calendar}}
+    </aside>
+
+    <form class="audit-form book-form reveal" data-subject="Call request" novalidate>
+      <div>
+        <div class="step-lbl" id="bk-topic-lbl"><span>1</span>What would you like to talk about?</div>
+        <div class="opt-grid" role="radiogroup" aria-labelledby="bk-topic-lbl">
+          <label><input type="radio" name="topic" data-label="Topic" value="Getting more customers" checked><span>Getting more customers<small>Where to start</small></span></label>
+          <label><input type="radio" name="topic" data-label="Topic" value="Plans and pricing"><span>Plans and pricing<small>Which plan fits</small></span></label>
+          <label><input type="radio" name="topic" data-label="Topic" value="My website"><span>My website<small>Fix or rebuild</small></span></label>
+          <label><input type="radio" name="topic" data-label="Topic" value="My audit results"><span>My audit results<small>Walk through it</small></span></label>
+        </div>
+      </div>
+      <div>
+        <div class="step-lbl" id="bk-day-lbl"><span>2</span>Pick a day</div>
+        <div class="day-grid" id="bkDays" role="radiogroup" aria-labelledby="bk-day-lbl"></div>
+      </div>
+      <div>
+        <div class="step-lbl" id="bk-time-lbl"><span>3</span>Pick a time</div>
+        <div class="time-grid" role="radiogroup" aria-labelledby="bk-time-lbl">
+          <label><input type="radio" name="time" data-label="Time" value="Morning (9 AM to 12 PM)" checked><span>Morning<small>9 AM to 12 PM</small></span></label>
+          <label><input type="radio" name="time" data-label="Time" value="Afternoon (12 to 3 PM)"><span>Afternoon<small>12 to 3 PM</small></span></label>
+          <label><input type="radio" name="time" data-label="Time" value="Late afternoon (3 to 6 PM)"><span>Late afternoon<small>3 to 6 PM</small></span></label>
+        </div>
+        <p class="tz" id="bkTz">Times are in your local time zone.</p>
+        <input type="hidden" name="timezone" data-label="Time zone" id="bkTzField">
+      </div>
+      <div>
+        <div class="step-lbl"><span>4</span>Your details</div>
+        <div style="display:grid;gap:14px">
+          <div class="row2">
+            <div class="field"><label for="b-name">Your name</label><input id="b-name" name="name" data-label="Name" autocomplete="name" required></div>
+            <div class="field"><label for="b-biz">Business name</label><input id="b-biz" name="business" data-label="Business" required></div>
+          </div>
+          <div class="row2">
+            <div class="field"><label for="b-email">Email</label><input id="b-email" name="email" data-label="Email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="b-phone">Phone (if you'd like a call)</label><input id="b-phone" name="phone" data-label="Phone" type="tel" autocomplete="tel"></div>
+          </div>
+          <div class="field"><label for="b-msg">Anything I should look at first?</label><textarea id="b-msg" name="message" data-label="Notes" rows="3" placeholder="Your website, your Google profile, a competitor you admire…"></textarea></div>
+        </div>
+      </div>
+      <div class="bk-sum" aria-live="polite"><b>Your request</b><span id="bkSum">Choose a day above.</span></div>
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn" type="submit">Request this time</button>
+      <p class="form-msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+(function () {
+  var days = document.getElementById('bkDays'), sum = document.getElementById('bkSum'), form = document.querySelector('.book-form');
+  if (!days || !form) return;
+  var d = new Date(); d.setHours(12, 0, 0, 0); d.setDate(d.getDate() + 1);
+  var html = '', n = 0;
+  while (n < 10) {
+    var wd = d.getDay();
+    if (wd !== 0 && wd !== 6) {
+      var label = d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+      html += '<label><input type="radio" name="day" data-label="Day" value="' + label + '"' + (n === 0 ? ' checked' : '') + '><span><small>' + d.toLocaleDateString('en-US', { weekday: 'short' }) +
+        '</small><b>' + d.getDate() + '</b><em>' + d.toLocaleDateString('en-US', { month: 'short' }) + '</em></span></label>';
+      n++;
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  days.innerHTML = html;
+  var tz = '';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+  if (tz) { document.getElementById('bkTz').textContent = 'Times are in your time zone (' + tz.replace(/_/g, ' ') + ').'; document.getElementById('bkTzField').value = tz; }
+  function update() {
+    var v = function (nm) { var el = form.querySelector('input[name="' + nm + '"]:checked'); return el ? el.value : ''; };
+    sum.textContent = v('topic') + ' · ' + v('day') + ' · ' + v('time').replace(/ \(.*/, '') + ' (' + v('time').replace(/.*\(|\)/g, '') + ')';
+  }
+  form.addEventListener('change', update); update();
+})();
+</script>

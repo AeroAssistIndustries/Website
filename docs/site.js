@@ -59,9 +59,10 @@
       Array.prototype.forEach.call(f.elements, function (el) {
         if (!el.name || el.type === 'submit' || el.name === '_gotcha') return;
         if (el.type === 'checkbox') { if (el.checked) lines.push(el.name + ': yes'); return; }
+        if (el.type === 'radio' && !el.checked) return;
         if (el.value.trim()) lines.push((el.dataset.label || el.name) + ': ' + el.value.trim());
       });
-      var href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Free audit request: ' + biz) + '&body=' + encodeURIComponent(lines.join('\n'));
+      var href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent((f.dataset.subject || 'Free audit request') + ': ' + biz) + '&body=' + encodeURIComponent(lines.join('\n'));
       var draft = function (lead) {
         msg.innerHTML = lead + ' <a href="' + href + '">Open it in your email app</a> to send it, or email ' + EMAIL + ' directly.';
         msg.classList.add('show');
@@ -69,15 +70,63 @@
       if (!FORM_ENDPOINT || !window.fetch) { draft('Your request is ready.'); return; }
       var btn = f.querySelector('[type=submit]'), label = btn.textContent;
       btn.disabled = true; btn.textContent = 'Sending…';
-      var data = new FormData(f); data.append('_subject', 'Free audit request: ' + biz); data.append('summary', lines.join('\n'));
+      var data = new FormData(f); data.append('_subject', (f.dataset.subject || 'Free audit request') + ': ' + biz); data.append('summary', lines.join('\n'));
       fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } }).then(function (r) {
         if (!r.ok) throw new Error(r.status);
-        f.reset(); msg.textContent = 'Thank you, ' + name + '! Your request is in. I\u2019ll reply within one business day.'; msg.classList.add('show');
+        f.reset(); f.dispatchEvent(new Event('change')); msg.textContent = 'Thank you, ' + name + '! ' + (f.dataset.subject ? 'I\u2019ll confirm your call by email within one business day.' : 'Your request is in. I\u2019ll reply within one business day.'); msg.classList.add('show');
         try { sessionStorage.removeItem('ka-plan'); } catch (e) {}
       }).catch(function () { draft('That didn\u2019t go through, but your request is ready.'); })
         .then(function () { btn.disabled = false; btn.textContent = label; });
     });
   });
+
+  // ---------- Newsletter signup ----------
+  document.querySelectorAll('form.news-form').forEach(function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var msg = f.querySelector('.news-msg'), email = f.elements.email.value.trim();
+      if (!/^\S+@\S+\.\S+$/.test(email)) { msg.textContent = 'Please enter a valid email address.'; f.elements.email.focus(); return; }
+      if (f.elements._gotcha && f.elements._gotcha.value) return;
+      var href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Newsletter signup') + '&body=' + encodeURIComponent('Please add me to the Digital Mondo monthly note: ' + email);
+      var draft = function (lead) { msg.innerHTML = lead + ' <a href="' + href + '">Open it in your email app</a> to send it.'; };
+      if (!FORM_ENDPOINT || !window.fetch) { draft('Almost there.'); return; }
+      var btn = f.querySelector('[type=submit]'); btn.disabled = true;
+      var data = new FormData(f); data.append('_subject', 'Newsletter signup'); data.append('summary', 'Newsletter signup: ' + email);
+      fetch(FORM_ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        f.reset(); msg.textContent = 'You’re on the list. Thank you!';
+      }).catch(function () { draft('That didn’t go through.'); }).then(function () { btn.disabled = false; });
+    });
+  });
+
+  // ---------- Blog: topic filter and search ----------
+  var bGrid = document.getElementById('blogGrid');
+  if (bGrid) {
+    var chipsB = Array.prototype.slice.call(document.querySelectorAll('.b-chip')), q = document.getElementById('blogQ');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.b-post[data-cat]'));
+    var feat = document.querySelector('.b-featwrap'), count = document.getElementById('blogCount'), empty = document.getElementById('blogEmpty');
+    var cat = 'all';
+    var apply = function () {
+      var term = q.value.trim().toLowerCase(), n = 0;
+      cards.forEach(function (c) {
+        var ok = (cat === 'all' || c.dataset.cat === cat) && (!term || c.dataset.text.indexOf(term) > -1);
+        if (c.parentNode === feat) feat.hidden = !ok; else c.hidden = !ok;
+        if (ok) n++;
+      });
+      count.textContent = n === 1 ? '1 post' : n + ' posts';
+      empty.hidden = n > 0;
+    };
+    chipsB.forEach(function (b) {
+      b.addEventListener('click', function () {
+        cat = b.dataset.cat;
+        chipsB.forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        apply();
+      });
+    });
+    q.addEventListener('input', apply);
+    var want = new URLSearchParams(location.search).get('cat');
+    if (want) chipsB.forEach(function (b) { if (b.dataset.cat === want) b.click(); });
+  }
 
   // Social examples filter
   var fb = document.querySelectorAll('.filters button');

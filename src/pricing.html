@@ -13,12 +13,12 @@
 .cf-row input { border: 0; background: transparent; padding: 12px 0; font-size: 20px; font-weight: 600; font-family: var(--display); }
 .cf-row input:focus { background: transparent; }
 .cf-row:focus-within { border-color: var(--ink); background: #fff; }
-.calc-out { background: radial-gradient(120% 120% at 100% 0%, #22436f, var(--ink) 60%); color: #fff; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 18px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
+.calc-out { background: radial-gradient(120% 120% at 100% 0%, #2f343c, var(--ink) 60%); color: #fff; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 18px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
 .co-big b { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(54px, 6vw, 76px); line-height: 1; background: var(--metal-text); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: lining-nums; }
-.co-big span, .co-row span { color: #b4c3d6; font-size: 14.5px; }
-.co-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border-top: 1px solid #203f6c; padding-top: 16px; }
+.co-big span, .co-row span { color: #aeb4bd; font-size: 14.5px; }
+.co-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border-top: 1px solid #2f333a; padding-top: 16px; }
 .co-row b { display: block; font-family: var(--display); font-size: 36px; font-weight: 600; font-variant-numeric: lining-nums; }
-.co-note { color: #d5dfeb; font-size: 15px; }
+.co-note { color: #cfd3d9; font-size: 15px; }
 .calc-out .btn { background: var(--metal); color: var(--ink); align-self: flex-start; margin-top: auto; }
 @media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .calc-in { grid-template-columns: 1fr; } }
@@ -28,17 +28,17 @@
 @media (max-width: 900px) { .price-head .wrap { grid-template-columns: 1fr; } }
 
 .share-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; margin-top: 14px; }
-.link-btn { background: none; border: 0; padding: 4px 0; font: inherit; font-size: 14px; font-weight: 600; color: #edf3fa; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.link-btn { background: none; border: 0; padding: 4px 0; font: inherit; font-size: 14px; font-weight: 600; color: #eceef1; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .link-btn:hover { color: #fff; }
-.share-msg { min-height: 1.2em; font-size: 13.5px; color: #cbd6e4; text-align: center; margin-top: 6px; word-break: break-all; }
+.share-msg { min-height: 1.2em; font-size: 13.5px; color: #c9ccd2; text-align: center; margin-top: 6px; word-break: break-all; }
 .print-only { display: none; }
 @media print {
   body.print-quote main > *:not(#builder-section), body.print-quote .nav, body.print-quote footer, body.print-quote .mcta { display: none !important; }
   body.print-quote #builder-section > .wrap > *:not(.builder) { display: none !important; }
   body.print-quote .builder { display: block !important; }
   body.print-quote .builder-rows, body.print-quote .summary .billing, body.print-quote .summary .fc, body.print-quote .summary .go, body.print-quote .share-row, body.print-quote .share-msg { display: none !important; }
-  body.print-quote .summary { position: static !important; max-width: 5.5in; margin: 0 auto; background: #fff !important; color: #13294b !important; border: 1px solid #bbb; box-shadow: none !important; }
-  body.print-quote .summary * { color: #13294b !important; }
+  body.print-quote .summary { position: static !important; max-width: 5.5in; margin: 0 auto; background: #fff !important; color: #16181c !important; border: 1px solid #bbb; box-shadow: none !important; }
+  body.print-quote .summary * { color: #16181c !important; }
   body.print-quote .print-only { display: block; font-size: 11px; margin-top: 14px; }
   body.print-quote .print-head { display: flex; justify-content: space-between; align-items: center; margin: 0 0 18px; padding-bottom: 14px; border-bottom: 1px solid #ddd; }
   body.print-quote main { padding-top: 0.3in; }

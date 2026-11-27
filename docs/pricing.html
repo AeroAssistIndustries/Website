@@ -6,11 +6,12 @@
 <title>Pricing · Digital Mondo</title>
 <meta name="description" content="Plans from $250 a month, all four services from $595 a month, combos up to 20% off, and 2 months free when you pay yearly.">
 <link rel="canonical" href="https://aeroassistindustries.github.io/Website/pricing.html">
-<meta name="theme-color" content="#13294b">
+<meta name="theme-color" content="#16181c">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="assets/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Digital Mondo blog" href="https://aeroassistindustries.github.io/Website/rss.xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Digital Mondo">
 <meta property="og:title" content="Pricing · Digital Mondo">
@@ -23,7 +24,7 @@
 <meta name="twitter:image" content="https://aeroassistindustries.github.io/Website/assets/og-image.png">
 <link rel="preload" href="assets/fonts/sora-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="style.css?v=bdb851e7">
+<link rel="stylesheet" href="style.css?v=0a5c4989">
 <script>document.documentElement.classList.add('js')</script>
 <style>
 .addon { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
@@ -40,12 +41,12 @@
 .cf-row input { border: 0; background: transparent; padding: 12px 0; font-size: 20px; font-weight: 600; font-family: var(--display); }
 .cf-row input:focus { background: transparent; }
 .cf-row:focus-within { border-color: var(--ink); background: #fff; }
-.calc-out { background: radial-gradient(120% 120% at 100% 0%, #22436f, var(--ink) 60%); color: #fff; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 18px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
+.calc-out { background: radial-gradient(120% 120% at 100% 0%, #2f343c, var(--ink) 60%); color: #fff; border-radius: 24px; padding: 28px; display: flex; flex-direction: column; gap: 18px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.07); }
 .co-big b { display: block; font-family: var(--display); font-weight: 600; font-size: clamp(54px, 6vw, 76px); line-height: 1; background: var(--metal-text); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: lining-nums; }
-.co-big span, .co-row span { color: #b4c3d6; font-size: 14.5px; }
-.co-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border-top: 1px solid #203f6c; padding-top: 16px; }
+.co-big span, .co-row span { color: #aeb4bd; font-size: 14.5px; }
+.co-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; border-top: 1px solid #2f333a; padding-top: 16px; }
 .co-row b { display: block; font-family: var(--display); font-size: 36px; font-weight: 600; font-variant-numeric: lining-nums; }
-.co-note { color: #d5dfeb; font-size: 15px; }
+.co-note { color: #cfd3d9; font-size: 15px; }
 .calc-out .btn { background: var(--metal); color: var(--ink); align-self: flex-start; margin-top: auto; }
 @media (max-width: 900px) { .calc { grid-template-columns: 1fr; } }
 @media (max-width: 520px) { .calc-in { grid-template-columns: 1fr; } }
@@ -55,17 +56,17 @@
 @media (max-width: 900px) { .price-head .wrap { grid-template-columns: 1fr; } }
 
 .share-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; margin-top: 14px; }
-.link-btn { background: none; border: 0; padding: 4px 0; font: inherit; font-size: 14px; font-weight: 600; color: #edf3fa; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.link-btn { background: none; border: 0; padding: 4px 0; font: inherit; font-size: 14px; font-weight: 600; color: #eceef1; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .link-btn:hover { color: #fff; }
-.share-msg { min-height: 1.2em; font-size: 13.5px; color: #cbd6e4; text-align: center; margin-top: 6px; word-break: break-all; }
+.share-msg { min-height: 1.2em; font-size: 13.5px; color: #c9ccd2; text-align: center; margin-top: 6px; word-break: break-all; }
 .print-only { display: none; }
 @media print {
   body.print-quote main > *:not(#builder-section), body.print-quote .nav, body.print-quote footer, body.print-quote .mcta { display: none !important; }
   body.print-quote #builder-section > .wrap > *:not(.builder) { display: none !important; }
   body.print-quote .builder { display: block !important; }
   body.print-quote .builder-rows, body.print-quote .summary .billing, body.print-quote .summary .fc, body.print-quote .summary .go, body.print-quote .share-row, body.print-quote .share-msg { display: none !important; }
-  body.print-quote .summary { position: static !important; max-width: 5.5in; margin: 0 auto; background: #fff !important; color: #13294b !important; border: 1px solid #bbb; box-shadow: none !important; }
-  body.print-quote .summary * { color: #13294b !important; }
+  body.print-quote .summary { position: static !important; max-width: 5.5in; margin: 0 auto; background: #fff !important; color: #16181c !important; border: 1px solid #bbb; box-shadow: none !important; }
+  body.print-quote .summary * { color: #16181c !important; }
   body.print-quote .print-only { display: block; font-size: 11px; margin-top: 14px; }
   body.print-quote .print-head { display: flex; justify-content: space-between; align-items: center; margin: 0 0 18px; padding-bottom: 14px; border-bottom: 1px solid #ddd; }
   body.print-quote main { padding-top: 0.3in; }
@@ -79,7 +80,7 @@
   <div class="wrap">
     <a class="logo" href="index.html"><img src="assets/logo.svg" alt="Digital Mondo" width="207" height="56"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="navlist"><span class="mb-ic" aria-hidden="true"><i></i><i></i></span><span class="mb-t">Menu</span></button>
-    <ul id="navlist"><li class="has-sub"><a href="services.html">Services</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show services"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="social-media-management.html"><b>Social media management</b><small>Posts, Reels and replies</small></a></li><li><a href="local-seo.html"><b>Local SEO</b><small>Google, Maps and AI search</small></a></li><li><a href="reputation-management.html"><b>Reputation management</b><small>More reviews, every one answered</small></a></li><li><a href="website-design.html"><b>Websites</b><small>Fast sites that bring in bookings</small></a></li><li class="sub-all"><a href="services.html">All services and add-ons →</a></li></ul></li><li class="has-sub"><a href="industries.html">Industries</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show industries"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub sub-ind"><li><a href="marketing-for-hotels.html"><b>Hotels & inns</b><small>Direct bookings</small></a></li><li><a href="marketing-for-restaurants.html"><b>Restaurants & cafés</b><small>Foot traffic</small></a></li><li><a href="marketing-for-salons.html"><b>Salons & spas</b><small>Full books</small></a></li><li><a href="marketing-for-real-estate.html"><b>Real estate</b><small>Listings & leads</small></a></li><li><a href="marketing-for-contractors.html"><b>Contractors</b><small>Calls & quotes</small></a></li><li><a href="marketing-for-dentists.html"><b>Dental & wellness</b><small>New patients</small></a></li><li><a href="marketing-for-retail.html"><b>Retail shops</b><small>Walk-ins</small></a></li><li><a href="marketing-for-local-services.html"><b>Local services</b><small>Bookings</small></a></li><li class="sub-all"><a href="industries.html">All industries →</a></li></ul></li><li><a href="pricing.html" aria-current="page">Pricing</a></li><li><a href="social.html">Our work</a></li><li><a href="resources.html">Guides</a></li><li><a href="about.html">About</a></li><li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a><span>Your neighborhood, seen by the world.</span></li></ul>
+    <ul id="navlist"><li class="has-sub"><a href="services.html">Services</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show services"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="social-media-management.html"><b>Social media management</b><small>Posts, Reels and replies</small></a></li><li><a href="local-seo.html"><b>Local SEO</b><small>Google, Maps and AI search</small></a></li><li><a href="reputation-management.html"><b>Reputation management</b><small>More reviews, every one answered</small></a></li><li><a href="website-design.html"><b>Websites</b><small>Fast sites that bring in bookings</small></a></li><li class="sub-all"><a href="services.html">All services and add-ons →</a></li></ul></li><li class="has-sub"><a href="industries.html">Industries</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show industries"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub sub-ind"><li><a href="marketing-for-hotels.html"><b>Hotels & inns</b><small>Direct bookings</small></a></li><li><a href="marketing-for-restaurants.html"><b>Restaurants & cafés</b><small>Foot traffic</small></a></li><li><a href="marketing-for-salons.html"><b>Salons & spas</b><small>Full books</small></a></li><li><a href="marketing-for-real-estate.html"><b>Real estate</b><small>Listings & leads</small></a></li><li><a href="marketing-for-contractors.html"><b>Contractors</b><small>Calls & quotes</small></a></li><li><a href="marketing-for-dentists.html"><b>Dental & wellness</b><small>New patients</small></a></li><li><a href="marketing-for-retail.html"><b>Retail shops</b><small>Walk-ins</small></a></li><li><a href="marketing-for-local-services.html"><b>Local services</b><small>Bookings</small></a></li><li class="sub-all"><a href="industries.html">All industries →</a></li></ul></li><li><a href="pricing.html" aria-current="page">Pricing</a></li><li><a href="social.html">Our work</a></li><li class="has-sub"><a href="resources.html">Resources</a><button class="sub-btn" type="button" aria-expanded="false" aria-label="Show resources"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button><ul class="sub"><li><a href="blog.html"><b>Blog</b><small>Quick tips you can use today</small></a></li><li><a href="resources.html"><b>Guides</b><small>Plain-English deep dives</small></a></li><li><a href="post-planner.html"><b>Post planner</b><small>A month of post ideas, free</small></a></li><li><a href="review-cards.html"><b>Review card maker</b><small>A QR card for your counter</small></a></li><li><a href="checklist.html"><b>Google profile checklist</b><small>See what your profile is missing</small></a></li><li class="sub-all"><a href="resources.html">All guides and free tools →</a></li></ul></li><li><a href="about.html">About</a></li><li class="nav-cta"><a class="btn" href="contact.html">Free audit</a></li><li class="nav-foot"><a href="mailto:hello@digitalmondo.com">hello@digitalmondo.com</a><span>Your neighborhood, seen by the world.</span></li></ul>
   </div>
 </nav>
 <main id="main">
@@ -241,11 +242,11 @@
     </div>
     <div>
       <h2 class="fh">Company</h2>
-      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="industries.html">Industries</a></li><li><a href="social.html">Social media examples</a></li><li><a href="faq.html">FAQ</a></li><li><a href="book.html">Book a call</a></li><li><a href="contact.html">Contact</a></li></ul>
     </div>
     <div>
       <h2 class="fh">Free tools</h2>
-      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li></ul>
+      <ul><li><a href="contact.html">Free marketing audit</a></li><li><a href="contact.html#speed">Website speed check</a></li><li><a href="checklist.html">Google profile checklist</a></li><li><a href="pricing.html#value">Customer value calculator</a></li><li><a href="pricing.html#builder">Plan builder</a></li><li><a href="post-planner.html">Post planner</a></li><li><a href="review-cards.html">Review card maker</a></li><li><a href="resources.html">Guides</a></li><li><a href="blog.html">Blog</a></li></ul>
     </div>
     <div class="f-notice">All company names, brands, logos and trademarks shown on this site, including Google, Instagram, Facebook, TikTok, YouTube, LinkedIn, Yelp and others, are the property of their respective owners. They are used for identification and reference purposes only and do not imply any affiliation with, sponsorship by or endorsement from the trademark holders. Businesses shown in social media examples are fictional sample brands. Digital Mondo LLC is an independent marketing agency.</div>
     <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
@@ -253,7 +254,7 @@
 </footer>
 <aside aria-label="Free audit"><a class="btn mcta" href="contact.html">Get a free marketing audit</a></aside>
 <button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
-<script src="site.js?v=e3c3290f"></script>
+<script src="site.js?v=08d09e70"></script>
 
 </body>
 </html>
