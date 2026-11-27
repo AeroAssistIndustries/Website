@@ -279,6 +279,28 @@
 
   if (document.querySelector('[data-m]')) setBilling(yearly);
 
+  // ---------- Guides: reading progress and copy link ----------
+  var rp = document.querySelector('.read-progress i'), art = document.querySelector('.g-prose');
+  if (rp && art) {
+    var prog = function () { var r = art.getBoundingClientRect(), h = r.height - window.innerHeight * .6; var p = h > 0 ? Math.min(1, Math.max(0, -r.top / h)) : 1; rp.style.transform = 'scaleX(' + p + ')'; };
+    window.addEventListener('scroll', prog, { passive: true }); prog();
+  }
+  document.querySelectorAll('.copy-link').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var done = function () { var t = b.textContent; b.textContent = 'Link copied'; setTimeout(function () { b.textContent = t; }, 1800); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(b.dataset.url).then(done, function () { window.prompt('Copy this link:', b.dataset.url); });
+      else window.prompt('Copy this link:', b.dataset.url);
+    });
+  });
+
+  // ---------- Back to top ----------
+  var tt = document.querySelector('.to-top');
+  if (tt) {
+    var onScroll = function () { tt.classList.toggle('show', window.scrollY > 1200); };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    tt.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); var m = document.getElementById('main'); if (m) { m.setAttribute('tabindex', '-1'); m.focus({ preventScroll: true }); } });
+  }
+
   // ---------- Customer value calculator ----------
   var calcEl = document.getElementById('calc');
   if (calcEl) {

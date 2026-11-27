@@ -1,6 +1,7 @@
 """Wraps each page partial in src/ with the shared head, nav and footer; writes the finished site to docs/."""
 import os, re, shutil, hashlib, json
 import plans, guides, service_pages, industry_pages
+from urllib.parse import quote
 from html import escape as esc
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -10,7 +11,19 @@ SRC, DIST = os.path.join(ROOT, "src"), os.path.join(ROOT, "docs")
 SITE_URL = "https://aeroassistindustries.github.io/Website/"
 SITE_PATH = "/Website/"
 EMAIL = "hello@digitalmondo.com"
-SAMPLE_FONTS = "&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Bricolage+Grotesque:opsz,wght@12..96,600..800"
+# Social profiles for the footer and search engines. Leave a URL empty until the profile is live:
+# the icon still shows in the footer, and becomes a link as soon as a URL is filled in.
+SOCIAL = [
+    ("Instagram", ""),
+    ("Facebook", ""),
+    ("TikTok", ""),
+    ("LinkedIn", ""),
+    ("YouTube", ""),
+    ("Google Business Profile", ""),
+]
+# Optional extras, switched on by filling in a value:
+BOOKING_URL = ""        # e.g. a Calendly or Google Calendar booking page: adds "Book a call" buttons
+ANALYTICS_TOKEN = ""    # Cloudflare Web Analytics token: adds the cookie-free analytics beacon
 # Where the audit form posts (a form service or Cloudflare Worker URL). Empty: visitors get an email draft instead.
 FORM_ENDPOINT = ""
 
@@ -42,6 +55,7 @@ SCHEMA = {
     "description": "Social media, local SEO, reputation management and websites for local businesses.",
     "priceRange": "$250–$1,500 per month", "founder": {"@type": "Person", "name": "Karla"},
     "areaServed": "US",
+    **({"sameAs": [u for _, u in SOCIAL if u]} if any(u for _, u in SOCIAL) else {}),
     "makesOffer": [{"@type": "Offer", "name": p["name"], "priceSpecification": {"@type": "UnitPriceSpecification", "price": p["tiers"][0]["price"], "priceCurrency": "USD", "unitText": "MONTH"}} for p in plans.PLANS],
 }
 
@@ -52,7 +66,7 @@ def ld(obj):
     return f'<script type="application/ld+json">{json.dumps(obj)}</script>\n'
 
 
-def head(fname, title, desc, style, active, extra_ld=""):
+def head(fname, title, desc, style, active, extra_ld="", og_image=None):
     canon = SITE_URL + ("" if fname == "index.html" else fname)
     base = f'<base href="{SITE_PATH}">\n' if active == "404" else ""
     robots = '<meta name="robots" content="noindex">\n' if active == "404" else ""
@@ -75,14 +89,13 @@ def head(fname, title, desc, style, active, extra_ld=""):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canon}">
-<meta property="og:image" content="{SITE_URL}assets/og-image.png">
+<meta property="og:image" content="{og_image or SITE_URL + 'assets/og-image.png'}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
-<meta name="twitter:image" content="{SITE_URL}assets/og-image.png">
-{schema}<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600;700{SAMPLE_FONTS if fname == "social.html" else ""}&display=swap" rel="stylesheet">
+<meta name="twitter:image" content="{og_image or SITE_URL + 'assets/og-image.png'}">
+{schema}<link rel="preload" href="assets/fonts/sora-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="style.css?v={ver('style.css')}">
 <script>document.documentElement.classList.add('js')</script>
 {style}
@@ -121,12 +134,38 @@ def nav(active, fname=""):
 </nav>
 """
 
+SOCIAL_ICONS = {
+    "Instagram": '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>',
+    "Facebook": '<path d="M14 21v-7.5h2.6l.4-3H14V8.7c0-.9.3-1.5 1.6-1.5H17V4.5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.7 1.4-3.7 3.9v2.2H8.5v3H11V21"/>',
+    "TikTok": '<path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.3 5 4.5"/>',
+    "LinkedIn": '<rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5V16M8 7.6v.1M11.5 16v-5.5M11.5 13c0-1.6 1-2.6 2.3-2.6s2.2.9 2.2 2.6V16"/>',
+    "YouTube": '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.2 9.3v5.4l4.6-2.7z" fill="currentColor" stroke="none"/>',
+    "Google Business Profile": '<path d="M4 9.5 5.6 4h12.8L20 9.5"/><path d="M4 9.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0"/><path d="M5.5 12.5V20h13v-7.5"/><path d="M10 20v-4h4v4"/>',
+}
+
+
+def social_html():
+    out = []
+    for name, url in SOCIAL:
+        svg = f'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{SOCIAL_ICONS[name]}</svg>'
+        if url:
+            out.append(f'<li><a class="soc" href="{url}" target="_blank" rel="noopener me" aria-label="Digital Mondo on {name}" title="{name}">{svg}</a></li>')
+        else:
+            out.append(f'<li><span class="soc" role="img" aria-label="{name}" title="{name}">{svg}</span></li>')
+    return f'<ul class="f-social" aria-label="Digital Mondo on social media">{"".join(out)}</ul>'
+
+
+BOOKING_BTN = (f'<a class="btn ghost book-btn" href="{BOOKING_URL}" target="_blank" rel="noopener">Book a 20-minute call</a>' if BOOKING_URL else "")
+ANALYTICS = (f"<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{\"token\": \"{ANALYTICS_TOKEN}\"}}'></script>\\n" if ANALYTICS_TOKEN else "")
+
+
 FOOTER = f"""<footer>
   <div class="wrap">
     <div class="f-brand">
       <a class="logo" href="index.html"><img src="assets/logo-reversed.svg" alt="Digital Mondo" width="196" height="63"></a>
       <p class="f-tag">Your neighborhood, seen by the world. Social media, local SEO, reputation and websites for small businesses, from $250 a month.</p>
       <a class="f-mail" href="mailto:{EMAIL}">{EMAIL}</a>
+      __SOCIAL__
       <a class="btn f-cta" href="contact.html">Get a free marketing audit</a>
     </div>
     <div>
@@ -145,7 +184,9 @@ FOOTER = f"""<footer>
     <div class="legal"><span>© 2026 Digital Mondo LLC. All rights reserved.</span><span class="legal-links"><a href="terms.html">Terms of Service</a><a href="privacy.html">Privacy Policy</a><a href="accessibility.html">Accessibility</a><a href="contact.html">Contact</a></span></div>
   </div>
 </footer>
-__MCTA__<script src="site.js?v=__JSV__"></script>
+__MCTA__<button class="to-top" type="button" aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+<script src="site.js?v=__JSV__"></script>
+__ANALYTICS__
 </body>
 </html>
 """
@@ -172,7 +213,8 @@ def guide_page(g):
     take = "".join(f"<li>{esc(t)}</li>" for t in g["takeaways"])
     from datetime import date
     nice = date.fromisoformat(g["date"]).strftime("%B %-d, %Y")
-    return f"""<article class="guide">
+    return f"""<div class="read-progress" aria-hidden="true"><i></i></div>
+<article class="guide">
 <header class="g-head">
   <div class="wrap">
     <nav class="crumbs" aria-label="Breadcrumb"><a href="resources.html">Guides</a><span>/</span><span>{g["tag"]}</span></nav>
@@ -189,6 +231,12 @@ def guide_page(g):
   <div class="g-main">
     <div class="takeaways"><span class="metal-label">Key takeaways</span><ul>{take}</ul></div>
     <div class="prose g-prose">{body}</div>
+    <div class="g-share" aria-label="Share this guide"><b>Share this guide</b>
+      <a href="https://www.linkedin.com/sharing/share-offsite/?url={quote(SITE_URL + g["slug"] + ".html", safe="")}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={quote(SITE_URL + g["slug"] + ".html", safe="")}" target="_blank" rel="noopener">Facebook</a>
+      <a href="mailto:?subject={quote(g["title"])}&amp;body={quote(SITE_URL + g["slug"] + ".html")}">Email</a>
+      <button type="button" class="copy-link" data-url="{SITE_URL + g["slug"] + ".html"}">Copy link</button>
+    </div>
     <div class="g-author"><img src="assets/mondo-mark.svg" alt="" width="56" height="56"><div><b>Written by Karla</b><p>Karla is the founder of Digital Mondo, a one-person marketing agency for local businesses. She has traveled widely and used social media the way people around the world actually use it. <a href="about.html">More about Karla →</a></p></div></div>
   </div>
 </div>
@@ -433,15 +481,16 @@ for fname, (title, desc, active) in PAGES.items():
     styles = "\n".join(re.findall(r"<style>.*?</style>", src, re.S))
     body = re.sub(r"<style>.*?</style>", "", src, flags=re.S).strip()
     body = body.replace("{{packages}}", plans.packages_html()).replace("{{packages_home}}", plans.packages_html(table=False)).replace("{{plans}}", plans.tabs_html()).replace("{{builder}}", plans.builder_html()).replace("{{plans_json}}", plans.plans_json())
-    body = body.replace("{{guide_cards_3}}", guide_cards(limit=3)).replace("{{guide_cards}}", guide_cards())
+    body = body.replace("{{guide_cards_3}}", guide_cards(limit=3)).replace("{{guide_cards}}", guide_cards()).replace("{{booking}}", BOOKING_BTN)
     body = re.sub(r"\{\{img:([0-9a-f-]+):(\d+):([^}]*)\}\}", img, body)
     # The first photo on a page is usually above the fold: load it right away.
     body = body.replace('loading="lazy" decoding="async"', 'loading="eager" fetchpriority="high" decoding="async"', 1)
     extra = guide_ld(gd) if gd else (service_ld(sp) + faq_ld(body)) if sp else (industry_ld(ipg) + faq_ld(body)) if ipg else (faq_ld(body) if fname in ("faq.html",) else "")
     mcta = "" if active in ("contact", "legal", "404") else '<aside aria-label="Free audit"><a class="btn mcta" href="contact.html">Get a free marketing audit</a></aside>\n'
     with open(os.path.join(DIST, fname), "w") as f:
-        f.write(head(fname, title, desc, styles, active, extra) + nav("resources" if active == "guide" else active, fname) + '<main id="main">\n' + body + "\n</main>\n"
-                + FOOTER.replace("__JSV__", ver("site.js")).replace("__MCTA__", mcta))
+        og = (f"https://images.unsplash.com/photo-{gd['photo'][0]}?auto=format&amp;fit=crop&amp;w=1200&amp;h=630&amp;q=75" if gd else None)
+        f.write(head(fname, title, desc, styles, active, extra, og) + nav("resources" if active == "guide" else active, fname) + '<main id="main">\n' + body + "\n</main>\n"
+                + FOOTER.replace("__JSV__", ver("site.js")).replace("__MCTA__", mcta).replace("__SOCIAL__", social_html()).replace("__ANALYTICS__", ANALYTICS))
 
 shutil.copy(os.path.join(ROOT, "style.css"), os.path.join(DIST, "style.css"))
 with open(os.path.join(ROOT, "site.js")) as f_in, open(os.path.join(DIST, "site.js"), "w") as f_out:

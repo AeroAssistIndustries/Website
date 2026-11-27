@@ -1,3 +1,10 @@
+@font-face { font-family: "Sora"; font-style: normal; font-weight: 500; font-display: swap; src: url(assets/fonts/sora-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Sora"; font-style: normal; font-weight: 600; font-display: swap; src: url(assets/fonts/sora-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Sora"; font-style: normal; font-weight: 700; font-display: swap; src: url(assets/fonts/sora-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400; font-display: swap; src: url(assets/fonts/inter-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 500; font-display: swap; src: url(assets/fonts/inter-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 600; font-display: swap; src: url(assets/fonts/inter-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url(assets/fonts/inter-latin-700-normal.woff2) format("woff2"); }
 /* Digital Mondo — local marketing for small businesses.
    Layout idea: shades of navy and blue. Deep navy for weight, cool off-white paper, a clear mid-blue for highlights and soft sky blue for labels. */
 :root {
@@ -713,3 +720,23 @@ footer::before { content: ""; position: absolute; left: 0; right: 0; top: 0; hei
   .nav .sub.sub-ind { width: 460px; grid-template-columns: 1fr 1fr; }
   .nav .sub.sub-ind .sub-all { grid-column: 1 / -1; }
 }
+
+/* ===== Footer social, back to top ===== */
+.f-social { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.soc { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; color: #cbd6e4; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.04); transition: color .2s, background .2s, border-color .2s, transform .2s; }
+a.soc:hover, a.soc:focus-visible { color: var(--ink); background: var(--sun); border-color: var(--sun); transform: translateY(-2px); }
+span.soc { cursor: default; }
+.to-top { position: fixed; right: 22px; bottom: 22px; z-index: 30; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); color: var(--ink); display: grid; place-items: center; cursor: pointer; box-shadow: 0 14px 30px -16px rgba(19,41,75,.45);
+  opacity: 0; visibility: hidden; transform: translateY(10px); transition: opacity .25s, transform .25s, visibility .25s, background .2s; }
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: var(--ink); color: #fff; }
+@media (max-width: 960px) { .to-top { display: none; } }
+.book-btn { margin-top: 16px; }
+
+/* ===== Guides: reading progress and sharing ===== */
+.read-progress { position: fixed; left: 0; right: 0; top: 0; height: 3px; z-index: 40; pointer-events: none; }
+.read-progress i { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, var(--accent), var(--sky)); }
+.g-share { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 34px 0 0; padding-top: 22px; border-top: 1px solid var(--line); }
+.g-share b { font-size: 12.5px; letter-spacing: .14em; text-transform: uppercase; margin-right: 6px; }
+.g-share a, .g-share button { font: inherit; font-size: 14px; font-weight: 600; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; text-decoration: none; cursor: pointer; transition: border-color .2s, background .2s; }
+.g-share a:hover, .g-share button:hover { border-color: var(--ink); }
