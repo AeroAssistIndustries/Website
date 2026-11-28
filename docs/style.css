@@ -267,6 +267,8 @@ table.vs { width: 100%; border-collapse: collapse; min-width: 640px; font-size: 
 /* Sticky mobile CTA */
 .mbar { display: none; }
 @media (max-width: 760px) {
+  .mbar { transform: translateY(140%); transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .mbar.show { transform: none; }
   .mbar { display: flex; gap: 8px; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; padding: 6px; background: rgba(255,255,255,.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--line); border-radius: 999px; box-shadow: 0 14px 30px -10px rgba(21,23,26,.45); }
   .mbar .btn { flex: 1; justify-content: center; min-height: 46px; padding-left: 12px; padding-right: 12px; }
 
@@ -802,3 +804,4 @@ span.soc { cursor: default; }
 @media (max-width: 620px) { .b-grid { grid-template-columns: 1fr; } .b-search { min-width: 0; flex: 1 1 100%; } .b-pn { grid-template-columns: 1fr; } .b-next { text-align: left; } .news-box { padding: 28px 22px; } }
 .b-post[hidden], .b-featwrap[hidden] { display: none !important; }
 @media (max-width: 760px) { .to-top { bottom: 84px; right: 16px; } }
+@media (max-width: 560px) { .offer .wrap { gap: 4px 10px; padding: 10px 0; font-size: 14px; } .offer b { display: none; } }

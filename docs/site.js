@@ -80,6 +80,13 @@
     });
   });
 
+  // Mobile action bar: appears once the visitor scrolls past the first screen
+  var mbar = document.querySelector('.mbar');
+  if (mbar) {
+    var onScroll = function () { mbar.classList.toggle('show', window.scrollY > window.innerHeight * 0.6); };
+    window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  }
+
   // ---------- Newsletter signup ----------
   document.querySelectorAll('form.news-form').forEach(function (f) {
     f.addEventListener('submit', function (e) {

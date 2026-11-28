@@ -72,6 +72,33 @@
   </div>
 </section>
 
+<section class="alt" id="builder-section">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="eyebrow">Plan builder</div><h2 class="h2">Build your plan.</h2></div>
+      <p class="intro">Want different levels for each service? Tick what you want and choose a level for each. Your total updates as you go, with combo savings included.</p>
+    </div>
+    <div class="builder reveal" id="builder">
+      {{builder}}
+      <div class="summary" role="region" aria-label="Your plan summary" aria-live="polite">
+        <div class="print-only print-head"><img src="assets/logo.svg" alt="Digital Mondo" width="168" height="45"><span id="bQuoteDate"></span></div>
+        <h3>Your plan</h3>
+        <div class="billing sm" role="group" aria-label="Billing"><button type="button" data-bill="m" aria-pressed="true">Monthly</button><button type="button" data-bill="y" aria-pressed="false">Yearly <span class="free">2 months free</span></button></div>
+        <div class="lines"></div>
+        <label class="fc"><input type="checkbox" id="founding"> I'd like the founding client rate</label>
+        <div class="total"><span>Per month</span><b>$0</b></div>
+        <p class="total-billed"></p>
+        <p class="note"></p>
+        <a class="btn go" href="contact.html">Request this plan with a free audit</a>
+        <div class="share-row"><button type="button" class="link-btn" id="bShare">Copy a link to this plan</button><button type="button" class="link-btn" id="bPrint">Print or save as PDF</button></div>
+        <p class="share-msg" id="bShareMsg" aria-live="polite"></p>
+        <p class="print-only print-foot">Digital Mondo · hello@digitalmondo.com · Prices per month in US dollars. Monthly plans have no setup fee and no long-term contract.</p>
+      </div>
+    </div>
+    {{plans_json}}
+  </div>
+</section>
+
 <section id="value" class="value-sec">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -105,32 +132,6 @@
   </div>
 </section>
 
-<section class="alt" id="builder-section">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <div><div class="eyebrow">Plan builder</div><h2 class="h2">Build your plan.</h2></div>
-      <p class="intro">Want different levels for each service? Tick what you want and choose a level for each. Your total updates as you go, with combo savings included.</p>
-    </div>
-    <div class="builder reveal" id="builder">
-      {{builder}}
-      <div class="summary" role="region" aria-label="Your plan summary" aria-live="polite">
-        <div class="print-only print-head"><img src="assets/logo.svg" alt="Digital Mondo" width="168" height="45"><span id="bQuoteDate"></span></div>
-        <h3>Your plan</h3>
-        <div class="billing sm" role="group" aria-label="Billing"><button type="button" data-bill="m" aria-pressed="true">Monthly</button><button type="button" data-bill="y" aria-pressed="false">Yearly <span class="free">2 months free</span></button></div>
-        <div class="lines"></div>
-        <label class="fc"><input type="checkbox" id="founding"> I'd like the founding client rate</label>
-        <div class="total"><span>Per month</span><b>$0</b></div>
-        <p class="total-billed"></p>
-        <p class="note"></p>
-        <a class="btn go" href="contact.html">Request this plan with a free audit</a>
-        <div class="share-row"><button type="button" class="link-btn" id="bShare">Copy a link to this plan</button><button type="button" class="link-btn" id="bPrint">Print or save as PDF</button></div>
-        <p class="share-msg" id="bShareMsg" aria-live="polite"></p>
-        <p class="print-only print-foot">Digital Mondo · hello@digitalmondo.com · Prices per month in US dollars. Monthly plans have no setup fee and no long-term contract.</p>
-      </div>
-    </div>
-    {{plans_json}}
-  </div>
-</section>
 
 <section>
   <div class="wrap">
